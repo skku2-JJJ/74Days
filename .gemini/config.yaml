@@ -1,0 +1,98 @@
+# Gemini Code Assist Configuration for Unity Project
+
+# Code Analysis Settings
+analysis:
+  # Directories to analyze
+  include:
+    - "Assets/02. Scripts/**/*.cs"
+    - "Assets/Editor/**/*.cs"
+    - "Assets/Plugins/**/*.cs"
+  
+  # Directories to exclude
+  exclude:
+    - "Assets/Plugins/*/Editor/**"
+    - "Library/**"
+    - "Temp/**"
+    - "Obj/**"
+    - "Build/**"
+    - "Builds/**"
+    - "Logs/**"
+    - "MemoryCaptures/**"
+    - "UserSettings/**"
+    - "*.meta"
+
+# Coding Standards
+standards:
+  csharp:
+    naming_conventions:
+      class: "PascalCase"
+      method: "PascalCase"
+      variable: "camelCase"
+      private_field: "_camelCase"
+      constant: "PascalCase"
+    
+    patterns:
+      - "Use Unity lifecycle methods appropriately (Awake, Start, Update, etc.)"
+      - "Always specify access modifiers for methods (public, private, protected)"
+      - "Use [SerializeField] only for Unity UI (uGUI) components"
+      - "Use GetComponent<T>() wisely and cache references"
+      - "Implement IDisposable for cleanup when needed"
+      - "Use coroutines for time-based operations"
+
+# AI Assistant Context
+context:
+  frameworks:
+    - "Unity Engine"
+    - "Unity UI (uGUI)"
+    - "Unity Input System"
+    - "TextMeshPro"
+  
+  common_patterns:
+    - "MonoBehaviour components"
+    - "ScriptableObject data containers"
+    - "Singleton pattern for managers"
+    - "Object pooling for performance"
+    - "Event-driven architecture"
+  
+  best_practices:
+    - "Avoid heavy operations in Update()"
+    - "Use object pooling for frequently instantiated objects"
+    - "Implement proper null checks"
+    - "Use coroutines instead of Update() for delayed actions"
+    - "Cache component references in Awake() or Start()"
+    - "Use layers and tags for organization"
+
+# Documentation
+documentation:
+  style: "XML"
+  required_for:
+    - "public classes"
+    - "public methods"
+
+# Performance Considerations
+performance:
+  optimization_level: "balanced"
+  focus_areas:
+    - "garbage collection reduction"
+    - "draw call optimization"
+    - "memory management"
+    - "mobile performance"
+
+# Git Integration
+git:
+  ignore_generated: true
+  auto_commit_message_style: "conventional"
+
+# Custom Instructions
+custom_instructions: |
+  When suggesting code for Unity:
+  1. Always consider mobile performance implications
+  2. Suggest appropriate Unity lifecycle methods
+  3. Recommend using ScriptableObjects for game data
+  4. Consider multiplayer implications if relevant
+  5. Suggest proper error handling and null checks
+  6. Use Unity's built-in systems when available
+  7. Always include access modifiers for all methods
+  8. Use PascalCase for constants
+  9. Use [SerializeField] only for uGUI components
+  10. Provide Korean comments for better understanding (한국어 주석 포함)
