@@ -79,8 +79,8 @@ public class ShipManager : MonoBehaviour
     }
 
     // 자원 사용
-    public bool UseResource(ResourceType type, int amount)
-    {
+public bool UseResource(ResourceType type, int amount)
+{
         bool success = ship.ConsumeResource(type, amount);
 
         if (success)
@@ -118,7 +118,7 @@ public class ShipManager : MonoBehaviour
         if (success)
         {
             OnShipStatusChanged?.Invoke(ship);
-            float repairAmount = materialAmount * 5f;
+            float repairAmount = materialAmount;
             Debug.Log($"[수리 완료] Hp +{repairAmount:F1}% (재료 소비: {materialAmount})");
         }
         else

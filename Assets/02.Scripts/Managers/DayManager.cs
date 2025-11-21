@@ -19,6 +19,7 @@ using System;
 
       public int CurrentDay => currentDay;
       public int MaxDays => maxDays;
+      public DayPhase CurrentPhase => currentPhase;
       public bool IsGameOver => currentDay >= maxDays;
 
       void Awake()

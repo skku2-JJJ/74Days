@@ -10,7 +10,7 @@ public class Ship
     [Range(0, 100)] public float Hp = 100f;    // 배 체력
 
     [Header("Ship Resources")]
-    [SerializeField] private ShipInventory inventory;
+    [SerializeField] private ShipInventory _inventory;
 
     [Header("Ship Status")]
     public bool IsAbleToSail = true;                          // 항해 가능 여부
@@ -19,13 +19,13 @@ public class Ship
     // 배 전체 상태
     public float OverallCondition => Hp;
 
-    // 배가 치명적 상태인지
+    // 배가 치명적 상태일시 UI 이펙트
     public bool IsCritical => Hp < 30f;
 
     // 생성자
     public Ship()
     {
-        inventory = new ShipInventory();
+        _inventory = new ShipInventory();
     }
 
     // 하루 경과 시 배 노화
@@ -54,61 +54,54 @@ public class Ship
     // 자원 추가
     public void AddResource(ResourceType type, int amount)
     {
-        inventory.AddResource(type, amount);
+        _inventory.AddResource(type, amount);
     }
 
     // 자원 소비
     public bool ConsumeResource(ResourceType type, int amount)
     {
-        return inventory.ConsumeResource(type, amount);
+        return _inventory.ConsumeResource(type, amount);
     }
 
     // 자원 양 확인
     public int GetResourceAmount(ResourceType type)
     {
-        return inventory.GetResourceAmount(type);
+        return _inventory.GetResourceAmount(type);
     }
 
     // 총 식량
     public int GetTotalFood()
     {
-        return inventory.TotalFood;
+        return _inventory.TotalFood;
     }
 
     // 총 의약품
     public int GetTotalMedicine()
     {
-        return inventory.TotalMedicine;
+        return _inventory.TotalMedicine;
     }
 
     // 총 수리 재료
     public int GetTotalRepairMaterials()
     {
-        return inventory.TotalRepairMaterials;
+        return _inventory.TotalRepairMaterials;
     }
 
-    // 배 수리
+    // 배 수리 
     public bool RepairWithMaterials(int materialAmount)
     {
-        // 수리 재료 확인
-        if (inventory.TotalRepairMaterials < materialAmount)
-        {
+        // 0 이하 요청 방어
+        if (materialAmount <= 0)
             return false;
-        }
+
+        // 목재 개수 확인
+        if (_inventory.Wood < materialAmount)
+            return false;
 
         // 재료 소비
-        int remaining = materialAmount;
+        _inventory.ConsumeResource(ResourceType.Wood, materialAmount);
 
-        // 목재 사용
-        int woodToUse = Mathf.Min(remaining, inventory.Wood);
-        if (woodToUse > 0)
-        {
-            inventory.ConsumeResource(ResourceType.Wood, woodToUse);
-        }
-
-        // 수리 진행 
-        float repairAmount = materialAmount;
-        RepairShip(repairAmount);
+        RepairShip(materialAmount);
 
         return true;
     }
@@ -116,7 +109,7 @@ public class Ship
     // 자원 상태 요약
     public string GetResourceSummary()
     {
-        return inventory.GetResourceSummary();
+        return _inventory.GetResourceSummary();
     }
 
     // ========== 배 상태 메서드 ==========

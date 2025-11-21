@@ -1,4 +1,4 @@
-﻿// Day System
+﻿// Day 시스템
 public enum DayPhase
 {
     Morning,
@@ -7,7 +7,7 @@ public enum DayPhase
     Night
 }
 
-// Resource System
+// 자원 종류
 public enum ResourceType
 {
     Fish,
@@ -16,4 +16,13 @@ public enum ResourceType
     CleanWater,
     Herbs,
     Wood,
+}
+
+// 선원 상태
+public enum CrewStatus
+{
+    Healthy,
+    Poor,
+    Critical,
+    Dead
 }
