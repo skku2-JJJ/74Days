@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// 입력 처리 컨트롤러
+/// </summary>
 public class InputController : MonoBehaviour
 {
     public float XMove => Input.GetAxisRaw("Horizontal");

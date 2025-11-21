@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -19,12 +20,19 @@ public class DiverMoveController : MonoBehaviour
     [SerializeField] private float _boostDuration = 0.35f;  
     [SerializeField] private float _boostCoolTime = 1.0f;   
     
+    [Header("애니메이터 설정")]
+    [SerializeField] private float _animSpeedLerp = 10f; // Locomotion 보간
+    [SerializeField] private float _turnInputThreshold = 0.2f; //방향 전환 애니메이션 시 최소 입력값
+    [SerializeField] private float _turnFlipTime = 0.5f; // Turn 애니의 몇 % 지점에서 flip할지 (0~1)
+    private static readonly int TurnStateHash = Animator.StringToHash("Base Layer.Turn"); // Turn State의 해시값
+    
     // 프로퍼티
     public bool IsMoving => _moveInput.sqrMagnitude > 0.01f;
     
     // 컴포넌트
     private Rigidbody2D _rigid;
     private SpriteRenderer _spriteRenderer;
+    private Animator _animator;
     
     // 입력
     private InputController _inputController;
@@ -36,8 +44,15 @@ public class DiverMoveController : MonoBehaviour
     private float _boostCoolTimer;
     private float _boostTimer;
     
+    //방향 전환 관련
+    private bool _isRightForward = true;
+    private bool _pendingFlip = false;        // Turn 끝날 때 적용할지 여부
+    private bool _hasFlippedThisTurn = false;
+    
     // 상수
     private const float FlipThreshold = 0.05f;
+    
+    
     
     private void Awake()
     {
@@ -48,18 +63,46 @@ public class DiverMoveController : MonoBehaviour
     {
         GetInput();
         HandleBoostState();
-        UpdateSpriteFlip();
+        HandleFacing();
+        UpdateAnimator();
     }
+
+   
+
 
     private void FixedUpdate()
     {
         ApplyMovement();
     }
 
+
+    private void LateUpdate()
+    {
+        UpdateTurnFlip(); // 방향전환 애니메이션과 함께 sprite flip
+    }
+    private void UpdateTurnFlip()
+    {
+        if (!_pendingFlip) return;
+        
+        AnimatorStateInfo stateInfo = _animator.GetCurrentAnimatorStateInfo(0);
+
+        // 현재 애니메이션 상태가 아직 Turn 상태가 아니거나 이미 flip한 경우 
+        if (stateInfo.fullPathHash != TurnStateHash || _hasFlippedThisTurn)  return;
+        
+        // normalizedTime [0, 1] -> 애니 시작 시 0 
+        if (stateInfo.normalizedTime >= _turnFlipTime)
+        {
+            _spriteRenderer.flipX = !_isRightForward;
+            _hasFlippedThisTurn = true;
+            _pendingFlip = false;
+        }
+    }
+
     private void Init()
     {
         _rigid = GetComponent<Rigidbody2D>();
-        _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _animator = GetComponent<Animator>();
         
         _inputController = GetComponent<InputController>();
     }
@@ -127,17 +170,41 @@ public class DiverMoveController : MonoBehaviour
         currentVel.y = Mathf.Clamp(currentVel.y, -_maxVerticalSpeed, _maxVerticalSpeed);
         
         _rigid.linearVelocity = currentVel;
+        
+        _animator.SetFloat("Speed", _rigid.linearVelocity.magnitude);
     }
 
-    private void UpdateSpriteFlip()
+    private void HandleFacing()
     {
-        // 이동 입력 기준으로 좌우 반전
-        if (_moveInput.x > FlipThreshold)
-            _spriteRenderer.flipX = false;
-        else if (_moveInput.x < -FlipThreshold)
-            _spriteRenderer.flipX = true;
-        
+        // X축 입력이 거의 없으면 방향 유지
+        if (Mathf.Abs(_moveInput.x) < _turnInputThreshold) return;
+           
+
+        bool isRightInput = _moveInput.x > 0f;
+
+        // 이미 그 방향을 보고 있으면 turn 하지 않음
+        if (isRightInput == _isRightForward)  return;
+           
+
+        // 방향 전환 감지
+        _isRightForward = isRightInput;
+        _pendingFlip = true;
+        _hasFlippedThisTurn = false;
+
+        _animator.SetTrigger("Turn");
     }
+    
+    private void UpdateAnimator()
+    {
+        float targetSpeed = _moveInput.magnitude;  
+
+        // 부드럽게 보간
+        float current = _animator.GetFloat("Speed");
+        float smoothed = Mathf.Lerp(current, targetSpeed, _animSpeedLerp * Time.deltaTime);
+
+        _animator.SetFloat("Speed", smoothed);
+    }
+    
     
 #if UNITY_EDITOR
     private void OnDrawGizmosSelected()

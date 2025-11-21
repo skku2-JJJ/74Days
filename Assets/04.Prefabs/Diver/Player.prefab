@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4537908488963766682}
   - component: {fileID: 1441319930912219463}
   - component: {fileID: -1937940592596355044}
+  - component: {fileID: 4098375111106149736}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -199,10 +200,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxSpeed: 5
-  _acceleration: 12
-  _waterDrag: 8
+  _responsiveness: 4
   _buoyancy: 0.4
   _maxVerticalSpeed: 4
   _boostMultiplier: 1.8
   _boostDuration: 0.35
   _boostCoolTime: 1
+  _animSpeedLerp: 10
+  _turnInputThreshold: 0.2
+--- !u!114 &4098375111106149736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5956755269806337404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0fa1b0a7caca064bbd8042e15e1bd06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
