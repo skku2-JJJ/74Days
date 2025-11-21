@@ -7,18 +7,25 @@ using UnityEngine.Events;
 /// </summary>
 public class DiverMoveController : MonoBehaviour
 {
+    [Header("비주얼 처리(회전) Tr")]
+    [SerializeField] private Transform _visualTransform;
+    
     [Header("움직임 관련 변수")]
     [SerializeField] private float _maxSpeed = 5f;          
     [SerializeField] private float _responsiveness = 4f; 
 
     [Header("부력 설정")]
-    [SerializeField] private float _buoyancy = 0.4f;        // 부력
+    [SerializeField] private float _buoyancy = 0.4f;        
     [SerializeField] private float _maxVerticalSpeed = 4f;  
 
     [Header("부스트")]
     [SerializeField] private float _boostMultiplier = 1.8f; 
     [SerializeField] private float _boostDuration = 0.35f;  
     [SerializeField] private float _boostCoolTime = 1.0f;   
+    
+    [Header("기울기(틸트)")]
+    [SerializeField] private float _maxTiltAngle = 20f;      // 위/아래 최대 기울기 (도)
+    [SerializeField] private float _tiltLerpSpeed = 10f;     // 기울기 보간 속도
     
     [Header("애니메이터 설정")]
     [SerializeField] private float _animSpeedLerp = 10f; // Locomotion 보간
@@ -41,6 +48,7 @@ public class DiverMoveController : MonoBehaviour
     private InputController _inputController;
     private Vector2 _moveInput;
 
+   
     
     // 부스트 관련
     private bool _isBoosting;
@@ -78,33 +86,19 @@ public class DiverMoveController : MonoBehaviour
     private void LateUpdate()
     {
         UpdateTurnFlip(); // 방향전환 애니메이션과 함께 sprite flip
+        UpdateTilt();
     }
-    private void UpdateTurnFlip()
-    {
-        if (!_pendingFlip) return;
-        
-        AnimatorStateInfo stateInfo = _animator.GetCurrentAnimatorStateInfo(0);
 
-        // 현재 애니메이션 상태가 "Turn" 태그가 아니거나 이미 flip한 경우
-        if (!stateInfo.IsTag("Turn") || _hasFlippedThisTurn)  return;
-           
-        
-        // normalizedTime [0, 1] -> 애니 시작 시 0 
-        if (stateInfo.normalizedTime >= _turnFlipTime)
-        {
-            _spriteRenderer.flipX = !_isRightForward;
-            _hasFlippedThisTurn = true;
-            _pendingFlip = false;
-        }
-    }
+    
 
     private void Init()
     {
         _rigid = GetComponent<Rigidbody2D>();
-        _spriteRenderer = GetComponent<SpriteRenderer>();
-        _animator = GetComponent<Animator>();
+        _spriteRenderer = _visualTransform.GetComponent<SpriteRenderer>();
+        _animator = _visualTransform.GetComponent<Animator>();
         
         _inputController = GetComponent<InputController>();
+        
     }
 
     private void GetMoveInput()
@@ -216,6 +210,72 @@ public class DiverMoveController : MonoBehaviour
         _animator.SetFloat("Speed", smoothed);
     }
     
+    private void UpdateTurnFlip()
+    {
+        if (!_pendingFlip) return;
+        
+        AnimatorStateInfo stateInfo = _animator.GetCurrentAnimatorStateInfo(0);
+
+        // 현재 애니메이션 상태가 "Turn" 태그가 아니거나 이미 flip한 경우
+        if (!stateInfo.IsTag("Turn") || _hasFlippedThisTurn)  return;
+           
+        
+        // normalizedTime [0, 1] -> 애니 시작 시 0 
+        if (stateInfo.normalizedTime >= _turnFlipTime)
+        {
+            _spriteRenderer.flipX = !_isRightForward;
+            _hasFlippedThisTurn = true;
+            _pendingFlip = false;
+        }
+    }
+    
+    private void UpdateTilt()
+    {
+        // Turn 애니 중에는 회전 고정 (턴 모션이랑 충돌 방지)
+        AnimatorStateInfo stateInfo = _animator.GetCurrentAnimatorStateInfo(0);
+        if (stateInfo.IsTag("Turn"))
+        {
+            SetVisualTilt(0f);
+            return;
+        }
+
+        float vertical = _moveInput.y;
+        
+        // 거의 입력이 없으면 서서히 0도로 복귀
+        if (Mathf.Abs(vertical) < 0.01f)
+        {
+            SetVisualTilt(0f);
+            return;
+        }
+        
+        // 위/아래 방향 (+1 / -1)
+        float tiltDir = Mathf.Sign(vertical);   
+
+        // 좌/우 방향 (+1 / -1)
+        float facingSign = _isRightForward ? 1f : -1f;
+        
+        // 👉 화면 기준으로 "위/아래"가 항상 일관되게 보이도록
+        //    facingSign을 곱해줌
+        float baseAngle = tiltDir * facingSign * _maxTiltAngle;
+        
+        
+       
+
+        // 입력 강도에 따라 조금씩만 차이 나게 하고 싶으면:
+        float magnitude = Mathf.Clamp01(Mathf.Abs(vertical));
+        float targetAngle = baseAngle * magnitude;
+
+        SetVisualTilt(targetAngle);
+    }
+
+    private void SetVisualTilt(float targetAngle)
+    {
+        float currentZ = _visualTransform.localEulerAngles.z;
+        if (currentZ > 180f) currentZ -= 360f;
+
+        float newZ = Mathf.Lerp(currentZ, targetAngle, _tiltLerpSpeed * Time.deltaTime);
+        _visualTransform.localRotation = Quaternion.Euler(0f, 0f, newZ);
+    }
     
 #if UNITY_EDITOR
     private void OnDrawGizmosSelected()
