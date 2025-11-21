@@ -41,8 +41,6 @@ public class DiverVisualController : MonoBehaviour
     // 상수
     private const float HorizontalInputDeadZone = 0.01f;
     private const float VerticalInputDeadZone = 0.01f;
-    private const float HalfTurnAngle = 180f;
-    private const float MaxTurnAngle = 360f;
     
     
     
