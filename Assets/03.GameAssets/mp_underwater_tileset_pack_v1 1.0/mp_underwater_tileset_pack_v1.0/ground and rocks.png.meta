@@ -1,0 +1,1092 @@
+fileFormatVersion: 2
+guid: 23284bb88ecc6c04f82c04e9ba61f0e8
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5547820307287740985
+    second: ground and rocks_0
+  - first:
+      213: -8926806784068718581
+    second: ground and rocks_1
+  - first:
+      213: 1157850737361802276
+    second: ground and rocks_2
+  - first:
+      213: 3583452895802470189
+    second: ground and rocks_3
+  - first:
+      213: -711407186986760217
+    second: ground and rocks_4
+  - first:
+      213: 8785082672835085522
+    second: ground and rocks_5
+  - first:
+      213: 2214942835589993968
+    second: ground and rocks_6
+  - first:
+      213: -2740396462457001523
+    second: ground and rocks_7
+  - first:
+      213: -4250686195944101837
+    second: ground and rocks_8
+  - first:
+      213: 4424028688567995340
+    second: ground and rocks_9
+  - first:
+      213: 14423362665012060
+    second: ground and rocks_10
+  - first:
+      213: 7402330232797296467
+    second: ground and rocks_11
+  - first:
+      213: -3499530345190486213
+    second: ground and rocks_12
+  - first:
+      213: 2193617548854517954
+    second: ground and rocks_13
+  - first:
+      213: 656316968389670280
+    second: ground and rocks_14
+  - first:
+      213: 5144459386898601150
+    second: ground and rocks_15
+  - first:
+      213: 4948517659729672916
+    second: ground and rocks_16
+  - first:
+      213: 3461400589971313613
+    second: ground and rocks_17
+  - first:
+      213: -2318105222845503329
+    second: ground and rocks_18
+  - first:
+      213: 7440025104884848206
+    second: ground and rocks_19
+  - first:
+      213: 2818122214625401002
+    second: ground and rocks_20
+  - first:
+      213: -4560290077073924134
+    second: ground and rocks_21
+  - first:
+      213: 8510674429711841377
+    second: ground and rocks_22
+  - first:
+      213: 3009258732642182188
+    second: ground and rocks_23
+  - first:
+      213: 4818202054300326482
+    second: ground and rocks_24
+  - first:
+      213: 4484534554288917717
+    second: ground and rocks_25
+  - first:
+      213: 4898531254271023445
+    second: ground and rocks_26
+  - first:
+      213: 8782440520240299585
+    second: ground and rocks_27
+  - first:
+      213: -255571440514264463
+    second: ground and rocks_28
+  - first:
+      213: -3439834406062288246
+    second: ground and rocks_29
+  - first:
+      213: -3559778732121418250
+    second: ground and rocks_30
+  - first:
+      213: -4676607326754288777
+    second: ground and rocks_31
+  - first:
+      213: -2156846866752935528
+    second: ground and rocks_32
+  - first:
+      213: 272298519045976353
+    second: ground and rocks_33
+  - first:
+      213: -1530796100200723285
+    second: ground and rocks_34
+  - first:
+      213: 3581616370101824315
+    second: ground and rocks_35
+  - first:
+      213: 1052952087126332515
+    second: ground and rocks_36
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ground and rocks_0
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 239
+        width: 82
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7cd6a6af2de2203b0800000000000000
+      internalID: -5547820307287740985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground and rocks_1
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 239
+        width: 82
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b007901b68c9d1480800000000000000
+      internalID: -8926806784068718581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground and rocks_2
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 303
+        width: 22
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 424df5f6c13811010800000000000000
+      internalID: 1157850737361802276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground and rocks_3
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 303
+        width: 27
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2fa6ab3c6bfab130800000000000000
+      internalID: 3583452895802470189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground and rocks_4
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 303
+        width: 44
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e78ef0cee29026f0800000000000000
+      internalID: -711407186986760217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground and rocks_5
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 287
+        width: 44
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d446c44522eae970800000000000000
+      internalID: 8785082672835085522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground and rocks_6
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 287
+        width: 17
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f5532116ce0dbe10800000000000000
+      internalID: 2214942835589993968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground and rocks_7
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 287
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc96387cfe728f9d0800000000000000
+      internalID: -2740396462457001523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground and rocks_8
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 287
+        width: 22
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33868170d678205c0800000000000000
+      internalID: -4250686195944101837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground and rocks_9
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 255
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ccb8b3a17ae456d30800000000000000
+      internalID: 4424028688567995340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground and rocks_10
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 255
+        width: 18
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5b5d10d8fd333000800000000000000
+      internalID: 14423362665012060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground and rocks_11
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 255
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3577404a02c5ab660800000000000000
+      internalID: 7402330232797296467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground and rocks_12
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 255
+        width: 14
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3f883e31bb2f6fc0800000000000000
+      internalID: -3499530345190486213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground and rocks_13
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 255
+        width: 18
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c06984d98b417e10800000000000000
+      internalID: 2193617548854517954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground and rocks_14
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 255
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8857de03ec4bb1900800000000000000
+      internalID: 656316968389670280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground and rocks_15
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 207
+        width: 50
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb4d38d4e8ac46740800000000000000
+      internalID: 5144459386898601150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground and rocks_16
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 207
+        width: 50
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4da3fe8d79aaca440800000000000000
+      internalID: 4948517659729672916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground and rocks_17
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 214
+        width: 18
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc3519e4f7d590030800000000000000
+      internalID: 3461400589971313613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground and rocks_18
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 225
+        width: 24
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f98e058e49f64dfd0800000000000000
+      internalID: -2318105222845503329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground and rocks_19
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 226
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4656a8f967404760800000000000000
+      internalID: 7440025104884848206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground and rocks_20
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 230
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa85260293bfb1720800000000000000
+      internalID: 2818122214625401002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground and rocks_21
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 207
+        width: 50
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: adf154b165896b0c0800000000000000
+      internalID: -4560290077073924134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground and rocks_22
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 159
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16879f56d4dfb1670800000000000000
+      internalID: 8510674429711841377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground and rocks_23
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 175
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c242164afd803c920800000000000000
+      internalID: 3009258732642182188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground and rocks_24
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 103
+        width: 82
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25ad0ae8d31bdd240800000000000000
+      internalID: 4818202054300326482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground and rocks_25
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 111
+        width: 82
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5dc0b53ca644c3e30800000000000000
+      internalID: 4484534554288917717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground and rocks_26
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 111
+        width: 64
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55919f3e8341bf340800000000000000
+      internalID: 4898531254271023445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground and rocks_27
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 143
+        width: 30
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14e7bed2f1f71e970800000000000000
+      internalID: 8782440520240299585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground and rocks_28
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 111
+        width: 30
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17299610127047cf0800000000000000
+      internalID: -255571440514264463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground and rocks_29
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 47
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a829d7c25d04340d0800000000000000
+      internalID: -3439834406062288246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground and rocks_30
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 48
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f599e88a10299ec0800000000000000
+      internalID: -3559778732121418250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground and rocks_31
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 47
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77b42def96a591fb0800000000000000
+      internalID: -4676607326754288777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground and rocks_32
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 79
+        width: 38
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 899e640c3375112e0800000000000000
+      internalID: -2156846866752935528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground and rocks_33
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 79
+        width: 41
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 121b9947f0667c300800000000000000
+      internalID: 272298519045976353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground and rocks_34
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 47
+        width: 38
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bac8bffae0581cae0800000000000000
+      internalID: -1530796100200723285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground and rocks_35
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 47
+        width: 41
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3ba4a5cc1574b130800000000000000
+      internalID: 3581616370101824315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground and rocks_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 320
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 364dbae2856dc9e00800000000000000
+      internalID: 1052952087126332515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      ground and rocks_0: -5547820307287740985
+      ground and rocks_1: -8926806784068718581
+      ground and rocks_10: 14423362665012060
+      ground and rocks_11: 7402330232797296467
+      ground and rocks_12: -3499530345190486213
+      ground and rocks_13: 2193617548854517954
+      ground and rocks_14: 656316968389670280
+      ground and rocks_15: 5144459386898601150
+      ground and rocks_16: 4948517659729672916
+      ground and rocks_17: 3461400589971313613
+      ground and rocks_18: -2318105222845503329
+      ground and rocks_19: 7440025104884848206
+      ground and rocks_2: 1157850737361802276
+      ground and rocks_20: 2818122214625401002
+      ground and rocks_21: -4560290077073924134
+      ground and rocks_22: 8510674429711841377
+      ground and rocks_23: 3009258732642182188
+      ground and rocks_24: 4818202054300326482
+      ground and rocks_25: 4484534554288917717
+      ground and rocks_26: 4898531254271023445
+      ground and rocks_27: 8782440520240299585
+      ground and rocks_28: -255571440514264463
+      ground and rocks_29: -3439834406062288246
+      ground and rocks_3: 3583452895802470189
+      ground and rocks_30: -3559778732121418250
+      ground and rocks_31: -4676607326754288777
+      ground and rocks_32: -2156846866752935528
+      ground and rocks_33: 272298519045976353
+      ground and rocks_34: -1530796100200723285
+      ground and rocks_35: 3581616370101824315
+      ground and rocks_36: 1052952087126332515
+      ground and rocks_4: -711407186986760217
+      ground and rocks_5: 8785082672835085522
+      ground and rocks_6: 2214942835589993968
+      ground and rocks_7: -2740396462457001523
+      ground and rocks_8: -4250686195944101837
+      ground and rocks_9: 4424028688567995340
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
