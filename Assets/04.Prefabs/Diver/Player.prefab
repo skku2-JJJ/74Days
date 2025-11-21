@@ -208,6 +208,7 @@ MonoBehaviour:
   _boostCoolTime: 1
   _animSpeedLerp: 10
   _turnInputThreshold: 0.2
+  _turnFlipTime: 0.5
 --- !u!114 &4098375111106149736
 MonoBehaviour:
   m_ObjectHideFlags: 0

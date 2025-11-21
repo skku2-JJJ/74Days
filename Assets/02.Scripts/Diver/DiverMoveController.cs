@@ -23,11 +23,14 @@ public class DiverMoveController : MonoBehaviour
     [Header("애니메이터 설정")]
     [SerializeField] private float _animSpeedLerp = 10f; // Locomotion 보간
     [SerializeField] private float _turnInputThreshold = 0.2f; //방향 전환 애니메이션 시 최소 입력값
+    [SerializeField] private float _animMovingThreshold = 0.15f; // Idle, Swim 구분 기준값
     [SerializeField] private float _turnFlipTime = 0.5f; // Turn 애니의 몇 % 지점에서 flip할지 (0~1)
-    private static readonly int TurnStateHash = Animator.StringToHash("Base Layer.Turn"); // Turn State의 해시값
+    
+    
     
     // 프로퍼티
-    public bool IsMoving => _moveInput.sqrMagnitude > 0.01f;
+    private bool IsMoving => _moveInput.sqrMagnitude > 0.01f; //입력 기준으로 이동 판단
+    private bool IsAnimationMoving => _animator.GetFloat("Speed") > _animMovingThreshold; //애니 기준으로 이동 판단 
     
     // 컴포넌트
     private Rigidbody2D _rigid;
@@ -49,10 +52,6 @@ public class DiverMoveController : MonoBehaviour
     private bool _pendingFlip = false;        // Turn 끝날 때 적용할지 여부
     private bool _hasFlippedThisTurn = false;
     
-    // 상수
-    private const float FlipThreshold = 0.05f;
-    
-    
     
     private void Awake()
     {
@@ -61,7 +60,7 @@ public class DiverMoveController : MonoBehaviour
 
     private void Update()
     {
-        GetInput();
+        GetMoveInput();
         HandleBoostState();
         HandleFacing();
         UpdateAnimator();
@@ -86,8 +85,9 @@ public class DiverMoveController : MonoBehaviour
         
         AnimatorStateInfo stateInfo = _animator.GetCurrentAnimatorStateInfo(0);
 
-        // 현재 애니메이션 상태가 아직 Turn 상태가 아니거나 이미 flip한 경우 
-        if (stateInfo.fullPathHash != TurnStateHash || _hasFlippedThisTurn)  return;
+        // 현재 애니메이션 상태가 "Turn" 태그가 아니거나 이미 flip한 경우
+        if (!stateInfo.IsTag("Turn") || _hasFlippedThisTurn)  return;
+           
         
         // normalizedTime [0, 1] -> 애니 시작 시 0 
         if (stateInfo.normalizedTime >= _turnFlipTime)
@@ -107,12 +107,12 @@ public class DiverMoveController : MonoBehaviour
         _inputController = GetComponent<InputController>();
     }
 
-    private void GetInput()
+    private void GetMoveInput()
     {
         float x = _inputController.XMove;
         float y = _inputController.YMove;  
 
-        _moveInput = new Vector2(x, y).normalized;
+        _moveInput = new Vector2(x, y);
         
     }
 
@@ -156,9 +156,10 @@ public class DiverMoveController : MonoBehaviour
     {
         Vector2 currentVel = _rigid.linearVelocity;
 
-        
+        Vector2 _moveDirInput = _moveInput.normalized;
         float applySpeed = _isBoosting ? (_maxSpeed * _boostMultiplier) : _maxSpeed;
-        Vector2 targetVel = _moveInput * applySpeed;
+        
+        Vector2 targetVel = _moveDirInput * applySpeed;
 
         // 지수 감쇠 Lerp
         float t = 1f - Mathf.Exp(-_responsiveness * Time.fixedDeltaTime);
@@ -171,7 +172,6 @@ public class DiverMoveController : MonoBehaviour
         
         _rigid.linearVelocity = currentVel;
         
-        _animator.SetFloat("Speed", _rigid.linearVelocity.magnitude);
     }
 
     private void HandleFacing()
@@ -184,19 +184,30 @@ public class DiverMoveController : MonoBehaviour
 
         // 이미 그 방향을 보고 있으면 turn 하지 않음
         if (isRightInput == _isRightForward)  return;
-           
-
-        // 방향 전환 감지
+        
         _isRightForward = isRightInput;
-        _pendingFlip = true;
-        _hasFlippedThisTurn = false;
+        
+        if (IsAnimationMoving)
+        {
+            // 방향 전환 감지
+            _pendingFlip = true;
+            _hasFlippedThisTurn = false;
+            
+            _animator.SetTrigger("SwimTurn");
+        }
+        else
+        {
+            _spriteRenderer.flipX = !_isRightForward;
 
-        _animator.SetTrigger("Turn");
+            // Turn 플립 로직 안 타도록 OFF 처리
+            _pendingFlip = false;
+            _hasFlippedThisTurn = true;
+        }
     }
     
     private void UpdateAnimator()
     {
-        float targetSpeed = _moveInput.magnitude;  
+        float targetSpeed = Mathf.Clamp01(_moveInput.magnitude);  
 
         // 부드럽게 보간
         float current = _animator.GetFloat("Speed");
