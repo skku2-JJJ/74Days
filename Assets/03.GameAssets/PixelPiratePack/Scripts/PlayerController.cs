@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
     {
         input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         anim.SetFloat("Speed", Mathf.Max(Mathf.Abs(input.x), Mathf.Abs(input.y)));
-        weaponAnim.SetFloat("Speed", Mathf.Max(Mathf.Abs(input.x), Mathf.Abs(input.y)));
+        //weaponAnim.SetFloat("Speed", Mathf.Max(Mathf.Abs(input.x), Mathf.Abs(input.y)));
     }
 
     void FixedUpdate()
