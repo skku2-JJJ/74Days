@@ -1,6 +1,10 @@
 using System;
 using UnityEngine;
 
+/// <summary>
+/// 플레이어 비주얼 처리 컨트롤러
+/// </summary>
+[RequireComponent(typeof(SpriteRenderer), typeof(Animator))]
 public class DiverVisualController : MonoBehaviour
 {
     [Header("적용 대상")]
@@ -16,6 +20,9 @@ public class DiverVisualController : MonoBehaviour
     [SerializeField] private float _turnInputThreshold = 0.2f; //방향 전환 애니메이션 시 최소 입력값
     [SerializeField] private float _animMovingThreshold = 0.15f; // Idle, Swim 구분 기준값
     [SerializeField] private float _turnFlipTime = 0.5f; // Turn 애니의 몇 % 지점에서 flip할지 (0~1)
+    
+    
+    private static readonly int SwimTurnHash = Animator.StringToHash("SwimTurn");
     
     private bool IsAnimationMoving => _animator.GetFloat("Speed") > _animMovingThreshold; //애니 기준으로 이동 판단 
     
@@ -37,6 +44,9 @@ public class DiverVisualController : MonoBehaviour
     private const float HalfTurnAngle = 180f;
     private const float MaxTurnAngle = 360f;
     
+    
+    
+    private Vector2 _moveInput;
     private void Awake()
     {
        Init();
@@ -44,18 +54,18 @@ public class DiverVisualController : MonoBehaviour
 
     private void Update()
     {
-        Vector2 moveInput = _moveController.MoveInput;
+        _moveInput = _moveController.MoveInput;
         
-        HandleFacing(moveInput);
-        UpdateAnimator(moveInput);
+        HandleFacing();
+        UpdateAnimator();
     }
 
     private void LateUpdate()
     {
-        Vector2 moveInput = _moveController.MoveInput;
+        AnimatorStateInfo stateInfo = _animator.GetCurrentAnimatorStateInfo(0);
         
-        UpdateTurnFlip(); // 방향전환 애니메이션과 함께 sprite flip
-        UpdateTilt(moveInput);
+        UpdateTurnFlip(stateInfo); // 방향전환 애니메이션과 함께 sprite flip
+        UpdateTilt(stateInfo);
     }
 
     private void Init()
@@ -65,13 +75,13 @@ public class DiverVisualController : MonoBehaviour
         _moveController = GetComponentInParent<DiverMoveController>();
     }
 
-    private void HandleFacing(Vector2 moveInput)
+    private void HandleFacing()
     {
         // X축 입력이 거의 없으면 방향 유지
-        if (Mathf.Abs(moveInput.x) < _turnInputThreshold) return;
+        if (Mathf.Abs(_moveInput.x) < _turnInputThreshold) return;
            
 
-        bool isRightInput = moveInput.x > 0f;
+        bool isRightInput = _moveInput.x > 0f;
 
         // 이미 그 방향을 보고 있으면 turn 하지 않음
         if (isRightInput == _isRightForward)  return;
@@ -84,7 +94,7 @@ public class DiverVisualController : MonoBehaviour
             _pendingFlip = true;
             _hasFlippedThisTurn = false;
             
-            _animator.SetTrigger("SwimTurn");
+            _animator.SetTrigger(SwimTurnHash);
         }
         else
         {
@@ -96,9 +106,9 @@ public class DiverVisualController : MonoBehaviour
         }
     }
     
-    private void UpdateAnimator(Vector2 moveInput)
+    private void UpdateAnimator()
     {
-        float targetSpeed = Mathf.Clamp01(moveInput.magnitude);  
+        float targetSpeed = Mathf.Clamp01(_moveInput.magnitude);  
 
         // 부드럽게 보간
         float current = _animator.GetFloat("Speed");
@@ -107,11 +117,11 @@ public class DiverVisualController : MonoBehaviour
         _animator.SetFloat("Speed", smoothed);
     }
     
-    private void UpdateTurnFlip()
+    private void UpdateTurnFlip(AnimatorStateInfo stateInfo)
     {
         if (!_pendingFlip) return;
         
-        AnimatorStateInfo stateInfo = _animator.GetCurrentAnimatorStateInfo(0);
+       
 
         // 현재 애니메이션 상태가 "Turn" 태그가 아니거나 이미 flip한 경우
         if (!stateInfo.IsTag("Turn") || _hasFlippedThisTurn)  return;
@@ -126,18 +136,18 @@ public class DiverVisualController : MonoBehaviour
         }
     }
     
-    private void UpdateTilt(Vector2 moveInput)
+    private void UpdateTilt(AnimatorStateInfo stateInfo)
     {
         // Turn 애니 중에는 회전 고정 (턴 모션이랑 충돌 방지)
-        AnimatorStateInfo stateInfo = _animator.GetCurrentAnimatorStateInfo(0);
+       
         if (stateInfo.IsTag("Turn"))
         {
             SetVisualTilt(0f);
             return;
         }
 
-        float horizontalMove = moveInput.x;
-        float verticalMove = moveInput.y;
+        float horizontalMove = _moveInput.x;
+        float verticalMove = _moveInput.y;
         
         // 수직 입력이 없으면 서서히 0도로 복귀
         if (Mathf.Abs(verticalMove) < VerticalInputDeadZone)

@@ -5,6 +5,7 @@ using UnityEngine.Events;
 /// <summary>
 /// 수중 이동 컨트롤러
 /// </summary>
+[RequireComponent(typeof(Rigidbody2D), typeof(InputController))]
 public class DiverMoveController : MonoBehaviour
 {
     [Header("움직임 관련 변수")]
@@ -20,10 +21,12 @@ public class DiverMoveController : MonoBehaviour
     [SerializeField] private float _boostDuration = 0.35f;  
     [SerializeField] private float _boostCoolTime = 1.0f;   
     
+    // 상수
+    private const float MinInputMagnitude = 0.01f;
     
     // 프로퍼티
     public Vector2 MoveInput => _moveInput;
-    private bool IsMoving => _moveInput.sqrMagnitude > 0.01f; //입력 기준으로 이동 판단
+    private bool IsMoving => _moveInput.sqrMagnitude > MinInputMagnitude; //입력 기준으로 이동 판단
    
     
     // 컴포넌트
@@ -109,16 +112,16 @@ public class DiverMoveController : MonoBehaviour
     {
         Vector2 currentVel = _rigid.linearVelocity;
 
-        Vector2 _moveInputDir = _moveInput;
-        if (_moveInputDir.sqrMagnitude > 1f)
+        Vector2 moveInputDir = _moveInput;
+        if (moveInputDir.sqrMagnitude > 1f)
         {
-            _moveInputDir = _moveInputDir.normalized;
+            moveInputDir = moveInputDir.normalized;
         }
            
         
         float applySpeed = _isBoosting ? (_maxSpeed * _boostMultiplier) : _maxSpeed;
         
-        Vector2 targetVel = _moveInputDir * applySpeed;
+        Vector2 targetVel = moveInputDir * applySpeed;
 
         // 지수 감쇠 Lerp
         float t = 1f - Mathf.Exp(-_responsiveness * Time.fixedDeltaTime);
