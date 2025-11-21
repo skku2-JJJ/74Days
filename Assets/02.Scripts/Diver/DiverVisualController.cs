@@ -178,11 +178,8 @@ public class DiverVisualController : MonoBehaviour
 
     private void SetVisualTilt(float targetAngle)
     {
-        float currentZ = _visualTransform.localEulerAngles.z;
-        if (currentZ > HalfTurnAngle) currentZ -= MaxTurnAngle; //[-180f, 180f] 사이 유지
-
-        float newZ = Mathf.Lerp(currentZ, targetAngle, _tiltLerpSpeed * Time.deltaTime);
-        _visualTransform.localRotation = Quaternion.Euler(0f, 0f, newZ);
+        Quaternion targetRotation = Quaternion.Euler(0f, 0f, targetAngle);
+        _visualTransform.localRotation = Quaternion.Slerp(_visualTransform.localRotation, targetRotation, _tiltLerpSpeed * Time.deltaTime);
     }
     
 }
