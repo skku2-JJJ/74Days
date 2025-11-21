@@ -1,0 +1,962 @@
+fileFormatVersion: 2
+guid: d3dc304d068fd864da250117e618876e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1534449103753508479
+    second: Neutral Water_0
+  - first:
+      213: -3810349445828866194
+    second: Neutral Water_1
+  - first:
+      213: 6946848257917703639
+    second: Neutral Water_2
+  - first:
+      213: 2601878985059279883
+    second: Neutral Water_3
+  - first:
+      213: 480818860881166755
+    second: Neutral Water_4
+  - first:
+      213: -1042513308153151046
+    second: Neutral Water_5
+  - first:
+      213: -8219389106360210029
+    second: Neutral Water_6
+  - first:
+      213: -5646698197262400469
+    second: Neutral Water_7
+  - first:
+      213: -1996718160444266762
+    second: Neutral Water_8
+  - first:
+      213: -9007304529270911076
+    second: Neutral Water_9
+  - first:
+      213: 168244520921150764
+    second: Neutral Water_10
+  - first:
+      213: 2182214389984196318
+    second: Neutral Water_11
+  - first:
+      213: 9078288615027768991
+    second: Neutral Water_12
+  - first:
+      213: 691979942247258623
+    second: Neutral Water_13
+  - first:
+      213: 3545544976298840927
+    second: Neutral Water_14
+  - first:
+      213: -9166371029109126990
+    second: Neutral Water_15
+  - first:
+      213: 6930828424366198906
+    second: Neutral Water_16
+  - first:
+      213: -3346653700995110119
+    second: Neutral Water_17
+  - first:
+      213: -1941135760769989067
+    second: Neutral Water_18
+  - first:
+      213: -3184116817645553707
+    second: Neutral Water_19
+  - first:
+      213: 7224311125247600493
+    second: Neutral Water_20
+  - first:
+      213: 4055093793515791128
+    second: Neutral Water_21
+  - first:
+      213: 2141760730973112543
+    second: Neutral Water_22
+  - first:
+      213: 6103432305642879046
+    second: Neutral Water_23
+  - first:
+      213: -7913149938479989354
+    second: Neutral Water_24
+  - first:
+      213: 4495438265629320780
+    second: Neutral Water_25
+  - first:
+      213: 4902782368433812281
+    second: Neutral Water_26
+  - first:
+      213: -628782050123097306
+    second: Neutral Water_27
+  - first:
+      213: 6794339935753051091
+    second: Neutral Water_28
+  - first:
+      213: -8838577378583772601
+    second: Neutral Water_29
+  - first:
+      213: 5809162457443521492
+    second: Neutral Water_30
+  - first:
+      213: 6649253418992803309
+    second: Neutral Water_31
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Neutral Water_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 303
+        width: 65
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f76f42b74557b4510800000000000000
+      internalID: 1534449103753508479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neutral Water_1
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 319
+        width: 66
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6f834bfd5bee1bc0800000000000000
+      internalID: -3810349445828866194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neutral Water_2
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 303
+        width: 66
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d5d9b14fa9286060800000000000000
+      internalID: 6946848257917703639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neutral Water_3
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 129
+        width: 65
+        height: 207
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b04230dc62bbb1420800000000000000
+      internalID: 2601878985059279883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neutral Water_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 255
+        width: 65
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a1412cd4363ca600800000000000000
+      internalID: 480818860881166755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neutral Water_5
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 271
+        width: 66
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab10ae17baf3881f0800000000000000
+      internalID: -1042513308153151046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neutral Water_6
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 255
+        width: 66
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39d2face72ddeed80800000000000000
+      internalID: -8219389106360210029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neutral Water_7
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 173
+        width: 70
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b24065638e5e2a1b0800000000000000
+      internalID: -5646698197262400469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neutral Water_8
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 173
+        width: 70
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f6e522896b3a44e0800000000000000
+      internalID: -1996718160444266762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neutral Water_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 127
+        width: 81
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9f4a0dd040aff280800000000000000
+      internalID: -9007304529270911076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neutral Water_10
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 127
+        width: 82
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2539e81089b55200800000000000000
+      internalID: 168244520921150764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neutral Water_11
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 79
+        width: 66
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed6f0c20d68c84e10800000000000000
+      internalID: 2182214389984196318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neutral Water_12
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 79
+        width: 66
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9ef333856f8cfd70800000000000000
+      internalID: 9078288615027768991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neutral Water_13
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 101
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff9d75957186a9900800000000000000
+      internalID: 691979942247258623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neutral Water_14
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 99
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f53967fee5e443130800000000000000
+      internalID: 3545544976298840927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neutral Water_15
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 101
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b8c4825d128ac080800000000000000
+      internalID: -9166371029109126990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neutral Water_16
+      rect:
+        serializedVersion: 2
+        x: 190
+        y: 101
+        width: 14
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7017891bbf3f2060800000000000000
+      internalID: 6930828424366198906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neutral Water_17
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 101
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91ba0f5b03c4e81d0800000000000000
+      internalID: -3346653700995110119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neutral Water_18
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 101
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5364f766f43bf05e0800000000000000
+      internalID: -1941135760769989067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neutral Water_19
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 101
+        width: 13
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d7b3e0ef9ebfc3d0800000000000000
+      internalID: -3184116817645553707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neutral Water_20
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 85
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d67294f31b8e14460800000000000000
+      internalID: 7224311125247600493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neutral Water_21
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 83
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81366650256964830800000000000000
+      internalID: 4055093793515791128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neutral Water_22
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 85
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd8888b890019bd10800000000000000
+      internalID: 2141760730973112543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neutral Water_23
+      rect:
+        serializedVersion: 2
+        x: 190
+        y: 85
+        width: 14
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 648bc78385fb3b450800000000000000
+      internalID: 6103432305642879046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neutral Water_24
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 85
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69dfe7e7e08de2290800000000000000
+      internalID: -7913149938479989354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neutral Water_25
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 85
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c46a884e841036e30800000000000000
+      internalID: 4495438265629320780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neutral Water_26
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 85
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 933bb89869e2a0440800000000000000
+      internalID: 4902782368433812281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neutral Water_27
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 85
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62b554d8e0e1647f0800000000000000
+      internalID: -628782050123097306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neutral Water_28
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 0
+        width: 98
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3db9fc17c285a4e50800000000000000
+      internalID: 6794339935753051091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neutral Water_29
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 0
+        width: 64
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74206b5f3b0175580800000000000000
+      internalID: -8838577378583772601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neutral Water_30
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 24
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d3d47e0a7a4e9050800000000000000
+      internalID: 5809162457443521492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neutral Water_31
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 24
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ded1e9c51c4e64c50800000000000000
+      internalID: 6649253418992803309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Neutral Water_0: 1534449103753508479
+      Neutral Water_1: -3810349445828866194
+      Neutral Water_10: 168244520921150764
+      Neutral Water_11: 2182214389984196318
+      Neutral Water_12: 9078288615027768991
+      Neutral Water_13: 691979942247258623
+      Neutral Water_14: 3545544976298840927
+      Neutral Water_15: -9166371029109126990
+      Neutral Water_16: 6930828424366198906
+      Neutral Water_17: -3346653700995110119
+      Neutral Water_18: -1941135760769989067
+      Neutral Water_19: -3184116817645553707
+      Neutral Water_2: 6946848257917703639
+      Neutral Water_20: 7224311125247600493
+      Neutral Water_21: 4055093793515791128
+      Neutral Water_22: 2141760730973112543
+      Neutral Water_23: 6103432305642879046
+      Neutral Water_24: -7913149938479989354
+      Neutral Water_25: 4495438265629320780
+      Neutral Water_26: 4902782368433812281
+      Neutral Water_27: -628782050123097306
+      Neutral Water_28: 6794339935753051091
+      Neutral Water_29: -8838577378583772601
+      Neutral Water_3: 2601878985059279883
+      Neutral Water_30: 5809162457443521492
+      Neutral Water_31: 6649253418992803309
+      Neutral Water_4: 480818860881166755
+      Neutral Water_5: -1042513308153151046
+      Neutral Water_6: -8219389106360210029
+      Neutral Water_7: -5646698197262400469
+      Neutral Water_8: -1996718160444266762
+      Neutral Water_9: -9007304529270911076
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
