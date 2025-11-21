@@ -18,6 +18,8 @@ public class HarpoonShooter : MonoBehaviour
     [SerializeField] private float _aimTimeScale = 0.4f;       
     [SerializeField] private float _timeScaleLerpSpeed = 10f; 
 
+    // 컴포넌트
+    Animator _animator;
     
     // 참조
     private InputController _inputController;
@@ -46,13 +48,24 @@ public class HarpoonShooter : MonoBehaviour
 
     private void Init()
     {
+        _animator =  GetComponentInChildren<Animator>();
         _inputController = GetComponent<InputController>();
         _moveController = GetComponent<DiverMoveController>();
+        
         _mainCam = Camera.main;
     }
     private void UpdateAimState()
     {
-        _isAiming = _inputController.IsAimKeyHeld;
+        _isAiming = _inputController.IsAimButtonHeld;
+
+        if (_isAiming)
+        {
+            _animator.SetTrigger("Aim");
+        }
+        else
+        {
+            _animator.SetTrigger("AimEnd");
+        }
     }
 
     private void UpdateTimeScale()
@@ -67,8 +80,10 @@ public class HarpoonShooter : MonoBehaviour
         if (!_isAiming) return;             
         if (_coolTimer < _fireCoolTime) return;
 
-        if (_inputController.IsShootKeyPressed) 
+        if (_inputController.IsShootButtonPressed) 
         {
+            Time.timeScale = 1f;
+            
             FireToMouse();
             _coolTimer = 0f;
         }
@@ -91,6 +106,7 @@ public class HarpoonShooter : MonoBehaviour
         //HarpoonProjectile proj = Instantiate(_harpoonPrefab, origin, rot);
         //proj.Launch(dir, _harpoonSpeed);
 
+        _animator.SetTrigger("Shoot");
         // TODO:  카메라 셰이크 / 발사 사운드 / 이펙트 호출
     }
 

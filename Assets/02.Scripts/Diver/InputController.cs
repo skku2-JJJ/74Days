@@ -13,8 +13,8 @@ public class InputController : MonoBehaviour
    
 
     
-    public bool IsAimKeyHeld => Input.GetMouseButton(1);
-    public bool IsShootKeyPressed => Input.GetKey(KeyCode.LeftControl);
+    public bool IsAimButtonHeld => Input.GetMouseButton(1);
+    public bool IsShootButtonPressed => Input.GetMouseButtonDown(0);
     
   
    
