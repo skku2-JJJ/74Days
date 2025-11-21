@@ -26,9 +26,10 @@ public class DiverMoveController : MonoBehaviour
 
     // 컴포너트
     private Rigidbody2D _rigid;
-    private SpriteRenderer _spriteRenderer; 
+    private SpriteRenderer _spriteRenderer;
     
     // 입력
+    private InputController _inputController;
     private Vector2 _moveInput;
 
     
@@ -59,12 +60,13 @@ public class DiverMoveController : MonoBehaviour
         _rigid = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         
+        _inputController = GetComponent<InputController>();
     }
 
     private void GetInput()
     {
-        float x = Input.GetAxisRaw("Horizontal"); 
-        float y = Input.GetAxisRaw("Vertical");  
+        float x = _inputController.XMove;
+        float y = _inputController.YMove;  
 
         _moveInput = new Vector2(x, y).normalized;
         
@@ -72,8 +74,8 @@ public class DiverMoveController : MonoBehaviour
 
     private void HandleBoostState()
     {
-        bool isKeyHeld      = Input.GetKey(KeyCode.LeftShift);
-        bool isKeyPressed   = Input.GetKeyDown(KeyCode.LeftShift); 
+        bool isBoostHeld      = _inputController._isBoostKeyHeld;
+        bool isBoostPressed   =  _inputController._isBoostKeyPressed; 
 
         
         if (_isBoosting)
@@ -92,13 +94,13 @@ public class DiverMoveController : MonoBehaviour
         }
 
         // 부스트 중이 아니면 키를 떼고 있을 때만 쿨타임 증가
-        if (!isKeyHeld)
+        if (!isBoostHeld)
         {
             _boostCoolTimer += Time.deltaTime;
         }
         
         if (_boostCoolTimer >= _boostCoolTime &&
-            isKeyPressed &&
+            isBoostPressed &&
             _moveInput.sqrMagnitude > 0.01f)
         {
             _isBoosting = true;
