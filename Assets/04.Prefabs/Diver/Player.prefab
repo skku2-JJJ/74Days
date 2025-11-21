@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 475189918090014752}
   - component: {fileID: 4537908488963766682}
   - component: {fileID: 1441319930912219463}
+  - component: {fileID: -1937940592596355044}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -138,7 +139,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &1441319930912219463
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -185,3 +186,23 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.0625, y: 1.4375}
   m_EdgeRadius: 0
+--- !u!114 &-1937940592596355044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5956755269806337404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a03b47e54cf64fb4ea0e70336401160c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxSpeed: 5
+  _acceleration: 12
+  _waterDrag: 8
+  _buoyancy: 0.4
+  _maxVerticalSpeed: 4
+  _boostMultiplier: 1.8
+  _boostDuration: 0.35
+  _boostCoolTime: 1
