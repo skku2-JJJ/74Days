@@ -72,26 +72,33 @@ public class DiverMoveController : MonoBehaviour
 
     private void HandleBoostState()
     {
-        _boostCoolTimer += Time.deltaTime;
+        bool isKeyHeld      = Input.GetKey(KeyCode.LeftShift);
+        bool isKeyPressed   = Input.GetKeyDown(KeyCode.LeftShift); 
+
         
-        // 부스트 중
         if (_isBoosting)
         {
             _boostTimer += Time.deltaTime;
 
+            // 부스트 종료
             if (_boostTimer >= _boostDuration)
             {
                 _isBoosting = false;
                 _boostTimer = 0f;
-                _boostCoolTimer = 0f;
+                _boostCoolTimer = 0f;  
             }
 
             return;
         }
 
-        // 부스트 시작
+        // 부스트 중이 아니면 키를 떼고 있을 때만 쿨타임 증가
+        if (!isKeyHeld)
+        {
+            _boostCoolTimer += Time.deltaTime;
+        }
+        
         if (_boostCoolTimer >= _boostCoolTime &&
-            Input.GetKey(KeyCode.LeftShift) &&
+            isKeyPressed &&
             _moveInput.sqrMagnitude > 0.01f)
         {
             _isBoosting = true;
