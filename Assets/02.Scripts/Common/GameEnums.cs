@@ -6,3 +6,14 @@ public enum DayPhase
     Evening,
     Night
 }
+
+// Resource System
+public enum ResourceType
+{
+    Fish,
+    Shellfish,
+    Seaweed,
+    CleanWater,
+    Herbs,
+    Wood,
+}
