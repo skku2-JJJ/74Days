@@ -1,0 +1,205 @@
+using UnityEngine;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+public class CrewManager : MonoBehaviour
+{
+    public static CrewManager Instance { get; private set; }
+
+    [SerializeField] private List<CrewMember> crewMembers = new List<CrewMember>();
+
+    // 이벤트
+    public event Action<CrewMember> OnCrewStatusChanged;          // 선원 상태 변경
+    public event Action<CrewMember, ResourceType> OnResourceAssigned;  // 자원 할당
+    public event Action<CrewMember> OnCrewDied;                   // 선원 사망
+
+    // 프로퍼티
+    public List<CrewMember> CrewMembers => crewMembers;
+    public int TotalCrew => crewMembers.Count;
+    public int AliveCrew => crewMembers.Count(c => c.IsAlive);
+
+    void Awake()
+    {
+        // 싱글톤
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+        // 선원 리스트 초기화
+        if (crewMembers == null)
+        {
+            crewMembers = new List<CrewMember>();
+        }
+    }
+
+    void Start()
+    {
+        // 테스트용 초기 선원 생성
+        InitializeDefaultCrew();
+        PrintAllCrewStatus();
+    }
+
+    // ========== 테스트용 선원 관리 ==========
+
+    // 선원 추가
+    public void AddCrew(CrewMember crew)
+    {
+        crewMembers.Add(crew);
+        Debug.Log($"[선원 추가] {crew.CrewName}");
+    }
+
+    // 선원 제거
+    public void RemoveCrew(CrewMember crew)
+    {
+        crewMembers.Remove(crew);
+        Debug.Log($"[선원 제거] {crew.CrewName}");
+    }
+
+    // ID로 선원 찾기
+    public CrewMember GetCrewByID(int id)
+    {
+        return crewMembers.Find(c => c.CrewID == id);
+    }
+
+    // 생존 선원 수
+    public int GetSurvivedCrewCount()
+    {
+        return crewMembers.Count(c => c.IsAlive);
+    }
+
+    // 위기 상태 선원 찾기
+    public List<CrewMember> GetCriticalCrew()
+    {
+        return crewMembers.Where(c => c.Status == CrewStatus.Critical).ToList();
+    }
+
+    // ========== 자원 분배 ==========
+
+    // 자원을 선원에게 할당
+    public bool AssignResourceToCrew(CrewMember crew, ResourceType resourceType)
+    {
+        // 1. Evening 페이즈 체크
+        if (DayManager.Instance.CurrentPhase != DayPhase.Evening)
+        {
+            Debug.LogWarning("[자원 분배 실패] 저녁 시간에만 자원을 분배할 수 있습니다!");
+            return false;
+        }
+
+        // 2. 배의 인벤토리에서 자원 소비
+        bool resourceConsumed = ShipManager.Instance.UseResource(resourceType, 1);
+
+        if (!resourceConsumed)
+        {
+            Debug.LogWarning($"[자원 분배 실패] {resourceType} 부족!");
+            return false;
+        }
+
+        // 3. 선원에게 자원 전달
+        crew.GiveResource(resourceType);
+
+        // 4. 이벤트 발생
+        OnResourceAssigned?.Invoke(crew, resourceType);
+        OnCrewStatusChanged?.Invoke(crew);
+
+        Debug.Log($"[자원 분배] {crew.CrewName}에게 {resourceType} 1개 제공");
+
+        return true;
+    }
+
+    // ========== 일일 처리 ==========
+
+    // 아침: 선원 상태 확인
+    public void UpdateCrewNeeds()
+    {
+        Debug.Log("=== [아침] 선원 상태 확인 ===");
+
+        foreach (var crew in crewMembers)
+        {
+            if (crew.IsAlive)
+            {
+                // 위기 상태 선원 -> UI 이펙트 할당
+                if (crew.Status == CrewStatus.Critical)
+                {
+                    Debug.LogWarning($"⚠️ {crew.CrewName} - 위기 상태! 배고픔: {crew.Hunger:F0}, 갈증: {crew.Thirst:F0}, 체온: {crew.Temperature:F0}");
+                }
+            }
+        }
+
+        PrintAllCrewStatus();
+    }
+
+    // 밤: 일일 요구사항 처리
+    public void ProcessDailyNeeds()
+    {
+        Debug.Log("=== [밤] 선원 일일 처리 ===");
+
+        foreach (var crew in crewMembers)
+        {
+            if (!crew.IsAlive) continue;
+
+            // 일일 악화 처리
+            crew.DailyDeterioration();
+
+            // 상태 변경 이벤트
+            OnCrewStatusChanged?.Invoke(crew);
+
+            // 사망 체크
+            if (!crew.IsAlive)
+            {
+                OnCrewDied?.Invoke(crew);
+                Debug.LogError($"💀 {crew.CrewName}이(가) 사망했습니다!");
+            }
+        }
+
+        // 전체 요약
+        int alive = GetSurvivedCrewCount();
+        int dead = TotalCrew - alive;
+        Debug.Log($"선원 현황: 생존 {alive}명 / 사망 {dead}명");
+    }
+
+    // ========== 유틸리티 ==========
+
+    // 전체 선원 상태 출력
+    public void PrintAllCrewStatus()
+    {
+        Debug.Log("=== 선원 전체 상태 ===");
+        foreach (var crew in crewMembers)
+        {
+            Debug.Log(crew.GetStatusSummary());
+        }
+    }
+
+    // 테스트 용 초기 생성 코드
+    private void InitializeDefaultCrew()
+    {
+        // 기본 선원 6명 생성
+        AddCrew(new CrewMember("선원1", 1));
+        AddCrew(new CrewMember("선원2", 2));
+        AddCrew(new CrewMember("선원3", 3));
+        AddCrew(new CrewMember("선원4", 4));
+        AddCrew(new CrewMember("선원5", 5));
+        AddCrew(new CrewMember("선원6", 6));
+
+        Debug.Log($"[초기화] 기본 선원 {TotalCrew}명 생성 완료");
+    }
+
+    // 선원 요약 정보
+    public string GetCrewSummary()
+    {
+        int alive = GetSurvivedCrewCount();
+        int critical = GetCriticalCrew().Count;
+
+        string summary = $"=== 선원 현황 ===\n";
+        summary += $"생존: {alive}/{TotalCrew}\n";
+        summary += $"위기 상태: {critical}명";
+
+        return summary;
+    }
+}
