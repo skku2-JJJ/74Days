@@ -25,15 +25,19 @@ public class CrewMember
     public float FoodHungerRecovery = 25f;               // 식량의 배고픔 회복량
     public float WaterThirstRecovery = 30f;              // 물의 갈증 회복량
     public float HerbsTemperatureRecovery = 20f;         // 약초의 체온 회복량
-
+    
+    [Header("Status Thresholds")]
+    public float CriticalThreshold = 20f;
+    public float PoorThreshold = 50f;
+    
     // 상태 프로퍼티
     public CrewStatus Status
     {
         get
         {
             if (!IsAlive) return CrewStatus.Dead;
-            if (Hunger < 20f || Thirst < 20f || Temperature < 20f) return CrewStatus.Critical;
-            if (Hunger < 50f || Thirst < 50f || Temperature < 50f) return CrewStatus.Poor;
+            if (Hunger < CriticalThreshold || Thirst < CriticalThreshold || Temperature < CriticalThreshold) return CrewStatus.Critical;
+            if (Hunger < PoorThreshold || Thirst < PoorThreshold || Temperature < PoorThreshold) return CrewStatus.Poor;
             return CrewStatus.Healthy;
         }
     }
