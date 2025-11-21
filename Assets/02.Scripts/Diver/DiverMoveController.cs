@@ -109,10 +109,16 @@ public class DiverMoveController : MonoBehaviour
     {
         Vector2 currentVel = _rigid.linearVelocity;
 
-        Vector2 _moveDirInput = _moveInput.normalized;
+        Vector2 _moveInputDir = _moveInput;
+        if (_moveInputDir.sqrMagnitude > 1f)
+        {
+            _moveInputDir = _moveInputDir.normalized;
+        }
+           
+        
         float applySpeed = _isBoosting ? (_maxSpeed * _boostMultiplier) : _maxSpeed;
         
-        Vector2 targetVel = _moveDirInput * applySpeed;
+        Vector2 targetVel = _moveInputDir * applySpeed;
 
         // 지수 감쇠 Lerp
         float t = 1f - Mathf.Exp(-_responsiveness * Time.fixedDeltaTime);

@@ -121,7 +121,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a03b47e54cf64fb4ea0e70336401160c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _visualTransform: {fileID: 6690469360482775514}
   _maxSpeed: 5
   _responsiveness: 4
   _buoyancy: 0.4
@@ -129,12 +128,6 @@ MonoBehaviour:
   _boostMultiplier: 1.8
   _boostDuration: 0.35
   _boostCoolTime: 1
-  _maxTiltAngle: 20
-  _tiltLerpSpeed: 10
-  _animSpeedLerp: 10
-  _turnInputThreshold: 0.2
-  _animMovingThreshold: 0.15
-  _turnFlipTime: 0.5
 --- !u!114 &4098375111106149736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,3 +263,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a62fdca2043d0aa42bab5a2f5ea38cc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _visualTransform: {fileID: 6690469360482775514}
+  _maxTiltAngle: 20
+  _tiltLerpSpeed: 10
+  _animSpeedLerp: 10
+  _turnInputThreshold: 0.2
+  _animMovingThreshold: 0.15
+  _turnFlipTime: 0.5

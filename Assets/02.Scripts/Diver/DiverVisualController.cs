@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class DiverVisualController : MonoBehaviour
 {
+    [Header("적용 대상")]
+    [SerializeField] private Transform _visualTransform;
+    
     [Header("기울기(틸트)")]
     [SerializeField] private float _maxTiltAngle = 20f;      // 위/아래 최대 기울기 (도)
     [SerializeField] private float _tiltLerpSpeed = 10f;     // 기울기 보간 속도
@@ -26,7 +29,12 @@ public class DiverVisualController : MonoBehaviour
 
     // 참조
     private DiverMoveController _moveController;
-
+    
+    // 상수
+    private const float VerticalInputDeadZone = 0.01f;
+    private const float HalfTurnAngle = 180f;
+    private const float MaxTurnAngle = 360f;
+    
     private void Awake()
     {
        Init();
@@ -129,21 +137,21 @@ public class DiverVisualController : MonoBehaviour
         float verticalMove = moveInput.y;
         
         // 거의 입력이 없으면 서서히 0도로 복귀
-        if (Mathf.Abs(verticalMove) < 0.01f)
+        if (Mathf.Abs(verticalMove) < VerticalInputDeadZone)
         {
             SetVisualTilt(0f);
             return;
         }
         
         
-        float tiltDir = Mathf.Sign(verticalMove);   // 위/아래 방향 (+1 / -1)
-        float facingSign = _isRightForward ? 1f : -1f; // 좌/우 방향 (+1 / -1)
+        float tiltDir = Mathf.Sign(verticalMove);   // 위,아래 방향 (+1 / -1)
+        float facingSign = _isRightForward ? 1f : -1f; // 좌,우 방향 (+1 / -1)
         
         // 👉 화면 기준으로 "위/아래"가 항상 일관되게 보이도록
         //    facingSign을 곱해줌
         float baseAngle = tiltDir * facingSign * _maxTiltAngle;
         
-        // 입력 강도에 따라 조금씩만 차이 나게 하고 싶으면:
+        // 입력 강도에 따라 조금씩만 차이나게
         float magnitude = Mathf.Clamp01(Mathf.Abs(verticalMove));
         float targetAngle = baseAngle * magnitude;
 
@@ -152,11 +160,11 @@ public class DiverVisualController : MonoBehaviour
 
     private void SetVisualTilt(float targetAngle)
     {
-        float currentZ = transform.localEulerAngles.z;
-        if (currentZ > 180f) currentZ -= 360f; //[-180f, 180f] 사이 유지
+        float currentZ = _visualTransform.localEulerAngles.z;
+        if (currentZ > HalfTurnAngle) currentZ -= MaxTurnAngle; //[-180f, 180f] 사이 유지
 
         float newZ = Mathf.Lerp(currentZ, targetAngle, _tiltLerpSpeed * Time.deltaTime);
-        transform.localRotation = Quaternion.Euler(0f, 0f, newZ);
+        _visualTransform.localRotation = Quaternion.Euler(0f, 0f, newZ);
     }
     
 }
