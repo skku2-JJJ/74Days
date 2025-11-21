@@ -8,12 +8,11 @@ public class DiverMoveController : MonoBehaviour
 {
     [Header("움직임 관련 변수")]
     [SerializeField] private float _maxSpeed = 5f;          
-    [SerializeField] private float _acceleration = 12f;     
-    [SerializeField] private float _waterDrag = 8f;        
+    [SerializeField] private float _responsiveness = 4f; 
 
     [Header("부력 설정")]
-    [SerializeField] private float _buoyancy = 0.4f;        // 항상 위로 살살 밀어올리기
-    [SerializeField] private float _maxVerticalSpeed = 4f;  // 수직이동 속도 제한
+    [SerializeField] private float _buoyancy = 0.4f;        // 부력
+    [SerializeField] private float _maxVerticalSpeed = 4f;  
 
     [Header("부스트")]
     [SerializeField] private float _boostMultiplier = 1.8f; 
@@ -74,27 +73,29 @@ public class DiverMoveController : MonoBehaviour
     private void HandleBoostState()
     {
         _boostCoolTimer += Time.deltaTime;
-        if (_boostCoolTimer < _boostCoolTime) return;
         
-        if (Input.GetKey(KeyCode.LeftShift) && _moveInput.sqrMagnitude > 0.01f) // 정지 중에는 부스트 불가
+        // 부스트 중
+        if (_isBoosting)
+        {
+            _boostTimer += Time.deltaTime;
+
+            if (_boostTimer >= _boostDuration)
+            {
+                _isBoosting = false;
+                _boostTimer = 0f;
+                _boostCoolTimer = 0f;
+            }
+
+            return;
+        }
+
+        // 부스트 시작
+        if (_boostCoolTimer >= _boostCoolTime &&
+            Input.GetKey(KeyCode.LeftShift) &&
+            _moveInput.sqrMagnitude > 0.01f)
         {
             _isBoosting = true;
-            _boostTimer += Time.deltaTime;
-        }
-        else
-        {
-            _isBoosting = false;
             _boostTimer = 0f;
-            _boostCoolTimer = 0f;
-        }
-        
-
-        // 부스트 종료
-        if (_isBoosting && _boostTimer >= _boostDuration)
-        {
-            _isBoosting = false;
-            _boostTimer = 0f;
-            _boostCoolTimer = 0f;
         }
     }
 
@@ -104,24 +105,12 @@ public class DiverMoveController : MonoBehaviour
 
         
         float applySpeed = _isBoosting ? (_maxSpeed * _boostMultiplier) : _maxSpeed;
-        Vector2 desiredVel = _moveInput * applySpeed;
+        Vector2 targetVel = _moveInput * applySpeed;
 
-       // 관성에 의한 가속 이동
-        currentVel = Vector2.MoveTowards(
-            currentVel,
-            desiredVel,
-            _acceleration * Time.fixedDeltaTime
-        );
+        // 지수 감쇠 Lerp
+        float t = 1f - Mathf.Exp(-_responsiveness * Time.fixedDeltaTime);
 
-        // 입력 거의 없으면 물 저항으로 감속
-        if (_moveInput.sqrMagnitude < 0.01f)
-        {
-            currentVel = Vector2.MoveTowards(
-                currentVel,
-                Vector2.zero,
-                _waterDrag * Time.fixedDeltaTime
-            );
-        }
+        currentVel = Vector2.Lerp(currentVel, targetVel, t);
 
         // 부력 적용
         currentVel.y += _buoyancy * Time.fixedDeltaTime;
@@ -138,4 +127,13 @@ public class DiverMoveController : MonoBehaviour
         else if (_moveInput.x < -0.05f)
             _spriteRenderer.flipX = true;
     }
+    
+#if UNITY_EDITOR
+    private void OnDrawGizmosSelected()
+    {
+        if (_rigid == null) return;
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawLine(transform.position, transform.position + (Vector3)_rigid.linearVelocity);
+    }
+#endif
 }
