@@ -8,8 +8,8 @@ public class InputController : MonoBehaviour
     public float XMove => Input.GetAxisRaw("Horizontal");
     public float YMove => Input.GetAxisRaw("Vertical");
 
-    public bool _isBoostKeyHeld => Input.GetKey(KeyCode.LeftShift);
-    public bool _isBoostKeyPressed => Input.GetKeyDown(KeyCode.LeftShift);
+    public bool IsBoostKeyHeld => Input.GetKey(KeyCode.LeftShift);
+    public bool IsBoostKeyPressed => Input.GetKeyDown(KeyCode.LeftShift);
 
 
    

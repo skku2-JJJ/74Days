@@ -74,8 +74,8 @@ public class DiverMoveController : MonoBehaviour
 
     private void HandleBoostState()
     {
-        bool isBoostHeld      = _inputController._isBoostKeyHeld;
-        bool isBoostPressed   =  _inputController._isBoostKeyPressed; 
+        bool isBoostHeld      = _inputController.IsBoostKeyHeld;
+        bool isBoostPressed   =  _inputController.IsBoostKeyPressed; 
 
         
         if (_isBoosting)
