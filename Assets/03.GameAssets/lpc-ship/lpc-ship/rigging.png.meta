@@ -1,0 +1,1167 @@
+fileFormatVersion: 2
+guid: eafce4d7b07bd1f4aaf52a0b68938003
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2436263179714682979
+    second: rigging_0
+  - first:
+      213: 5107927896424758103
+    second: rigging_1
+  - first:
+      213: 4360414593300990254
+    second: rigging_2
+  - first:
+      213: -5664271197957713606
+    second: rigging_3
+  - first:
+      213: 6189599411325558089
+    second: rigging_4
+  - first:
+      213: -5676565718346468123
+    second: rigging_5
+  - first:
+      213: 6545659018298473226
+    second: rigging_6
+  - first:
+      213: 3631683133877576671
+    second: rigging_7
+  - first:
+      213: 1753081197312890486
+    second: rigging_8
+  - first:
+      213: -1718401697304681631
+    second: rigging_9
+  - first:
+      213: -4688235361777958674
+    second: rigging_10
+  - first:
+      213: 8508219961120578635
+    second: rigging_11
+  - first:
+      213: -8192791823758729810
+    second: rigging_12
+  - first:
+      213: -6790955225242095662
+    second: rigging_13
+  - first:
+      213: -4270202922758907070
+    second: rigging_14
+  - first:
+      213: -4972175855582091742
+    second: rigging_15
+  - first:
+      213: -7834985085423020476
+    second: rigging_16
+  - first:
+      213: 7999389888122873994
+    second: rigging_17
+  - first:
+      213: 6409914719382963389
+    second: rigging_18
+  - first:
+      213: 2532567842997073880
+    second: rigging_19
+  - first:
+      213: 4332151842400202183
+    second: rigging_20
+  - first:
+      213: -3774045649274886567
+    second: rigging_21
+  - first:
+      213: -989710787849401313
+    second: rigging_22
+  - first:
+      213: -1358870942757348420
+    second: rigging_23
+  - first:
+      213: 5142656110544040509
+    second: rigging_24
+  - first:
+      213: 5880910313576920137
+    second: rigging_25
+  - first:
+      213: -4390606181351713232
+    second: rigging_26
+  - first:
+      213: 1667987619695288931
+    second: rigging_27
+  - first:
+      213: -4530623220643433762
+    second: rigging_28
+  - first:
+      213: 3957558795465470839
+    second: rigging_29
+  - first:
+      213: 9071580380557588376
+    second: rigging_30
+  - first:
+      213: 7302873902875024503
+    second: rigging_31
+  - first:
+      213: 7393923663922314613
+    second: rigging_32
+  - first:
+      213: -8518135399963500217
+    second: rigging_33
+  - first:
+      213: 1583366106699427790
+    second: rigging_34
+  - first:
+      213: 1693065748362272316
+    second: rigging_35
+  - first:
+      213: 5633750384463480387
+    second: rigging_36
+  - first:
+      213: 2280117392287551678
+    second: rigging_37
+  - first:
+      213: -8238673660252706677
+    second: rigging_38
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 48
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: rigging_0
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 767
+        width: 53
+        height: 246
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9f1eb1cb87a03ed0800000000000000
+      internalID: -2436263179714682979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rigging_1
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 679
+        width: 109
+        height: 334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75bb4bcdb5103e640800000000000000
+      internalID: 5107927896424758103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rigging_2
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 646
+        width: 67
+        height: 367
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e29822b58fd438c30800000000000000
+      internalID: 4360414593300990254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rigging_3
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 624
+        width: 72
+        height: 389
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3111462b577461b0800000000000000
+      internalID: -5664271197957713606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rigging_4
+      rect:
+        serializedVersion: 2
+        x: 397
+        y: 624
+        width: 72
+        height: 389
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94dd606eedfd5e550800000000000000
+      internalID: 6189599411325558089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rigging_5
+      rect:
+        serializedVersion: 2
+        x: 498
+        y: 646
+        width: 67
+        height: 367
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e47ccd0e89c831b0800000000000000
+      internalID: -5676565718346468123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rigging_6
+      rect:
+        serializedVersion: 2
+        x: 597
+        y: 686
+        width: 64
+        height: 327
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0b338e523ad6da50800000000000000
+      internalID: 6545659018298473226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rigging_7
+      rect:
+        serializedVersion: 2
+        x: 701
+        y: 767
+        width: 53
+        height: 246
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd3ec8b9194566230800000000000000
+      internalID: 3631683133877576671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rigging_8
+      rect:
+        serializedVersion: 2
+        x: 920
+        y: 991
+        width: 16
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 676504c8f02345810800000000000000
+      internalID: 1753081197312890486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rigging_9
+      rect:
+        serializedVersion: 2
+        x: 971
+        y: 134
+        width: 42
+        height: 890
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 163e9b2c2c20728e0800000000000000
+      internalID: -1718401697304681631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rigging_10
+      rect:
+        serializedVersion: 2
+        x: 919
+        y: 937
+        width: 18
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee0cccd17ca00feb0800000000000000
+      internalID: -4688235361777958674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rigging_11
+      rect:
+        serializedVersion: 2
+        x: 918
+        y: 871
+        width: 20
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4cda75e9f4431670800000000000000
+      internalID: 8508219961120578635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rigging_12
+      rect:
+        serializedVersion: 2
+        x: 916
+        y: 802
+        width: 24
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eadd22a5e3b5d4e80800000000000000
+      internalID: -8192791823758729810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rigging_13
+      rect:
+        serializedVersion: 2
+        x: 915
+        y: 745
+        width: 26
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2dfacd1e33ea1c1a0800000000000000
+      internalID: -6790955225242095662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rigging_14
+      rect:
+        serializedVersion: 2
+        x: 914
+        y: 674
+        width: 28
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24bde16f0113db4c0800000000000000
+      internalID: -4270202922758907070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rigging_15
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 464
+        width: 47
+        height: 161
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 226614f27684ffab0800000000000000
+      internalID: -4972175855582091742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rigging_16
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 422
+        width: 56
+        height: 203
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44690ea839a844390800000000000000
+      internalID: -7834985085423020476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rigging_17
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 401
+        width: 58
+        height: 224
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a886a6d78ba830f60800000000000000
+      internalID: 7999389888122873994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rigging_18
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 374
+        width: 62
+        height: 251
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db48e51e97794f850800000000000000
+      internalID: 6409914719382963389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rigging_19
+      rect:
+        serializedVersion: 2
+        x: 913
+        y: 613
+        width: 30
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d7fa6bf80d752320800000000000000
+      internalID: 2532567842997073880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rigging_20
+      rect:
+        serializedVersion: 2
+        x: 912
+        y: 551
+        width: 32
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7cd615fd525ee1c30800000000000000
+      internalID: 4332151842400202183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rigging_21
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 487
+        width: 34
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 956acdc4a75ef9bc0800000000000000
+      internalID: -3774045649274886567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rigging_22
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 31
+        width: 82
+        height: 418
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1c4ddb3847d342f0800000000000000
+      internalID: -989710787849401313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rigging_23
+      rect:
+        serializedVersion: 2
+        x: 910
+        y: 423
+        width: 36
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbb1951c312542de0800000000000000
+      internalID: -1358870942757348420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rigging_24
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 31
+        width: 82
+        height: 329
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3238fe4c726e5740800000000000000
+      internalID: 5142656110544040509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rigging_25
+      rect:
+        serializedVersion: 2
+        x: 909
+        y: 359
+        width: 38
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 944fea495c03d9150800000000000000
+      internalID: 5880910313576920137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rigging_26
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 288
+        width: 130
+        height: 65
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03695e3c0fe6113c0800000000000000
+      internalID: -4390606181351713232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rigging_27
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 259
+        width: 50
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 362efa917e1e52710800000000000000
+      internalID: 1667987619695288931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rigging_28
+      rect:
+        serializedVersion: 2
+        x: 908
+        y: 263
+        width: 40
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed279626f2eff11c0800000000000000
+      internalID: -4530623220643433762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rigging_29
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 227
+        width: 56
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7733175a1c21ce630800000000000000
+      internalID: 3957558795465470839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rigging_30
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 127
+        width: 258
+        height: 126
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 897b986fa4ab4ed70800000000000000
+      internalID: 9071580380557588376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rigging_31
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 195
+        width: 60
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77c16545f15095560800000000000000
+      internalID: 7302873902875024503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rigging_32
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 163
+        width: 66
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57db17cc56e7c9660800000000000000
+      internalID: 7393923663922314613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rigging_33
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 131
+        width: 71
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 741ee781cf089c980800000000000000
+      internalID: -8518135399963500217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rigging_34
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 99
+        width: 76
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ecf6633c51f39f510800000000000000
+      internalID: 1583366106699427790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rigging_35
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 64
+        width: 130
+        height: 63
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 63}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3e9380f35afe7710800000000000000
+      internalID: 1693065748362272316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rigging_36
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 35
+        width: 86
+        height: 62
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3468a23302a1f2e40800000000000000
+      internalID: 5633750384463480387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rigging_37
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 0
+        width: 130
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb05d7d00ba94af10800000000000000
+      internalID: 2280117392287551678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rigging_38
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 2
+        width: 90
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b882544d4f95aad80800000000000000
+      internalID: -8238673660252706677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rigging_39
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 6
+        width: 140
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 10, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cf4d08e96729ca42a640a215674236a
+      internalID: 846651291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 059bed7ac3b228943b5bfe0be35d24e9
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      rigging_0: -2436263179714682979
+      rigging_1: 5107927896424758103
+      rigging_10: -4688235361777958674
+      rigging_11: 8508219961120578635
+      rigging_12: -8192791823758729810
+      rigging_13: -6790955225242095662
+      rigging_14: -4270202922758907070
+      rigging_15: -4972175855582091742
+      rigging_16: -7834985085423020476
+      rigging_17: 7999389888122873994
+      rigging_18: 6409914719382963389
+      rigging_19: 2532567842997073880
+      rigging_2: 4360414593300990254
+      rigging_20: 4332151842400202183
+      rigging_21: -3774045649274886567
+      rigging_22: -989710787849401313
+      rigging_23: -1358870942757348420
+      rigging_24: 5142656110544040509
+      rigging_25: 5880910313576920137
+      rigging_26: -4390606181351713232
+      rigging_27: 1667987619695288931
+      rigging_28: -4530623220643433762
+      rigging_29: 3957558795465470839
+      rigging_3: -5664271197957713606
+      rigging_30: 9071580380557588376
+      rigging_31: 7302873902875024503
+      rigging_32: 7393923663922314613
+      rigging_33: -8518135399963500217
+      rigging_34: 1583366106699427790
+      rigging_35: 1693065748362272316
+      rigging_36: 5633750384463480387
+      rigging_37: 2280117392287551678
+      rigging_38: -8238673660252706677
+      rigging_39: 846651291
+      rigging_4: 6189599411325558089
+      rigging_5: -5676565718346468123
+      rigging_6: 6545659018298473226
+      rigging_7: 3631683133877576671
+      rigging_8: 1753081197312890486
+      rigging_9: -1718401697304681631
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
