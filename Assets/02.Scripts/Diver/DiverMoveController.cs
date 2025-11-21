@@ -19,7 +19,10 @@ public class DiverMoveController : MonoBehaviour
     [SerializeField] private float _boostDuration = 0.35f;  
     [SerializeField] private float _boostCoolTime = 1.0f;   
     
-    // 컴포너트
+    // 프로퍼티
+    public bool IsMoving => _moveInput.sqrMagnitude > 0.01f;
+    
+    // 컴포넌트
     private Rigidbody2D _rigid;
     private SpriteRenderer _spriteRenderer;
     
@@ -32,6 +35,9 @@ public class DiverMoveController : MonoBehaviour
     private bool _isBoosting;
     private float _boostCoolTimer;
     private float _boostTimer;
+    
+    // 상수
+    private const float FlipThreshold = 0.05f;
     
     private void Awake()
     {
@@ -96,7 +102,7 @@ public class DiverMoveController : MonoBehaviour
         
         if (_boostCoolTimer >= _boostCoolTime &&
             isBoostPressed &&
-            _moveInput.sqrMagnitude > 0.01f)
+            IsMoving)
         {
             _isBoosting = true;
             _boostTimer = 0f;
@@ -125,7 +131,12 @@ public class DiverMoveController : MonoBehaviour
 
     private void UpdateSpriteFlip()
     {
-        _spriteRenderer.flipX = (_moveInput.x > 0) ? false : true;
+        // 이동 입력 기준으로 좌우 반전
+        if (_moveInput.x > FlipThreshold)
+            _spriteRenderer.flipX = false;
+        else if (_moveInput.x < -FlipThreshold)
+            _spriteRenderer.flipX = true;
+        
     }
     
 #if UNITY_EDITOR
