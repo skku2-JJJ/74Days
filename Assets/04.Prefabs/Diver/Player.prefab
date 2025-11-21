@@ -264,7 +264,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _visualTransform: {fileID: 6690469360482775514}
-  _maxTiltAngle: 20
+  _verticalTiltAngle: 30
+  _diagonalTiltAngle: 15
   _tiltLerpSpeed: 10
   _animSpeedLerp: 10
   _turnInputThreshold: 0.2

@@ -7,7 +7,8 @@ public class DiverVisualController : MonoBehaviour
     [SerializeField] private Transform _visualTransform;
     
     [Header("기울기(틸트)")]
-    [SerializeField] private float _maxTiltAngle = 20f;      // 위/아래 최대 기울기 (도)
+    [SerializeField] private float _verticalTiltAngle = 25f;   // 수직이동 최대 회전각
+    [SerializeField] private float _diagonalTiltAngle   = 15f;     // 대각선 이동 최대 회전각
     [SerializeField] private float _tiltLerpSpeed = 10f;     // 기울기 보간 속도
     
     [Header("애니메이터 설정")]
@@ -31,6 +32,7 @@ public class DiverVisualController : MonoBehaviour
     private DiverMoveController _moveController;
     
     // 상수
+    private const float HorizontalInputDeadZone = 0.01f;
     private const float VerticalInputDeadZone = 0.01f;
     private const float HalfTurnAngle = 180f;
     private const float MaxTurnAngle = 360f;
@@ -134,14 +136,20 @@ public class DiverVisualController : MonoBehaviour
             return;
         }
 
+        float horizontalMove = moveInput.x;
         float verticalMove = moveInput.y;
         
-        // 거의 입력이 없으면 서서히 0도로 복귀
+        // 수직 입력이 없으면 서서히 0도로 복귀
         if (Mathf.Abs(verticalMove) < VerticalInputDeadZone)
         {
             SetVisualTilt(0f);
             return;
         }
+        
+        bool hasHorizontal = Mathf.Abs(horizontalMove) >= HorizontalInputDeadZone;
+
+        // 수직이동 / 대각선 이동 구분하여 회전 최대각 선택 
+        float maxTilt = hasHorizontal ? _diagonalTiltAngle : _verticalTiltAngle;
         
         
         float tiltDir = Mathf.Sign(verticalMove);   // 위,아래 방향 (+1 / -1)
@@ -149,7 +157,7 @@ public class DiverVisualController : MonoBehaviour
         
         // 👉 화면 기준으로 "위/아래"가 항상 일관되게 보이도록
         //    facingSign을 곱해줌
-        float baseAngle = tiltDir * facingSign * _maxTiltAngle;
+        float baseAngle = tiltDir * facingSign * maxTilt;
         
         // 입력 강도에 따라 조금씩만 차이나게
         float magnitude = Mathf.Clamp01(Mathf.Abs(verticalMove));
