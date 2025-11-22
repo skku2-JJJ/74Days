@@ -17,7 +17,7 @@ public class HarpoonShooter : MonoBehaviour
     [Header("조준 / 슬로우 모션")]
     [SerializeField] private float _aimTimeScale = 0.4f;       
     [SerializeField] private float _timeScaleLerpSpeed = 10f; 
-
+    
     // 컴포넌트
     Animator _animator;
     
@@ -28,6 +28,9 @@ public class HarpoonShooter : MonoBehaviour
     private Camera _mainCam;
     private float _coolTimer;
     private bool _isAiming;
+    
+    // 프로퍼티
+    public bool IsAiming => _isAiming;
     
     // 상수
     private const float MinShootDistance = 0.0001f;
