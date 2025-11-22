@@ -87,6 +87,12 @@ public class HarpoonShooter : MonoBehaviour
     {
         _isAiming = _inputController.IsAimButtonHeld;
         
+        if(_isAiming)
+            _animator.SetTrigger("Aim");
+        else
+        {
+            _animator.SetTrigger("AimEnd");
+        }
         // 조준 종료 시 차지 초기화
         if(!_isAiming && _isCharging)
         {
@@ -113,7 +119,7 @@ public class HarpoonShooter : MonoBehaviour
         {
             _isCharging = true;
             _chargeTimer = 0;
-            _animator.SetTrigger("Aim");
+            
         }
         
         // 차지 중
@@ -126,6 +132,8 @@ public class HarpoonShooter : MonoBehaviour
         // 차지 끝, 발사
         if (_isCharging && _inputController.IsChargeButtonReleased)
         {
+            // TODO : 발사 ~ 다음 조준 까진 TimeScale = 1
+            
             float charge = ChargeRatio;
             FireToMouse(charge);
 
