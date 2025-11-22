@@ -39,6 +39,7 @@ public class HarpoonShooter : MonoBehaviour
     // 플래그 변수
     private bool _isAiming;
     private bool _isCharging;
+    private bool _lockNormalTime;
     
     // 프로퍼티
     public bool IsAiming => _isAiming;
@@ -85,26 +86,48 @@ public class HarpoonShooter : MonoBehaviour
     }
     private void UpdateAimState()
     {
-        _isAiming = _inputController.IsAimButtonHeld;
+        bool aimHeld = _inputController.IsAimButtonHeld;
+        bool prevAiming = _isAiming;
         
-        if(_isAiming)
+        // 발사 이후에는 에임 버튼을 한 번 떼어야만 슬로모 재허용
+        if (!aimHeld && _lockNormalTime)
+        {
+            _lockNormalTime = false;
+        }
+
+        _isAiming = aimHeld;
+        
+        // 상태 전환 시 애니 트리거
+        if (_isAiming && !prevAiming)
+        {
             _animator.SetTrigger("Aim");
-        else
+        }
+        else if (!_isAiming && prevAiming)
         {
             _animator.SetTrigger("AimEnd");
         }
+        
         // 조준 종료 시 차지 초기화
         if(!_isAiming && _isCharging)
         {
             _isCharging = false;
-            _animator.SetTrigger("AimEnd");
             _chargeTimer = 0f;
         }
     }
 
     private void UpdateTimeScale()
     {
-        float target = _isAiming ? _aimTimeScale : 1f;
+        float target;
+
+        if (_lockNormalTime)
+        {
+            target = 1f; // 발사 이후, 에임 버튼을 뗄 때까지는 1배속 고정
+        }
+        else
+        {
+            target = _isAiming ? _aimTimeScale : 1f;
+        }
+        
         float newScale = Mathf.Lerp(Time.timeScale, target, _timeScaleLerpSpeed * Time.unscaledDeltaTime);
         Time.timeScale = newScale;
     }
@@ -132,7 +155,8 @@ public class HarpoonShooter : MonoBehaviour
         // 차지 끝, 발사
         if (_isCharging && _inputController.IsChargeButtonReleased)
         {
-            // TODO : 발사 ~ 다음 조준 까진 TimeScale = 1
+            Time.timeScale = 1f;
+            _lockNormalTime = true;
             
             float charge = ChargeRatio;
             FireToMouse(charge);
@@ -140,6 +164,8 @@ public class HarpoonShooter : MonoBehaviour
             _isCharging = false;
             _chargeTimer = 0f;
             _coolTimer = 0f;
+            
+           
         }
     }
 

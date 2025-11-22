@@ -21,9 +21,13 @@ public class DiverVisualController : MonoBehaviour
     [SerializeField] private float _animMovingThreshold = 0.15f; // Idle, Swim 구분 기준값
     [SerializeField] private float _turnFlipTime = 0.5f; // Turn 애니의 몇 % 지점에서 flip할지 (0~1)
     
+    // 상수
+    private const float HorizontalInputDeadZone = 0.01f;
+    private const float VerticalInputDeadZone = 0.01f;
     
     private static readonly int SwimTurnHash = Animator.StringToHash("SwimTurn");
     
+    // 프로퍼티
     private bool IsAnimationMoving => _animator.GetFloat("Speed") > _animMovingThreshold; //애니 기준으로 이동 판단 
     
     // 컴포넌트
@@ -37,12 +41,10 @@ public class DiverVisualController : MonoBehaviour
 
     // 참조
     private DiverMoveController _moveController;
+    private HarpoonShooter _harpoonShooter;
+    private Camera _mainCam;
     
-    // 상수
-    private const float HorizontalInputDeadZone = 0.01f;
-    private const float VerticalInputDeadZone = 0.01f;
-    
-    
+   
     
     private Vector2 _moveInput;
     private void Awake()
@@ -70,11 +72,25 @@ public class DiverVisualController : MonoBehaviour
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
+        
         _moveController = GetComponentInParent<DiverMoveController>();
+        _harpoonShooter = GetComponentInParent<HarpoonShooter>();
+        
+        _mainCam = Camera.main;
     }
 
     private void HandleFacing()
     {
+        // 마우스 기준 flip
+        bool isAiming = _harpoonShooter.IsAiming;
+
+        if (isAiming)
+        {
+            HandleFacingWhileAiming();
+            return;
+        }
+        
+        // 키보드 기준 flip 
         // X축 입력이 거의 없으면 방향 유지
         if (Mathf.Abs(_moveInput.x) < _turnInputThreshold) return;
            
@@ -102,6 +118,26 @@ public class DiverVisualController : MonoBehaviour
             _pendingFlip = false;
             _hasFlippedThisTurn = true;
         }
+    }
+    
+    private void HandleFacingWhileAiming()
+    {
+        Vector3 mouseWorld = _mainCam.ScreenToWorldPoint(Input.mousePosition);
+        mouseWorld.z = 0;
+
+        bool isRightByMouse = mouseWorld.x >= _moveController.transform.position.x;
+
+        if (isRightByMouse == _isRightForward)
+            return;
+
+        _isRightForward = isRightByMouse;
+
+        // 조준 중에는 Turn 애니 없이 바로 flip
+        _spriteRenderer.flipX = !_isRightForward;
+
+        // Turn 관련 상태는 꺼둔다
+        _pendingFlip = false;
+        _hasFlippedThisTurn = true;
     }
     
     private void UpdateAnimator()
@@ -136,8 +172,15 @@ public class DiverVisualController : MonoBehaviour
     
     private void UpdateTilt(AnimatorStateInfo stateInfo)
     {
+        
+        // 1) 조준 중에는 0도
+        if (_harpoonShooter.IsAiming)
+        {
+            _visualTransform.localRotation = Quaternion.identity;
+            return;
+        }
+        
         // Turn 애니 중에는 회전 고정 (턴 모션이랑 충돌 방지)
-       
         if (stateInfo.IsTag("Turn"))
         {
             SetVisualTilt(0f);
