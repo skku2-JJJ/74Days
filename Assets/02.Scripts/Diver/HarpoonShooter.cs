@@ -51,7 +51,7 @@ public class HarpoonShooter : MonoBehaviour
     public bool IsCharging => _isCharging;
     public HarpoonProjectile CurrentProjectile => _currentProjectile;
     public Vector3 HarpoonMuzzleWorldPos => (Vector2)transform.position + _firePosOffset;
-    
+    public Vector3 HarpoonReturnPoint => transform.position + (Vector3)_firePosOffset;
     public float ChargeRatio
     {
         get
