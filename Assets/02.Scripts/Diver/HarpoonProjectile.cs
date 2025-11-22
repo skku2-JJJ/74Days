@@ -13,7 +13,15 @@ public class HarpoonProjectile : MonoBehaviour
     [SerializeField] private float _baseDamage = 10f;
     [SerializeField] private float _extraDamageAtFullCharge = 20f;
     
+    [Header("회수 설정")]
+    [SerializeField] private float _returnSpeed = 18f;   // 플레이어 쪽으로 감기는 속도
+    [SerializeField] private float _returnStopDistance = 0.05f;
+    
 
+    // 프로퍼티
+    public bool IsReturning => _isReturning;
+    public Vector3 Position => transform.position;
+    
     // 참조
     private HarpoonShooter _owner;     
     
@@ -22,7 +30,11 @@ public class HarpoonProjectile : MonoBehaviour
     private Animator _animator;
     
     private float _timer;
+    
     private bool _isHit;
+    private bool _isReturning;
+   
+    
     private float _damage;
 
     private void Awake()
@@ -58,45 +70,68 @@ public class HarpoonProjectile : MonoBehaviour
 
     private void Update()
     {
+        if (_isReturning)
+        {
+            UpdateReturning();
+            return;
+        }
+        
         _timer += Time.deltaTime;
         if (_timer >= _lifeTime)
         {
             if (!_isHit && _owner != null)
             {
-                _owner.OnHarpoonMissed();
-                //return;
+                StartReturning();
             }
-            
+        }
+    }
+    
+    private void StartReturning()
+    {
+        if (_isReturning) return;
+
+        
+        _isReturning = true;
+        _rigid.linearVelocity = Vector2.zero;
+        _timer = 0f;
+        
+        _animator.SetTrigger("Return");
+       
+    }
+
+    
+    
+    private void UpdateReturning()
+    {
+        if (_owner == null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Vector3 target = _owner.HarpoonMuzzleWorldPos; 
+        transform.position = Vector3.MoveTowards(transform.position, target, _returnSpeed * Time.deltaTime);
+
+        if (Vector3.Distance(transform.position, target) < _returnStopDistance)
+        {
+            _owner.OnHarpoonRetrieved(this, _isHit);
             Destroy(gameObject);
         }
     }
+    
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (_isHit) return;
+        if (_isHit || _isReturning) return;
         if (!other.CompareTag("Fish")) return;
         
         _isHit = true;
 
         // TODO: 여기서 나중에 물고기 판별해서 Hit/Miss 구분 가능
-        // ex)
-        // var fish = other.GetComponent<Fish>();
-        // if (fish != null)
-        // {
-        //     _hasHit = true;
-        //     fish.OnHarpooned(...);
-        //     if (_owner != null)
-        //         _owner.OnHarpoonHitFish(fish);
-        // }
-        // else
-        // {
-        //     // 벽/지형 등에 박힘 → 그냥 Miss 로 취급해도 되고,
-        //     // 별도 처리 후 OnHarpoonMissed 호출해도 됨.
-        // }
-
+       
         _rigid.linearVelocity = Vector2.zero;
         _animator.SetTrigger("Hit");
         
-        Destroy(gameObject, 0.05f);
+        StartReturning();
     }
 }

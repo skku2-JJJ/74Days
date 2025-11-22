@@ -27,10 +27,8 @@ public class HarpoonShooter : MonoBehaviour
     [Header("리로드 설정")]
     [SerializeField] private float _reloadDuration = 1.0f;
     
-    // 컴포넌트
+    // 컴포넌트 / 참조
     private Animator _animator;
-    
-    // 참조
     private InputController _inputController;
     private DiverMoveController _moveController;
     private Camera _mainCam;
@@ -39,16 +37,21 @@ public class HarpoonShooter : MonoBehaviour
     private float _coolTimer;
     private float _chargeTimer;
     
+    private HarpoonProjectile _currentProjectile;
+    
     // 플래그 변수
     private bool _isAiming;
     private bool _isCharging;
-    private bool _hasHarpoonOut;       
-    private bool _isReloading;         
+    private bool _hasHarpoonOut;      
+    //private bool _isReloading;         
     private bool _canAim = true;       
     
     // 프로퍼티
     public bool IsAiming => _isAiming;
     public bool IsCharging => _isCharging;
+    public HarpoonProjectile CurrentProjectile => _currentProjectile;
+    public Vector3 HarpoonMuzzleWorldPos => (Vector2)transform.position + _firePosOffset;
+    
     public float ChargeRatio
     {
         get
@@ -92,12 +95,10 @@ public class HarpoonShooter : MonoBehaviour
     private void UpdateAimState()
     {
         bool aimInput  = _inputController.IsAimButtonHeld;
-        
-        // 리로드 중이거나 작살이 나가 있는 동안엔 조준 불가
-        bool canEnterAim = _canAim && !_isReloading && !_hasHarpoonOut;
-        
         bool prevAiming = _isAiming;
-        _isAiming = canEnterAim && aimInput;
+        
+        _isAiming = aimInput && !_hasHarpoonOut;
+        
         
         // 상태 전환 시 애니 트리거
         if (_isAiming && !prevAiming)
@@ -121,7 +122,7 @@ public class HarpoonShooter : MonoBehaviour
     {
         float target = 1f;
         
-        if (!_isReloading && !_hasHarpoonOut && _isAiming)
+        if (!_hasHarpoonOut && _isAiming)
         {
             target = _aimTimeScale;
         }
@@ -134,7 +135,7 @@ public class HarpoonShooter : MonoBehaviour
     {
         if (!_isAiming) return;             
         if (_coolTimer < _fireCoolTime) return;
-        if (_hasHarpoonOut || _isReloading) return;
+        if (_hasHarpoonOut) return;
         
         bool chargePressed = _inputController.IsChargeButtonPressed;
         bool chargeHeld = _inputController.IsChageButtonHeld;
@@ -192,45 +193,35 @@ public class HarpoonShooter : MonoBehaviour
         HarpoonProjectile proj = projObj.GetComponent<HarpoonProjectile>();
         proj.Launch(dir, speed, charge, this);
 
-        _animator.SetTrigger("Shoot");
         
+        
+        _currentProjectile = proj;
         _hasHarpoonOut = true;      
-        _canAim = false;         
-        Time.timeScale = 1f;        
+            
+                
         
         // TODO:  카메라 셰이크 / 발사 사운드 / 이펙트 호출
+        _animator.SetTrigger("Shoot");
+        Time.timeScale = 1f;
     }
 
     /// <summary>
-    /// Miss시 HarpoonProjectile에서 호출
+    /// 작살이 플레이어에게 완전히 돌아왔을 때 호출
+    /// (reloading == returning : 돌아온 순간부터 다시 조준 가능)
     /// </summary>
-    public void OnHarpoonMissed()
+    public void OnHarpoonRetrieved(HarpoonProjectile proj, bool hit)
     {
-        if (!gameObject.activeInHierarchy)
-            return;
-        
-        StartCoroutine(ReloadRoutine());
-    }
-    
-    private IEnumerator ReloadRoutine()
-    {
-        _isReloading = true;
-        _hasHarpoonOut = false; 
-
-        Debug.Log("재장전 중...");
-        
-        float t = 0f;
-        while (t < _reloadDuration)
+        if (_currentProjectile == proj)
         {
-            t += Time.unscaledDeltaTime; 
-            yield return null;
+            _currentProjectile = null;
         }
 
-        Debug.Log("재장전 완료!...");
-        
-        _isReloading = false;
-        _canAim = true;   
+        _hasHarpoonOut = false;
+        // hit 여부에 따라 나중에 다른 연출 하고 싶으면 여기서 분기
+        // if (hit) { ... } else { ... }
     }
+    
+    
     
     private void OnDisable()
     {
