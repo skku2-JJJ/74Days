@@ -123,7 +123,7 @@ public class HarpoonShooter : MonoBehaviour
         }
         
         // 차지 중
-        if (_isCharging && _inputController.IsChargeButtonPressed)
+        if (_isCharging && _inputController.IsChageButtonHeld)
         {
             _chargeTimer += Time.unscaledDeltaTime;
             _chargeTimer = Mathf.Min(_chargeTimer, _maxChargeTime);
