@@ -10,10 +10,15 @@ public class HarpoonShooter : MonoBehaviour
     [SerializeField] private GameObject _harpoonPrefab;
 
     [Header("발사 설정")]
-    [SerializeField] private float _harpoonSpeed = 12f;
+    [SerializeField] private float _minHarpoonSpeed = 8f;
+    [SerializeField] private float _maxHarpoonSpeed = 18f;
+    [SerializeField] private float _maxChargeTime = 1.2f;
     [SerializeField] private float _fireCoolTime = 0.4f;
-    [SerializeField] private Vector2 _fireOffset = new Vector2(0.5f, 0f); // 다이버 기준 발사 위치
+    [SerializeField] private Vector2 _firePosOffset = new Vector2(0.5f, 0f); // 다이버 기준 발사 위치
 
+    [Tooltip("차지량(0~1)을 속도/데미지에 어떻게 반영할지 커브")]
+    [SerializeField] private AnimationCurve _chargeCurve;
+    
     [Header("조준 / 슬로우 모션")]
     [SerializeField] private float _aimTimeScale = 0.4f;       
     [SerializeField] private float _timeScaleLerpSpeed = 10f; 
@@ -26,11 +31,27 @@ public class HarpoonShooter : MonoBehaviour
     private DiverMoveController _moveController;
     
     private Camera _mainCam;
+    
+    // 타이머
     private float _coolTimer;
+    private float _chargeTimer;
+    
+    // 플래그 변수
     private bool _isAiming;
+    private bool _isCharging;
     
     // 프로퍼티
     public bool IsAiming => _isAiming;
+    public bool IsCharging => _isCharging;
+    public float ChargeRatio
+    {
+        get
+        {
+            if (!_isCharging) return 0f;
+            if (_maxChargeTime <= 0f) return 1f;
+            return Mathf.Clamp01(_chargeTimer / _maxChargeTime);
+        }
+    }
     
     // 상수
     private const float MinShootDistance = 0.0001f;
@@ -46,7 +67,7 @@ public class HarpoonShooter : MonoBehaviour
 
         UpdateAimState();
         UpdateTimeScale();
-        HandleFire();
+        UpdateCharge();
     }
 
     private void Init()
@@ -56,18 +77,22 @@ public class HarpoonShooter : MonoBehaviour
         _moveController = GetComponent<DiverMoveController>();
         
         _mainCam = Camera.main;
+        
+        if (_chargeCurve == null || _chargeCurve.length == 0)
+        {
+            _chargeCurve = AnimationCurve.Linear(0f, 0f, 1f, 1f);
+        }
     }
     private void UpdateAimState()
     {
         _isAiming = _inputController.IsAimButtonHeld;
-
-        if (_isAiming)
+        
+        // 조준 종료 시 차지 초기화
+        if(!_isAiming && _isCharging)
         {
-            _animator.SetTrigger("Aim");
-        }
-        else
-        {
+            _isCharging = false;
             _animator.SetTrigger("AimEnd");
+            _chargeTimer = 0f;
         }
     }
 
@@ -78,37 +103,59 @@ public class HarpoonShooter : MonoBehaviour
         Time.timeScale = newScale;
     }
 
-    private void HandleFire()
+    private void UpdateCharge()
     {
         if (!_isAiming) return;             
         if (_coolTimer < _fireCoolTime) return;
 
-        if (_inputController.IsShootButtonPressed) 
+        // 차지 시작
+        if (!_isCharging && _inputController.IsChargeButtonPressed)
         {
-            Time.timeScale = 1f;
-            
-            FireToMouse();
+            _isCharging = true;
+            _chargeTimer = 0;
+            _animator.SetTrigger("Aim");
+        }
+        
+        // 차지 중
+        if (_isCharging && _inputController.IsChargeButtonPressed)
+        {
+            _chargeTimer += Time.unscaledDeltaTime;
+            _chargeTimer = Mathf.Min(_chargeTimer, _maxChargeTime);
+        }
+        
+        // 차지 끝, 발사
+        if (_isCharging && _inputController.IsChargeButtonReleased)
+        {
+            float charge = ChargeRatio;
+            FireToMouse(charge);
+
+            _isCharging = false;
+            _chargeTimer = 0f;
             _coolTimer = 0f;
         }
     }
 
-    private void FireToMouse()
+    private void FireToMouse(float charge)
     {
         Vector3 mouseWorld = _mainCam.ScreenToWorldPoint(Input.mousePosition);
         mouseWorld.z = 0;
 
-        Vector2 origin = (Vector2)transform.position + _fireOffset;
+        Vector2 origin = (Vector2)transform.position + _firePosOffset;
         Vector2 dir = (mouseWorld - (Vector3)origin);
         if (dir.sqrMagnitude < MinShootDistance) return;
 
         dir.Normalize();
 
+        // 차지 커브 적용
+        float curved = _chargeCurve.Evaluate(charge);
+        float speed = Mathf.Lerp(_minHarpoonSpeed, _maxHarpoonSpeed, curved);
+        
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         Quaternion rot = Quaternion.Euler(0f, 0f, angle);
 
         GameObject projObj = Instantiate(_harpoonPrefab, origin, rot);
         HarpoonProjectile proj = projObj.GetComponent<HarpoonProjectile>();
-        proj.Launch(dir, _harpoonSpeed);
+        proj.Launch(dir, speed, charge);
 
         _animator.SetTrigger("Shoot");
         // TODO:  카메라 셰이크 / 발사 사운드 / 이펙트 호출

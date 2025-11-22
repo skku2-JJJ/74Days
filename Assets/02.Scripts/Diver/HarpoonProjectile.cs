@@ -3,30 +3,47 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
 public class HarpoonProjectile : MonoBehaviour
 {
-    [SerializeField] private float _lifeTime = 3f;
+    
+    [Header("데미지 설정")]
+    [SerializeField] private float _baseDamage = 10f;
+    [SerializeField] private float _extraDamageAtFullCharge = 20f;
+    
+    private float _lifeTime = 3f;
 
     private Rigidbody2D _rigid;
     private Animator _animator;
     
     private float _timer;
     private bool _isHit;
+    private float _damage;
 
     private void Awake()
     {
         Init();
     }
 
-    public void Launch(Vector2 dir, float speed)
+    /// <summary>
+    /// 투사체 생성 시 호출
+    /// </summary>
+    /// <param name="dir"> 발사 방향 </param>
+    /// <param name="speed"> 발사 속도 </param>
+    /// <param name="charge"> 차지 비율 </param>
+    public void Launch(Vector2 dir, float speed, float charge)
     {
         dir.Normalize();
         _rigid.linearVelocity = dir * speed;
         transform.right = -dir;
+        
+        // 차지 정도에 따른 데미지 적용
+        _damage = _baseDamage + _extraDamageAtFullCharge * Mathf.Clamp01(charge);
     }
 
     private void Init()
     {
         _rigid = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
+        
+        _rigid.gravityScale = 0f;
     }
 
     private void Update()
