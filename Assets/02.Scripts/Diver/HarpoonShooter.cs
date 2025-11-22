@@ -6,8 +6,8 @@ using UnityEngine;
 [RequireComponent(typeof(DiverMoveController),typeof(InputController))]
 public class HarpoonShooter : MonoBehaviour
 {
-    [Header("참조")]
-    //[SerializeField] private HarpoonProjectile _harpoonPrefab;
+    [Header("작살 프리펩")]
+    [SerializeField] private GameObject _harpoonPrefab;
 
     [Header("발사 설정")]
     [SerializeField] private float _harpoonSpeed = 12f;
@@ -103,8 +103,9 @@ public class HarpoonShooter : MonoBehaviour
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         Quaternion rot = Quaternion.Euler(0f, 0f, angle);
 
-        //HarpoonProjectile proj = Instantiate(_harpoonPrefab, origin, rot);
-        //proj.Launch(dir, _harpoonSpeed);
+        GameObject projObj = Instantiate(_harpoonPrefab, origin, rot);
+        HarpoonProjectile proj = projObj.GetComponent<HarpoonProjectile>();
+        proj.Launch(dir, _harpoonSpeed);
 
         _animator.SetTrigger("Shoot");
         // TODO:  카메라 셰이크 / 발사 사운드 / 이펙트 호출
