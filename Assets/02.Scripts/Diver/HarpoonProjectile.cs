@@ -76,6 +76,9 @@ public class HarpoonProjectile : MonoBehaviour
             return;
         }
         
+        if (_owner.IsCapturing)  return; // QT 진행 중..
+          
+        
         _timer += Time.deltaTime;
         if (_timer >= _lifeTime)
         {
@@ -160,6 +163,5 @@ public class HarpoonProjectile : MonoBehaviour
             _owner.StartCapture(fish, this);
         }
         
-        StartReturning();
     }
 }

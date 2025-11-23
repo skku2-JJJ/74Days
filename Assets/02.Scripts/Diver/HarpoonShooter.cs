@@ -57,6 +57,10 @@ public class HarpoonShooter : MonoBehaviour
     // 프로퍼티
     public bool IsAiming => _isAiming;
     public bool IsCharging => _isCharging;
+    public bool IsCapturing => _isCapturing;
+    public float CaptureGauge01 => Mathf.Clamp01(_captureGauge);
+
+    
     public HarpoonProjectile CurrentProjectile => _currentProjectile;
     public Vector3 HarpoonMuzzleWorldPos => (Vector2)transform.position + _firePosOffset;
     public Vector3 HarpoonReturnPoint => transform.position + (Vector3)_firePosOffset;
@@ -69,7 +73,15 @@ public class HarpoonShooter : MonoBehaviour
             return Mathf.Clamp01(_chargeTimer / _maxChargeTime);
         }
     }
+    public float CaptureTimeRatio01
+    {
+        get
+        {
+            return _captureDuration > 0f ? Mathf.Clamp01(_captureTimer / _captureDuration) : 0f;
+        }
+    }
     
+
     // 상수
     private const float MinShootDistance = 0.0001f;
 
@@ -299,10 +311,11 @@ public class HarpoonShooter : MonoBehaviour
         {
             if (success)
             {
-                _targetFish.Capture();
+                _targetFish.transform.SetParent(_currentProjectile.transform, true);
             }
             else
             {
+                _targetFish.transform.SetParent(null, true);
                 _targetFish.OnCaptureFailed();
             }
         }
@@ -310,7 +323,6 @@ public class HarpoonShooter : MonoBehaviour
         if (_currentProjectile != null)
         {
             // 맞았든 실패했든, 이제는 플레이어 쪽으로 돌아오게 한다
-            _currentProjectile.transform.SetParent(null, true);
             _currentProjectile.BeginReturn();
         }
 
