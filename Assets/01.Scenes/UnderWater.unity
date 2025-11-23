@@ -347,7 +347,6 @@ GameObject:
   - component: {fileID: 267776893}
   - component: {fileID: 267776892}
   - component: {fileID: 267776891}
-  - component: {fileID: 267776895}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -438,20 +437,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &267776895
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 267776890}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0798a9e1583a88343916aab242e155b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _shooter: {fileID: 1756813147}
-  _gaugeSlider: {fileID: 1668247151}
 --- !u!1 &267927180
 GameObject:
   m_ObjectHideFlags: 0
@@ -487,7 +472,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 10, y: 0}
+  m_SizeDelta: {x: 0, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &267927182
 MonoBehaviour:
@@ -558,10 +543,10 @@ RectTransform:
   - {fileID: 267927181}
   m_Father: {fileID: 1668247150}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.25}
-  m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: -5, y: 0}
-  m_SizeDelta: {x: -20, y: 0}
+  m_AnchorMin: {x: 0.25, y: 0}
+  m_AnchorMax: {x: 0.75, y: 1}
+  m_AnchoredPosition: {x: 0, y: -5}
+  m_SizeDelta: {x: 0, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &471275331 stripped
 GameObject:
@@ -681,8 +666,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1668247150}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.25}
-  m_AnchorMax: {x: 1, y: 0.75}
+  m_AnchorMin: {x: 0.25, y: 0}
+  m_AnchorMax: {x: 0.75, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -888,6 +873,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1668247150}
   - component: {fileID: 1668247151}
+  - component: {fileID: 1668247153}
+  - component: {fileID: 1668247152}
   m_Layer: 5
   m_Name: CaptureGuage
   m_TagString: Untagged
@@ -911,11 +898,11 @@ RectTransform:
   - {fileID: 365514360}
   m_Father: {fileID: 267776894}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 300, y: -100}
-  m_SizeDelta: {x: 200, y: 100}
-  m_Pivot: {x: 0, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 200}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1668247151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -959,7 +946,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 267927181}
   m_HandleRect: {fileID: 0}
-  m_Direction: 0
+  m_Direction: 2
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
@@ -967,17 +954,37 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1756813147 stripped
+--- !u!114 &1668247152
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3907350911520505263, guid: 6602fccb963f71c4c8cd4e6e544ae0bd, type: 3}
-  m_PrefabInstance: {fileID: 9190899567325146279}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1668247149}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de1afc2e35abb5a4097237bf67d4d4e9, type: 3}
+  m_Script: {fileID: 11500000, guid: 0798a9e1583a88343916aab242e155b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _player: {fileID: 1756813152}
+  _screenOffset: {x: 120, y: 40}
+--- !u!225 &1668247153
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1668247149}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!4 &1756813152 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1457954407928407611, guid: 6602fccb963f71c4c8cd4e6e544ae0bd, type: 3}
+  m_PrefabInstance: {fileID: 9190899567325146279}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1854953566 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1225044215565552, guid: c231678582e304fdcb4f4b47b37c2264, type: 3}

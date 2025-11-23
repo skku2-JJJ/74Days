@@ -3,36 +3,78 @@ using UnityEngine.UI;
 
 public class CaptureUI : MonoBehaviour
 {
-    [SerializeField] private HarpoonShooter _shooter;
-    [SerializeField] private Slider _gaugeSlider;
+    [Header("플레이어")]
+    [SerializeField] private Transform _player;
     
+    [Header("위치 설정 (Screen Space 기준 오프셋)")]
+    [SerializeField] private Vector2 _screenOffset = new Vector2(120f, 40f); // x, y 픽셀 단위
+    
+    // 참조
+    private Slider _gaugeSlider;
+    private HarpoonShooter _shooter;
+    private SpriteRenderer _diverSprite;
     private CanvasGroup _canvasGroup; 
-
+    private RectTransform _rectTransform;
+    private Camera _camera;
+    
     private void Awake()
     {
-        if (_canvasGroup == null)
-            _canvasGroup = GetComponent<CanvasGroup>();
+        if (_player == null)
+        {
+            _player = GameObject.FindGameObjectWithTag("Player").transform;
+        }
+           
         
+        _canvasGroup = GetComponent<CanvasGroup>();
+        _gaugeSlider = GetComponent<Slider>();
+        
+        _shooter = _player.GetComponent<HarpoonShooter>();
+        _diverSprite = _player.GetComponentInChildren<SpriteRenderer>();
+        
+        _rectTransform = GetComponent<RectTransform>();
+        _camera = Camera.main;
     }
 
     private void Update()
     {
         if (_shooter == null || _gaugeSlider == null) return;
-
-        if (_shooter.IsCapturing)
+        
+        if (!_shooter.IsCapturing)
         {
-            // UI 보이기
-            if (_canvasGroup != null)
-                _gaugeSlider.gameObject.SetActive(true);
+            _canvasGroup.alpha = 0f;
+            return;
+        }
+        
+        _canvasGroup.alpha = 1f;
+       
+        UpdatePosition();
+        UpdateGauge();
+    }
+    
+    private void UpdatePosition()
+    {
+     
+        Vector3 screenPos = _camera.WorldToScreenPoint(_player.position);
+        
+        bool facingRight = true;
 
-            // 게이지 값 반영 (0~1)
-            _gaugeSlider.value = _shooter.CaptureGauge01;
-        }
-        else
+        if (_diverSprite != null)
         {
-            // 캡쳐 중 아니면 안보이게
-            if (_canvasGroup != null)
-                _gaugeSlider.gameObject.SetActive(false);
+            facingRight = !_diverSprite.flipX;
         }
+        
+        float dir = facingRight ? -1f : 1f;
+        
+        screenPos.x += dir * _screenOffset.x;
+        screenPos.y += _screenOffset.y;
+
+        _rectTransform.position = screenPos;
+    }
+
+    private void UpdateGauge()
+    {
+        if (_gaugeSlider == null) return;
+        
+        _gaugeSlider.value = _shooter.CaptureGauge01;
     }
 }
