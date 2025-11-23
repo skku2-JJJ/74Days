@@ -27,6 +27,11 @@ public class HarpoonShooter : MonoBehaviour
     [Header("리로드 설정")]
     [SerializeField] private float _reloadDuration = 1.0f;
     
+    [Header("포획 QTE 설정")]
+    [SerializeField] private float _captureDuration = 3f;
+    [SerializeField] private float _captureGaugeDecayPerSecond = 0.4f;
+    [SerializeField] private float _captureGaugeGainPerPress = 0.15f;
+    
     // 컴포넌트 / 참조
     private Animator _animator;
     private InputController _inputController;
@@ -43,8 +48,14 @@ public class HarpoonShooter : MonoBehaviour
     private bool _isAiming;
     private bool _isCharging;
     private bool _hasHarpoonOut;      
-    //private bool _isReloading;         
     private bool _canAim = true;       
+    
+    // QTE 상태
+    private bool _isCapturing;
+    private float _captureGauge;
+    private float _captureTimer;
+    private FishBase _targetFish;
+    
     
     // 프로퍼티
     public bool IsAiming => _isAiming;
@@ -74,6 +85,13 @@ public class HarpoonShooter : MonoBehaviour
     {
         _coolTimer += Time.unscaledDeltaTime; 
 
+        // QTE 진행 중이면 여기서만 처리
+        if (_isCapturing)
+        {
+            UpdateCaptureQTE();
+            return;
+        }
+        
         UpdateAimState();
         UpdateTimeScale();
         UpdateCharge();
@@ -217,10 +235,87 @@ public class HarpoonShooter : MonoBehaviour
         }
 
         _hasHarpoonOut = false;
-        // hit 여부에 따라 나중에 다른 연출 하고 싶으면 여기서 분기
-        // if (hit) { ... } else { ... }
+        
+        // TODO : hit 여부에 따라 분기 -> 다른 연출
+       
     }
     
+    
+    public void StartCapture(FishBase fish, HarpoonProjectile projectile)
+    {
+        if (fish == null || projectile == null) return;
+
+        _isCapturing = true;
+        _captureGauge = 0f;
+        _captureTimer = 0f;
+        _targetFish = fish;
+
+        _currentProjectile = projectile;
+        _hasHarpoonOut = true; 
+        
+        Time.timeScale = 1f;
+
+        // TODO: QTE UI , 애니메이션 트리거 
+    }
+
+    private void UpdateCaptureQTE()
+    {
+        Time.timeScale = 1f;
+
+        _captureTimer += Time.unscaledDeltaTime;
+        if (_captureTimer >= _captureDuration)
+        {
+            EndCapture(false);
+            return;
+        }
+
+        // 게이지 자연 감소
+        _captureGauge -= _captureGaugeDecayPerSecond * Time.unscaledDeltaTime;
+        _captureGauge = Mathf.Max(0f, _captureGauge);
+
+        // 스페이스 연타로 게이지 올리기
+        if (_inputController.IsPullKeyPressed)
+        {
+            _captureGauge += _captureGaugeGainPerPress;
+        }
+
+        // TODO: QTE 게이지 UI 업데이트
+
+        if (_captureGauge >= 1f)
+        {
+            EndCapture(true);
+        }
+    }
+
+    private void EndCapture(bool success)
+    {
+        _isCapturing = false;
+
+        if (_targetFish != null)
+        {
+            if (success)
+            {
+                _targetFish.Capture();
+            }
+            else
+            {
+                _targetFish.OnCaptureFailed();
+            }
+        }
+
+        if (_currentProjectile != null)
+        {
+            // 맞았든 실패했든, 이제는 플레이어 쪽으로 돌아오게 한다
+            _currentProjectile.transform.SetParent(null, true);
+            _currentProjectile.BeginReturn();
+        }
+
+        _targetFish = null;
+        _captureGauge = 0f;
+        _captureTimer = 0f;
+
+        // QTE UI 끄기
+    }
     
     
     private void OnDisable()

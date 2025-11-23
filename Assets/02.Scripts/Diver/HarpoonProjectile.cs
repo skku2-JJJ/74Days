@@ -86,6 +86,14 @@ public class HarpoonProjectile : MonoBehaviour
         }
     }
     
+    /// <summary>
+    /// HarpoonShooter에서 QTE 끝난 뒤 호출하는 공개 메서드
+    /// </summary>
+    public void BeginReturn()
+    {
+        StartReturning();
+    }
+    
     private void StartReturning()
     {
         if (_isReturning) return;
@@ -125,12 +133,33 @@ public class HarpoonProjectile : MonoBehaviour
         if (_isHit || _isReturning) return;
         if (!other.CompareTag("Fish")) return;
         
+        FishBase fish = other.GetComponent<FishBase>();
+        if (fish == null) return;
+        
         _isHit = true;
-
-        // TODO: 여기서 나중에 물고기 판별해서 Hit/Miss 구분 가능
-       
         _rigid.linearVelocity = Vector2.zero;
+        
         _animator.SetTrigger("Hit");
+        
+        // 1) 데미지 먼저 적용
+        fish.TakeHarpoonHit(_damage);
+
+        // 2) 캡처 가능 HP 이하라면 → QTE 없이 바로 포획
+        if (fish.CanBeCaptured)
+        {
+            // 즉시 잡기
+            fish.Capture();
+            
+            StartReturning();
+        }
+        else
+        {
+            // 물고기에 박힌 채로 붙어 있게
+            transform.SetParent(fish.transform, worldPositionStays: true);
+
+            // Shooter 쪽 QTE 진입
+            _owner.StartCapture(fish, this);
+        }
         
         StartReturning();
     }

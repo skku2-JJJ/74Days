@@ -20,6 +20,9 @@ public class InputController : MonoBehaviour
     public bool IsChageButtonHeld => Input.GetMouseButton(0);
     public bool IsChargeButtonReleased => Input.GetMouseButtonUp(0);
     
+    // QTE
+    public bool IsPullKeyPressed => Input.GetKey(KeyCode.Space);
+    
   
    
 }
