@@ -335,6 +335,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &471275331 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1788738869386804, guid: 9e1982b2bcf354f7dbcfea8976c3b503, type: 3}
+  m_PrefabInstance: {fileID: 1486027115}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &471275337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 471275331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4362de6b5afeb3043adbb5fc879814df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  maxHealth: 100
+  captureHpRatioThreshold: 0.5
 --- !u!1001 &824920572
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -396,7 +416,10 @@ PrefabInstance:
     - {fileID: 114842681548210492, guid: c231678582e304fdcb4f4b47b37c2264, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1225044215565552, guid: c231678582e304fdcb4f4b47b37c2264, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1854953572}
   m_SourcePrefab: {fileID: 100100000, guid: c231678582e304fdcb4f4b47b37c2264, type: 3}
 --- !u!1001 &1257450044
 PrefabInstance:
@@ -459,8 +482,31 @@ PrefabInstance:
     - {fileID: 114269398801437304, guid: d44e26ae803d04779a1c713330506a83, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1849596494334278, guid: d44e26ae803d04779a1c713330506a83, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1458304195}
   m_SourcePrefab: {fileID: 100100000, guid: d44e26ae803d04779a1c713330506a83, type: 3}
+--- !u!1 &1458304189 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1849596494334278, guid: d44e26ae803d04779a1c713330506a83, type: 3}
+  m_PrefabInstance: {fileID: 1257450044}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1458304195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1458304189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4362de6b5afeb3043adbb5fc879814df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  maxHealth: 100
+  captureHpRatioThreshold: 0.5
 --- !u!1001 &1486027115
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -520,8 +566,31 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1788738869386804, guid: 9e1982b2bcf354f7dbcfea8976c3b503, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 471275337}
   m_SourcePrefab: {fileID: 100100000, guid: 9e1982b2bcf354f7dbcfea8976c3b503, type: 3}
+--- !u!1 &1854953566 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1225044215565552, guid: c231678582e304fdcb4f4b47b37c2264, type: 3}
+  m_PrefabInstance: {fileID: 824920572}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1854953572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1854953566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4362de6b5afeb3043adbb5fc879814df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  maxHealth: 100
+  captureHpRatioThreshold: 0.5
 --- !u!1001 &9190899567325146279
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -569,14 +638,6 @@ PrefabInstance:
     - target: {fileID: 1457954407928407611, guid: 6602fccb963f71c4c8cd4e6e544ae0bd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5291798497790493456, guid: 6602fccb963f71c4c8cd4e6e544ae0bd, type: 3}
-      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].time
-      value: 0.0022087097
-      objectReference: {fileID: 0}
-    - target: {fileID: 5291798497790493456, guid: 6602fccb963f71c4c8cd4e6e544ae0bd, type: 3}
-      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
-      value: 0.009988219
       objectReference: {fileID: 0}
     - target: {fileID: 5956755269806337404, guid: 6602fccb963f71c4c8cd4e6e544ae0bd, type: 3}
       propertyPath: m_Name
