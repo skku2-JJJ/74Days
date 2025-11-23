@@ -27,6 +27,16 @@ public enum CrewStatus
     Dead
 }
 
+// 선원 생존 수치 종류
+[System.Flags]
+public enum VitalType
+{
+    None = 0,
+    Hunger = 1,       // 배고픔
+    Thirst = 2,       // 갈증
+    Temperature = 4   // 체온
+}
+
 // 배 상태
 public enum ShipStatus
 {
