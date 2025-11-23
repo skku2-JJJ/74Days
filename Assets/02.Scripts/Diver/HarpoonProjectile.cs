@@ -54,7 +54,7 @@ public class HarpoonProjectile : MonoBehaviour
         
         dir.Normalize();
         _rigid.linearVelocity = dir * speed;
-        transform.right = -dir;
+        transform.right = dir;
         
         // 차지 정도에 따른 데미지 적용
         _damage = _baseDamage + _extraDamageAtFullCharge * Mathf.Clamp01(charge);
@@ -63,7 +63,7 @@ public class HarpoonProjectile : MonoBehaviour
     private void Init()
     {
         _rigid = GetComponent<Rigidbody2D>();
-        _animator = GetComponent<Animator>();
+        //_animator = GetComponent<Animator>();
         
         _rigid.gravityScale = 0f;
     }
@@ -104,7 +104,7 @@ public class HarpoonProjectile : MonoBehaviour
         _rigid.linearVelocity = Vector2.zero;
         _timer = 0f;
         
-        _animator.SetTrigger("Return");
+        //_animator.SetTrigger("Return");
        
     }
 
