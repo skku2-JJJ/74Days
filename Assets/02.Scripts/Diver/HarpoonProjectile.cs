@@ -76,7 +76,7 @@ public class HarpoonProjectile : MonoBehaviour
             return;
         }
         
-        if (_owner.IsCapturing)  return; // QT 진행 중..
+        if (_owner.IsCapturing)  return; // QTE 진행 중
           
         
         _timer += Time.deltaTime;
@@ -147,6 +147,7 @@ public class HarpoonProjectile : MonoBehaviour
         
         // 1) 데미지 적용
         fish.TakeHarpoonHit(_damage);
+        
         // 2) 캡처 가능 HP 이하라면 → QTE 없이 바로 포획
         if (fish.CanBeCaptured)
         {
@@ -159,7 +160,7 @@ public class HarpoonProjectile : MonoBehaviour
         else
         {
             // QTE 진입
-            transform.SetParent(fish.transform, true);
+            //transform.SetParent(fish.transform, true);
             _owner.StartCapture(fish, this);
         }
         

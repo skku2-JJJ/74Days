@@ -305,12 +305,14 @@ public class HarpoonShooter : MonoBehaviour
 
     private void EndCapture(bool success)
     {
+        Debug.Log($"EndCapture success={success}, targetFish={_targetFish}, proj={_currentProjectile}");
         _isCapturing = false;
 
         if (_targetFish != null)
         {
             if (success)
             {
+                
                 _targetFish.transform.SetParent(_currentProjectile.transform, true);
             }
             else
