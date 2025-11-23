@@ -1,0 +1,897 @@
+fileFormatVersion: 2
+guid: 28e30b8da8f0ea648beca2a04a678647
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8370469662438058105
+    second: G12 Sheet_0
+  - first:
+      213: 3496289500593713636
+    second: G12 Sheet_1
+  - first:
+      213: -1408987897645743460
+    second: G12 Sheet_2
+  - first:
+      213: -5229876683714551766
+    second: G12 Sheet_3
+  - first:
+      213: -7292169643434059188
+    second: G12 Sheet_4
+  - first:
+      213: 128927424386208959
+    second: G12 Sheet_5
+  - first:
+      213: -2674787212447898159
+    second: G12 Sheet_6
+  - first:
+      213: 7834418815340521849
+    second: G12 Sheet_7
+  - first:
+      213: -7417689029148625542
+    second: G12 Sheet_8
+  - first:
+      213: 3265003207958205703
+    second: G12 Sheet_9
+  - first:
+      213: -8005680542871047784
+    second: G12 Sheet_10
+  - first:
+      213: -4778703761169610729
+    second: G12 Sheet_11
+  - first:
+      213: 2485568037057806456
+    second: G12 Sheet_12
+  - first:
+      213: -4183268123372480934
+    second: G12 Sheet_13
+  - first:
+      213: -7364080928769158799
+    second: G12 Sheet_14
+  - first:
+      213: -8873622613496996941
+    second: G12 Sheet_15
+  - first:
+      213: -4389331505256944398
+    second: G12 Sheet_16
+  - first:
+      213: 5429499450443892785
+    second: G12 Sheet_17
+  - first:
+      213: -8203545492781259543
+    second: G12 Sheet_18
+  - first:
+      213: 5505605372974989543
+    second: G12 Sheet_19
+  - first:
+      213: 8699693605154744962
+    second: G12 Sheet_20
+  - first:
+      213: -7049631861192558216
+    second: G12 Sheet_21
+  - first:
+      213: -2309103754401378057
+    second: G12 Sheet_22
+  - first:
+      213: -5545524125198721151
+    second: G12 Sheet_23
+  - first:
+      213: -4774731704512424500
+    second: G12 Sheet_24
+  - first:
+      213: -6997201515113377421
+    second: G12 Sheet_25
+  - first:
+      213: 4706874805140986317
+    second: G12 Sheet_26
+  - first:
+      213: 6562839491494621976
+    second: G12 Sheet_27
+  - first:
+      213: -6177877516290501363
+    second: G12 Sheet_28
+  - first:
+      213: -5100516688674735916
+    second: G12 Sheet_29
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: G12 Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 20
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 978edc03fc1e92470800000000000000
+      internalID: 8370469662438058105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G12 Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 21
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e1f0d2d6c0558030800000000000000
+      internalID: 3496289500593713636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G12 Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 17
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c924004e8f4427ce0800000000000000
+      internalID: -1408987897645743460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G12 Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 819
+        y: 10
+        width: 10
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a20a8108ddebb67b0800000000000000
+      internalID: -5229876683714551766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G12 Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 2121
+        y: 11
+        width: 9
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4ad93948520dca90800000000000000
+      internalID: -7292169643434059188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G12 Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 2329
+        y: 18
+        width: 10
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb498543fca0ac100800000000000000
+      internalID: 128927424386208959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G12 Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 2533
+        y: 22
+        width: 13
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d52940b33f31ead0800000000000000
+      internalID: -2674787212447898159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G12 Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 2739
+        y: 15
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 979220e676279bc60800000000000000
+      internalID: 7834418815340521849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G12 Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 3609
+        y: 15
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a75b84be0231f0990800000000000000
+      internalID: -7417689029148625542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G12 Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 3817
+        y: 21
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7051cd07e1f9f4d20800000000000000
+      internalID: 3265003207958205703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G12 Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 4025
+        y: 22
+        width: 13
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8913ae056fb16e090800000000000000
+      internalID: -8005680542871047784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G12 Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 4232
+        y: 19
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71889a47f32aeadb0800000000000000
+      internalID: -4778703761169610729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G12 Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 4441
+        y: 14
+        width: 9
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87045e9e5f28e7220800000000000000
+      internalID: 2485568037057806456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G12 Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 6169
+        y: 9
+        width: 9
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a561b224ecb02f5c0800000000000000
+      internalID: -4183268123372480934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G12 Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 6378
+        y: 18
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1715c7f69678dc990800000000000000
+      internalID: -7364080928769158799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G12 Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 1034
+        y: 4
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3bb53ab5f3f8ad480800000000000000
+      internalID: -8873622613496996941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G12 Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 1251
+        y: 0
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2fcaabb6046f513c0800000000000000
+      internalID: -4389331505256944398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G12 Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 1469
+        y: 0
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13803e3cbf4795b40800000000000000
+      internalID: 5429499450443892785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G12 Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 1690
+        y: 0
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e4240ca6d6272e80800000000000000
+      internalID: -8203545492781259543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G12 Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 1908
+        y: 4
+        width: 10
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e008a1bae6d76c40800000000000000
+      internalID: 5505605372974989543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G12 Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 2952
+        y: 4
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28a6cfdad358bb870800000000000000
+      internalID: 8699693605154744962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G12 Sheet_21
+      rect:
+        serializedVersion: 2
+        x: 3175
+        y: 2
+        width: 13
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 879775c3c2daa2e90800000000000000
+      internalID: -7049631861192558216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G12 Sheet_22
+      rect:
+        serializedVersion: 2
+        x: 3396
+        y: 5
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f092699e5a64ffd0800000000000000
+      internalID: -2309103754401378057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G12 Sheet_23
+      rect:
+        serializedVersion: 2
+        x: 4652
+        y: 8
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18fdb2880375a03b0800000000000000
+      internalID: -5545524125198721151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G12 Sheet_24
+      rect:
+        serializedVersion: 2
+        x: 4866
+        y: 4
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc5ddb6ffcebcbdb0800000000000000
+      internalID: -4774731704512424500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G12 Sheet_25
+      rect:
+        serializedVersion: 2
+        x: 5084
+        y: 0
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37197d57b42f4ee90800000000000000
+      internalID: -6997201515113377421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G12 Sheet_26
+      rect:
+        serializedVersion: 2
+        x: 5301
+        y: 0
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc91aaa72bd225140800000000000000
+      internalID: 4706874805140986317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G12 Sheet_27
+      rect:
+        serializedVersion: 2
+        x: 5519
+        y: 0
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81331700fb3e31b50800000000000000
+      internalID: 6562839491494621976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G12 Sheet_28
+      rect:
+        serializedVersion: 2
+        x: 5738
+        y: 0
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d05d1a77125c34aa0800000000000000
+      internalID: -6177877516290501363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G12 Sheet_29
+      rect:
+        serializedVersion: 2
+        x: 5956
+        y: 4
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d8379868135739b0800000000000000
+      internalID: -5100516688674735916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      G12 Sheet_0: 8370469662438058105
+      G12 Sheet_1: 3496289500593713636
+      G12 Sheet_10: -8005680542871047784
+      G12 Sheet_11: -4778703761169610729
+      G12 Sheet_12: 2485568037057806456
+      G12 Sheet_13: -4183268123372480934
+      G12 Sheet_14: -7364080928769158799
+      G12 Sheet_15: -8873622613496996941
+      G12 Sheet_16: -4389331505256944398
+      G12 Sheet_17: 5429499450443892785
+      G12 Sheet_18: -8203545492781259543
+      G12 Sheet_19: 5505605372974989543
+      G12 Sheet_2: -1408987897645743460
+      G12 Sheet_20: 8699693605154744962
+      G12 Sheet_21: -7049631861192558216
+      G12 Sheet_22: -2309103754401378057
+      G12 Sheet_23: -5545524125198721151
+      G12 Sheet_24: -4774731704512424500
+      G12 Sheet_25: -6997201515113377421
+      G12 Sheet_26: 4706874805140986317
+      G12 Sheet_27: 6562839491494621976
+      G12 Sheet_28: -6177877516290501363
+      G12 Sheet_29: -5100516688674735916
+      G12 Sheet_3: -5229876683714551766
+      G12 Sheet_4: -7292169643434059188
+      G12 Sheet_5: 128927424386208959
+      G12 Sheet_6: -2674787212447898159
+      G12 Sheet_7: 7834418815340521849
+      G12 Sheet_8: -7417689029148625542
+      G12 Sheet_9: 3265003207958205703
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
