@@ -15,7 +15,7 @@ public class HarpoonShooter : MonoBehaviour
     [SerializeField] private float _maxHarpoonSpeed = 18f;
     [SerializeField] private float _maxChargeTime = 1.2f;
     [SerializeField] private float _fireCoolTime = 0.4f;
-    [SerializeField] private Vector2 _firePosOffset = new Vector2(0.5f, 0f); // 다이버 기준 발사 위치
+    [SerializeField] private Vector2 _firePosOffset = new Vector2(1f, 0.5f); // 다이버 기준 발사 위치
 
     [Tooltip("차지량(0~1)을 속도/데미지에 어떻게 반영할지 커브")]
     [SerializeField] private AnimationCurve _chargeCurve;
@@ -23,9 +23,6 @@ public class HarpoonShooter : MonoBehaviour
     [Header("조준 / 슬로우 모션")]
     [SerializeField] private float _aimTimeScale = 0.4f;       
     [SerializeField] private float _timeScaleLerpSpeed = 10f; 
-    
-    [Header("리로드 설정")]
-    [SerializeField] private float _reloadDuration = 1.0f;
     
     [Header("포획 QTE 설정")]
     [SerializeField] private float _captureDuration = 3f;
@@ -119,11 +116,11 @@ public class HarpoonShooter : MonoBehaviour
         
         
         // 상태 전환 시 애니 트리거
-        if (_isAiming && !prevAiming)
+        if (_isAiming)
         {
             _animator.SetTrigger("Aim");
         }
-        else if (!_isAiming && prevAiming)
+        else 
         {
             _animator.SetTrigger("AimEnd");
         }
@@ -191,6 +188,8 @@ public class HarpoonShooter : MonoBehaviour
 
     private void FireToMouse(float charge)
     {
+        Time.timeScale = 1f;
+        
         Vector3 mouseWorld = _mainCam.ScreenToWorldPoint(Input.mousePosition);
         mouseWorld.z = 0;
 
@@ -220,7 +219,7 @@ public class HarpoonShooter : MonoBehaviour
         
         // TODO:  카메라 셰이크 / 발사 사운드 / 이펙트 호출
         _animator.SetTrigger("Shoot");
-        Time.timeScale = 1f;
+       
     }
 
     /// <summary>

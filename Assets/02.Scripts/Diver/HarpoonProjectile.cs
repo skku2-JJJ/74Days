@@ -7,7 +7,7 @@ using UnityEngine;
 public class HarpoonProjectile : MonoBehaviour
 {
     [Header("지속 시간")]
-    [SerializeField] private float _lifeTime = 3f;
+    [SerializeField] private float _lifeTime = 1f;
     
     [Header("데미지")]
     [SerializeField] private float _baseDamage = 10f;

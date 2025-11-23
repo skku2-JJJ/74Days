@@ -352,8 +352,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4362de6b5afeb3043adbb5fc879814df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  maxHealth: 100
+  health: 10
+  maxHealth: 10
   captureHpRatioThreshold: 0.5
 --- !u!1001 &824920572
 PrefabInstance:
@@ -504,8 +504,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4362de6b5afeb3043adbb5fc879814df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  maxHealth: 100
+  health: 10
+  maxHealth: 10
   captureHpRatioThreshold: 0.5
 --- !u!1001 &1486027115
 PrefabInstance:
@@ -588,8 +588,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4362de6b5afeb3043adbb5fc879814df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  maxHealth: 100
+  health: 10
+  maxHealth: 10
   captureHpRatioThreshold: 0.5
 --- !u!1001 &9190899567325146279
 PrefabInstance:

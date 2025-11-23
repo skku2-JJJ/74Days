@@ -198,4 +198,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1ac63121dd9749458e37b2f2d3383b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lifeTime: 3
+  _lifeTime: 1
+  _baseDamage: 10
+  _extraDamageAtFullCharge: 20
+  _returnSpeed: 18
+  _returnStopDistance: 1
