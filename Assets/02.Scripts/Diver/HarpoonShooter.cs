@@ -236,7 +236,12 @@ public class HarpoonShooter : MonoBehaviour
 
         _hasHarpoonOut = false;
         
-        // TODO : hit 여부에 따라 분기 -> 다른 연출
+        // projectile에 물고기가 붙어 있다면 → 물고기 획득!
+        FishBase fish = proj.GetComponentInChildren<FishBase>();
+        if (fish != null)
+        {
+            fish.Capture();
+        }
        
     }
     

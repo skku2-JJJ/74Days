@@ -14,8 +14,8 @@ public class HarpoonProjectile : MonoBehaviour
     [SerializeField] private float _extraDamageAtFullCharge = 20f;
     
     [Header("회수 설정")]
-    [SerializeField] private float _returnSpeed = 18f;   // 플레이어 쪽으로 감기는 속도
-    [SerializeField] private float _returnStopDistance = 0.05f;
+    [SerializeField] private float _returnSpeed = 18f;  
+    [SerializeField] private float _returnStopDistance = 1f;
     
 
     // 프로퍼티
@@ -79,9 +79,10 @@ public class HarpoonProjectile : MonoBehaviour
         _timer += Time.deltaTime;
         if (_timer >= _lifeTime)
         {
-            if (!_isHit && _owner != null)
+            // Hit 실패
+            if (!_isHit)
             {
-                StartReturning();
+                BeginReturn();
             }
         }
     }
@@ -139,25 +140,23 @@ public class HarpoonProjectile : MonoBehaviour
         _isHit = true;
         _rigid.linearVelocity = Vector2.zero;
         
-        _animator.SetTrigger("Hit");
+        //_animator.SetTrigger("Hit");
         
-        // 1) 데미지 먼저 적용
+        // 1) 데미지 적용
         fish.TakeHarpoonHit(_damage);
-
         // 2) 캡처 가능 HP 이하라면 → QTE 없이 바로 포획
         if (fish.CanBeCaptured)
         {
-            // 즉시 잡기
-            fish.Capture();
+            // 물고기 작살에 붙이기
+            fish.transform.SetParent(transform, true);
             
-            StartReturning();
+            // 회수
+            BeginReturn();
         }
         else
         {
-            // 물고기에 박힌 채로 붙어 있게
-            transform.SetParent(fish.transform, worldPositionStays: true);
-
-            // Shooter 쪽 QTE 진입
+            // QTE 진입
+            transform.SetParent(fish.transform, true);
             _owner.StartCapture(fish, this);
         }
         
