@@ -16,13 +16,27 @@ public class Ship
     public bool IsAbleToSail = true;                          // 항해 가능 여부
     public float DailyDeteriorationRate = 1f;                // 일일 노화율
 
+    [Header("Status Thresholds")]
     public float CriticalHpThreshold = 30f;
+    public float PoorHpThreshold = 70f;
 
     // 배 전체 상태
     public float OverallCondition => Hp;
 
     // 배가 치명적 상태일시 UI 이펙트
     public bool IsCritical => Hp < CriticalHpThreshold;
+
+    // 배 상태 프로퍼티
+    public ShipStatus Status
+    {
+        get
+        {
+            if (Hp <= 0) return ShipStatus.Destroyed;
+            if (Hp < CriticalHpThreshold) return ShipStatus.Critical;
+            if (Hp < PoorHpThreshold) return ShipStatus.Poor;
+            return ShipStatus.Healthy;
+        }
+    }
 
     // 생성자
     public Ship()

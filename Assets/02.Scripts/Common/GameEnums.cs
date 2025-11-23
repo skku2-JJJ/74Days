@@ -26,3 +26,12 @@ public enum CrewStatus
     Critical,
     Dead
 }
+
+// 배 상태
+public enum ShipStatus
+{
+    Healthy,    // HP > 70
+    Poor,       // HP > 30
+    Critical,   // HP > 0
+    Destroyed   // HP <= 0
+}
