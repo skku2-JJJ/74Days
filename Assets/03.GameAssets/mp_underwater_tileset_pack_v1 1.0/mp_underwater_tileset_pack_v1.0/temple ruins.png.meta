@@ -1,0 +1,988 @@
+fileFormatVersion: 2
+guid: 21abe5c5daa3db148ae8ee19a1fa2085
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1825508518591154714
+    second: temple ruins_0
+  - first:
+      213: 1451949589850256528
+    second: temple ruins_1
+  - first:
+      213: 2667349678687089487
+    second: temple ruins_2
+  - first:
+      213: -6504384343297079758
+    second: temple ruins_3
+  - first:
+      213: -848746624321796467
+    second: temple ruins_4
+  - first:
+      213: -2878910761813723949
+    second: temple ruins_5
+  - first:
+      213: -5643358735440036455
+    second: temple ruins_6
+  - first:
+      213: 1504522799451819623
+    second: temple ruins_7
+  - first:
+      213: 7260131652371718660
+    second: temple ruins_8
+  - first:
+      213: 3950204578778481776
+    second: temple ruins_9
+  - first:
+      213: -6003278973414053142
+    second: temple ruins_10
+  - first:
+      213: 5445536463894996330
+    second: temple ruins_11
+  - first:
+      213: -8393537842207184594
+    second: temple ruins_12
+  - first:
+      213: -2568334855984975574
+    second: temple ruins_13
+  - first:
+      213: -6378268953993593291
+    second: temple ruins_14
+  - first:
+      213: 8880117252889665071
+    second: temple ruins_15
+  - first:
+      213: -5160883297907385157
+    second: temple ruins_16
+  - first:
+      213: -7369827996867771583
+    second: temple ruins_17
+  - first:
+      213: 3558240377688777975
+    second: temple ruins_18
+  - first:
+      213: 5977436370576952290
+    second: temple ruins_19
+  - first:
+      213: -4659801700403199554
+    second: temple ruins_20
+  - first:
+      213: -3721696728081150957
+    second: temple ruins_21
+  - first:
+      213: -4564335211838954988
+    second: temple ruins_22
+  - first:
+      213: 7322346686345980785
+    second: temple ruins_23
+  - first:
+      213: 370333659064513564
+    second: temple ruins_24
+  - first:
+      213: -8600322794943098915
+    second: temple ruins_25
+  - first:
+      213: 2695503520735831488
+    second: temple ruins_26
+  - first:
+      213: 1067543554847710497
+    second: temple ruins_27
+  - first:
+      213: -7647196742825800197
+    second: temple ruins_28
+  - first:
+      213: -8171220420464281240
+    second: temple ruins_29
+  - first:
+      213: 5978738837469340213
+    second: temple ruins_30
+  - first:
+      213: -541499864999804570
+    second: temple ruins_31
+  - first:
+      213: -3806676056487218316
+    second: temple ruins_32
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: temple ruins_0
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 303
+        width: 66
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e5bcee9cad7aa6e0800000000000000
+      internalID: -1825508518591154714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: temple ruins_1
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 335
+        width: 190
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0947cce857c562410800000000000000
+      internalID: 1451949589850256528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: temple ruins_2
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 303
+        width: 66
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4375e98664540520800000000000000
+      internalID: 2667349678687089487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: temple ruins_3
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 303
+        width: 22
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2364a27c6e8cbb5a0800000000000000
+      internalID: -6504384343297079758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: temple ruins_4
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 318
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d86ccf82175a834f0800000000000000
+      internalID: -848746624321796467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: temple ruins_5
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 310
+        width: 16
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d43b0e4aed0c08d0800000000000000
+      internalID: -2878910761813723949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: temple ruins_6
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 310
+        width: 16
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99dbff14123cea1b0800000000000000
+      internalID: -5643358735440036455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: temple ruins_7
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 318
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76e4dc9c38321e410800000000000000
+      internalID: 1504522799451819623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: temple ruins_8
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 303
+        width: 22
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 402af22a54b21c460800000000000000
+      internalID: 7260131652371718660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: temple ruins_9
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 239
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0748634a222f1d630800000000000000
+      internalID: 3950204578778481776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: temple ruins_10
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 207
+        width: 66
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aea6516949110bca0800000000000000
+      internalID: -6003278973414053142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: temple ruins_11
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 207
+        width: 66
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a65e5edef8e629b40800000000000000
+      internalID: 5445536463894996330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: temple ruins_12
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 239
+        width: 68
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e29217aadc9248b80800000000000000
+      internalID: -8393537842207184594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: temple ruins_13
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 175
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a21f2cc5e017b5cd0800000000000000
+      internalID: -2568334855984975574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: temple ruins_14
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 211
+        width: 82
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53e3f4b0e26db77a0800000000000000
+      internalID: -6378268953993593291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: temple ruins_15
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 191
+        width: 30
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2e5e46b7938c3b70800000000000000
+      internalID: 8880117252889665071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: temple ruins_16
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 79
+        width: 98
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bbcdbfcebfbd068b0800000000000000
+      internalID: -5160883297907385157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: temple ruins_17
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 134
+        width: 64
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 143c7fedb7c19b990800000000000000
+      internalID: -7369827996867771583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: temple ruins_18
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 175
+        width: 30
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f4679965c8616130800000000000000
+      internalID: 3558240377688777975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: temple ruins_19
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 111
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2eb4dbf85be14f250800000000000000
+      internalID: 5977436370576952290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: temple ruins_20
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 159
+        width: 30
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb1c4bbca0f055fb0800000000000000
+      internalID: -4659801700403199554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: temple ruins_21
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 143
+        width: 30
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31c4df05b80e95cc0800000000000000
+      internalID: -3721696728081150957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: temple ruins_22
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 111
+        width: 46
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4122886ce4938a0c0800000000000000
+      internalID: -4564335211838954988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: temple ruins_23
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 111
+        width: 18
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17b29e904833e9560800000000000000
+      internalID: 7322346686345980785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: temple ruins_24
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 111
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1439e43080b32500800000000000000
+      internalID: 370333659064513564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: temple ruins_25
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 47
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ddfc8b50cf385a880800000000000000
+      internalID: -8600322794943098915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: temple ruins_26
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 79
+        width: 46
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c52644bb2a586520800000000000000
+      internalID: 2695503520735831488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: temple ruins_27
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 47
+        width: 34
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12d94f0053da0de00800000000000000
+      internalID: 1067543554847710497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: temple ruins_28
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 79
+        width: 66
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bfd08583413bfd590800000000000000
+      internalID: -7647196742825800197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: temple ruins_29
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 47
+        width: 46
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 869fec0125ef99e80800000000000000
+      internalID: -8171220420464281240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: temple ruins_30
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 47
+        width: 34
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5322134cb4fb8f250800000000000000
+      internalID: 5978738837469340213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: temple ruins_31
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 47
+        width: 66
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 661c3c4edb43c78f0800000000000000
+      internalID: -541499864999804570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: temple ruins_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 320
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47338169b48fb2bc0800000000000000
+      internalID: -3806676056487218316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      temple ruins_0: -1825508518591154714
+      temple ruins_1: 1451949589850256528
+      temple ruins_10: -6003278973414053142
+      temple ruins_11: 5445536463894996330
+      temple ruins_12: -8393537842207184594
+      temple ruins_13: -2568334855984975574
+      temple ruins_14: -6378268953993593291
+      temple ruins_15: 8880117252889665071
+      temple ruins_16: -5160883297907385157
+      temple ruins_17: -7369827996867771583
+      temple ruins_18: 3558240377688777975
+      temple ruins_19: 5977436370576952290
+      temple ruins_2: 2667349678687089487
+      temple ruins_20: -4659801700403199554
+      temple ruins_21: -3721696728081150957
+      temple ruins_22: -4564335211838954988
+      temple ruins_23: 7322346686345980785
+      temple ruins_24: 370333659064513564
+      temple ruins_25: -8600322794943098915
+      temple ruins_26: 2695503520735831488
+      temple ruins_27: 1067543554847710497
+      temple ruins_28: -7647196742825800197
+      temple ruins_29: -8171220420464281240
+      temple ruins_3: -6504384343297079758
+      temple ruins_30: 5978738837469340213
+      temple ruins_31: -541499864999804570
+      temple ruins_32: -3806676056487218316
+      temple ruins_4: -848746624321796467
+      temple ruins_5: -2878910761813723949
+      temple ruins_6: -5643358735440036455
+      temple ruins_7: 1504522799451819623
+      temple ruins_8: 7260131652371718660
+      temple ruins_9: 3950204578778481776
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,624 @@
+fileFormatVersion: 2
+guid: 4aeaa625069a99d4fb2941a60fd86b7c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8840983557343687644
+    second: sunken treasures_0
+  - first:
+      213: -5358098427701622095
+    second: sunken treasures_1
+  - first:
+      213: -739929663123864878
+    second: sunken treasures_2
+  - first:
+      213: -1006035696567710154
+    second: sunken treasures_3
+  - first:
+      213: 977251537164108224
+    second: sunken treasures_4
+  - first:
+      213: 8197567009176146849
+    second: sunken treasures_5
+  - first:
+      213: 1506875934475373213
+    second: sunken treasures_6
+  - first:
+      213: 3766649479007080029
+    second: sunken treasures_7
+  - first:
+      213: -1920160865847954616
+    second: sunken treasures_8
+  - first:
+      213: 9158128540054307342
+    second: sunken treasures_9
+  - first:
+      213: -3749771766598801143
+    second: sunken treasures_10
+  - first:
+      213: -7152254740106506196
+    second: sunken treasures_11
+  - first:
+      213: 1393718428014160032
+    second: sunken treasures_12
+  - first:
+      213: 5755979942278829406
+    second: sunken treasures_13
+  - first:
+      213: 792399520608322943
+    second: sunken treasures_14
+  - first:
+      213: -4891682456283341822
+    second: sunken treasures_15
+  - first:
+      213: 779926069340457404
+    second: sunken treasures_16
+  - first:
+      213: 4498876020647246560
+    second: sunken treasures_17
+  - first:
+      213: 8881569102224305423
+    second: sunken treasures_18
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: sunken treasures_0
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 335
+        width: 40
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd33a8034bb71ba70800000000000000
+      internalID: 8840983557343687644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sunken treasures_1
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 335
+        width: 37
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ba04415ed534a5b0800000000000000
+      internalID: -5358098427701622095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sunken treasures_2
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 287
+        width: 30
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d24ab644ed3bb5f0800000000000000
+      internalID: -739929663123864878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sunken treasures_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 287
+        width: 30
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63e08ba3dd7d902f0800000000000000
+      internalID: -1006035696567710154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sunken treasures_4
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 287
+        width: 30
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c10fd86815ef8d00800000000000000
+      internalID: 977251537164108224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sunken treasures_5
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 239
+        width: 24
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a3d76423cb93c170800000000000000
+      internalID: 8197567009176146849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sunken treasures_6
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 239
+        width: 24
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9a4dfabdaf79e410800000000000000
+      internalID: 1506875934475373213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sunken treasures_7
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 239
+        width: 27
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5e80ad9eb3d54430800000000000000
+      internalID: 3766649479007080029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sunken treasures_8
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 191
+        width: 32
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 843b68fadd73a55e0800000000000000
+      internalID: -1920160865847954616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sunken treasures_9
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 191
+        width: 32
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e02cd45a265381f70800000000000000
+      internalID: 9158128540054307342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sunken treasures_10
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 191
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 909e617027226fbc0800000000000000
+      internalID: -3749771766598801143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sunken treasures_11
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 159
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2019d845361ebc90800000000000000
+      internalID: -7152254740106506196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sunken treasures_12
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 159
+        width: 34
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a823baa68b775310800000000000000
+      internalID: 1393718428014160032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sunken treasures_13
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 143
+        width: 41
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e559dc1d24951ef40800000000000000
+      internalID: 5755979942278829406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sunken treasures_14
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 159
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f758c0a6a2b2ffa00800000000000000
+      internalID: 792399520608322943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sunken treasures_15
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 143
+        width: 41
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20c983729b04d1cb0800000000000000
+      internalID: -4891682456283341822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sunken treasures_16
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 47
+        width: 46
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb9ca1ab0aad2da00800000000000000
+      internalID: 779926069340457404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sunken treasures_17
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 47
+        width: 46
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0eab33b97e73f6e30800000000000000
+      internalID: 4498876020647246560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sunken treasures_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 128
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0d2a2aba0ca14b70800000000000000
+      internalID: 8881569102224305423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      sunken treasures_0: 8840983557343687644
+      sunken treasures_1: -5358098427701622095
+      sunken treasures_10: -3749771766598801143
+      sunken treasures_11: -7152254740106506196
+      sunken treasures_12: 1393718428014160032
+      sunken treasures_13: 5755979942278829406
+      sunken treasures_14: 792399520608322943
+      sunken treasures_15: -4891682456283341822
+      sunken treasures_16: 779926069340457404
+      sunken treasures_17: 4498876020647246560
+      sunken treasures_18: 8881569102224305423
+      sunken treasures_2: -739929663123864878
+      sunken treasures_3: -1006035696567710154
+      sunken treasures_4: 977251537164108224
+      sunken treasures_5: 8197567009176146849
+      sunken treasures_6: 1506875934475373213
+      sunken treasures_7: 3766649479007080029
+      sunken treasures_8: -1920160865847954616
+      sunken treasures_9: 9158128540054307342
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
