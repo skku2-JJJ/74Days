@@ -10,18 +10,6 @@ public class MorningReportUI : MonoBehaviour
     [Header("Day Info")]
     [SerializeField] private TextMeshProUGUI _dayTextUI;
 
-    [Header("Ship Status")]
-    [SerializeField] private Slider _shipHpSliderUI;
-    [SerializeField] private TextMeshProUGUI _shipHpTextUI;
-
-    [Header("Resources")]
-    [SerializeField] private TextMeshProUGUI _fishTextUI;
-    [SerializeField] private TextMeshProUGUI _shellfishTextUI;
-    [SerializeField] private TextMeshProUGUI _seaweedTextUI;
-    [SerializeField] private TextMeshProUGUI _waterTextUI;
-    [SerializeField] private TextMeshProUGUI _herbsTextUI;
-    [SerializeField] private TextMeshProUGUI _woodTextUI;
-
     [Header("Crew List")]
     [SerializeField] private Transform _crewListParentUI;
     [SerializeField] private GameObject _crewStatusItemPrefabUI;
@@ -60,7 +48,7 @@ public class MorningReportUI : MonoBehaviour
         }
 
         // 시작 시 숨기기
-        Hide();
+        Show();
     }
 
     void OnDestroy()
@@ -112,8 +100,6 @@ public class MorningReportUI : MonoBehaviour
     public void UpdateAllInfo()
     {
         UpdateDayInfo();
-        UpdateShipStatus();
-        UpdateResources();
         UpdateCrewList();
     }
 
@@ -131,50 +117,6 @@ public class MorningReportUI : MonoBehaviour
         {
             _dayTextUI.text = "Day ? - 아침";
         }
-    }
-
-    // 배 상태 갱신
-    private void UpdateShipStatus()
-    {
-        if (ShipManager.Instance == null) return;
-
-        float hp = ShipManager.Instance.Ship.Hp;
-        float maxHp = 100f;
-
-        // 슬라이더 갱신
-        if (_shipHpSliderUI != null)
-        {
-            _shipHpSliderUI.maxValue = maxHp;
-            _shipHpSliderUI.value = hp;
-        }
-
-        // 텍스트 갱신
-        if (_shipHpTextUI != null)
-        {
-            _shipHpTextUI.text = $"{hp:F0}/{maxHp:F0}";
-        }
-    }
-
-    // 자원 현황 갱신
-    private void UpdateResources()
-    {
-        if (ShipManager.Instance == null) return;
-
-        // 각 자원 수량 가져오기
-        int fish = ShipManager.Instance.GetResourceAmount(ResourceType.Fish);
-        int shellfish = ShipManager.Instance.GetResourceAmount(ResourceType.Shellfish);
-        int seaweed = ShipManager.Instance.GetResourceAmount(ResourceType.Seaweed);
-        int water = ShipManager.Instance.GetResourceAmount(ResourceType.CleanWater);
-        int herbs = ShipManager.Instance.GetResourceAmount(ResourceType.Herbs);
-        int wood = ShipManager.Instance.GetResourceAmount(ResourceType.Wood);
-
-        // 텍스트 갱신
-        if (_fishTextUI != null) _fishTextUI.text = fish.ToString();
-        if (_shellfishTextUI != null) _shellfishTextUI.text = shellfish.ToString();
-        if (_seaweedTextUI != null) _seaweedTextUI.text = seaweed.ToString();
-        if (_waterTextUI != null) _waterTextUI.text = water.ToString();
-        if (_herbsTextUI != null) _herbsTextUI.text = herbs.ToString();
-        if (_woodTextUI != null) _woodTextUI.text = wood.ToString();
     }
 
     // 선원 리스트 갱신

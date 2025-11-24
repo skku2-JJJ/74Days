@@ -192,7 +192,6 @@ public class CrewManager : MonoBehaviour
         AddCrew(new CrewMember("선원3", 3));
         AddCrew(new CrewMember("선원4", 4));
         AddCrew(new CrewMember("선원5", 5));
-        AddCrew(new CrewMember("선원6", 6));
 
         Debug.Log($"[초기화] 기본 선원 {TotalCrew}명 생성 완료");
     }

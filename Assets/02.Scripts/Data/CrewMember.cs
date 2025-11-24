@@ -8,8 +8,8 @@ public class CrewMember
     public int CrewID;
 
     [Header("Vital Status")]
-    [Range(0, 100)] public float Hunger = 100f;          // 배고픔 (0=굶어죽음, 100=배부름)
-    [Range(0, 100)] public float Thirst = 100f;          // 갈증 (0=탈수, 100=충분)
+    [Range(0, 100)] public float Hunger = 10f;          // 배고픔 (0=굶어죽음, 100=배부름)
+    [Range(0, 100)] public float Thirst = 10f;          // 갈증 (0=탈수, 100=충분)
     [Range(0, 100)] public float Temperature = 100f;     // 체온 (0=동사, 100=정상)
     public bool IsAlive = true;
 
