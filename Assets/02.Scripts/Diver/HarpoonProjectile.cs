@@ -13,6 +13,10 @@ public class HarpoonProjectile : MonoBehaviour
     [SerializeField] private float _baseDamage = 10f;
     [SerializeField] private float _extraDamageAtFullCharge = 20f;
     
+    [Header("비행 속도 커브")]
+    [SerializeField] private AnimationCurve _flightSpeedCurve =  AnimationCurve.Linear(0f, 1f, 1f, 1f);
+    [SerializeField] private float _flightCurveDuration = 0.6f; // 커브 적용 시간
+    
     [Header("회수 설정")]
     [SerializeField] private float _returnSpeed = 18f;  
     [SerializeField] private float _returnStopDistance = 1f;
@@ -34,8 +38,11 @@ public class HarpoonProjectile : MonoBehaviour
     private bool _isHit;
     private bool _isReturning;
    
-    
+    private Vector2 _moveDir;    
     private float _damage;
+    private float _baseSpeed; 
+    private float _flightElapsed;   // 날아간 시간
+    
 
     private void Awake()
     {
@@ -52,12 +59,14 @@ public class HarpoonProjectile : MonoBehaviour
     {
         _owner = owner;
         
-        dir.Normalize();
-        _rigid.linearVelocity = dir * speed;
-        transform.right = dir;
+        _moveDir = dir.normalized;
+        _baseSpeed = speed;
+        _flightElapsed = 0f;
         
         // 차지 정도에 따른 데미지 적용
         _damage = _baseDamage + _extraDamageAtFullCharge * Mathf.Clamp01(charge);
+        
+        ApplyFlightVelocity(0f);
     }
 
     private void Init()
@@ -77,7 +86,20 @@ public class HarpoonProjectile : MonoBehaviour
         }
         
         if (_owner.IsCapturing)  return; // QTE 진행 중
-          
+        
+        // 아직 아무 것도 안 맞은, '날아가는 구간'일 때만 커브 적용
+        if (!_isHit)
+        {
+            _flightElapsed += Time.deltaTime;
+
+            float t = 1f;
+            if (_flightCurveDuration > 0f)
+            {
+                t = Mathf.Clamp01(_flightElapsed / _flightCurveDuration);
+            }
+
+            ApplyFlightVelocity(t);
+        }
         
         _timer += Time.deltaTime;
         if (_timer >= _lifeTime)
@@ -130,6 +152,20 @@ public class HarpoonProjectile : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    
+    private void ApplyFlightVelocity(float t01)
+    {
+        float mul = 1f;
+
+        if (_flightSpeedCurve != null && _flightSpeedCurve.length > 0)
+        {
+            mul = _flightSpeedCurve.Evaluate(t01);   // t01: 0~1
+        }
+
+        float finalSpeed = _baseSpeed * mul;
+        _rigid.linearVelocity = _moveDir * finalSpeed;
+    }
+
     
 
     private void OnTriggerEnter2D(Collider2D other)
