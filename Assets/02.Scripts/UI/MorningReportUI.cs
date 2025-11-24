@@ -44,7 +44,7 @@ public class MorningReportUI : MonoBehaviour
         // DayManager 이벤트 구독
         if (DayManager.Instance != null)
         {
-            DayManager.Instance.OnPhaseChange += OnPhaseChanged;
+            DayManager.Instance.OnDayStart += OnDayStart;
         }
 
         // 시작 시 숨기기
@@ -56,17 +56,14 @@ public class MorningReportUI : MonoBehaviour
         // 이벤트 구독 해제
         if (DayManager.Instance != null)
         {
-            DayManager.Instance.OnPhaseChange -= OnPhaseChanged;
+            DayManager.Instance.OnDayStart -= OnDayStart;
         }
     }
 
-    // 페이즈 변경 시 호출
-    private void OnPhaseChanged(DayPhase phase)
+    // 새 날 시작 시 호출
+    private void OnDayStart(int day)
     {
-        if (phase == DayPhase.Morning)
-        {
-            Show();
-        }
+        Show();
     }
 
     // ========== 팝업 제어 ==========
