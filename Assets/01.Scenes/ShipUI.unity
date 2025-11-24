@@ -483,7 +483,7 @@ GameObject:
   - component: {fileID: 248663601}
   - component: {fileID: 248663600}
   m_Layer: 0
-  m_Name: 1_0 (1)
+  m_Name: MorningOrNight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3644,7 +3644,7 @@ GameObject:
   - component: {fileID: 1207602834}
   - component: {fileID: 1207602833}
   m_Layer: 5
-  m_Name: DayCount
+  m_Name: DayCountText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5575,8 +5575,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1951091966}
   - component: {fileID: 1951091967}
+  - component: {fileID: 1951091968}
   m_Layer: 0
-  m_Name: 1_0
+  m_Name: DayUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5659,6 +5660,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1951091968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1951091965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81a29fcad05184045943545c869229c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Day: 10
+  _dayCountText: {fileID: 1207602833}
 --- !u!1 &1954264422
 GameObject:
   m_ObjectHideFlags: 0
@@ -5707,7 +5722,7 @@ GameObject:
   - component: {fileID: 1970445727}
   - component: {fileID: 1970445726}
   m_Layer: 5
-  m_Name: Day
+  m_Name: DayText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
