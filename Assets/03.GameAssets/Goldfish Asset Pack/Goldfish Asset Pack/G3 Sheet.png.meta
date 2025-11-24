@@ -1,0 +1,897 @@
+fileFormatVersion: 2
+guid: c73c88c278db68948b673f044f430d66
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2933035824539074236
+    second: G3 Sheet_0
+  - first:
+      213: 594172110433311798
+    second: G3 Sheet_1
+  - first:
+      213: 5915238021688916774
+    second: G3 Sheet_2
+  - first:
+      213: 7751873096140957587
+    second: G3 Sheet_3
+  - first:
+      213: -8662288671687151966
+    second: G3 Sheet_4
+  - first:
+      213: -344690079961786443
+    second: G3 Sheet_5
+  - first:
+      213: 1982545975784280082
+    second: G3 Sheet_6
+  - first:
+      213: -3879746367577717647
+    second: G3 Sheet_7
+  - first:
+      213: 1601996527194121675
+    second: G3 Sheet_8
+  - first:
+      213: -454134880309084128
+    second: G3 Sheet_9
+  - first:
+      213: 6977707342248581022
+    second: G3 Sheet_10
+  - first:
+      213: 2502629961442363171
+    second: G3 Sheet_11
+  - first:
+      213: 5097712355651793139
+    second: G3 Sheet_12
+  - first:
+      213: 6887665158824099170
+    second: G3 Sheet_13
+  - first:
+      213: -3436893127859597833
+    second: G3 Sheet_14
+  - first:
+      213: -4043063081870118561
+    second: G3 Sheet_15
+  - first:
+      213: -2779878747716607820
+    second: G3 Sheet_16
+  - first:
+      213: 7732045542694195763
+    second: G3 Sheet_17
+  - first:
+      213: 5242031534103929108
+    second: G3 Sheet_18
+  - first:
+      213: 1438941740165477470
+    second: G3 Sheet_19
+  - first:
+      213: 2610446548807830351
+    second: G3 Sheet_20
+  - first:
+      213: 8207566692729936534
+    second: G3 Sheet_21
+  - first:
+      213: 9166871311004306061
+    second: G3 Sheet_22
+  - first:
+      213: 7266454745453104792
+    second: G3 Sheet_23
+  - first:
+      213: -1414273211972821146
+    second: G3 Sheet_24
+  - first:
+      213: 3014176938219355480
+    second: G3 Sheet_25
+  - first:
+      213: 8453637868453695318
+    second: G3 Sheet_26
+  - first:
+      213: -8374734112156578743
+    second: G3 Sheet_27
+  - first:
+      213: 3181121260268581324
+    second: G3 Sheet_28
+  - first:
+      213: -4641553220627632984
+    second: G3 Sheet_29
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: G3 Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 2892
+        y: 48
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbe7523ea8c34b820800000000000000
+      internalID: 2933035824539074236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G3 Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 3110
+        y: 50
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63c52d9e26cee3800800000000000000
+      internalID: 594172110433311798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G3 Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 3326
+        y: 53
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62bf6a4f3a5271250800000000000000
+      internalID: 5915238021688916774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G3 Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 3534
+        y: 55
+        width: 12
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 397a36f728f249b60800000000000000
+      internalID: 7751873096140957587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G3 Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 3744
+        y: 53
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ae623e095e59c780800000000000000
+      internalID: -8662288671687151966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G3 Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 3953
+        y: 51
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b7d642d23a673bf0800000000000000
+      internalID: -344690079961786443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G3 Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 4162
+        y: 50
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 210908d9f0b638b10800000000000000
+      internalID: 1982545975784280082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G3 Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 4372
+        y: 49
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1740be50c3f582ac0800000000000000
+      internalID: -3879746367577717647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G3 Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 4580
+        y: 48
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc5a0de8a5f6b3610800000000000000
+      internalID: 1601996527194121675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G3 Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 4789
+        y: 46
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02000138bb692b9f0800000000000000
+      internalID: -454134880309084128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G3 Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 2236
+        y: 37
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e979c59bbdbc5d060800000000000000
+      internalID: 6977707342248581022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G3 Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 2452
+        y: 39
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3278500c0b02bb220800000000000000
+      internalID: 2502629961442363171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G3 Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 2672
+        y: 45
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f0bebde066beb640800000000000000
+      internalID: 5097712355651793139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G3 Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 4995
+        y: 44
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26d7b8338f6e59f50800000000000000
+      internalID: 6887665158824099170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G3 Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 5200
+        y: 43
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7fd82fed8e3bd40d0800000000000000
+      internalID: -3436893127859597833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G3 Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 5405
+        y: 43
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f51b2a05c8724e7c0800000000000000
+      internalID: -4043063081870118561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G3 Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 5613
+        y: 44
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b0a1b3e103eb69d0800000000000000
+      internalID: -2779878747716607820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G3 Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 5820
+        y: 44
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3321e67747ebd4b60800000000000000
+      internalID: 7732045542694195763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G3 Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 6029
+        y: 42
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41129a328ef6fb840800000000000000
+      internalID: 5242031534103929108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G3 Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 6241
+        y: 38
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e54bb0b83e528f310800000000000000
+      internalID: 1438941740165477470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G3 Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 34
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4bc5de2e4b2a3420800000000000000
+      internalID: 2610446548807830351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G3 Sheet_21
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 33
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69ade76eb6227e170800000000000000
+      internalID: 8207566692729936534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G3 Sheet_22
+      rect:
+        serializedVersion: 2
+        x: 495
+        y: 32
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8a8122a3e4473f70800000000000000
+      internalID: 9166871311004306061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G3 Sheet_23
+      rect:
+        serializedVersion: 2
+        x: 714
+        y: 32
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89e0f277712a7d460800000000000000
+      internalID: 7266454745453104792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G3 Sheet_24
+      rect:
+        serializedVersion: 2
+        x: 931
+        y: 32
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66f5201c10e7f5ce0800000000000000
+      internalID: -1414273211972821146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G3 Sheet_25
+      rect:
+        serializedVersion: 2
+        x: 1147
+        y: 32
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85d3dbc94f184d920800000000000000
+      internalID: 3014176938219355480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G3 Sheet_26
+      rect:
+        serializedVersion: 2
+        x: 1365
+        y: 32
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65f09f02ada515570800000000000000
+      internalID: 8453637868453695318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G3 Sheet_27
+      rect:
+        serializedVersion: 2
+        x: 1581
+        y: 32
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94c8f8c32b7f6cb80800000000000000
+      internalID: -8374734112156578743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G3 Sheet_28
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 31
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc170c19eec952c20800000000000000
+      internalID: 3181121260268581324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G3 Sheet_29
+      rect:
+        serializedVersion: 2
+        x: 2015
+        y: 34
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ac6b6610f3e59fb0800000000000000
+      internalID: -4641553220627632984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      G3 Sheet_0: 2933035824539074236
+      G3 Sheet_1: 594172110433311798
+      G3 Sheet_10: 6977707342248581022
+      G3 Sheet_11: 2502629961442363171
+      G3 Sheet_12: 5097712355651793139
+      G3 Sheet_13: 6887665158824099170
+      G3 Sheet_14: -3436893127859597833
+      G3 Sheet_15: -4043063081870118561
+      G3 Sheet_16: -2779878747716607820
+      G3 Sheet_17: 7732045542694195763
+      G3 Sheet_18: 5242031534103929108
+      G3 Sheet_19: 1438941740165477470
+      G3 Sheet_2: 5915238021688916774
+      G3 Sheet_20: 2610446548807830351
+      G3 Sheet_21: 8207566692729936534
+      G3 Sheet_22: 9166871311004306061
+      G3 Sheet_23: 7266454745453104792
+      G3 Sheet_24: -1414273211972821146
+      G3 Sheet_25: 3014176938219355480
+      G3 Sheet_26: 8453637868453695318
+      G3 Sheet_27: -8374734112156578743
+      G3 Sheet_28: 3181121260268581324
+      G3 Sheet_29: -4641553220627632984
+      G3 Sheet_3: 7751873096140957587
+      G3 Sheet_4: -8662288671687151966
+      G3 Sheet_5: -344690079961786443
+      G3 Sheet_6: 1982545975784280082
+      G3 Sheet_7: -3879746367577717647
+      G3 Sheet_8: 1601996527194121675
+      G3 Sheet_9: -454134880309084128
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
