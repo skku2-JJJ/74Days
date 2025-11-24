@@ -106,10 +106,11 @@ public class CrewMember
 
     // ========== 자원 할당 ==========
 
-    // 자원을 받음
-    public void GiveResource(ResourceType type)
+    // 자원을 받음 (amount 개수만큼)
+    public void GiveResource(ResourceType type, int amount = 1)
     {
         if (!IsAlive) return;
+        if (amount <= 0) return;
 
         switch (type)
         {
@@ -117,17 +118,17 @@ public class CrewMember
             case ResourceType.Shellfish:
             case ResourceType.Seaweed:
                 // 식량: 배고픔 회복
-                Hunger = Mathf.Min(100, Hunger + FoodHungerRecovery);
+                Hunger = Mathf.Min(100, Hunger + FoodHungerRecovery * amount);
                 break;
 
             case ResourceType.CleanWater:
                 // 물: 갈증 회복
-                Thirst = Mathf.Min(100, Thirst + WaterThirstRecovery);
+                Thirst = Mathf.Min(100, Thirst + WaterThirstRecovery * amount);
                 break;
 
             case ResourceType.Herbs:
                 // 약초: 체온 회복
-                Temperature = Mathf.Min(100, Temperature + HerbsTemperatureRecovery);
+                Temperature = Mathf.Min(100, Temperature + HerbsTemperatureRecovery * amount);
                 break;
 
             case ResourceType.Wood:

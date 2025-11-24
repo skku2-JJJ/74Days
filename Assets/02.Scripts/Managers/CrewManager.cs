@@ -82,8 +82,8 @@ public class CrewManager : MonoBehaviour
 
     // ========== 자원 분배 ==========
 
-    // 자원을 선원에게 할당
-    public bool AssignResourceToCrew(CrewMember crew, ResourceType resourceType)
+    // 자원을 선원에게 할당 (amount 개수만큼)
+    public bool AssignResourceToCrew(CrewMember crew, ResourceType resourceType, int amount = 1)
     {
         // 1. Evening 페이즈 체크
         if (DayManager.Instance.CurrentPhase != DayPhase.Evening)
@@ -92,8 +92,15 @@ public class CrewManager : MonoBehaviour
             return false;
         }
 
-        // 2. 배의 인벤토리에서 자원 소비
-        bool resourceConsumed = ShipManager.Instance.UseResource(resourceType, 1);
+        // 2. 개수 체크
+        if (amount <= 0)
+        {
+            Debug.LogWarning("[자원 분배 실패] 0개 이하는 분배할 수 없습니다!");
+            return false;
+        }
+
+        // 3. 배의 인벤토리에서 자원 소비
+        bool resourceConsumed = ShipManager.Instance.UseResource(resourceType, amount);
 
         if (!resourceConsumed)
         {
@@ -101,14 +108,14 @@ public class CrewManager : MonoBehaviour
             return false;
         }
 
-        // 3. 선원에게 자원 전달
-        crew.GiveResource(resourceType);
+        // 4. 선원에게 자원 전달
+        crew.GiveResource(resourceType, amount);
 
-        // 4. 이벤트 발생
+        // 5. 이벤트 발생
         OnResourceAssigned?.Invoke(crew, resourceType);
         OnCrewStatusChanged?.Invoke(crew);
 
-        Debug.Log($"[자원 분배] {crew.CrewName}에게 {resourceType} 1개 제공");
+        Debug.Log($"[자원 분배] {crew.CrewName}에게 {resourceType} {amount}개 제공");
 
         return true;
     }
