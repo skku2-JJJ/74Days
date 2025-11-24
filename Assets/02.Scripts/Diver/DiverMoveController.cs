@@ -5,7 +5,7 @@ using UnityEngine.Events;
 /// <summary>
 /// 수중 이동 컨트롤러
 /// </summary>
-[RequireComponent(typeof(Rigidbody2D), typeof(InputController))]
+[RequireComponent(typeof(Rigidbody2D), typeof(InputController), typeof(HarpoonShooter))]
 public class DiverMoveController : MonoBehaviour
 {
     [Header("움직임 관련 변수")]
@@ -32,8 +32,10 @@ public class DiverMoveController : MonoBehaviour
     // 컴포넌트
     private Rigidbody2D _rigid;
     
-    // 입력
+    // 참조
     private InputController _inputController;
+    private HarpoonShooter _harpoonShooter; 
+    
     private Vector2 _moveInput;
     
     // 부스트 관련
@@ -60,11 +62,17 @@ public class DiverMoveController : MonoBehaviour
     {
         _rigid = GetComponent<Rigidbody2D>();
         _inputController = GetComponent<InputController>();
-        
+        _harpoonShooter = GetComponent<HarpoonShooter>();
     }
 
     private void GetMoveInput()
     {
+        if (_harpoonShooter.IsAiming || _harpoonShooter.HasHarpoonOut)
+        {
+            _moveInput = Vector2.zero;
+            return;
+        }
+        
         float x = _inputController.XMove;
         float y = _inputController.YMove;  
 
@@ -74,6 +82,13 @@ public class DiverMoveController : MonoBehaviour
 
     private void HandleBoostState()
     {
+        if (_harpoonShooter.IsAiming)
+        {
+            _isBoosting = false;   
+            _boostTimer = 0f;
+            return;
+        }
+        
         bool isBoostHeld      = _inputController.IsBoostKeyHeld;
         bool isBoostPressed   =  _inputController.IsBoostKeyPressed; 
 
