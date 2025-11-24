@@ -42,6 +42,30 @@ public class CrewMember
         }
     }
 
+    // Poor 상태인 수치들 반환
+    public VitalType GetPoorVitals()
+    {
+        VitalType result = VitalType.None;
+
+        if (Hunger < PoorThreshold) result |= VitalType.Hunger;
+        if (Thirst < PoorThreshold) result |= VitalType.Thirst;
+        if (Temperature < PoorThreshold) result |= VitalType.Temperature;
+
+        return result;
+    }
+
+    // Critical 상태인 수치들 반환
+    public VitalType GetCriticalVitals()
+    {
+        VitalType result = VitalType.None;
+
+        if (Hunger < CriticalThreshold) result |= VitalType.Hunger;
+        if (Thirst < CriticalThreshold) result |= VitalType.Thirst;
+        if (Temperature < CriticalThreshold) result |= VitalType.Temperature;
+
+        return result;
+    }
+
     // 생성자
     public CrewMember(string name, int id)
     {
