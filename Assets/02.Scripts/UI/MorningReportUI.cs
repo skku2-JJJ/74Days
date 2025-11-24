@@ -8,27 +8,27 @@ public class MorningReportUI : MonoBehaviour
     public static MorningReportUI Instance { get; private set; }
 
     [Header("Day Info")]
-    [SerializeField] private TextMeshProUGUI _dayText;
+    [SerializeField] private TextMeshProUGUI _dayTextUI;
 
     [Header("Ship Status")]
-    [SerializeField] private Slider _shipHpSlider;
-    [SerializeField] private TextMeshProUGUI _shipHpText;
+    [SerializeField] private Slider _shipHpSliderUI;
+    [SerializeField] private TextMeshProUGUI _shipHpTextUI;
 
     [Header("Resources")]
-    [SerializeField] private TextMeshProUGUI _fishText;
-    [SerializeField] private TextMeshProUGUI _shellfishText;
-    [SerializeField] private TextMeshProUGUI _seaweedText;
-    [SerializeField] private TextMeshProUGUI _waterText;
-    [SerializeField] private TextMeshProUGUI _herbsText;
-    [SerializeField] private TextMeshProUGUI _woodText;
+    [SerializeField] private TextMeshProUGUI _fishTextUI;
+    [SerializeField] private TextMeshProUGUI _shellfishTextUI;
+    [SerializeField] private TextMeshProUGUI _seaweedTextUI;
+    [SerializeField] private TextMeshProUGUI _waterTextUI;
+    [SerializeField] private TextMeshProUGUI _herbsTextUI;
+    [SerializeField] private TextMeshProUGUI _woodTextUI;
 
     [Header("Crew List")]
-    [SerializeField] private Transform _crewListParent;
-    [SerializeField] private GameObject _crewStatusItemPrefab;
+    [SerializeField] private Transform _crewListParentUI;
+    [SerializeField] private GameObject _crewStatusItemPrefabUI;
 
     [Header("Panel")]
-    [SerializeField] private GameObject _panelRoot;
-    [SerializeField] private Button _closeButton;
+    [SerializeField] private GameObject _panelRootUI;
+    [SerializeField] private Button _closeButtonUI;
 
     private List<CrewStatusItem> _crewStatusItems = new List<CrewStatusItem>();
 
@@ -48,9 +48,9 @@ public class MorningReportUI : MonoBehaviour
     void Start()
     {
         // 닫기 버튼 이벤트 등록
-        if (_closeButton != null)
+        if (_closeButtonUI != null)
         {
-            _closeButton.onClick.AddListener(Hide);
+            _closeButtonUI.onClick.AddListener(Hide);
         }
 
         // DayManager 이벤트 구독
@@ -86,9 +86,9 @@ public class MorningReportUI : MonoBehaviour
     // 팝업 표시
     public void Show()
     {
-        if (_panelRoot != null)
+        if (_panelRootUI != null)
         {
-            _panelRoot.SetActive(true);
+            _panelRootUI.SetActive(true);
         }
 
         UpdateAllInfo();
@@ -98,9 +98,9 @@ public class MorningReportUI : MonoBehaviour
     // 팝업 숨기기
     public void Hide()
     {
-        if (_panelRoot != null)
+        if (_panelRootUI != null)
         {
-            _panelRoot.SetActive(false);
+            _panelRootUI.SetActive(false);
         }
 
         Debug.Log("[아침 리포트] 팝업 닫힘");
@@ -120,16 +120,16 @@ public class MorningReportUI : MonoBehaviour
     // 날짜 정보 갱신
     private void UpdateDayInfo()
     {
-        if (_dayText == null) return;
+        if (_dayTextUI == null) return;
 
         if (DayManager.Instance != null)
         {
             int day = DayManager.Instance.CurrentDay;
-            _dayText.text = $"Day {day} - 아침";
+            _dayTextUI.text = $"Day {day} - 아침";
         }
         else
         {
-            _dayText.text = "Day ? - 아침";
+            _dayTextUI.text = "Day ? - 아침";
         }
     }
 
@@ -142,16 +142,16 @@ public class MorningReportUI : MonoBehaviour
         float maxHp = 100f;
 
         // 슬라이더 갱신
-        if (_shipHpSlider != null)
+        if (_shipHpSliderUI != null)
         {
-            _shipHpSlider.maxValue = maxHp;
-            _shipHpSlider.value = hp;
+            _shipHpSliderUI.maxValue = maxHp;
+            _shipHpSliderUI.value = hp;
         }
 
         // 텍스트 갱신
-        if (_shipHpText != null)
+        if (_shipHpTextUI != null)
         {
-            _shipHpText.text = $"{hp:F0}/{maxHp:F0}";
+            _shipHpTextUI.text = $"{hp:F0}/{maxHp:F0}";
         }
     }
 
@@ -169,18 +169,18 @@ public class MorningReportUI : MonoBehaviour
         int wood = ShipManager.Instance.GetResourceAmount(ResourceType.Wood);
 
         // 텍스트 갱신
-        if (_fishText != null) _fishText.text = fish.ToString();
-        if (_shellfishText != null) _shellfishText.text = shellfish.ToString();
-        if (_seaweedText != null) _seaweedText.text = seaweed.ToString();
-        if (_waterText != null) _waterText.text = water.ToString();
-        if (_herbsText != null) _herbsText.text = herbs.ToString();
-        if (_woodText != null) _woodText.text = wood.ToString();
+        if (_fishTextUI != null) _fishTextUI.text = fish.ToString();
+        if (_shellfishTextUI != null) _shellfishTextUI.text = shellfish.ToString();
+        if (_seaweedTextUI != null) _seaweedTextUI.text = seaweed.ToString();
+        if (_waterTextUI != null) _waterTextUI.text = water.ToString();
+        if (_herbsTextUI != null) _herbsTextUI.text = herbs.ToString();
+        if (_woodTextUI != null) _woodTextUI.text = wood.ToString();
     }
 
     // 선원 리스트 갱신
     private void UpdateCrewList()
     {
-        if (_crewListParent == null || _crewStatusItemPrefab == null) return;
+        if (_crewListParentUI == null || _crewStatusItemPrefabUI == null) return;
         if (CrewManager.Instance == null) return;
 
         // 기존 아이템 제거
@@ -189,7 +189,7 @@ public class MorningReportUI : MonoBehaviour
         // 선원 데이터로 아이템 생성
         foreach (var crew in CrewManager.Instance.CrewMembers)
         {
-            GameObject itemObj = Instantiate(_crewStatusItemPrefab, _crewListParent);
+            GameObject itemObj = Instantiate(_crewStatusItemPrefabUI, _crewListParentUI);
             CrewStatusItem item = itemObj.GetComponent<CrewStatusItem>();
 
             if (item != null)

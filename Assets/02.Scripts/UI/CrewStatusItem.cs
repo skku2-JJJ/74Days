@@ -5,16 +5,16 @@ using TMPro;
 public class CrewStatusItem : MonoBehaviour
 {
     [Header("Basic Info")]
-    [SerializeField] private TextMeshProUGUI _nameText;
-    [SerializeField] private TextMeshProUGUI _statusText;
+    [SerializeField] private TextMeshProUGUI _nameTextUI;
+    [SerializeField] private TextMeshProUGUI _statusTextUI;
 
     [Header("Vital Gauges")]
-    [SerializeField] private Slider _hungerSlider;
-    [SerializeField] private Slider _thirstSlider;
-    [SerializeField] private Slider _temperatureSlider;
+    [SerializeField] private Slider _hungerSliderUI;
+    [SerializeField] private Slider _thirstSliderUI;
+    [SerializeField] private Slider _temperatureSliderUI;
 
     [Header("Visual")]
-    [SerializeField] private Image _backgroundImage;
+    [SerializeField] private Image _backgroundImageUI;
 
     [Header("Status Colors")]
     [SerializeField] private Color _healthyColor = new Color(0.2f, 0.8f, 0.2f, 0.3f);   // 초록
@@ -37,42 +37,42 @@ public class CrewStatusItem : MonoBehaviour
         if (_currentCrew == null) return;
 
         // 이름 표시
-        if (_nameText != null)
+        if (_nameTextUI != null)
         {
-            _nameText.text = _currentCrew.CrewName;
+            _nameTextUI.text = _currentCrew.CrewName;
         }
 
         // 상태 텍스트 표시
-        if (_statusText != null)
+        if (_statusTextUI != null)
         {
-            _statusText.text = GetStatusText(_currentCrew.Status);
+            _statusTextUI.text = GetStatusText(_currentCrew.Status);
         }
 
         // 배고픔 게이지
-        if (_hungerSlider != null)
+        if (_hungerSliderUI != null)
         {
-            _hungerSlider.maxValue = 100f;
-            _hungerSlider.value = _currentCrew.Hunger;
+            _hungerSliderUI.maxValue = 100f;
+            _hungerSliderUI.value = _currentCrew.Hunger;
         }
 
         // 갈증 게이지
-        if (_thirstSlider != null)
+        if (_thirstSliderUI != null)
         {
-            _thirstSlider.maxValue = 100f;
-            _thirstSlider.value = _currentCrew.Thirst;
+            _thirstSliderUI.maxValue = 100f;
+            _thirstSliderUI.value = _currentCrew.Thirst;
         }
 
         // 체온 게이지
-        if (_temperatureSlider != null)
+        if (_temperatureSliderUI != null)
         {
-            _temperatureSlider.maxValue = 100f;
-            _temperatureSlider.value = _currentCrew.Temperature;
+            _temperatureSliderUI.maxValue = 100f;
+            _temperatureSliderUI.value = _currentCrew.Temperature;
         }
 
         // 배경색 설정 (상태에 따라)
-        if (_backgroundImage != null)
+        if (_backgroundImageUI != null)
         {
-            _backgroundImage.color = GetStatusColor(_currentCrew.Status);
+            _backgroundImageUI.color = GetStatusColor(_currentCrew.Status);
         }
     }
 
