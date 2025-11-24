@@ -9,6 +9,8 @@ public class HarpoonLineRenderer : MonoBehaviour
 
     private void Update()
     {
+        if (_shooter == null || _line == null) return;
+        
         _projectile = _shooter.CurrentProjectile;
 
         if (_projectile == null)

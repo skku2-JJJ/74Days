@@ -168,7 +168,7 @@ public class HarpoonShooter : MonoBehaviour
         if (HasHarpoonOut) return;
         
         bool chargePressed = _inputController.IsChargeButtonPressed;
-        bool chargeHeld = _inputController.IsChageButtonHeld;
+        bool chargeHeld = _inputController.IsChargeButtonHeld;
         bool chargeReleased = _inputController.IsChargeButtonReleased;
         
         // 차지 시작

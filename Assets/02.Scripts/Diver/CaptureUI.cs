@@ -22,6 +22,16 @@ public class CaptureUI : MonoBehaviour
         if (_player == null)
         {
             _player = GameObject.FindGameObjectWithTag("Player").transform;
+            if (_player != null)
+            {
+                _player = _player.transform;
+            }
+            else
+            {
+                Debug.LogError("'Player' 태그를 가진 오브젝트를 찾을 수 없습니다.", this);
+                enabled = false;
+                return;
+            }
         }
            
         

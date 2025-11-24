@@ -17,7 +17,7 @@ public class InputController : MonoBehaviour
     public bool IsAimButtonHeld => Input.GetMouseButton(1);
     
     public bool IsChargeButtonPressed => Input.GetMouseButtonDown(0);
-    public bool IsChageButtonHeld => Input.GetMouseButton(0);
+    public bool IsChargeButtonHeld => Input.GetMouseButton(0);
     public bool IsChargeButtonReleased => Input.GetMouseButtonUp(0);
     
     // QTE
