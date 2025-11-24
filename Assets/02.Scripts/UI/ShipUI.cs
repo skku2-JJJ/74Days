@@ -23,7 +23,7 @@ public class ShipUI : MonoBehaviour
         }
     }
 
-    void ShipStateUpdate(int hp)
+    public void ShipStateUpdate(int hp)
     {
         Vector2 pos = _water.anchoredPosition;
         pos.y = Mathf.Clamp(-hp, -100, 0);
