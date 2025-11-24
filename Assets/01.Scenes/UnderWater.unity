@@ -1058,6 +1058,14 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3907350911520505263, guid: 6602fccb963f71c4c8cd4e6e544ae0bd, type: 3}
+      propertyPath: _maxHarpoonSpeed
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3907350911520505263, guid: 6602fccb963f71c4c8cd4e6e544ae0bd, type: 3}
+      propertyPath: _minHarpoonSpeed
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 3907350911520505263, guid: 6602fccb963f71c4c8cd4e6e544ae0bd, type: 3}
       propertyPath: _captureGaugeGainPerPress
       value: 0.15
       objectReference: {fileID: 0}
