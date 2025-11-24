@@ -58,6 +58,7 @@ public class HarpoonShooter : MonoBehaviour
     public bool IsAiming => _isAiming;
     public bool IsCharging => _isCharging;
     public bool IsCapturing => _isCapturing;
+    public bool HasHarpoonOut => _hasHarpoonOut;
     public float CaptureGauge01 => Mathf.Clamp01(_captureGauge);
 
     
@@ -80,7 +81,9 @@ public class HarpoonShooter : MonoBehaviour
             return _captureDuration > 0f ? Mathf.Clamp01(_captureTimer / _captureDuration) : 0f;
         }
     }
-    
+
+   
+
 
     // 상수
     private const float MinShootDistance = 0.0001f;
@@ -124,7 +127,7 @@ public class HarpoonShooter : MonoBehaviour
         bool aimInput  = _inputController.IsAimButtonHeld;
         bool prevAiming = _isAiming;
         
-        _isAiming = aimInput && !_hasHarpoonOut;
+        _isAiming = aimInput && !HasHarpoonOut;
         
         
         // 상태 전환 시 애니 트리거
@@ -149,7 +152,7 @@ public class HarpoonShooter : MonoBehaviour
     {
         float target = 1f;
         
-        if (!_hasHarpoonOut && _isAiming)
+        if (!HasHarpoonOut && _isAiming)
         {
             target = _aimTimeScale;
         }
@@ -162,7 +165,7 @@ public class HarpoonShooter : MonoBehaviour
     {
         if (!_isAiming) return;             
         if (_coolTimer < _fireCoolTime) return;
-        if (_hasHarpoonOut) return;
+        if (HasHarpoonOut) return;
         
         bool chargePressed = _inputController.IsChargeButtonPressed;
         bool chargeHeld = _inputController.IsChageButtonHeld;

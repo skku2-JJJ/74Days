@@ -67,7 +67,7 @@ public class DiverMoveController : MonoBehaviour
 
     private void GetMoveInput()
     {
-        if (_harpoonShooter.IsAiming)
+        if (_harpoonShooter.IsAiming || _harpoonShooter.HasHarpoonOut)
         {
             _moveInput = Vector2.zero;
             return;
