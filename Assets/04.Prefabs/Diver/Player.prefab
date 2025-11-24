@@ -248,7 +248,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -308,8 +308,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _harpoonPrefab: {fileID: 6544108734692554428, guid: e2241b49703179341b488e737a0e7ad7, type: 3}
-  _minHarpoonSpeed: 8
-  _maxHarpoonSpeed: 18
+  _minHarpoonSpeed: 50
+  _maxHarpoonSpeed: 100
   _maxChargeTime: 1.2
   _fireCoolTime: 0.4
   _firePosOffset: {x: 0.5, y: 0}
@@ -321,7 +321,9 @@ MonoBehaviour:
     m_RotationOrder: 4
   _aimTimeScale: 0.4
   _timeScaleLerpSpeed: 10
-  _reloadDuration: 1
+  _captureDuration: 3
+  _captureGaugeDecayPerSecond: 0.4
+  _captureGaugeGainPerPress: 0.15
 --- !u!1 &7886217668624261304
 GameObject:
   m_ObjectHideFlags: 0
