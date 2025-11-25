@@ -3,7 +3,7 @@ using Unity.Cinemachine;
 using UnityEngine;
 
 /// <summary>
-/// 조준/발사 컨트롤러
+/// 조준/발사/회수 컨트롤러
 /// </summary>
 [RequireComponent(typeof(DiverMoveController),typeof(InputController), typeof(HarpoonCaptureQTE))]
 public class HarpoonShooter : MonoBehaviour

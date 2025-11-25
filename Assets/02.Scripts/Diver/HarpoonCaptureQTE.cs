@@ -1,18 +1,26 @@
 ﻿using Unity.Cinemachine;
 using UnityEngine;
 
+/// <summary>
+/// QTE 컨트롤러
+/// </summary>
 public class HarpoonCaptureQTE : MonoBehaviour
 {
-    [Header("참조")]
-    [SerializeField] private HarpoonShooter _shooter;
-    [SerializeField] private InputController _input;
-    [SerializeField] private CinemachineImpulseSource _impulseSource;
-    
     [Header("포획 QTE 설정")]
     [SerializeField] private float _captureDuration = 3f;
     [SerializeField] private float _captureGaugeDecayPerSecond = 0.4f;
     [SerializeField] private float _captureGaugeGainPerPress = 0.15f;
     
+    [Header("카메라 진동 설정")]
+    [SerializeField] private float _shakeInterval = 0.1f;
+    [SerializeField] private float _shakeStrength = 0.15f;  
+    
+    private float _shakeTimer;
+
+    // 참조
+    private HarpoonShooter _shooter;
+    private InputController _input;
+    private CinemachineImpulseSource _impulseSource;
 
     // QTE 상태
     private bool _isCapturing;
@@ -83,6 +91,18 @@ public class HarpoonCaptureQTE : MonoBehaviour
             _captureGauge += _captureGaugeGainPerPress;
         }
         
+        _shakeTimer += Time.unscaledDeltaTime;
+        if (_shakeTimer >= _shakeInterval)
+        {
+            _shakeTimer = 0f;
+
+            Vector3 player = _shooter.transform.position;
+            Vector3 fishPos = _targetFish.transform.position;
+            Vector3 dir = (player - fishPos).normalized;
+
+            _impulseSource?.GenerateImpulse(dir * _shakeStrength);
+        }
+        
         if (_captureGauge >= 1f)
         {
             FinishCapture(true);
@@ -118,8 +138,7 @@ public class HarpoonCaptureQTE : MonoBehaviour
         _projectile = null;
         _captureGauge = 0f;
         _captureTimer = 0f;
-
-        // TODO: QTE UI Off
+        
     }
 
     private void OnDisable()
