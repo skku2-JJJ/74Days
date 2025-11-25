@@ -4,6 +4,7 @@ using UnityEngine;
 /// <summary>
 /// QTE 컨트롤러
 /// </summary>
+[RequireComponent(typeof(CinemachineImpulseSource), typeof(HarpoonShooter), typeof(InputController))]
 public class HarpoonCaptureQTE : MonoBehaviour
 {
     [Header("포획 QTE 설정")]
