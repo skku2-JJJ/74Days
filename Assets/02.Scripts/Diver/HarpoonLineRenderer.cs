@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 
+[RequireComponent(typeof(LineRenderer))]
 public class HarpoonLineRenderer : MonoBehaviour
 {
     [Header("HarpoonShooter 참조")]
@@ -49,7 +50,7 @@ public class HarpoonLineRenderer : MonoBehaviour
         }
 
         _line.enabled = true;
-        AllocatePoints();
+        
         ApplyLineJitter(); 
     }
 

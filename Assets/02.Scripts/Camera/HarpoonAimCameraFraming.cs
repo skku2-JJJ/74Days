@@ -1,6 +1,7 @@
 using Unity.Cinemachine;
 using UnityEngine;
 
+[RequireComponent(typeof(CinemachineCamera))]
 public class HarpoonAimCameraFraming : MonoBehaviour
 {
     [Header("참조")]
@@ -36,6 +37,14 @@ public class HarpoonAimCameraFraming : MonoBehaviour
         _composer = _cinemachineCamera.GetComponent<CinemachinePositionComposer>();
         
         _camera = Camera.main;
+        
+        if (_shooter == null)
+        {
+            Debug.LogError("HarpoonShooter가 할당되지 않았습니다!", this);
+            enabled = false;
+            return;
+        }
+        _diverTransform = _shooter.transform;
         _diverTransform = _shooter.transform;
         
         _baseOffset = _composer.TargetOffset;
