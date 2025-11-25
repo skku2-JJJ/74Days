@@ -21,9 +21,13 @@ public class DiverMoveController : MonoBehaviour
     [SerializeField] private float _boostDuration = 0.35f;  
     [SerializeField] private float _boostCoolTime = 1.0f;   
     
+    [Header("몸체 반동")]
+    [SerializeField] private float _recoilDamping = 6f;   
+    private Vector2 _recoilVelocity;                      
+    
     // 상수
     private const float MinInputMagnitude = 0.01f;
-    
+    private const float RecoilEpsilon = 0.0001f;
     // 프로퍼티
     public Vector2 MoveInput => _moveInput;
     private bool IsMoving => _moveInput.sqrMagnitude > MinInputMagnitude; //입력 기준으로 이동 판단
@@ -146,9 +150,38 @@ public class DiverMoveController : MonoBehaviour
         currentVel.y += _buoyancy * Time.fixedDeltaTime;
         currentVel.y = Mathf.Clamp(currentVel.y, -_maxVerticalSpeed, _maxVerticalSpeed);
         
+        // 반동 적용
+        if (_recoilVelocity.sqrMagnitude > RecoilEpsilon)
+        {
+            currentVel += _recoilVelocity;
+
+            _recoilVelocity = Vector2.MoveTowards(
+                _recoilVelocity,
+                Vector2.zero,
+                _recoilDamping * Time.fixedDeltaTime
+            );
+        }
+        
         _rigid.linearVelocity = currentVel;
         
     }
+    
+    /// <summary>
+    /// 외부에서 호출하여 플레이어 몸체에 반동 적용
+    /// </summary>
+    /// <param name="direction"> 반동 방향 </param>
+    /// <param name="strength"> 반동 강도 </param>
+    public void AddRecoil(Vector2 direction, float strength)
+    {
+        if (strength <= 0f || direction.sqrMagnitude < RecoilEpsilon)
+            return;
+
+        direction.Normalize();
+        
+        _recoilVelocity += direction * strength;
+    }
+
+    
     
 #if UNITY_EDITOR
     private void OnDrawGizmosSelected()

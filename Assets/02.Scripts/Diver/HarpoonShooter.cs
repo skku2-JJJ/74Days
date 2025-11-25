@@ -17,6 +17,10 @@ public class HarpoonShooter : MonoBehaviour
     [SerializeField] private float _fireCoolTime = 0.4f;
     [SerializeField] private Vector2 _firePosOffset = new Vector2(1f, 0.5f); // 다이버 기준 발사 위치
 
+    [Header("반동 설정")]
+    [SerializeField] private float _minRecoilStrength = 1.2f;
+    [SerializeField] private float _maxRecoilStrength = 2.5f;
+    
     [Tooltip("차지량(0~1)을 속도/데미지에 어떻게 반영할지 커브")]
     [SerializeField] private AnimationCurve _chargeCurve;
     
@@ -217,6 +221,10 @@ public class HarpoonShooter : MonoBehaviour
         // 차지 커브 적용
         float curved = _chargeCurve.Evaluate(charge);
         float speed = Mathf.Lerp(_minHarpoonSpeed, _maxHarpoonSpeed, curved);
+        
+        // 반동 적용 
+        float recoilStrength = Mathf.Lerp(_minRecoilStrength, _maxRecoilStrength, curved);
+        _moveController.AddRecoil(-dir, recoilStrength);
         
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         Quaternion rot = Quaternion.Euler(0f, 0f, angle);
