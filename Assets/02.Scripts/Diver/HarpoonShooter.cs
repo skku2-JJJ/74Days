@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// 조준/발사 컨트롤러
 /// </summary>
-[RequireComponent(typeof(DiverMoveController),typeof(InputController))]
+[RequireComponent(typeof(DiverMoveController),typeof(InputController), typeof(HarpoonCaptureQTE))]
 public class HarpoonShooter : MonoBehaviour
 {
     [Header("작살 프리펩")]
@@ -29,10 +29,6 @@ public class HarpoonShooter : MonoBehaviour
     [SerializeField] private float _aimTimeScale = 0.4f;       
     [SerializeField] private float _timeScaleLerpSpeed = 10f; 
     
-    [Header("포획 QTE 설정")]
-    [SerializeField] private float _captureDuration = 3f;
-    [SerializeField] private float _captureGaugeDecayPerSecond = 0.4f;
-    [SerializeField] private float _captureGaugeGainPerPress = 0.15f;
     
     
     // 컴포넌트 / 참조
@@ -40,10 +36,11 @@ public class HarpoonShooter : MonoBehaviour
     private InputController _inputController;
     private DiverMoveController _moveController;
     private Camera _mainCam;
+    private HarpoonCaptureQTE _captureQTE; // 포획 QTE
     
-    // 카메라 셰이크 Impulse
-    private CinemachineImpulseSource _impulseSource;
-
+    public bool IsCapturing => _captureQTE != null && _captureQTE.IsCapturing;
+    public float CaptureGauge01 => _captureQTE != null ? _captureQTE.CaptureGauge01 : 0f;
+    
     
     // 타이머
     private float _coolTimer;
@@ -57,21 +54,11 @@ public class HarpoonShooter : MonoBehaviour
     private bool _hasHarpoonOut;      
     private bool _canAim = true;       
     
-    // QTE 상태
-    private bool _isCapturing;
-    private float _captureGauge;
-    private float _captureTimer;
-    private FishBase _targetFish;
-    
     
     // 프로퍼티
     public bool IsAiming => _isAiming;
     public bool IsCharging => _isCharging;
-    public bool IsCapturing => _isCapturing;
     public bool HasHarpoonOut => _hasHarpoonOut;
-    public float CaptureGauge01 => Mathf.Clamp01(_captureGauge);
-
-    
     public HarpoonProjectile CurrentProjectile => _currentProjectile;
     public Vector3 HarpoonMuzzleWorldPos => (Vector2)transform.position + _firePosOffset;
     public Vector3 HarpoonReturnPoint => transform.position + (Vector3)_firePosOffset;
@@ -99,9 +86,8 @@ public class HarpoonShooter : MonoBehaviour
         _coolTimer += Time.unscaledDeltaTime; 
 
         // QTE 진행 중이면 여기서만 처리
-        if (_isCapturing)
+        if (IsCapturing)
         {
-            UpdateCaptureQTE();
             return;
         }
         
@@ -115,9 +101,9 @@ public class HarpoonShooter : MonoBehaviour
         _animator =  GetComponentInChildren<Animator>();
         _inputController = GetComponent<InputController>();
         _moveController = GetComponent<DiverMoveController>();
+        _captureQTE = GetComponent<HarpoonCaptureQTE>();
         
         _mainCam = Camera.main;
-        _impulseSource = GetComponent<CinemachineImpulseSource>();
         
         if (_chargeCurve == null || _chargeCurve.length == 0)
         {
@@ -238,7 +224,7 @@ public class HarpoonShooter : MonoBehaviour
             
                 
         
-        // TODO:  카메라 셰이크 / 발사 사운드 / 이펙트 호출
+        // TODO:  발사 사운드 / 이펙트 호출
         _animator.SetTrigger("Shoot");
        
     }
@@ -265,109 +251,45 @@ public class HarpoonShooter : MonoBehaviour
        
     }
     
-    
+    /// <summary>
+    /// 투사체가 호출하여 QTE 시작
+    /// </summary>
+    /// <param name="fish"> hit 대상 </param>
+    /// <param name="projectile"> 투사체 </param>
     public void StartCapture(FishBase fish, HarpoonProjectile projectile)
     {
-        if (fish == null || projectile == null) return;
-
-        _isCapturing = true;
-        _captureGauge = 0f;
-        _captureTimer = 0f;
-        _targetFish = fish;
-
+        _captureQTE.BeginCapture(fish, projectile);
+        
         _currentProjectile = projectile;
-        _hasHarpoonOut = true; 
-        
-        Time.timeScale = 1f;
-
-        // TODO: QTE UI , 애니메이션 트리거 
-        Vector3 playerPos = transform.position;
-        Vector3 fishPos = fish.transform.position;
-        Vector3 shakeDir = (playerPos - fishPos).normalized;
-        
-        _impulseSource?.GenerateImpulse(shakeDir * 0.5f);
+        _hasHarpoonOut = true;
     }
-
-    private void UpdateCaptureQTE()
+    
+    /// <summary>
+    /// QTE 종료 시 HarpoonCaptureQTE에서 호출
+    /// </summary>
+    /// <param name="proj"></param>
+    /// <param name="fish"></param>
+    /// <param name="success"></param>
+    public void HandleCaptureResult(HarpoonProjectile proj, FishBase fish, bool success)
     {
-        Time.timeScale = 1f;
-
-        _captureTimer += Time.unscaledDeltaTime;
-        if (_captureTimer >= _captureDuration)
-        {
-            EndCapture(false);
-            return;
-        }
-
-        // 게이지 자연 감소
-        _captureGauge -= _captureGaugeDecayPerSecond * Time.unscaledDeltaTime;
-        _captureGauge = Mathf.Max(0f, _captureGauge);
-
-        // 스페이스 연타로 게이지 올리기
-        if (_inputController.IsPullKeyPressed)
-        {
-            _captureGauge += _captureGaugeGainPerPress;
-            
-            /*
-             // Qte 중에는 쉐이크 하지 말고, UI 효과 등으로 대체하는 게 나을듯..
-             // 필요하면 중간에 1~2번 “임계 구간”에서만 추가 셰이크 정도?
-            _impulseSource.GenerateImpulse(intensity);*/
-            
-        }
-
-        // TODO: QTE 게이지 UI 업데이트
-
-        if (_captureGauge >= 1f)
-        {
-            EndCapture(true);
-        }
-    }
-
-    private void EndCapture(bool success)
-    {
-        Debug.Log($"EndCapture success={success}, targetFish={_targetFish}, proj={_currentProjectile}");
-
         if (success)
         {
-            _impulseSource?.GenerateImpulse(0.7f); 
+            fish.transform.SetParent(proj.transform, true);
         }
         else
         {
-            Vector3 playerPos = transform.position;
-            Vector3 fishPos = _targetFish.transform.position;
-            Vector3 shakeDir = (fishPos - playerPos).normalized;
-            _impulseSource?.GenerateImpulse(shakeDir * 0.5f);
+            fish.transform.SetParent(null, true);
+            fish.OnCaptureFailed();
         }
         
-        _isCapturing = false;
-
-        if (_targetFish != null)
-        {
-            if (success)
-            {
-                
-                _targetFish.transform.SetParent(_currentProjectile.transform, true);
-            }
-            else
-            {
-                _targetFish.transform.SetParent(null, true);
-                _targetFish.OnCaptureFailed();
-            }
-        }
-
-        if (_currentProjectile != null)
-        {
-            // 맞았든 실패했든, 이제는 플레이어 쪽으로 돌아오게 한다
-            _currentProjectile.BeginReturn();
-        }
-
-        _targetFish = null;
-        _captureGauge = 0f;
-        _captureTimer = 0f;
-
-        // QTE UI 끄기
+        
+        proj.BeginReturn();
+        
+        _currentProjectile = null;
+        _hasHarpoonOut = false;
+        
     }
-    
+
     
     private void OnDisable()
     {
