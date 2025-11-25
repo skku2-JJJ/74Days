@@ -262,6 +262,8 @@ public class HarpoonShooter : MonoBehaviour
         
         _currentProjectile = projectile;
         _hasHarpoonOut = true;
+        
+        _currentProjectile.AttachToFish(fish.transform);
     }
     
     /// <summary>
@@ -272,13 +274,16 @@ public class HarpoonShooter : MonoBehaviour
     /// <param name="success"></param>
     public void HandleCaptureResult(HarpoonProjectile proj, FishBase fish, bool success)
     {
+        
+        proj.DetachFromFish();
+        
         if (success)
         {
+            fish.Captured();
             fish.transform.SetParent(proj.transform, true);
         }
         else
         {
-            fish.transform.SetParent(null, true);
             fish.OnCaptureFailed();
         }
         

@@ -11,6 +11,8 @@ public class HarpoonCaptureQTE : MonoBehaviour
     [SerializeField] private float _captureDuration = 3f;
     [SerializeField] private float _captureGaugeDecayPerSecond = 0.4f;
     [SerializeField] private float _captureGaugeGainPerPress = 0.15f;
+    [SerializeField] private float _startCaptureGuage = 0.3f;
+    [SerializeField] private float _minCaptureGuage = 0.05f;
     
     [Header("카메라 진동 설정")]
     [SerializeField] private float _shakeInterval = 0.1f;
@@ -58,14 +60,14 @@ public class HarpoonCaptureQTE : MonoBehaviour
         if (fish == null || projectile == null) return;
 
         _isCapturing = true;
-        _captureGauge = 0f;
+        _captureGauge = _startCaptureGuage;
         _captureTimer = 0f;
         _targetFish = fish;
         _projectile = projectile;
         
         Time.timeScale = 1f;
         
-        // 🔹 물고기 버둥 시작
+        // 물고기 버둥 시작
         _targetFish.BeginCaptureStruggle(_shooter.transform);
 
         
@@ -73,6 +75,7 @@ public class HarpoonCaptureQTE : MonoBehaviour
         Vector3 fishPos = _targetFish.transform.position;
         Vector3 dir = (playerPos - fishPos).normalized;
 
+        // 카메라 진동
         _impulseSource.GenerateImpulse(dir * _hitShakeStrength);
         
     }
@@ -91,15 +94,21 @@ public class HarpoonCaptureQTE : MonoBehaviour
 
         // 게이지 자연 감소
         _captureGauge -= _captureGaugeDecayPerSecond * Time.unscaledDeltaTime;
-        _captureGauge = Mathf.Max(0f, _captureGauge);
-
-        // 스페이스 연타로 게이지 올리기
+        
+        // 게이지 올리기
         if (_input.IsPullKeyPressed)
         {
             _captureGauge += _captureGaugeGainPerPress;
         }
         
-        // 🔹 버둥 세기 = Gauge01
+        _captureGauge = Mathf.Clamp01(_captureGauge);
+        
+        if (_captureGauge <= _minCaptureGuage)
+        {
+            FinishCapture(false);
+            return;
+        }
+        
         float struggle = Mathf.Clamp01(_captureGauge);
         _targetFish.UpdateCaptureStruggle(struggle);
         
@@ -126,12 +135,14 @@ public class HarpoonCaptureQTE : MonoBehaviour
     {
         Debug.Log($"FinishCapture success={success}, targetFish={_targetFish}, proj={_projectile}");
         
-       
+        _shooter.HandleCaptureResult(_projectile, _targetFish, success);
+        
         _targetFish.EndCaptureStruggle();
         
         Vector3 playerPos = _shooter.transform.position;
         Vector3 fishPos = _targetFish.transform.position;
 
+        // 카메라 진동
         if (success)
         {
             Vector3 dir = (playerPos - fishPos).normalized;
@@ -145,10 +156,6 @@ public class HarpoonCaptureQTE : MonoBehaviour
         
 
         _isCapturing = false;
-
-        // Shooter에게 결과 전달 
-        _shooter.HandleCaptureResult(_projectile, _targetFish, success);
-
         _targetFish = null;
         _projectile = null;
         _captureGauge = 0f;

@@ -47,7 +47,19 @@ public class NormalFish : FishBase
 
     public override void OnCaptureFailed()
     {
-        Debug.Log($"{name} escaped!");
+        Vector2 dir = Vector2.zero;
+        if (capturedDiver != null)
+        {
+            dir = ((Vector2)transform.position - (Vector2)capturedDiver.position).normalized;
+        }
+        else
+        {
+            dir = UnityEngine.Random.insideUnitCircle.normalized;
+        }
+
+        float escapeForce = escapeMoveSpeed * 2.0f; 
+        rigid.linearVelocity = dir * escapeForce;
+        
     }
 
     

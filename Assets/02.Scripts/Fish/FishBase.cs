@@ -131,7 +131,14 @@ public abstract class FishBase : MonoBehaviour
         rigid.linearVelocity = Vector2.zero;*/
         
     }
-    
+
+    /// <summary>
+    /// 잡혔을 때 HarpoonShooter에서 호출
+    /// </summary>
+    public void Captured()
+    {
+        rigid.simulated = false;
+    }
     protected void UpdateCapturedMovement()
     {
         if (capturedDiver == null) return;
