@@ -264,6 +264,8 @@ public class HarpoonShooter : MonoBehaviour
         _hasHarpoonOut = true;
         
         _currentProjectile.AttachToFish(fish.transform);
+        
+        _animator.SetTrigger("Struggle");
     }
     
     /// <summary>
@@ -293,6 +295,7 @@ public class HarpoonShooter : MonoBehaviour
         _currentProjectile = null;
         _hasHarpoonOut = false;
         
+        _animator.SetTrigger("StruggleEnd");
     }
 
     
