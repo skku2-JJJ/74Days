@@ -31,7 +31,6 @@ public class HarpoonProjectile : MonoBehaviour
     
     // 컴포넌트
     private Rigidbody2D _rigid;
-    private Animator _animator;
     
     private float _timer;
     
@@ -72,8 +71,6 @@ public class HarpoonProjectile : MonoBehaviour
     private void Init()
     {
         _rigid = GetComponent<Rigidbody2D>();
-        //_animator = GetComponent<Animator>();
-        
         _rigid.gravityScale = 0f;
     }
 
@@ -129,8 +126,6 @@ public class HarpoonProjectile : MonoBehaviour
         _rigid.linearVelocity = Vector2.zero;
         _timer = 0f;
         
-        //_animator.SetTrigger("Return");
-       
     }
 
     
@@ -196,7 +191,6 @@ public class HarpoonProjectile : MonoBehaviour
         else
         {
             // QTE 진입
-            //transform.SetParent(fish.transform, true);
             _owner.StartCapture(fish, this);
         }
         
