@@ -78,15 +78,6 @@ public class HarpoonShooter : MonoBehaviour
             return Mathf.Clamp01(_chargeTimer / _maxChargeTime);
         }
     }
-    public float CaptureTimeRatio01
-    {
-        get
-        {
-            return _captureDuration > 0f ? Mathf.Clamp01(_captureTimer / _captureDuration) : 0f;
-        }
-    }
-
-   
 
 
     // 상수
