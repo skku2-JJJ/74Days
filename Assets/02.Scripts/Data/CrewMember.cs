@@ -8,8 +8,8 @@ public class CrewMember
     public int CrewID;
 
     [Header("Vital Status")]
-    [Range(0, 100)] public float Hunger = 100f;          // 배고픔 (0=굶어죽음, 100=배부름)
-    [Range(0, 100)] public float Thirst = 100f;          // 갈증 (0=탈수, 100=충분)
+    [Range(0, 100)] public float Hunger = 10f;          // 배고픔 (0=굶어죽음, 100=배부름)
+    [Range(0, 100)] public float Thirst = 10f;          // 갈증 (0=탈수, 100=충분)
     [Range(0, 100)] public float Temperature = 100f;     // 체온 (0=동사, 100=정상)
     public bool IsAlive = true;
 
@@ -106,10 +106,11 @@ public class CrewMember
 
     // ========== 자원 할당 ==========
 
-    // 자원을 받음
-    public void GiveResource(ResourceType type)
+    // 자원을 받음 (amount 개수만큼)
+    public void GiveResource(ResourceType type, int amount = 1)
     {
         if (!IsAlive) return;
+        if (amount <= 0) return;
 
         switch (type)
         {
@@ -117,17 +118,17 @@ public class CrewMember
             case ResourceType.Shellfish:
             case ResourceType.Seaweed:
                 // 식량: 배고픔 회복
-                Hunger = Mathf.Min(100, Hunger + FoodHungerRecovery);
+                Hunger = Mathf.Min(100, Hunger + FoodHungerRecovery * amount);
                 break;
 
             case ResourceType.CleanWater:
                 // 물: 갈증 회복
-                Thirst = Mathf.Min(100, Thirst + WaterThirstRecovery);
+                Thirst = Mathf.Min(100, Thirst + WaterThirstRecovery * amount);
                 break;
 
             case ResourceType.Herbs:
                 // 약초: 체온 회복
-                Temperature = Mathf.Min(100, Temperature + HerbsTemperatureRecovery);
+                Temperature = Mathf.Min(100, Temperature + HerbsTemperatureRecovery * amount);
                 break;
 
             case ResourceType.Wood:
