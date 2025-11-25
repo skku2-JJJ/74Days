@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.Cinemachine;
 using UnityEngine;
 
 /// <summary>
@@ -33,11 +34,16 @@ public class HarpoonShooter : MonoBehaviour
     [SerializeField] private float _captureGaugeDecayPerSecond = 0.4f;
     [SerializeField] private float _captureGaugeGainPerPress = 0.15f;
     
+    
     // 컴포넌트 / 참조
     private Animator _animator;
     private InputController _inputController;
     private DiverMoveController _moveController;
     private Camera _mainCam;
+    
+    // 카메라 셰이크 Impulse
+    private CinemachineImpulseSource _impulseSource;
+
     
     // 타이머
     private float _coolTimer;
@@ -111,6 +117,7 @@ public class HarpoonShooter : MonoBehaviour
         _moveController = GetComponent<DiverMoveController>();
         
         _mainCam = Camera.main;
+        _impulseSource = GetComponent<CinemachineImpulseSource>();
         
         if (_chargeCurve == null || _chargeCurve.length == 0)
         {
@@ -274,6 +281,8 @@ public class HarpoonShooter : MonoBehaviour
         Time.timeScale = 1f;
 
         // TODO: QTE UI , 애니메이션 트리거 
+       
+        _impulseSource?.GenerateImpulse(0.5f);
     }
 
     private void UpdateCaptureQTE()
@@ -295,6 +304,13 @@ public class HarpoonShooter : MonoBehaviour
         if (_inputController.IsPullKeyPressed)
         {
             _captureGauge += _captureGaugeGainPerPress;
+            
+            /*// 게이지 비율에 따라 셰이크 강도 조금씩 늘리기 (초반엔 약, 후반엔 강)
+            float gauge01 = Mathf.Clamp01(_captureGauge);
+            float intensity = 0.3f;
+
+            _impulseSource.GenerateImpulse(intensity);*/
+            
         }
 
         // TODO: QTE 게이지 UI 업데이트
@@ -308,6 +324,12 @@ public class HarpoonShooter : MonoBehaviour
     private void EndCapture(bool success)
     {
         Debug.Log($"EndCapture success={success}, targetFish={_targetFish}, proj={_currentProjectile}");
+        
+        if (success)
+            _impulseSource?.GenerateImpulse(1.2f); 
+        else
+            _impulseSource?.GenerateImpulse(0.5f); 
+        
         _isCapturing = false;
 
         if (_targetFish != null)

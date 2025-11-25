@@ -62,26 +62,27 @@ public class HarpoonAimCameraFraming : MonoBehaviour
     {
         Vector3 desiredOffset = _baseOffset;
 
-        bool useAimFraming =  _shooter.IsAiming;
+        bool useAimFraming =
+            _shooter.IsAiming &&
+            !_shooter.HasHarpoonOut &&
+            !_shooter.IsCapturing;   // QTE 중엔 false
 
         if (useAimFraming)
         {
-            Vector3 mouseScreen = Input.mousePosition;
-            Vector3 mouseWorld = _camera.ScreenToWorldPoint(mouseScreen);
-            mouseWorld.z = 0f;
-            
-            Vector3 toMouse = mouseWorld - _diverTransform.position;
-            toMouse.z = 0f;
+            // 여기서만 aim 방향으로 카메라를 앞쪽으로 빼주는 계산
+            // (기존 코드 그대로)
+            Vector2 mouseWorld = _camera.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 aimDir = (mouseWorld - (Vector2)_diverTransform.position).normalized;
 
-            if (toMouse.sqrMagnitude > DirectionEpsilonSq)
-            {
-                Vector3 dir = toMouse.normalized;
-                Vector3 aimOffset = dir * _maxOffsetDistance;
-
-                desiredOffset = _baseOffset + aimOffset;
-            }
+            Vector3 aimOffset = (Vector3)aimDir * _maxOffsetDistance;
+            desiredOffset = _baseOffset + aimOffset;
         }
-        
+        else
+        {
+            // 조준 중이 아니면 그냥 _baseOffset으로 천천히 복귀
+            desiredOffset = _baseOffset;
+        }
+
         _currentOffset = Vector3.SmoothDamp(
             _currentOffset,
             desiredOffset,
