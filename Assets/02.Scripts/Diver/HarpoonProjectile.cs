@@ -6,6 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
 public class HarpoonProjectile : MonoBehaviour
 {
+    
     [Header("지속 시간")]
     [SerializeField] private float _lifeTime = 1f;
     
@@ -177,7 +178,7 @@ public class HarpoonProjectile : MonoBehaviour
         //_animator.SetTrigger("Hit");
         
         // 1) 데미지 적용
-        fish.TakeHarpoonHit(_damage);
+        fish.TakeHarpoonHit(_damage, _moveDir);
         
         // 2) 캡처 가능 HP 이하라면 → QTE 없이 바로 포획
         if (fish.CanBeCaptured)

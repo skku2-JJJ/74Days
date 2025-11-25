@@ -1,6 +1,9 @@
 using Unity.Cinemachine;
 using UnityEngine;
 
+/// <summary>
+/// 조준 시 조준 방향으로 카메라 프레이밍
+/// </summary>
 [RequireComponent(typeof(CinemachineCamera))]
 public class HarpoonAimCameraFraming : MonoBehaviour
 {
@@ -13,7 +16,7 @@ public class HarpoonAimCameraFraming : MonoBehaviour
     [Tooltip("카메라가 플레이어에서 최대 얼마나 떨어져서 프레이밍 될지(월드 단위)")]
     [SerializeField] private float _maxOffsetDistance = 2.5f;
 
-    [Tooltip("오프셋 변경 부드러움 (값이 작을수록 더 빠르게 따라감)")]
+    [Tooltip("오프셋 변경 smooth")]
     [SerializeField] private float _smoothTime = 0.15f;
     
     

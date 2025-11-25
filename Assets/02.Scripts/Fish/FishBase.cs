@@ -12,7 +12,7 @@ public abstract class FishBase : MonoBehaviour
     
     public bool CanBeCaptured => health <= maxHealth * captureHpRatioThreshold;
 
-    public abstract void TakeHarpoonHit(float damage);
+    public abstract void TakeHarpoonHit(float damage, Vector2 harpoonDir);
     public abstract void Capture();
     public abstract void OnCaptureFailed();
 }
