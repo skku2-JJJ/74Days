@@ -8,11 +8,22 @@ public class NormalFish : FishBase
     {
        Init();
     }
+    
+    private void Update()
+    {
+        if (isCapturedByHarpoon)
+        {
+            UpdateCapturedMovement();
+            UpdateCapturedWiggle();
+        }
+    }
+    
 
     private void Init()
     {
         health = maxHealth;
-        
+        rigid = GetComponent<Rigidbody2D>();
+        animator = GetComponentInChildren<Animator>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         originalScale = transform.localScale;
     }

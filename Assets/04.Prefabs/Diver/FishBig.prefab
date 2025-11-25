@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 4941755353630458}
   - component: {fileID: 58475724367877082}
   - component: {fileID: 50066830953986102}
+  - component: {fileID: 5205089790240334742}
   m_Layer: 0
   m_Name: FishBig
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,6 +98,32 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &5205089790240334742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1788738869386804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4362de6b5afeb3043adbb5fc879814df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  maxHealth: 100
+  captureHpRatioThreshold: 0.5
+  flashDuration: 0.07
+  scalePunch: 0.15
+  scalePunchDuration: 0.12
+  knockbackDistance: 0.35
+  knockbackDuration: 0.1
+  hitShakeStrength: 0.1
+  hitShakeDuration: 0.12
+  escapeMoveSpeed: 3
+  maxStruggleAngle: 15
+  struggleFrequency: 7
+  visualTransform: {fileID: 4738636427640038279}
 --- !u!1 &6415113090266888062
 GameObject:
   m_ObjectHideFlags: 0

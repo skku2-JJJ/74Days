@@ -23,8 +23,22 @@ public abstract class FishBase : MonoBehaviour
     [SerializeField] protected float hitShakeStrength = 0.1f;
     [SerializeField] protected float hitShakeDuration = 0.12f;
     
+    [Header("QTE 캡처 관련")]
+    [SerializeField] protected float escapeMoveSpeed = 3f;   // 도망 속도
+    [SerializeField] protected float maxStruggleAngle = 15f; // 몸통 좌우 흔들 각도
+    [SerializeField] protected float struggleFrequency = 7f; // 초당 흔들림 횟수
+    
     // 참조
-    // protected Transform visualTransform;
+    [SerializeField] protected Transform visualTransform;
+    
+    protected bool isCapturedByHarpoon;
+    protected Transform capturedDiver;
+    protected float currentStruggleIntensity; // 0~1 (QTE 게이지 참고해서 세기 조절)
+
+    protected Rigidbody2D rigid;
+    protected Animator animator;
+
+    
     
     protected SpriteRenderer spriteRenderer;
     protected Vector3 originalScale;
@@ -81,6 +95,59 @@ public abstract class FishBase : MonoBehaviour
                 snapping: false,
                 fadeOut: true
             );
+    }
+    
+    // QTE 시작 시 호출
+    public void BeginCaptureStruggle(Transform diver)
+    {
+        isCapturedByHarpoon = true;
+        capturedDiver = diver;
+        currentStruggleIntensity = 0.5f; // 시작 기본값
+
+        
+        animator?.SetTrigger("Hit"); 
+        
+    }
+
+    // QTE 진행 중: 게이지 비율(0~1)에 따라 버둥 세기 조절
+    public void UpdateCaptureStruggle(float struggle01)
+    {
+        currentStruggleIntensity = Mathf.Clamp01(struggle01);
+        
+    }
+
+    // QTE 종료 시
+    public void EndCaptureStruggle()
+    {
+        isCapturedByHarpoon = false;
+        capturedDiver = null;
+        currentStruggleIntensity = 0f;
+
+       
+        animator?.SetTrigger("Escape"); 
+        
+        /*// 회전/속도 복원
+        visualTransform.localRotation = Quaternion.identity;
+        rigid.linearVelocity = Vector2.zero;*/
+        
+    }
+    
+    protected void UpdateCapturedMovement()
+    {
+        if (capturedDiver == null) return;
+        
+        Vector2 dirAway = (transform.position - capturedDiver.position).normalized;
+        
+        float speed = escapeMoveSpeed * (0.5f + currentStruggleIntensity);
+        rigid.linearVelocity = dirAway * speed;
+    }
+
+    protected void UpdateCapturedWiggle()
+    {
+        // 몸 흔들기 (좌우 회전)
+        float t = Time.time * struggleFrequency;
+        float angle = Mathf.Sin(t) * maxStruggleAngle * currentStruggleIntensity;
+        visualTransform.localRotation = Quaternion.Euler(0f, 0f, angle);
     }
     
 }
