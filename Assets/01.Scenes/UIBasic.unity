@@ -3752,7 +3752,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2060011629}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.9999999
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -5196,12 +5196,12 @@ MonoBehaviour:
     ShipName: JJJ
     Hp: 100
     _inventory:
-      Fish: 3
-      Shellfish: 0
-      Seaweed: 1
-      CleanWater: 4
-      Herbs: 2
-      Wood: 7
+      Fish: 10
+      Shellfish: 10
+      Seaweed: 10
+      CleanWater: 10
+      Herbs: 10
+      Wood: 10
     IsAbleToSail: 1
     DailyDeteriorationRate: 1
     CriticalHpThreshold: 30
