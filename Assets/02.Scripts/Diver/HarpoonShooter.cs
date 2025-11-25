@@ -281,8 +281,11 @@ public class HarpoonShooter : MonoBehaviour
         Time.timeScale = 1f;
 
         // TODO: QTE UI , 애니메이션 트리거 
-       
-        _impulseSource?.GenerateImpulse(0.5f);
+        Vector3 playerPos = transform.position;
+        Vector3 fishPos = fish.transform.position;
+        Vector3 shakeDir = (playerPos - fishPos).normalized;
+        
+        _impulseSource?.GenerateImpulse(shakeDir * 0.5f);
     }
 
     private void UpdateCaptureQTE()
@@ -305,10 +308,9 @@ public class HarpoonShooter : MonoBehaviour
         {
             _captureGauge += _captureGaugeGainPerPress;
             
-            /*// 게이지 비율에 따라 셰이크 강도 조금씩 늘리기 (초반엔 약, 후반엔 강)
-            float gauge01 = Mathf.Clamp01(_captureGauge);
-            float intensity = 0.3f;
-
+            /*
+             // Qte 중에는 쉐이크 하지 말고, UI 효과 등으로 대체하는 게 나을듯..
+             // 필요하면 중간에 1~2번 “임계 구간”에서만 추가 셰이크 정도?
             _impulseSource.GenerateImpulse(intensity);*/
             
         }
@@ -324,11 +326,18 @@ public class HarpoonShooter : MonoBehaviour
     private void EndCapture(bool success)
     {
         Debug.Log($"EndCapture success={success}, targetFish={_targetFish}, proj={_currentProjectile}");
-        
+
         if (success)
-            _impulseSource?.GenerateImpulse(1.2f); 
+        {
+            _impulseSource?.GenerateImpulse(0.7f); 
+        }
         else
-            _impulseSource?.GenerateImpulse(0.5f); 
+        {
+            Vector3 playerPos = transform.position;
+            Vector3 fishPos = _targetFish.transform.position;
+            Vector3 shakeDir = (fishPos - playerPos).normalized;
+            _impulseSource?.GenerateImpulse(shakeDir * 0.5f);
+        }
         
         _isCapturing = false;
 
