@@ -13,7 +13,10 @@ public class HarpoonCaptureQTE : MonoBehaviour
     
     [Header("카메라 진동 설정")]
     [SerializeField] private float _shakeInterval = 0.1f;
-    [SerializeField] private float _shakeStrength = 0.15f;  
+    [SerializeField] private float _basicShakeStrength = 0.15f; 
+    [SerializeField] private float _hitShakeStrength = 0.5f;
+    [SerializeField] private float _successShakeStrength = 0.7f;
+    [SerializeField] private float _failShakeStrength = 0.5f;
     
     private float _shakeTimer;
 
@@ -65,7 +68,7 @@ public class HarpoonCaptureQTE : MonoBehaviour
         Vector3 fishPos = _targetFish.transform.position;
         Vector3 dir = (playerPos - fishPos).normalized;
 
-        _impulseSource.GenerateImpulse(dir * 0.5f);
+        _impulseSource.GenerateImpulse(dir * _hitShakeStrength);
         
     }
 
@@ -100,7 +103,7 @@ public class HarpoonCaptureQTE : MonoBehaviour
             Vector3 fishPos = _targetFish.transform.position;
             Vector3 dir = (player - fishPos).normalized;
 
-            _impulseSource?.GenerateImpulse(dir * _shakeStrength);
+            _impulseSource?.GenerateImpulse(dir * _basicShakeStrength);
         }
         
         if (_captureGauge >= 1f)
@@ -120,12 +123,12 @@ public class HarpoonCaptureQTE : MonoBehaviour
         if (success)
         {
             Vector3 dir = (playerPos - fishPos).normalized;
-            _impulseSource.GenerateImpulse(dir * 0.7f);
+            _impulseSource.GenerateImpulse(dir * _successShakeStrength);
         }
         else
         {
             Vector3 dir = (fishPos - playerPos).normalized;
-            _impulseSource.GenerateImpulse(dir * 0.5f);
+            _impulseSource.GenerateImpulse(dir * _failShakeStrength);
         }
         
 
