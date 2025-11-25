@@ -31,6 +31,13 @@ public class MorningReportUI : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        // DayManager 이벤트 구독 (Start보다 먼저 실행되는 Awake에서)
+        if (DayManager.Instance != null)
+        {
+            DayManager.Instance.OnDayStart += OnDayStart;
+            DayManager.Instance.OnPhaseChange += OnPhaseChanged;
+        }
     }
 
     void Start()
@@ -41,14 +48,8 @@ public class MorningReportUI : MonoBehaviour
             _closeButtonUI.onClick.AddListener(Hide);
         }
 
-        // DayManager 이벤트 구독
-        if (DayManager.Instance != null)
-        {
-            DayManager.Instance.OnDayStart += OnDayStart;
-        }
-
         // 시작 시 숨기기
-        Show();
+        // Hide();
     }
 
     void OnDestroy()
@@ -57,13 +58,25 @@ public class MorningReportUI : MonoBehaviour
         if (DayManager.Instance != null)
         {
             DayManager.Instance.OnDayStart -= OnDayStart;
+            DayManager.Instance.OnPhaseChange -= OnPhaseChanged;
         }
     }
 
     // 새 날 시작 시 호출
     private void OnDayStart(int day)
     {
+        UpdateAllInfo();
         Show();
+    }
+
+    // 페이즈 변경 시 호출
+    private void OnPhaseChanged(DayPhase phase)
+    {
+        // Morning 페이즈가 아니면 패널 닫기
+        if (phase != DayPhase.Morning)
+        {
+            Hide();
+        }
     }
 
     // ========== 팝업 제어 ==========
@@ -76,7 +89,6 @@ public class MorningReportUI : MonoBehaviour
             _panelRootUI.SetActive(true);
         }
 
-        UpdateAllInfo();
         Debug.Log("[아침 리포트] 팝업 표시");
     }
 

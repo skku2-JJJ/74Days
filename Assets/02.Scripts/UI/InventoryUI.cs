@@ -35,6 +35,12 @@ public class InventoryUI : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        // DayManager 이벤트 구독
+        if (DayManager.Instance != null)
+        {
+            DayManager.Instance.OnPhaseChange += OnPhaseChanged;
+        }
     }
 
     void Start()
@@ -46,6 +52,22 @@ public class InventoryUI : MonoBehaviour
         }
 
         // 시작 시 숨기기
+        //Hide();
+    }
+
+    void OnDestroy()
+    {
+        // 이벤트 구독 해제
+        if (DayManager.Instance != null)
+        {
+            DayManager.Instance.OnPhaseChange -= OnPhaseChanged;
+        }
+    }
+
+    // 페이즈 변경 시 호출
+    private void OnPhaseChanged(DayPhase phase)
+    {
+        // 페이즈가 전환되면 인벤토리 패널 닫기
         Hide();
     }
 
