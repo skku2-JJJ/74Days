@@ -1,0 +1,598 @@
+fileFormatVersion: 2
+guid: be02628b74957e941953c477177254ae
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -699804339384155940
+    second: divisionUIElement_0
+  - first:
+      213: -8067775423508554327
+    second: divisionUIElement_1
+  - first:
+      213: -6464998420381860293
+    second: divisionUIElement_2
+  - first:
+      213: 3795187522699300531
+    second: divisionUIElement_3
+  - first:
+      213: 1315359201505175566
+    second: divisionUIElement_4
+  - first:
+      213: -3120911730514296846
+    second: divisionUIElement_5
+  - first:
+      213: -8298719155769345187
+    second: divisionUIElement_6
+  - first:
+      213: -8895821676050423926
+    second: divisionUIElement_7
+  - first:
+      213: -4438910834409706971
+    second: divisionUIElement_8
+  - first:
+      213: 6035736199456702397
+    second: divisionUIElement_9
+  - first:
+      213: -2498289654564041429
+    second: divisionUIElement_10
+  - first:
+      213: -3950184618218847762
+    second: divisionUIElement_11
+  - first:
+      213: 7850571638072344829
+    second: divisionUIElement_12
+  - first:
+      213: -1227092276382983556
+    second: divisionUIElement_13
+  - first:
+      213: 413559292808074459
+    second: divisionUIElement_14
+  - first:
+      213: -7275477019052695598
+    second: divisionUIElement_15
+  - first:
+      213: 6416510980809406697
+    second: divisionUIElement_16
+  - first:
+      213: -6796965691571236053
+    second: divisionUIElement_17
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: divisionUIElement_0
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 908
+        width: 114
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd00bba39abc946f0800000000000000
+      internalID: -699804339384155940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: divisionUIElement_1
+      rect:
+        serializedVersion: 2
+        x: 317
+        y: 908
+        width: 86
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ad552a4ff0890090800000000000000
+      internalID: -8067775423508554327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: divisionUIElement_2
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 943
+        width: 147
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3e7daf8036b746a0800000000000000
+      internalID: -6464998420381860293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: divisionUIElement_3
+      rect:
+        serializedVersion: 2
+        x: 769
+        y: 869
+        width: 155
+        height: 206
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3be8c72b1f63ba430800000000000000
+      internalID: 3795187522699300531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: divisionUIElement_4
+      rect:
+        serializedVersion: 2
+        x: 1014
+        y: 872
+        width: 135
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e08e1c58938114210800000000000000
+      internalID: 1315359201505175566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: divisionUIElement_5
+      rect:
+        serializedVersion: 2
+        x: 1249
+        y: 872
+        width: 135
+        height: 202
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ff785ff05b40b4d0800000000000000
+      internalID: -3120911730514296846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: divisionUIElement_6
+      rect:
+        serializedVersion: 2
+        x: 1313
+        y: 865
+        width: 19
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5b73a575e605dc80800000000000000
+      internalID: -8298719155769345187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: divisionUIElement_7
+      rect:
+        serializedVersion: 2
+        x: 1353
+        y: 866
+        width: 33
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8f5bc55151bb8480800000000000000
+      internalID: -8895821676050423926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: divisionUIElement_8
+      rect:
+        serializedVersion: 2
+        x: 1373
+        y: 863
+        width: 13
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52a606d4d12d562c0800000000000000
+      internalID: -4438910834409706971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: divisionUIElement_9
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 745
+        width: 190
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbf359e381e33c350800000000000000
+      internalID: 6035736199456702397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: divisionUIElement_10
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 745
+        width: 190
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2d4da1bbca445dd0800000000000000
+      internalID: -2498289654564041429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: divisionUIElement_11
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 577
+        width: 46
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee18ad9c4002e29c0800000000000000
+      internalID: -3950184618218847762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: divisionUIElement_12
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 518
+        width: 37
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df00f0b8f45d2fc60800000000000000
+      internalID: 7850571638072344829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: divisionUIElement_13
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 459
+        width: 36
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7a1197731e78fee0800000000000000
+      internalID: -1227092276382983556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: divisionUIElement_14
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 495
+        width: 12
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd413655cf14db500800000000000000
+      internalID: 413559292808074459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: divisionUIElement_15
+      rect:
+        serializedVersion: 2
+        x: 1014
+        y: 55
+        width: 112
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2df98d3c230580b90800000000000000
+      internalID: -7275477019052695598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: divisionUIElement_16
+      rect:
+        serializedVersion: 2
+        x: 1249
+        y: 46
+        width: 124
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e8b98cadb60c0950800000000000000
+      internalID: 6416510980809406697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: divisionUIElement_17
+      rect:
+        serializedVersion: 2
+        x: 1450
+        y: 59
+        width: 219
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b23116327b35ca1a0800000000000000
+      internalID: -6796965691571236053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      divisionUIElement_0: -699804339384155940
+      divisionUIElement_1: -8067775423508554327
+      divisionUIElement_10: -2498289654564041429
+      divisionUIElement_11: -3950184618218847762
+      divisionUIElement_12: 7850571638072344829
+      divisionUIElement_13: -1227092276382983556
+      divisionUIElement_14: 413559292808074459
+      divisionUIElement_15: -7275477019052695598
+      divisionUIElement_16: 6416510980809406697
+      divisionUIElement_17: -6796965691571236053
+      divisionUIElement_2: -6464998420381860293
+      divisionUIElement_3: 3795187522699300531
+      divisionUIElement_4: 1315359201505175566
+      divisionUIElement_5: -3120911730514296846
+      divisionUIElement_6: -8298719155769345187
+      divisionUIElement_7: -8895821676050423926
+      divisionUIElement_8: -4438910834409706971
+      divisionUIElement_9: 6035736199456702397
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
