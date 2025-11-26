@@ -34,7 +34,7 @@ public class HarpoonCaptureQTE : MonoBehaviour
     private bool _isCapturing;
     private float _captureGauge;
     private float _captureTimer;
-    private FishBase _targetFish;
+    private IFishCapturable _targetFish;
     private HarpoonProjectile _projectile;
 
     public bool IsCapturing => _isCapturing;
@@ -57,7 +57,7 @@ public class HarpoonCaptureQTE : MonoBehaviour
     /// <summary>
     /// HarpoonShooter에서 QTE 시작 요청
     /// </summary>
-    public void BeginCapture(FishBase fish, HarpoonProjectile projectile)
+    public void BeginCapture(IFishCapturable fish, HarpoonProjectile projectile)
     {
         if (fish == null || projectile == null) return;
 
@@ -74,7 +74,7 @@ public class HarpoonCaptureQTE : MonoBehaviour
 
         
         Vector3 playerPos = _shooter.transform.position;
-        Vector3 fishPos = _targetFish.transform.position;
+        Vector3 fishPos = _targetFish.Transform.position;
         Vector3 dir = (playerPos - fishPos).normalized;
 
         // 카메라 진동
@@ -121,7 +121,7 @@ public class HarpoonCaptureQTE : MonoBehaviour
             _shakeTimer = 0f;
 
             Vector3 player = _shooter.transform.position;
-            Vector3 fishPos = _targetFish.transform.position;
+            Vector3 fishPos = _targetFish.Transform.position;
             Vector3 dir = (player - fishPos).normalized;
 
             float shakeStrength = _basicShakeStrength * Mathf.Lerp(_minShakeStrengthFactor, _maxShakeStrengthFactor, 1f - _captureGauge);
@@ -143,7 +143,7 @@ public class HarpoonCaptureQTE : MonoBehaviour
         _targetFish.EndCaptureStruggle();
         
         Vector3 playerPos = _shooter.transform.position;
-        Vector3 fishPos = _targetFish.transform.position;
+        Vector3 fishPos = _targetFish.Transform.position;
 
         // 카메라 진동
         if (success)

@@ -243,10 +243,10 @@ public class HarpoonShooter : MonoBehaviour
         _hasHarpoonOut = false;
         
         // projectile에 물고기가 붙어 있다면 → 물고기 획득!
-        FishBase fish = proj.GetComponentInChildren<FishBase>();
+        IFishCapturable fish = proj.GetComponentInChildren<IFishCapturable>();
         if (fish != null)
         {
-            fish.Capture();
+            fish.Get();
         }
        
     }
@@ -256,14 +256,14 @@ public class HarpoonShooter : MonoBehaviour
     /// </summary>
     /// <param name="fish"> hit 대상 </param>
     /// <param name="projectile"> 투사체 </param>
-    public void StartCapture(FishBase fish, HarpoonProjectile projectile)
+    public void StartCapture(IFishCapturable fish, HarpoonProjectile projectile)
     {
         _captureQTE.BeginCapture(fish, projectile);
         
         _currentProjectile = projectile;
         _hasHarpoonOut = true;
         
-        _currentProjectile.AttachToFish(fish.transform);
+        _currentProjectile.AttachToFish(fish.Transform);
         
         _animator.SetTrigger("Struggle");
     }
@@ -274,15 +274,15 @@ public class HarpoonShooter : MonoBehaviour
     /// <param name="proj"></param>
     /// <param name="fish"></param>
     /// <param name="success"></param>
-    public void HandleCaptureResult(HarpoonProjectile proj, FishBase fish, bool success)
+    public void HandleCaptureResult(HarpoonProjectile proj, IFishCapturable fish, bool success)
     {
         
         proj.DetachFromFish();
         
         if (success)
         {
-            fish.Captured();
-            fish.transform.SetParent(proj.transform, true);
+            fish.OnCapture();
+            fish.Transform.SetParent(proj.transform, true);
         }
         else
         {

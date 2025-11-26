@@ -191,13 +191,11 @@ public class HarpoonProjectile : MonoBehaviour
         if (_isHit || _isReturning) return;
         if (!other.CompareTag("Fish")) return;
         
-        FishBase fish = other.GetComponent<FishBase>();
+        IFishCapturable  fish = other.GetComponent<IFishCapturable >();
         if (fish == null) return;
         
         _isHit = true;
         _rigid.linearVelocity = Vector2.zero;
-        
-        //_animator.SetTrigger("Hit");
         
         // 1) 데미지 적용
         fish.TakeHarpoonHit(_damage, _moveDir);
@@ -206,7 +204,7 @@ public class HarpoonProjectile : MonoBehaviour
         if (fish.CanBeCaptured)
         {
             // 회수
-            BeginReturn();
+            _owner.HandleCaptureResult(this, fish, true);
         }
         else
         {

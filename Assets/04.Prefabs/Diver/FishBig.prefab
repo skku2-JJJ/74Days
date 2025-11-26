@@ -12,6 +12,9 @@ GameObject:
   - component: {fileID: 58475724367877082}
   - component: {fileID: 50066830953986102}
   - component: {fileID: 5205089790240334742}
+  - component: {fileID: 2052411475101747350}
+  - component: {fileID: 8161939080048225451}
+  - component: {fileID: 1880532392066982631}
   m_Layer: 0
   m_Name: FishBig
   m_TagString: Fish
@@ -110,9 +113,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4362de6b5afeb3043adbb5fc879814df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  diver: {fileID: 0}
+  _health: {fileID: 2052411475101747350}
+  _hitFeedback: {fileID: 8161939080048225451}
+  _captureStruggle: {fileID: 1880532392066982631}
+  _escapeForceMultiplier: 2
+  _randomVecFactor: 0.2
+--- !u!114 &2052411475101747350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1788738869386804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 871b6856e8a546518b629bbb89f937c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
   maxHealth: 100
-  captureHpRatioThreshold: 0.5
+  captureHpRatioThreshold: 0.2
+  OnDamaged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDead:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &8161939080048225451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1788738869386804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b66e1e3b894c43d9a2250e39167434a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   flashDuration: 0.07
   scalePunch: 0.15
   scalePunchDuration: 0.12
@@ -120,10 +159,22 @@ MonoBehaviour:
   knockbackDuration: 0.1
   hitShakeStrength: 0.1
   hitShakeDuration: 0.12
-  escapeMoveSpeed: 3
-  maxStruggleAngle: 15
-  struggleFrequency: 7
-  visualTransform: {fileID: 4738636427640038279}
+--- !u!114 &1880532392066982631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1788738869386804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 248ffb5191e74421a705432d45530dd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _visualTransform: {fileID: 4738636427640038279}
+  _escapeMoveSpeed: 3
+  _maxStruggleAngle: 15
+  _struggleFrequency: 7
 --- !u!1 &6415113090266888062
 GameObject:
   m_ObjectHideFlags: 0
