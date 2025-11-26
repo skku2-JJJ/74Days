@@ -60,23 +60,22 @@ public class FishAIController : MonoBehaviour
             SwitchState();
         }
 
-        /*// 1. 플레이어 회피가 최우선
+        // 플레이어 회피
         if (_diver != null && TryGetFleeDir(out Vector2 fleeDir))
         {
             _move.DesiredDir = ApplyObstacleAvoidance(fleeDir);
             return;
-        }*/
-
-        // 2. 그 외엔 상태에 따라
+        }
+        
         Vector2 dir = Vector2.zero;
 
         switch (_state)
         {
             case State.Idle:
-                dir = Vector2.zero; // 사실상 정지
+                dir = Vector2.zero; 
                 break;
             case State.Wander:
-                dir = GetWanderDirection();    // 아래에 수정한 버전
+                dir = GetWanderDirection();    
                 break;
         }
 
@@ -99,13 +98,13 @@ public class FishAIController : MonoBehaviour
 
         if (_state == State.Wander)
         {
-            // Wander가 끝났을 때 일정 확률로 Idle 진입
+            // 일정 확률로 Idle 진입
             if (Random.value < _idleChanceAfterWander)
                 EnterIdle();
             else
                 EnterWander();
         }
-        else // Idle -> Wander
+        else 
         {
             EnterWander();
         }
@@ -115,7 +114,7 @@ public class FishAIController : MonoBehaviour
     {
         _state = State.Idle;
         _stateDuration = Random.Range(_idleMinDuration, _idleMaxDuration);
-        _wanderTimer = 0f; // 다음 wander 때 새로 방향 정하게
+        _wanderTimer = 0f; 
     }
 
     private void EnterWander()
@@ -172,7 +171,7 @@ public class FishAIController : MonoBehaviour
             }
         }
 
-        // 완전 막힌 경우 → 제자리 유턴하지 말고 위로 살짝 치켜오르기 (물고기 특성)
+        // 완전 막힌 경우 → 위로 살짝 치켜오르기 
         return (forward + Vector2.up * 0.3f).normalized;
     }
 

@@ -11,8 +11,8 @@ public class FishVisualController : MonoBehaviour
     [SerializeField] private FishMoveController _moveController;
 
     [Header("기울기(틸트)")]
-    [SerializeField] private float _verticalTiltAngle = 25f;   // 순수 위/아래 이동 최대각
-    [SerializeField] private float _diagonalTiltAngle = 15f;   // 대각선 이동 최대각
+    [SerializeField] private float _verticalTiltAngle = 25f;  
+    [SerializeField] private float _diagonalTiltAngle = 15f;  
     [SerializeField] private float _tiltLerpSpeed = 10f;
     
 
@@ -64,7 +64,6 @@ public class FishVisualController : MonoBehaviour
     private void HandleFlipX(Vector2 desiredDir, Vector2 currentVelocity)
     {
         if (currentVelocity.magnitude < _minSpeedForFlip) return;
-        
         if (desiredDir.sqrMagnitude < 0.0001f) return;
         
         float x = desiredDir.x;
@@ -81,19 +80,16 @@ public class FishVisualController : MonoBehaviour
 
     private void UpdateTilt(Vector2 desiredDir)
     {
-        // 다이버의 MoveInput처럼 사용
         float horizontalMove = desiredDir.x;
         float verticalMove   = desiredDir.y;
-
-        // 방향 정보 거의 없으면 0도로 복귀
-        if (Mathf.Abs(verticalMove) < VerticalInputDeadZone &&
-            Mathf.Abs(horizontalMove) < HorizontalInputDeadZone)
+        
+        if (Mathf.Abs(verticalMove) < VerticalInputDeadZone && Mathf.Abs(horizontalMove) < HorizontalInputDeadZone)
         {
             SetVisualTilt(0f);
             return;
         }
-
-        // 수직 입력 없으면 서서히 0도로 복귀 (위/아래 이동 안 할 때)
+        
+        // 수직 입력 없으면 서서히 0도로 복귀
         if (Mathf.Abs(verticalMove) < VerticalInputDeadZone)
         {
             SetVisualTilt(0f);
@@ -101,14 +97,11 @@ public class FishVisualController : MonoBehaviour
         }
 
         bool hasHorizontal = Mathf.Abs(horizontalMove) >= HorizontalInputDeadZone;
-
-        // 순수 위/아래 vs 대각 이동에 따라 최대 틸트 각도 선택
         float maxTilt = hasHorizontal ? _diagonalTiltAngle : _verticalTiltAngle;
 
         float tiltDir    = Mathf.Sign(verticalMove);            // 위(+1) / 아래(-1)
         float facingSign = _isRightForward ? 1f : -1f;          // 오른쪽(+1) / 왼쪽(-1)
-
-        // 다이버와 동일한 개념:
+        
         // facingSign을 곱해줘서 "화면 기준"으로 위/아래 방향이 항상 일관되게 보이게 함
         float baseAngle = tiltDir * facingSign * maxTilt;
 
