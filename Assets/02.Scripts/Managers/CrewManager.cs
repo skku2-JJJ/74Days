@@ -39,12 +39,6 @@ public class CrewManager : MonoBehaviour
         }
     }
 
-    void Start()
-    {
-        // 테스트용 초기 선원 생성
-        PrintAllCrewStatus();
-    }
-
     // ========== 테스트용 선원 관리 ==========
 
     // 선원 추가

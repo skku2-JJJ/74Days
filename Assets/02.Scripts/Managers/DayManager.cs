@@ -130,8 +130,8 @@ using System;
 
       private void HandleMorningPhase()
       {
-          // 아침: 배/선원 상태 확인
-          ShipManager.Instance?.UpdateShipStatus();
+          // 아침: 배/선원 상태 확인 (노화 처리 X)
+          ShipManager.Instance?.CheckShipStatus();
           CrewManager.Instance?.UpdateCrewNeeds();
       }
 
@@ -149,7 +149,8 @@ using System;
 
       private void HandleNightPhase()
       {
-          // 밤: 선원 요구사항 체크 및 하루 마무리
+          // 밤: 배/선원 일일 노화 처리 및 하루 마무리
+          ShipManager.Instance?.ProcessDailyShipDeterioration();
           CrewManager.Instance?.ProcessDailyNeeds();
           EndDay();
       }
