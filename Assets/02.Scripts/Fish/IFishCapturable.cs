@@ -27,7 +27,7 @@ public interface IFishCapturable
     /// QTE 시작 시 호출
     /// </summary>
     /// <param name="diver"></param>
-    void BeginCaptureStruggle(Transform diver);
+    void BeginCaptureStruggle();
     
     /// <summary>
     /// QTE 진행 동안 호출

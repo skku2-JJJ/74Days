@@ -4,8 +4,9 @@ using Random = UnityEngine.Random;
 
 public class NormalFish : FishBase
 {
-    [SerializeField] private float _escapeForceMultiplier = 2f;
-    [SerializeField] private float _randomVecFactor = 0.2f;
+    [Header("Escape Settings")]
+    [SerializeField] private float _escapeBurstSpeed = 8f;   // QTE 실패 시 한번에 튀는 속도
+    [SerializeField] private float _escapeRandomFactor = 0.2f; // 방향 랜덤 섞기 정도
     
     private Rigidbody2D _rigid;
     
@@ -33,16 +34,16 @@ public class NormalFish : FishBase
         if (diver != null)
         {
             Vector2 inverseVec = ((Vector2)transform.position - (Vector2)diver.position).normalized;
-            Vector3 randomVec = Random.insideUnitCircle * _randomVecFactor;
-            dir = (inverseVec + (Vector2)randomVec).normalized;
+            Vector2 randomVec = Random.insideUnitCircle * _escapeRandomFactor;
+            dir = (inverseVec + randomVec).normalized;
         }
         else
         {
-            dir = UnityEngine.Random.insideUnitCircle.normalized;
+            dir = Random.insideUnitCircle.normalized;
         }
-
-        float escapeForce = _escapeForceMultiplier;
-        _rigid.linearVelocity = dir * escapeForce;
+        
+        float speed = _escapeBurstSpeed;
+        _rigid.linearVelocity = dir * speed;
         
     }
     

@@ -12,8 +12,6 @@ public abstract class FishBase : MonoBehaviour, IFishCapturable
     [SerializeField] private FishHealth _health;
     [SerializeField] private FishHitFeedback _hitFeedback;
     [SerializeField] private FishCaptureStruggle _captureStruggle;
- 
-    private Transform _capturedDiver;
     
     public bool CanBeCaptured => _health.CanBeCaptured;
     public Transform Transform => this.transform;
@@ -49,10 +47,9 @@ public abstract class FishBase : MonoBehaviour, IFishCapturable
     
 
 
-    public void BeginCaptureStruggle(Transform diver)
+    public void BeginCaptureStruggle()
     {
-        this.diver = diver;
-        _captureStruggle?.Begin(this.diver);
+        _captureStruggle?.Begin(diver);
     }
     
     public void UpdateCaptureStruggle(float struggle01) =>

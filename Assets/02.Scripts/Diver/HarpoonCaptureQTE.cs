@@ -70,7 +70,7 @@ public class HarpoonCaptureQTE : MonoBehaviour
         Time.timeScale = 1f;
         
         // 물고기 버둥 시작
-        _targetFish.BeginCaptureStruggle(_shooter.transform);
+        _targetFish.BeginCaptureStruggle();
 
         
         Vector3 playerPos = _shooter.transform.position;
@@ -138,9 +138,9 @@ public class HarpoonCaptureQTE : MonoBehaviour
     {
         Debug.Log($"FinishCapture success={success}, targetFish={_targetFish}, proj={_projectile}");
         
-        _shooter.HandleCaptureResult(_projectile, _targetFish, success);
-        
         _targetFish.EndCaptureStruggle();
+        
+        _shooter.HandleCaptureResult(_projectile, _targetFish, success);
         
         Vector3 playerPos = _shooter.transform.position;
         Vector3 fishPos = _targetFish.Transform.position;
