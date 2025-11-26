@@ -2929,7 +2929,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.89383894}
+  m_Offset: {x: 0.010072887, y: -0.2956143}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2939,7 +2939,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 0.6013094}
+  m_Size: {x: 1.4192473, y: 1.4042844}
   m_EdgeRadius: 0
 --- !u!1001 &411713923
 PrefabInstance:
@@ -13360,6 +13360,10 @@ PrefabInstance:
       propertyPath: weaponCollider
       value: 
       objectReference: {fileID: 952222018}
+    - target: {fileID: 114220851913160134, guid: 05cf52405d1c13742b5b235b311db325, type: 3}
+      propertyPath: speed
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

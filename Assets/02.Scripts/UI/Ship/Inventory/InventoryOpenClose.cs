@@ -1,14 +1,14 @@
 using UnityEngine;
 
 /// <summary>
-/// Daily Report UI 열기/닫기 제어
+/// Inventory UI 열기/닫기 제어
 /// - 플레이어가 범위 내에서 스페이스바: 토글 (열기/닫기)
 /// - 플레이어가 범위 벗어나면: 자동으로 닫기
 /// </summary>
-public class ReportOpenClose : MonoBehaviour
+public class InventoryOpenClose : MonoBehaviour
 {
     [SerializeField]
-    private DailyReportUpDown _reportUI;
+    private InventoryUpDown _inventoryUI;
 
     private bool _isInside = false;
 
@@ -17,7 +17,7 @@ public class ReportOpenClose : MonoBehaviour
         // 플레이어가 범위 내에 있고 스페이스바를 누르면
         if (_isInside && Input.GetKeyDown(KeyCode.Space))
         {
-            ToggleReport();
+            ToggleInventory();
         }
     }
 
@@ -26,7 +26,7 @@ public class ReportOpenClose : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             _isInside = true;
-            Debug.Log("[ReportOpenClose] 플레이어가 Report 범위에 진입");
+            Debug.Log("[InventoryOpenClose] 플레이어가 Inventory 범위에 진입");
         }
     }
 
@@ -37,28 +37,28 @@ public class ReportOpenClose : MonoBehaviour
             _isInside = false;
 
             // 범위를 벗어나면 자동으로 닫기
-            if (_reportUI.IsOpen)
+            if (_inventoryUI.IsOpen)
             {
-                _reportUI.Close();
-                Debug.Log("[ReportOpenClose] 범위 벗어남 - Report 자동 닫기");
+                _inventoryUI.Close();
+                Debug.Log("[InventoryOpenClose] 범위 벗어남 - Inventory 자동 닫기");
             }
         }
     }
 
     /// <summary>
-    /// Report UI 토글 (열림 ↔ 닫힘)
+    /// Inventory UI 토글 (열림 ↔ 닫힘)
     /// </summary>
-    private void ToggleReport()
+    private void ToggleInventory()
     {
-        if (_reportUI.IsOpen)
+        if (_inventoryUI.IsOpen)
         {
-            _reportUI.Close();
-            Debug.Log("[ReportOpenClose] Report 닫기");
+            _inventoryUI.Close();
+            Debug.Log("[InventoryOpenClose] Inventory 닫기");
         }
         else
         {
-            _reportUI.Open();
-            Debug.Log("[ReportOpenClose] Report 열기");
+            _inventoryUI.Open();
+            Debug.Log("[InventoryOpenClose] Inventory 열기");
         }
     }
 }
