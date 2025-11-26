@@ -29,7 +29,12 @@ public class CrewMember
     [Header("Status Thresholds")]
     public float CriticalThreshold = 20f;
     public float PoorThreshold = 50f;
-    
+
+    [Header("Daily Resource Distribution")]
+    public bool HasReceivedFoodToday = false;          // 오늘 식량 받았는지
+    public bool HasReceivedWaterToday = false;         // 오늘 물 받았는지
+    public bool HasReceivedMedicineToday = false;      // 오늘 약초 받았는지
+
     // 상태 프로퍼티
     public CrewStatus Status
     {
@@ -106,10 +111,11 @@ public class CrewMember
 
     // ========== 자원 할당 ==========
 
-    // 자원을 받음
-    public void GiveResource(ResourceType type)
+    // 자원을 받음 (amount 개수만큼)
+    public void GiveResource(ResourceType type, int amount = 1)
     {
         if (!IsAlive) return;
+        if (amount <= 0) return;
 
         switch (type)
         {
@@ -117,17 +123,20 @@ public class CrewMember
             case ResourceType.Shellfish:
             case ResourceType.Seaweed:
                 // 식량: 배고픔 회복
-                Hunger = Mathf.Min(100, Hunger + FoodHungerRecovery);
+                Hunger = Mathf.Min(100, Hunger + FoodHungerRecovery * amount);
+                HasReceivedFoodToday = true;
                 break;
 
             case ResourceType.CleanWater:
                 // 물: 갈증 회복
-                Thirst = Mathf.Min(100, Thirst + WaterThirstRecovery);
+                Thirst = Mathf.Min(100, Thirst + WaterThirstRecovery * amount);
+                HasReceivedWaterToday = true;
                 break;
 
             case ResourceType.Herbs:
                 // 약초: 체온 회복
-                Temperature = Mathf.Min(100, Temperature + HerbsTemperatureRecovery);
+                Temperature = Mathf.Min(100, Temperature + HerbsTemperatureRecovery * amount);
+                HasReceivedMedicineToday = true;
                 break;
 
             case ResourceType.Wood:
@@ -135,6 +144,14 @@ public class CrewMember
                 Debug.LogWarning($"{CrewName}에게 목재를 줄 수 없습니다!");
                 break;
         }
+    }
+
+    // 일일 자원 분배 플래그 초기화 (Night 페이즈에 호출)
+    public void ResetDailyResourceFlags()
+    {
+        HasReceivedFoodToday = false;
+        HasReceivedWaterToday = false;
+        HasReceivedMedicineToday = false;
     }
 
     // ========== 상태 관리 ==========

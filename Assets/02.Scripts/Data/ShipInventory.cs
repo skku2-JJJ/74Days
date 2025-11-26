@@ -4,18 +4,18 @@ using UnityEngine;
 public class ShipInventory
 {
     [Header("Food Resources")]
-    public int Fish = 0;
+    public int Fish = 3;
     public int Shellfish = 0;
-    public int Seaweed = 0;
+    public int Seaweed = 1;
 
     [Header("Water")]
-    public int CleanWater = 0;
+    public int CleanWater = 4;
 
     [Header("Medical")]
-    public int Herbs = 0;
+    public int Herbs = 2;
 
     [Header("Repair Materials")]
-    public int Wood = 0;
+    public int Wood = 7;
 
     // 총 식량
     public int TotalFood => Fish + Shellfish + Seaweed;

@@ -82,8 +82,8 @@ public class CrewManager : MonoBehaviour
 
     // ========== 자원 분배 ==========
 
-    // 자원을 선원에게 할당
-    public bool AssignResourceToCrew(CrewMember crew, ResourceType resourceType)
+    // 자원을 선원에게 할당 (amount 개수만큼)
+    public bool AssignResourceToCrew(CrewMember crew, ResourceType resourceType, int amount = 1)
     {
         // 1. Evening 페이즈 체크
         if (DayManager.Instance.CurrentPhase != DayPhase.Evening)
@@ -92,8 +92,34 @@ public class CrewManager : MonoBehaviour
             return false;
         }
 
-        // 2. 배의 인벤토리에서 자원 소비
-        bool resourceConsumed = ShipManager.Instance.UseResource(resourceType, 1);
+        // 2. 개수 체크
+        if (amount <= 0)
+        {
+            Debug.LogWarning("[자원 분배 실패] 0개 이하는 분배할 수 없습니다!");
+            return false;
+        }
+
+        // 3. 오늘 이미 해당 카테고리 자원을 받았는지 체크
+        if (IsHungerResource(resourceType) && crew.HasReceivedFoodToday)
+        {
+            Debug.LogWarning($"[자원 분배 실패] {crew.CrewName}은(는) 오늘 이미 식량을 받았습니다!");
+            return false;
+        }
+
+        if (resourceType == ResourceType.CleanWater && crew.HasReceivedWaterToday)
+        {
+            Debug.LogWarning($"[자원 분배 실패] {crew.CrewName}은(는) 오늘 이미 물을 받았습니다!");
+            return false;
+        }
+
+        if (resourceType == ResourceType.Herbs && crew.HasReceivedMedicineToday)
+        {
+            Debug.LogWarning($"[자원 분배 실패] {crew.CrewName}은(는) 오늘 이미 약초를 받았습니다!");
+            return false;
+        }
+
+        // 4. 배의 인벤토리에서 자원 소비
+        bool resourceConsumed = ShipManager.Instance.UseResource(resourceType, amount);
 
         if (!resourceConsumed)
         {
@@ -101,16 +127,22 @@ public class CrewManager : MonoBehaviour
             return false;
         }
 
-        // 3. 선원에게 자원 전달
-        crew.GiveResource(resourceType);
+        // 5. 선원에게 자원 전달
+        crew.GiveResource(resourceType, amount);
 
-        // 4. 이벤트 발생
+        // 6. 이벤트 발생
         OnResourceAssigned?.Invoke(crew, resourceType);
         OnCrewStatusChanged?.Invoke(crew);
 
-        Debug.Log($"[자원 분배] {crew.CrewName}에게 {resourceType} 1개 제공");
+        Debug.Log($"[자원 분배] {crew.CrewName}에게 {resourceType} {amount}개 제공");
 
         return true;
+    }
+
+    // 자원이 식량(Hunger) 카테고리인지 확인
+    private bool IsHungerResource(ResourceType type)
+    {
+        return type == ResourceType.Fish || type == ResourceType.Shellfish || type == ResourceType.Seaweed;
     }
 
     // ========== 일일 처리 ==========
@@ -147,6 +179,9 @@ public class CrewManager : MonoBehaviour
             // 일일 악화 처리
             crew.DailyDeterioration();
 
+            // 일일 자원 분배 플래그 초기화
+            crew.ResetDailyResourceFlags();
+
             // 상태 변경 이벤트
             OnCrewStatusChanged?.Invoke(crew);
 
@@ -179,13 +214,10 @@ public class CrewManager : MonoBehaviour
     // 테스트 용 초기 생성 코드
     private void InitializeDefaultCrew()
     {
-        // 기본 선원 6명 생성
+        // 기본 선원 3명 생성
         AddCrew(new CrewMember("선원1", 1));
         AddCrew(new CrewMember("선원2", 2));
         AddCrew(new CrewMember("선원3", 3));
-        AddCrew(new CrewMember("선원4", 4));
-        AddCrew(new CrewMember("선원5", 5));
-        AddCrew(new CrewMember("선원6", 6));
 
         Debug.Log($"[초기화] 기본 선원 {TotalCrew}명 생성 완료");
     }
