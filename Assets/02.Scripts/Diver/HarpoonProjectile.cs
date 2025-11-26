@@ -191,7 +191,7 @@ public class HarpoonProjectile : MonoBehaviour
         if (_isHit || _isReturning) return;
         if (!other.CompareTag("Fish")) return;
         
-        IFishCapturable  fish = other.GetComponent<IFishCapturable >();
+        IFishCapturable  fish = other.GetComponent<IFishCapturable>();
         if (fish == null) return;
         
         _isHit = true;
