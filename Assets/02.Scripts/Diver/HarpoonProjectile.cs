@@ -6,6 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
 public class HarpoonProjectile : MonoBehaviour
 {
+    
     [Header("지속 시간")]
     [SerializeField] private float _lifeTime = 1f;
     
@@ -67,6 +68,29 @@ public class HarpoonProjectile : MonoBehaviour
         
         ApplyFlightVelocity(0f);
     }
+    
+    /// <summary>
+    /// Hit 시 호출
+    /// </summary>
+    /// <param name="fish"></param>
+    public void AttachToFish(Transform fish)
+    {
+        transform.SetParent(fish, worldPositionStays: true);
+
+        // 물리 멈추기
+        _rigid.linearVelocity = Vector2.zero;
+        _rigid.angularVelocity = 0f;
+        _rigid.simulated = false;
+    }
+
+    /// <summary>
+    /// QTE 끝나고 다시 분리할 때 호출
+    /// </summary>
+    public void DetachFromFish()
+    {
+        transform.SetParent(null, worldPositionStays: true);
+        _rigid.simulated = true;  
+    }
 
     private void Init()
     {
@@ -84,7 +108,6 @@ public class HarpoonProjectile : MonoBehaviour
         
         if (_owner.IsCapturing)  return; // QTE 진행 중
         
-        // 아직 아무 것도 안 맞은, '날아가는 구간'일 때만 커브 적용
         if (!_isHit)
         {
             _flightElapsed += Time.deltaTime;
@@ -154,7 +177,7 @@ public class HarpoonProjectile : MonoBehaviour
 
         if (_flightSpeedCurve != null && _flightSpeedCurve.length > 0)
         {
-            mul = _flightSpeedCurve.Evaluate(t01);   // t01: 0~1
+            mul = _flightSpeedCurve.Evaluate(t01);   
         }
 
         float finalSpeed = _baseSpeed * mul;
@@ -168,25 +191,20 @@ public class HarpoonProjectile : MonoBehaviour
         if (_isHit || _isReturning) return;
         if (!other.CompareTag("Fish")) return;
         
-        FishBase fish = other.GetComponent<FishBase>();
+        IFishCapturable  fish = other.GetComponent<IFishCapturable>();
         if (fish == null) return;
         
         _isHit = true;
         _rigid.linearVelocity = Vector2.zero;
         
-        //_animator.SetTrigger("Hit");
-        
         // 1) 데미지 적용
-        fish.TakeHarpoonHit(_damage);
+        fish.TakeHarpoonHit(_damage, _moveDir);
         
         // 2) 캡처 가능 HP 이하라면 → QTE 없이 바로 포획
         if (fish.CanBeCaptured)
         {
-            // 물고기 작살에 붙이기
-            fish.transform.SetParent(transform, true);
-            
             // 회수
-            BeginReturn();
+            _owner.HandleCaptureResult(this, fish, true);
         }
         else
         {

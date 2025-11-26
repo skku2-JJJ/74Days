@@ -1,10 +1,11 @@
 using System.Collections;
+using Unity.Cinemachine;
 using UnityEngine;
 
 /// <summary>
-/// 조준/발사 컨트롤러
+/// 조준/발사/회수 컨트롤러
 /// </summary>
-[RequireComponent(typeof(DiverMoveController),typeof(InputController))]
+[RequireComponent(typeof(DiverMoveController),typeof(InputController), typeof(HarpoonCaptureQTE))]
 public class HarpoonShooter : MonoBehaviour
 {
     [Header("작살 프리펩")]
@@ -17,6 +18,10 @@ public class HarpoonShooter : MonoBehaviour
     [SerializeField] private float _fireCoolTime = 0.4f;
     [SerializeField] private Vector2 _firePosOffset = new Vector2(1f, 0.5f); // 다이버 기준 발사 위치
 
+    [Header("반동 설정")]
+    [SerializeField] private float _minRecoilStrength = 1.2f;
+    [SerializeField] private float _maxRecoilStrength = 2.5f;
+    
     [Tooltip("차지량(0~1)을 속도/데미지에 어떻게 반영할지 커브")]
     [SerializeField] private AnimationCurve _chargeCurve;
     
@@ -24,16 +29,18 @@ public class HarpoonShooter : MonoBehaviour
     [SerializeField] private float _aimTimeScale = 0.4f;       
     [SerializeField] private float _timeScaleLerpSpeed = 10f; 
     
-    [Header("포획 QTE 설정")]
-    [SerializeField] private float _captureDuration = 3f;
-    [SerializeField] private float _captureGaugeDecayPerSecond = 0.4f;
-    [SerializeField] private float _captureGaugeGainPerPress = 0.15f;
+    
     
     // 컴포넌트 / 참조
     private Animator _animator;
     private InputController _inputController;
     private DiverMoveController _moveController;
     private Camera _mainCam;
+    private HarpoonCaptureQTE _captureQTE; // 포획 QTE
+    
+    public bool IsCapturing => _captureQTE != null && _captureQTE.IsCapturing;
+    public float CaptureGauge01 => _captureQTE != null ? _captureQTE.CaptureGauge01 : 0f;
+    
     
     // 타이머
     private float _coolTimer;
@@ -47,21 +54,11 @@ public class HarpoonShooter : MonoBehaviour
     private bool _hasHarpoonOut;      
     private bool _canAim = true;       
     
-    // QTE 상태
-    private bool _isCapturing;
-    private float _captureGauge;
-    private float _captureTimer;
-    private FishBase _targetFish;
-    
     
     // 프로퍼티
     public bool IsAiming => _isAiming;
     public bool IsCharging => _isCharging;
-    public bool IsCapturing => _isCapturing;
     public bool HasHarpoonOut => _hasHarpoonOut;
-    public float CaptureGauge01 => Mathf.Clamp01(_captureGauge);
-
-    
     public HarpoonProjectile CurrentProjectile => _currentProjectile;
     public Vector3 HarpoonMuzzleWorldPos => (Vector2)transform.position + _firePosOffset;
     public Vector3 HarpoonReturnPoint => transform.position + (Vector3)_firePosOffset;
@@ -74,15 +71,6 @@ public class HarpoonShooter : MonoBehaviour
             return Mathf.Clamp01(_chargeTimer / _maxChargeTime);
         }
     }
-    public float CaptureTimeRatio01
-    {
-        get
-        {
-            return _captureDuration > 0f ? Mathf.Clamp01(_captureTimer / _captureDuration) : 0f;
-        }
-    }
-
-   
 
 
     // 상수
@@ -98,9 +86,8 @@ public class HarpoonShooter : MonoBehaviour
         _coolTimer += Time.unscaledDeltaTime; 
 
         // QTE 진행 중이면 여기서만 처리
-        if (_isCapturing)
+        if (IsCapturing)
         {
-            UpdateCaptureQTE();
             return;
         }
         
@@ -114,6 +101,7 @@ public class HarpoonShooter : MonoBehaviour
         _animator =  GetComponentInChildren<Animator>();
         _inputController = GetComponent<InputController>();
         _moveController = GetComponent<DiverMoveController>();
+        _captureQTE = GetComponent<HarpoonCaptureQTE>();
         
         _mainCam = Camera.main;
         
@@ -218,6 +206,10 @@ public class HarpoonShooter : MonoBehaviour
         float curved = _chargeCurve.Evaluate(charge);
         float speed = Mathf.Lerp(_minHarpoonSpeed, _maxHarpoonSpeed, curved);
         
+        // 반동 적용 
+        float recoilStrength = Mathf.Lerp(_minRecoilStrength, _maxRecoilStrength, curved);
+        _moveController.AddRecoil(-dir, recoilStrength);
+        
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         Quaternion rot = Quaternion.Euler(0f, 0f, angle);
 
@@ -232,7 +224,7 @@ public class HarpoonShooter : MonoBehaviour
             
                 
         
-        // TODO:  카메라 셰이크 / 발사 사운드 / 이펙트 호출
+        // TODO:  발사 사운드 / 이펙트 호출
         _animator.SetTrigger("Shoot");
        
     }
@@ -251,93 +243,61 @@ public class HarpoonShooter : MonoBehaviour
         _hasHarpoonOut = false;
         
         // projectile에 물고기가 붙어 있다면 → 물고기 획득!
-        FishBase fish = proj.GetComponentInChildren<FishBase>();
+        IFishCapturable fish = proj.GetComponentInChildren<IFishCapturable>();
         if (fish != null)
         {
-            fish.Capture();
+            fish.Get();
         }
        
     }
     
-    
-    public void StartCapture(FishBase fish, HarpoonProjectile projectile)
+    /// <summary>
+    /// 투사체가 호출하여 QTE 시작
+    /// </summary>
+    /// <param name="fish"> hit 대상 </param>
+    /// <param name="projectile"> 투사체 </param>
+    public void StartCapture(IFishCapturable fish, HarpoonProjectile projectile)
     {
-        if (fish == null || projectile == null) return;
-
-        _isCapturing = true;
-        _captureGauge = 0f;
-        _captureTimer = 0f;
-        _targetFish = fish;
-
-        _currentProjectile = projectile;
-        _hasHarpoonOut = true; 
+        _captureQTE.BeginCapture(fish, projectile);
         
-        Time.timeScale = 1f;
-
-        // TODO: QTE UI , 애니메이션 트리거 
-    }
-
-    private void UpdateCaptureQTE()
-    {
-        Time.timeScale = 1f;
-
-        _captureTimer += Time.unscaledDeltaTime;
-        if (_captureTimer >= _captureDuration)
-        {
-            EndCapture(false);
-            return;
-        }
-
-        // 게이지 자연 감소
-        _captureGauge -= _captureGaugeDecayPerSecond * Time.unscaledDeltaTime;
-        _captureGauge = Mathf.Max(0f, _captureGauge);
-
-        // 스페이스 연타로 게이지 올리기
-        if (_inputController.IsPullKeyPressed)
-        {
-            _captureGauge += _captureGaugeGainPerPress;
-        }
-
-        // TODO: QTE 게이지 UI 업데이트
-
-        if (_captureGauge >= 1f)
-        {
-            EndCapture(true);
-        }
-    }
-
-    private void EndCapture(bool success)
-    {
-        Debug.Log($"EndCapture success={success}, targetFish={_targetFish}, proj={_currentProjectile}");
-        _isCapturing = false;
-
-        if (_targetFish != null)
-        {
-            if (success)
-            {
-                
-                _targetFish.transform.SetParent(_currentProjectile.transform, true);
-            }
-            else
-            {
-                _targetFish.transform.SetParent(null, true);
-                _targetFish.OnCaptureFailed();
-            }
-        }
-
-        if (_currentProjectile != null)
-        {
-            // 맞았든 실패했든, 이제는 플레이어 쪽으로 돌아오게 한다
-            _currentProjectile.BeginReturn();
-        }
-
-        _targetFish = null;
-        _captureGauge = 0f;
-        _captureTimer = 0f;
-
-        // QTE UI 끄기
+        _currentProjectile = projectile;
+        _hasHarpoonOut = true;
+        
+        _currentProjectile.AttachToFish(fish.Transform);
+        
+        _animator.SetTrigger("Struggle");
     }
     
+    /// <summary>
+    /// QTE 종료 시 HarpoonCaptureQTE에서 호출
+    /// </summary>
+    /// <param name="proj"></param>
+    /// <param name="fish"></param>
+    /// <param name="success"></param>
+    public void HandleCaptureResult(HarpoonProjectile proj, IFishCapturable fish, bool success)
+    {
+        
+        proj.DetachFromFish();
+        
+        if (success)
+        {
+            fish.OnCapture();
+            fish.Transform.SetParent(proj.transform, true);
+        }
+        else
+        {
+            fish.OnCaptureFailed();
+        }
+        
+        
+        proj.BeginReturn();
+        
+        _currentProjectile = null;
+        _hasHarpoonOut = false;
+        
+        _animator.SetTrigger("StruggleEnd");
+    }
+
     
     private void OnDisable()
     {
