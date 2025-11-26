@@ -341,8 +341,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _visualTransform: {fileID: 4738636427640038279}
   _moveController: {fileID: 8728734494323546626}
-  _maxTiltAngle: 30
+  _maxTiltAngle: 25
   _tiltLerpSpeed: 5
+  _wiggleSpeed: 6
+  _wiggleAmplitude: 2
   _animSpeedLerp: 10
   _flipDirThreshold: 0.25
   _minSpeedForFlip: 0.2
