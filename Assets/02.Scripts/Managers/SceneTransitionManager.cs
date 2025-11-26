@@ -13,10 +13,10 @@ public class SceneTransitionManager : MonoBehaviour
     [Header("Scene Names")]
     [SerializeField] private string shipSceneName = "Ship";
     [SerializeField] private string underwaterSceneName = "UnderWater";
+    [SerializeField] private string loadingSceneName = "Loading";  // 로딩 씬
 
     [Header("Transition Settings")]
     [SerializeField] private bool useLoadingScreen = true; // 로딩 화면 사용 여부
-    [SerializeField] private float minLoadingTime = 1f;   // 최소 로딩 시간
 
     private bool isTransitioning = false;
 
@@ -42,7 +42,7 @@ public class SceneTransitionManager : MonoBehaviour
     public void GoToUnderwater()
     {
         if (isTransitioning) return;
-        StartCoroutine(LoadSceneAndChangePhase(underwaterSceneName, DayPhase.Diving));
+        TransitionToScene(underwaterSceneName, DayPhase.Diving);
     }
 
     /// <summary>
@@ -51,44 +51,53 @@ public class SceneTransitionManager : MonoBehaviour
     public void GoToShip()
     {
         if (isTransitioning) return;
-        StartCoroutine(LoadSceneAndChangePhase(shipSceneName, DayPhase.Evening));
+        TransitionToScene(shipSceneName, DayPhase.Evening);
     }
 
     // ========== 내부 씬 로딩 ==========
 
-    // 씬 로드 + 페이즈 변경
-    private IEnumerator LoadSceneAndChangePhase(string sceneName, DayPhase targetPhase)
+    /// <summary>
+    /// 씬 전환 실행 (Loading Scene 사용 여부 결정)
+    /// </summary>
+    private void TransitionToScene(string targetScene, DayPhase targetPhase)
     {
         isTransitioning = true;
 
-        Debug.Log($"[SceneTransition] {sceneName} 씬으로 전환 시작");
+        if (useLoadingScreen)
+        {
+            // Loading Scene을 거쳐서 전환
+            LoadingManager.NextSceneName = targetScene;
+            LoadingManager.TargetPhase = targetPhase;
+
+            Debug.Log($"[SceneTransition] Loading Scene을 통해 {targetScene}으로 전환");
+            SceneManager.LoadScene(loadingSceneName);
+        }
+        else
+        {
+            // 직접 전환 (로딩 화면 없이)
+            Debug.Log($"[SceneTransition] {targetScene}으로 직접 전환");
+            StartCoroutine(LoadSceneDirectly(targetScene, targetPhase));
+        }
+        isTransitioning = false;
+    }
+
+    /// <summary>
+    /// 로딩 화면 없이 직접 씬 전환
+    /// </summary>
+    private IEnumerator LoadSceneDirectly(string sceneName, DayPhase targetPhase)
+    {
+        Debug.Log($"[SceneTransition] {sceneName} 씬 로딩 시작");
 
         // 비동기 로딩
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
 
-        if (useLoadingScreen)
-        {
-            // 로딩 화면 사용 시 최소 로딩 시간 적용
-            asyncLoad.allowSceneActivation = false;
-            float startTime = Time.time;
-
-            // 로딩 준비 완료까지 대기
-            while (asyncLoad.progress < 0.9f)
-            {
-                yield return null;
-            }
-
-            // 최소 로딩 시간까지 대기
-            while (Time.time - startTime < minLoadingTime)
-            {
-                yield return null;
-            }
-
-            asyncLoad.allowSceneActivation = true;
-        }
-
         // AsyncOperation이 완전히 끝날 때까지 대기
-        yield return asyncLoad.isDone;
+        yield return asyncLoad;
+
+        Debug.Log($"[SceneTransition] {sceneName} 씬 로드 완료");
+
+        // 1프레임 대기 (Awake 완료 보장)
+        yield return null;
 
         // 페이즈 변경
         if (DayManager.Instance != null)
@@ -102,5 +111,31 @@ public class SceneTransitionManager : MonoBehaviour
         }
 
         isTransitioning = false;
+    }
+
+    // ========== 유틸리티 ==========
+
+    /// <summary>
+    /// 현재 씬 이름 반환
+    /// </summary>
+    public string GetCurrentSceneName()
+    {
+        return SceneManager.GetActiveScene().name;
+    }
+
+    /// <summary>
+    /// 배 씬에 있는지 확인
+    /// </summary>
+    public bool IsOnShip()
+    {
+        return GetCurrentSceneName() == shipSceneName;
+    }
+
+    /// <summary>
+    /// 수중 씬에 있는지 확인
+    /// </summary>
+    public bool IsUnderwater()
+    {
+        return GetCurrentSceneName() == underwaterSceneName;
     }
 }
