@@ -3,18 +3,35 @@ using UnityEngine;
 
 public class DayUI : MonoBehaviour
 {
-    public int Day = 10;
-    
     [SerializeField]
     private TextMeshProUGUI _dayCountText;
+
     void Start()
     {
-        DayUpdate(Day);
+        // DayManager 이벤트 구독
+        if (DayManager.Instance != null)
+        {
+            DayManager.Instance.OnDayStart += DayUpdate;
+
+            // 초기 날짜 표시
+            DayUpdate(DayManager.Instance.CurrentDay);
+        }
     }
 
-    
+    void OnDestroy()
+    {
+        // 이벤트 구독 해제
+        if (DayManager.Instance != null)
+        {
+            DayManager.Instance.OnDayStart -= DayUpdate;
+        }
+    }
+
     public void DayUpdate(int day)
     {
-        _dayCountText.text = $"{day}";
+        if (_dayCountText != null)
+        {
+            _dayCountText.text = $"{day}";
+        }
     }
 }
