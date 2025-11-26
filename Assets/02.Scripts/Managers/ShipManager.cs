@@ -42,13 +42,31 @@ public class ShipManager : MonoBehaviour
 
     // ========== 배 상태 관리 ==========
 
-    // 배 상태 업데이트
-    public void UpdateShipStatus()
+    // 배 상태 확인 (아침)
+    public void CheckShipStatus()
+    {
+        Debug.Log($"[아침] 배 상태 확인 - 전체 상태: {ship.OverallCondition:F1}%");
+
+        if (ship.IsCritical)
+        {
+            Debug.LogWarning("⚠️ 경고: 배가 위험한 상태입니다!");
+        }
+
+        if (!ship.IsAbleToSail)
+        {
+            Debug.LogError("⚠️ 위험: 배가 항해 불가능 상태입니다!");
+        }
+
+        OnShipStatusChanged?.Invoke(ship);
+    }
+
+    // 배 일일 노화 처리 (밤)
+    public void ProcessDailyShipDeterioration()
     {
         ship.DailyDeterioration();
         OnShipStatusChanged?.Invoke(ship);
 
-        Debug.Log($"[Day] 배 노화 - 전체 상태: {ship.OverallCondition:F1}%");
+        Debug.Log($"[밤] 배 노화 - 전체 상태: {ship.OverallCondition:F1}%");
 
         if (ship.IsCritical)
         {
@@ -79,8 +97,8 @@ public class ShipManager : MonoBehaviour
     }
 
     // 자원 사용
-public bool UseResource(ResourceType type, int amount)
-{
+    public bool UseResource(ResourceType type, int amount)
+    {
         bool success = ship.ConsumeResource(type, amount);
 
         if (success)

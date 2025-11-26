@@ -31,10 +31,10 @@ public class ShipInventory
     {
         switch (type)
         {
-            case ResourceType.Fish:
+            case ResourceType.NormalFish:
                 Fish += amount;
                 break;
-            case ResourceType.Shellfish:
+            case ResourceType.SpecialFish:
                 Shellfish += amount;
                 break;
             case ResourceType.Seaweed:
@@ -67,8 +67,8 @@ public class ShipInventory
     {
         return type switch
         {
-            ResourceType.Fish => Fish,
-            ResourceType.Shellfish => Shellfish,
+            ResourceType.NormalFish => Fish,
+            ResourceType.SpecialFish => Shellfish,
             ResourceType.Seaweed => Seaweed,
             ResourceType.CleanWater => CleanWater,
             ResourceType.Herbs => Herbs,
