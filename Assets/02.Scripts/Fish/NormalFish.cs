@@ -19,6 +19,7 @@ public class NormalFish : FishBase
     private void Init()
     {
         _rigid = GetComponent<Rigidbody2D>();
+        diver = GameObject.FindGameObjectWithTag("Player").transform;
         
     }
 

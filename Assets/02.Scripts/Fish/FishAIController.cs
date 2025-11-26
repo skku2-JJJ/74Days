@@ -60,12 +60,12 @@ public class FishAIController : MonoBehaviour
             SwitchState();
         }
 
-        // 플레이어 회피
+        /*// 플레이어 회피
         if (_diver != null && TryGetFleeDir(out Vector2 fleeDir))
         {
             _move.DesiredDir = ApplyObstacleAvoidance(fleeDir);
             return;
-        }
+        }*/
         
         Vector2 dir = Vector2.zero;
 
@@ -86,6 +86,7 @@ public class FishAIController : MonoBehaviour
     private void Init()
     {
         _move = GetComponent<FishMoveController>();
+        _diver = GameObject.FindGameObjectWithTag("Player").transform;
         
         // 초기 방향 설정
         float angle = Random.Range(0, FullAngle);
