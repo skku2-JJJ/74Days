@@ -1,6 +1,10 @@
 using Unity.Cinemachine;
 using UnityEngine;
 
+/// <summary>
+/// 조준 시 조준 방향으로 카메라 프레이밍
+/// </summary>
+[RequireComponent(typeof(CinemachineCamera))]
 public class HarpoonAimCameraFraming : MonoBehaviour
 {
     [Header("참조")]
@@ -12,7 +16,7 @@ public class HarpoonAimCameraFraming : MonoBehaviour
     [Tooltip("카메라가 플레이어에서 최대 얼마나 떨어져서 프레이밍 될지(월드 단위)")]
     [SerializeField] private float _maxOffsetDistance = 2.5f;
 
-    [Tooltip("오프셋 변경 부드러움 (값이 작을수록 더 빠르게 따라감)")]
+    [Tooltip("오프셋 변경 smooth")]
     [SerializeField] private float _smoothTime = 0.15f;
     
     
@@ -36,6 +40,14 @@ public class HarpoonAimCameraFraming : MonoBehaviour
         _composer = _cinemachineCamera.GetComponent<CinemachinePositionComposer>();
         
         _camera = Camera.main;
+        
+        if (_shooter == null)
+        {
+            Debug.LogError("HarpoonShooter가 할당되지 않았습니다!", this);
+            enabled = false;
+            return;
+        }
+        _diverTransform = _shooter.transform;
         _diverTransform = _shooter.transform;
         
         _baseOffset = _composer.TargetOffset;
@@ -50,26 +62,27 @@ public class HarpoonAimCameraFraming : MonoBehaviour
     {
         Vector3 desiredOffset = _baseOffset;
 
-        bool useAimFraming =  _shooter.IsAiming;
+        bool useAimFraming =
+            _shooter.IsAiming &&
+            !_shooter.HasHarpoonOut &&
+            !_shooter.IsCapturing;   // QTE 중엔 false
 
         if (useAimFraming)
         {
-            Vector3 mouseScreen = Input.mousePosition;
-            Vector3 mouseWorld = _camera.ScreenToWorldPoint(mouseScreen);
-            mouseWorld.z = 0f;
-            
-            Vector3 toMouse = mouseWorld - _diverTransform.position;
-            toMouse.z = 0f;
+            // 여기서만 aim 방향으로 카메라를 앞쪽으로 빼주는 계산
+            // (기존 코드 그대로)
+            Vector2 mouseWorld = _camera.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 aimDir = (mouseWorld - (Vector2)_diverTransform.position).normalized;
 
-            if (toMouse.sqrMagnitude > DirectionEpsilonSq)
-            {
-                Vector3 dir = toMouse.normalized;
-                Vector3 aimOffset = dir * _maxOffsetDistance;
-
-                desiredOffset = _baseOffset + aimOffset;
-            }
+            Vector3 aimOffset = (Vector3)aimDir * _maxOffsetDistance;
+            desiredOffset = _baseOffset + aimOffset;
         }
-        
+        else
+        {
+            // 조준 중이 아니면 그냥 _baseOffset으로 천천히 복귀
+            desiredOffset = _baseOffset;
+        }
+
         _currentOffset = Vector3.SmoothDamp(
             _currentOffset,
             desiredOffset,
