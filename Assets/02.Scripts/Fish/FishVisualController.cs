@@ -17,6 +17,10 @@ public class FishVisualController : MonoBehaviour
     [Header("애니메이터")]
     [SerializeField] private float _animSpeedLerp = 10f;
 
+    
+    [SerializeField] private float _flipDirThreshold = 0.25f;   // 이 정도는 넘어야 방향 인정
+    [SerializeField] private float _minSpeedForFlip = 0.2f;     // 거의 안 움직이면 flip 안 함
+    
     private SpriteRenderer _sprite;
     private Animator _anim;
 
@@ -31,7 +35,7 @@ public class FishVisualController : MonoBehaviour
     {
         Vector2 vel = _moveController.CurrentVelocity;
 
-        TransitAnimation(vel);
+        //TransitAnimation(vel);
         HandleFlipX(vel);
         UpdateTilt(vel);
     }
@@ -52,16 +56,20 @@ public class FishVisualController : MonoBehaviour
     }
     private void HandleFlipX(Vector2 currentVelocity)
     {
-        // 2) 좌/우 방향 결정
-        if (Mathf.Abs(currentVelocity.x) > 0.05f)
-        {
-            bool right = currentVelocity.x > 0f;
-            if (right != _isRightForward)
-            {
-                _isRightForward = right;
-                _sprite.flipX = !_isRightForward;
-            }
-        }
+        if (currentVelocity.magnitude < _minSpeedForFlip) return;
+        
+        Vector2 desired = _moveController.DesiredDir;  
+        if (desired.sqrMagnitude < 0.0001f) return;
+        
+        float x = desired.x;
+        if (Mathf.Abs(x) < _flipDirThreshold) return; // 너무 정면(거의 수직)일 땐 방향 바꾸지 않음
+            
+
+        bool right = x > 0f;
+        if (right == _isRightForward) return;
+        
+        _isRightForward = right;
+        _sprite.flipX = !_isRightForward;
     }
 
     private void UpdateTilt(Vector2 currentVelocity)
@@ -70,22 +78,23 @@ public class FishVisualController : MonoBehaviour
         float targetAngle = 0f;
         if (currentVelocity.sqrMagnitude > 0.001f)
         {
+            
             // 화면 상에서의 이동 방향
             float angle = Mathf.Atan2(currentVelocity.y, currentVelocity.x) * Mathf.Rad2Deg;
 
             // flipX 보정해서, 항상 "머리 방향" 기준으로 기울도록
             if (!_isRightForward)
                 angle = 180f - angle;
-
-            // 살짝만 회전
+            
             targetAngle = Mathf.Clamp(angle, -_maxTiltAngle, _maxTiltAngle);
         }
 
+        SetVisualTilt(targetAngle);
+    }
+    
+    private void SetVisualTilt(float targetAngle)
+    {
         Quaternion targetRot = Quaternion.Euler(0f, 0f, targetAngle);
-        _visualTransform.localRotation = Quaternion.Slerp(
-            _visualTransform.localRotation,
-            targetRot,
-            _tiltLerpSpeed * Time.deltaTime
-        );
+        _visualTransform.localRotation = Quaternion.Slerp(_visualTransform.localRotation, targetRot, _tiltLerpSpeed * Time.deltaTime);
     }
 }

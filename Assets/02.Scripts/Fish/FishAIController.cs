@@ -60,12 +60,12 @@ public class FishAIController : MonoBehaviour
             SwitchState();
         }
 
-        // 1. 플레이어 회피가 최우선
+        /*// 1. 플레이어 회피가 최우선
         if (_diver != null && TryGetFleeDir(out Vector2 fleeDir))
         {
             _move.DesiredDir = ApplyObstacleAvoidance(fleeDir);
             return;
-        }
+        }*/
 
         // 2. 그 외엔 상태에 따라
         Vector2 dir = Vector2.zero;
