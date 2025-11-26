@@ -20,7 +20,6 @@ public class SyncOrthoWithMain : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (!Application.isPlaying) return;
         if (_cmCamera == null || _mainCam == null) return;
         if (!_mainCam.orthographic) return;
         

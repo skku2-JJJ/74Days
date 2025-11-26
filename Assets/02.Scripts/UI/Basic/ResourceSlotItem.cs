@@ -95,8 +95,8 @@ public class ResourceSlotItem : MonoBehaviour
     {
         return type switch
         {
-            ResourceType.Fish => _fishIconUI,
-            ResourceType.Shellfish => _shellfishIconUI,
+            ResourceType.NormalFish => _fishIconUI,
+            ResourceType.SpecialFish => _shellfishIconUI,
             ResourceType.Seaweed => _seaweedIconUI,
             ResourceType.CleanWater => _waterIconUI,
             ResourceType.Herbs => _herbsIconUI,

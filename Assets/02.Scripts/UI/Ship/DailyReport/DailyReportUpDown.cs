@@ -9,10 +9,12 @@ public class DailyReportUpDown : MonoBehaviour
     [SerializeField]
     private RectTransform _crewsUI;
 
-    private bool _isInside = false;
-
     private Vector2 _openPos = new Vector2(0, 0);
     private Vector2 _closePos = new Vector2(0, -1200);
+
+    // UI 열림/닫힘 상태
+    private bool _isOpen = false;
+    public bool IsOpen => _isOpen;
 
 
 
@@ -29,7 +31,10 @@ public class DailyReportUpDown : MonoBehaviour
 
     public void Open()
     {
-        _crewsUI.DOAnchorPos(_closePos, 0.5f).SetEase(Ease.InSine).OnComplete(() =>
+        if (_isOpen) return; // 이미 열려있으면 무시
+
+        _isOpen = true;
+        _crewsUI.DOAnchorPos(_closePos, 0.3f).SetEase(Ease.InSine).OnComplete(() =>
         {
             _reoportUI.DOAnchorPos(_openPos, 0.5f).SetEase(Ease.OutBack);
         });
@@ -37,12 +42,14 @@ public class DailyReportUpDown : MonoBehaviour
 
     public void Close()
     {
+        if (!_isOpen) return; // 이미 닫혀있으면 무시
 
+        _isOpen = false;
         _reoportUI.DOAnchorPos(_closePos, 0.5f).SetEase(Ease.InBack).OnComplete(() =>
         {
-            _crewsUI.DOAnchorPos(_openPos, 0.2f).SetEase(Ease.OutSine);
+            _crewsUI.DOAnchorPos(_openPos, 0.3f).SetEase(Ease.OutSine);
         });
-            
+
     }
 
     

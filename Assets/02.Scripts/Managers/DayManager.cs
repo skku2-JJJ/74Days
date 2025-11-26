@@ -71,6 +71,47 @@ using System;
           }
       }
 
+      // ========== 페이즈 전환 함수 ==========
+
+      // Morning → Diving
+      public void GoToDiving()
+      {
+          if (currentPhase != DayPhase.Morning)
+          {
+              Debug.LogWarning($"[페이즈 전환 실패] Morning 페이즈에서만 Diving으로 갈 수 있습니다! (현재: {currentPhase})");
+              return;
+          }
+
+          ChangePhase(DayPhase.Diving);
+          Debug.Log("[페이즈 전환] Morning → Diving");
+      }
+
+      // Diving → Evening
+      public void GoToEvening()
+      {
+          if (currentPhase != DayPhase.Diving)
+          {
+              Debug.LogWarning($"[페이즈 전환 실패] Diving 페이즈에서만 Evening으로 갈 수 있습니다! (현재: {currentPhase})");
+              return;
+          }
+
+          ChangePhase(DayPhase.Evening);
+          Debug.Log("[페이즈 전환] Diving → Evening");
+      }
+
+      // Evening → Night
+      public void GoToNight()
+      {
+          if (currentPhase != DayPhase.Evening)
+          {
+              Debug.LogWarning($"[페이즈 전환 실패] Evening 페이즈에서만 Night로 갈 수 있습니다! (현재: {currentPhase})");
+              return;
+          }
+
+          ChangePhase(DayPhase.Night);
+          Debug.Log("[페이즈 전환] Evening → Night");
+      }
+
       // 하루 종료
       public void EndDay()
       {
@@ -89,8 +130,8 @@ using System;
 
       private void HandleMorningPhase()
       {
-          // 아침: 배/선원 상태 확인
-          ShipManager.Instance?.UpdateShipStatus();
+          // 아침: 배/선원 상태 확인 (노화 처리 X)
+          ShipManager.Instance?.CheckShipStatus();
           CrewManager.Instance?.UpdateCrewNeeds();
       }
 
@@ -108,7 +149,8 @@ using System;
 
       private void HandleNightPhase()
       {
-          // 밤: 선원 요구사항 체크 및 하루 마무리
+          // 밤: 배/선원 일일 노화 처리 및 하루 마무리
+          ShipManager.Instance?.ProcessDailyShipDeterioration();
           CrewManager.Instance?.ProcessDailyNeeds();
           EndDay();
       }
