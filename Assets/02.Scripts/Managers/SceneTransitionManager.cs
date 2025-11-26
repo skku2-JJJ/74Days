@@ -15,7 +15,7 @@ public class SceneTransitionManager : MonoBehaviour
     [SerializeField] private string underwaterSceneName = "UnderWater";
 
     [Header("Transition Settings")]
-    [SerializeField] private bool useLoadingScreen = false; // 로딩 화면 사용 여부
+    [SerializeField] private bool useLoadingScreen = true; // 로딩 화면 사용 여부
     [SerializeField] private float minLoadingTime = 1f;   // 최소 로딩 시간
 
     private bool isTransitioning = false;
@@ -42,15 +42,7 @@ public class SceneTransitionManager : MonoBehaviour
     public void GoToUnderwater()
     {
         if (isTransitioning) return;
-
-        // 페이즈 변경: Morning → Diving
-        if (DayManager.Instance != null)
-        {
-            DayManager.Instance.GoToDiving();
-        }
-
-        // 씬 로드
-        LoadScene(underwaterSceneName);
+        StartCoroutine(LoadSceneAndChangePhase(underwaterSceneName, DayPhase.Diving));
     }
 
     /// <summary>
@@ -59,85 +51,56 @@ public class SceneTransitionManager : MonoBehaviour
     public void GoToShip()
     {
         if (isTransitioning) return;
-
-        // 페이즈 변경: Diving → Evening
-        if (DayManager.Instance != null)
-        {
-            DayManager.Instance.GoToEvening();
-        }
-
-        // 씬 로드
-        LoadScene(shipSceneName);
+        StartCoroutine(LoadSceneAndChangePhase(shipSceneName, DayPhase.Evening));
     }
 
     // ========== 내부 씬 로딩 ==========
 
-    private void LoadScene(string sceneName)
-    {
-        if (useLoadingScreen)
-        {
-            StartCoroutine(LoadSceneAsync(sceneName));
-        }
-        else
-        {
-            SceneManager.LoadScene(sceneName);
-        }
-    }
-
-    private IEnumerator LoadSceneAsync(string sceneName)
+    // 씬 로드 + 페이즈 변경
+    private IEnumerator LoadSceneAndChangePhase(string sceneName, DayPhase targetPhase)
     {
         isTransitioning = true;
 
-        Debug.Log($"[SceneTransition] {sceneName} 로딩 시작");
+        Debug.Log($"[SceneTransition] {sceneName} 씬으로 전환 시작");
 
-        // 비동기 씬 로드 시작
+        // 비동기 로딩
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
-        asyncLoad.allowSceneActivation = false;
 
-        float startTime = Time.time;
-
-        // 로딩 진행
-        while (!asyncLoad.isDone)
+        if (useLoadingScreen)
         {
-            float progress = Mathf.Clamp01(asyncLoad.progress / 0.9f);
-            Debug.Log($"[SceneTransition] 로딩 진행률: {progress * 100}%");
+            // 로딩 화면 사용 시 최소 로딩 시간 적용
+            asyncLoad.allowSceneActivation = false;
+            float startTime = Time.time;
 
-            // 로딩 완료 + 최소 시간 경과 시 씬 활성화
-            if (asyncLoad.progress >= 0.9f && Time.time - startTime >= minLoadingTime)
+            // 로딩 준비 완료까지 대기
+            while (asyncLoad.progress < 0.9f)
             {
-                asyncLoad.allowSceneActivation = true;
+                yield return null;
             }
 
-            yield return null;
+            // 최소 로딩 시간까지 대기
+            while (Time.time - startTime < minLoadingTime)
+            {
+                yield return null;
+            }
+
+            asyncLoad.allowSceneActivation = true;
+        }
+
+        // AsyncOperation이 완전히 끝날 때까지 대기
+        yield return asyncLoad.isDone;
+
+        // 페이즈 변경
+        if (DayManager.Instance != null)
+        {
+            DayManager.Instance.ChangePhase(targetPhase);
+            Debug.Log($"[SceneTransition] 페이즈 변경 완료: {targetPhase}");
+        }
+        else
+        {
+            Debug.LogError("[SceneTransition] DayManager.Instance가 null입니다!");
         }
 
         isTransitioning = false;
-        Debug.Log($"[SceneTransition] {sceneName} 로딩 완료");
-    }
-
-    // ========== 유틸리티 ==========
-
-    /// <summary>
-    /// 현재 씬 이름 반환
-    /// </summary>
-    public string GetCurrentSceneName()
-    {
-        return SceneManager.GetActiveScene().name;
-    }
-
-    /// <summary>
-    /// 배 씬에 있는지 확인
-    /// </summary>
-    public bool IsOnShip()
-    {
-        return GetCurrentSceneName() == shipSceneName;
-    }
-
-    /// <summary>
-    /// 수중 씬에 있는지 확인
-    /// </summary>
-    public bool IsUnderwater()
-    {
-        return GetCurrentSceneName() == underwaterSceneName;
     }
 }

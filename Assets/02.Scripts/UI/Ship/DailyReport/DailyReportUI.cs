@@ -35,10 +35,13 @@ public class DailyReportUI : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            Debug.Log("[DailyReportUI] Instance 생성됨");
         }
         else
         {
             Destroy(gameObject);
+            Debug.LogWarning("[DailyReportUI] 중복 인스턴스 제거됨");
+            return;
         }
 
         // DayManager 이벤트 구독
@@ -46,7 +49,17 @@ public class DailyReportUI : MonoBehaviour
         {
             DayManager.Instance.OnDayStart += OnDayStart;
             DayManager.Instance.OnPhaseChange += OnPhaseChanged;
+            Debug.Log("[DailyReportUI] DayManager 이벤트 구독 완료");
         }
+        else
+        {
+            Debug.LogError("[DailyReportUI] DayManager.Instance가 null입니다!");
+        }
+    }
+
+    void Start()
+    {
+        Debug.Log($"[DailyReportUI] Start() 호출 - 현재 Phase: {DayManager.Instance?.CurrentPhase}");
     }
 
     void OnDestroy()
@@ -68,10 +81,21 @@ public class DailyReportUI : MonoBehaviour
         Debug.Log("[Daily Report] Day 시작 - 데이터 업데이트 완료");
     }
 
-    // 페이즈 변경 시 호출 - 필요 시 사용
+    // 페이즈 변경 시 호출
     private void OnPhaseChanged(DayPhase phase)
     {
-        
+        Debug.Log($"[DailyReportUI] OnPhaseChanged 호출됨 - Phase: {phase}");
+
+        // Morning과 Evening에 UI 갱신 (씬 전환 후 데이터 로드)
+        if (phase == DayPhase.Morning || phase == DayPhase.Evening)
+        {
+            UpdateAllInfo();
+            Debug.Log($"[Daily Report] {phase} 페이즈 - 데이터 업데이트");
+        }
+        else
+        {
+            Debug.Log($"[DailyReportUI] {phase} 페이즈는 업데이트 안함");
+        }
     }
 
     // ========== 정보 갱신 ==========
@@ -165,20 +189,7 @@ public class DailyReportUI : MonoBehaviour
             return CrewDialogues.GetRandomDialogue(crew);
         }
 
-        // 없으면 기본 멘트
-        switch (crew.Status)
-        {
-            case CrewStatus.Healthy:
-                return "배고프고, 목마르고, 춥지만...\n이제 잘만 견디어 보이야...";
-            case CrewStatus.Poor:
-                return "배고프고, 목마르고, 춥지만...\n버틸 수 있어...!";
-            case CrewStatus.Critical:
-                return "너무... 힘들어...\n이대로는 안 돼...";
-            case CrewStatus.Dead:
-                return "...";
-            default:
-                return "";
-        }
+        return "";
     }
 
     // ========== 공개 메서드 ==========
