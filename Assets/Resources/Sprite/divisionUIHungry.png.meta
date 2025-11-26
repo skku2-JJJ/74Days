@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: f5342b9c654772f469be2203294e88d9
+guid: 6039ea8e882cce146b835ca4b3e6eddc
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -819869952576846230
-    second: divisionUIBack_0
+      213: -2823871764189185050
+    second: divisionUIHungry_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: divisionUIBack_0
+      name: divisionUIHungry_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1487
-        height: 963
+        width: 43
+        height: 46
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a6604aa3f9c3f94f0800000000000000
-      internalID: -819869952576846230
+      spriteID: 6eb7f3c87979fc8d0800000000000000
+      internalID: -2823871764189185050
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      divisionUIBack_0: -819869952576846230
+      divisionUIHungry_0: -2823871764189185050
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
