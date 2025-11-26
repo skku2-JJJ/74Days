@@ -13,19 +13,27 @@ public class DayNightAnimationController : MonoBehaviour
     [SerializeField] private string _isDayTrigger = "Day";
     [SerializeField] private string _isEveningTrigger = "Night";
 
-    void Start()
+    void Awake()
     {
         // DayManager 이벤트 구독
         if (DayManager.Instance != null)
         {
             DayManager.Instance.OnPhaseChange += OnPhaseChanged;
-
-            // 초기 페이즈 설정
-            OnPhaseChanged(DayManager.Instance.CurrentPhase);
+            Debug.Log("[DayNightAnimationController] DayManager 이벤트 구독 완료");
         }
         else
         {
             Debug.LogError("[DayNightAnimationController] DayManager.Instance를 찾을 수 없습니다!");
+        }
+    }
+
+    void Start()
+    {
+        // 초기 페이즈 설정
+        if (DayManager.Instance != null)
+        {
+            OnPhaseChanged(DayManager.Instance.CurrentPhase);
+            Debug.Log($"[DayNightAnimationController] Start() - 현재 Phase: {DayManager.Instance.CurrentPhase}");
         }
     }
 
@@ -49,14 +57,12 @@ public class DayNightAnimationController : MonoBehaviour
         switch (phase)
         {
             case DayPhase.Morning:
-            case DayPhase.Diving:
                 // 낮 애니메이션
                 SetDayAnimation();
                 Debug.Log($"[DayNightAnimationController] {phase} - 낮 애니메이션 실행");
                 break;
 
             case DayPhase.Evening:
-            case DayPhase.Night:
                 // 밤 애니메이션
                 SetNightAnimation();
                 Debug.Log($"[DayNightAnimationController] {phase} - 밤 애니메이션 실행");
