@@ -3636,7 +3636,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -855298285791758126, guid: a66e23b41889a2641b5ae4a4b526a93e, type: 3}
+  m_Sprite: {fileID: -855298285791758126, guid: f4fcbabb8d652a04f8f02d03b7fb7dc2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8394,6 +8394,7 @@ Transform:
   - {fileID: 2140457965}
   - {fileID: 1715375454}
   - {fileID: 379028129}
+  - {fileID: 1203476950}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1055325581
@@ -8885,6 +8886,84 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1203476949
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1203476950}
+  - component: {fileID: 1203476951}
+  m_Layer: 0
+  m_Name: StairBoundary
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1203476950
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1203476949}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.57, y: -5.17, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1053925841}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1203476951
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1203476949}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -0.0602805, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1.7434605, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1226722462
 GameObject:
   m_ObjectHideFlags: 0
@@ -12975,7 +13054,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 100
+  m_text: 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3d09d866d743f4148a21eb351021b038, type: 2}
   m_sharedMaterial: {fileID: -4012368629188065191, guid: 3d09d866d743f4148a21eb351021b038, type: 2}
@@ -17058,9 +17137,17 @@ PrefabInstance:
       propertyPath: m_MaxValue
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5737832968857556812, guid: aee864c33ef40c34db48cf763b6920b6, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5745914620548684670, guid: aee864c33ef40c34db48cf763b6920b6, type: 3}
       propertyPath: m_MaxValue
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5745914620548684670, guid: aee864c33ef40c34db48cf763b6920b6, type: 3}
+      propertyPath: m_Interactable
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6057374196521522573, guid: aee864c33ef40c34db48cf763b6920b6, type: 3}
       propertyPath: m_text
@@ -17069,6 +17156,10 @@ PrefabInstance:
     - target: {fileID: 6484294190312775477, guid: aee864c33ef40c34db48cf763b6920b6, type: 3}
       propertyPath: m_MaxValue
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6484294190312775477, guid: aee864c33ef40c34db48cf763b6920b6, type: 3}
+      propertyPath: m_Interactable
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7539562749860323721, guid: aee864c33ef40c34db48cf763b6920b6, type: 3}
       propertyPath: m_Pivot.x
@@ -17352,6 +17443,10 @@ PrefabInstance:
       propertyPath: m_MaxValue
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4491018935079123713, guid: 481d580fae585ff42b010c4ebb3b94c3, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5088833570726588776, guid: 481d580fae585ff42b010c4ebb3b94c3, type: 3}
       propertyPath: m_Name
       value: CrewReportJW
@@ -17440,6 +17535,10 @@ PrefabInstance:
       propertyPath: m_MaxValue
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5279035474915877499, guid: 481d580fae585ff42b010c4ebb3b94c3, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5842878245732454795, guid: 481d580fae585ff42b010c4ebb3b94c3, type: 3}
       propertyPath: m_text
       value: "\uD3EC\uB9CC\uAC10 : "
@@ -17472,6 +17571,10 @@ PrefabInstance:
       propertyPath: m_MaxValue
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7986861407968695241, guid: 481d580fae585ff42b010c4ebb3b94c3, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8554474621376583090, guid: 481d580fae585ff42b010c4ebb3b94c3, type: 3}
       propertyPath: m_text
       value: "\uCCB4\uC628 : "
@@ -17500,6 +17603,10 @@ PrefabInstance:
     - target: {fileID: 1976855436666132609, guid: 50ad643773507d54c90abc16a583e6bc, type: 3}
       propertyPath: m_MaxValue
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1976855436666132609, guid: 50ad643773507d54c90abc16a583e6bc, type: 3}
+      propertyPath: m_Interactable
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2182443949064116749, guid: 50ad643773507d54c90abc16a583e6bc, type: 3}
       propertyPath: m_text
@@ -17532,6 +17639,10 @@ PrefabInstance:
     - target: {fileID: 5567819077409804942, guid: 50ad643773507d54c90abc16a583e6bc, type: 3}
       propertyPath: m_MaxValue
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5567819077409804942, guid: 50ad643773507d54c90abc16a583e6bc, type: 3}
+      propertyPath: m_Interactable
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5723803831523254179, guid: 50ad643773507d54c90abc16a583e6bc, type: 3}
       propertyPath: m_AnchorMax.x
@@ -17632,6 +17743,10 @@ PrefabInstance:
     - target: {fileID: 8105457901256607798, guid: 50ad643773507d54c90abc16a583e6bc, type: 3}
       propertyPath: m_MaxValue
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8105457901256607798, guid: 50ad643773507d54c90abc16a583e6bc, type: 3}
+      propertyPath: m_Interactable
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8119781543871959136, guid: 50ad643773507d54c90abc16a583e6bc, type: 3}
       propertyPath: _hpSlider
