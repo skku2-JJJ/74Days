@@ -1,9 +1,10 @@
 using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class NormalFish : FishBase
 {
-    
+    private const float RandomVecFactor = 0.2f;
     private void Awake()
     {
        Init();
@@ -50,7 +51,9 @@ public class NormalFish : FishBase
         Vector2 dir = Vector2.zero;
         if (capturedDiver != null)
         {
-            dir = ((Vector2)transform.position - (Vector2)capturedDiver.position).normalized;
+            Vector2 inverseVec = ((Vector2)transform.position - (Vector2)capturedDiver.position).normalized;
+            Vector3 randomVec = Random.insideUnitCircle * RandomVecFactor;
+            dir =(inverseVec +  (Vector2)randomVec).normalized;
         }
         else
         {
