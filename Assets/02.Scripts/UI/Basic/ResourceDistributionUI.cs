@@ -197,8 +197,8 @@ public class ResourceDistributionUI : MonoBehaviour
         }
 
         // 각 자원 타입별로 슬롯 생성
-        CreateResourceSlot(ResourceType.Fish, "생선");
-        CreateResourceSlot(ResourceType.Shellfish, "조개");
+        CreateResourceSlot(ResourceType.NormalFish, "생선");
+        CreateResourceSlot(ResourceType.SpecialFish, "조개");
         CreateResourceSlot(ResourceType.Seaweed, "해초");
         CreateResourceSlot(ResourceType.CleanWater, "물");
         CreateResourceSlot(ResourceType.Herbs, "약초");

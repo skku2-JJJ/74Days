@@ -142,7 +142,7 @@ public class CrewManager : MonoBehaviour
     // 자원이 식량(Hunger) 카테고리인지 확인
     private bool IsHungerResource(ResourceType type)
     {
-        return type == ResourceType.Fish || type == ResourceType.Shellfish || type == ResourceType.Seaweed;
+        return type == ResourceType.NormalFish || type == ResourceType.SpecialFish || type == ResourceType.Seaweed;
     }
 
     // ========== 일일 처리 ==========
