@@ -42,7 +42,6 @@ public class CrewManager : MonoBehaviour
     void Start()
     {
         // 테스트용 초기 선원 생성
-        InitializeDefaultCrew();
         PrintAllCrewStatus();
     }
 
@@ -210,17 +209,7 @@ public class CrewManager : MonoBehaviour
             Debug.Log(crew.GetStatusSummary());
         }
     }
-
-    // 테스트 용 초기 생성 코드
-    private void InitializeDefaultCrew()
-    {
-        // 기본 선원 3명 생성
-        AddCrew(new CrewMember("선원1", 1));
-        AddCrew(new CrewMember("선원2", 2));
-        AddCrew(new CrewMember("선원3", 3));
-
-        Debug.Log($"[초기화] 기본 선원 {TotalCrew}명 생성 완료");
-    }
+    
 
     // 선원 요약 정보
     public string GetCrewSummary()
