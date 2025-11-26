@@ -3,10 +3,26 @@
 [RequireComponent(typeof(FishMoveController))]
 public class FishAIController : MonoBehaviour
 {
-    [Header("Wander 설정")]
-    [SerializeField] private float _wanderChangeInterval = 2.5f;
-    [SerializeField] private float _wanderJitter = 15f; 
+    private enum State
+    {
+        Idle,
+        Wander
+    }
 
+    
+    [Header("Wander 설정")]
+    private float _wanderChangeInterval = 1.0f;
+    private float _wanderJitter = 70f; 
+    
+    [Header("Idle 설정")]
+    [SerializeField] private float _idleMinDuration = 1.0f;
+    [SerializeField] private float _idleMaxDuration = 3.0f;
+    [SerializeField] private float _idleChanceAfterWander = 0.4f;
+
+    private State _state = State.Wander;
+    private float _stateTimer;
+    private float _stateDuration;
+    
     [Header("장애물 회피")]
     [SerializeField] private LayerMask _obstacleMask;
     [SerializeField] private float _rayDistance = 1.2f;
@@ -28,6 +44,7 @@ public class FishAIController : MonoBehaviour
     private void Awake()
     {
         Init();
+        EnterWander();
     }
     
 
@@ -36,9 +53,34 @@ public class FishAIController : MonoBehaviour
         if (_move.IsMovementLocked)  return;
            
 
-        Vector2 dir = GetBaseDirection();         // Wander + Flee
-        dir = ApplyObstacleAvoidance(dir);        // 장애물 회피
+        _stateTimer += Time.deltaTime;
 
+        if (_stateTimer >= _stateDuration)
+        {
+            SwitchState();
+        }
+
+        // 1. 플레이어 회피가 최우선
+        if (_diver != null && TryGetFleeDir(out Vector2 fleeDir))
+        {
+            _move.DesiredDir = ApplyObstacleAvoidance(fleeDir);
+            return;
+        }
+
+        // 2. 그 외엔 상태에 따라
+        Vector2 dir = Vector2.zero;
+
+        switch (_state)
+        {
+            case State.Idle:
+                dir = Vector2.zero; // 사실상 정지
+                break;
+            case State.Wander:
+                dir = GetWanderDirection();    // 아래에 수정한 버전
+                break;
+        }
+
+        dir = ApplyObstacleAvoidance(dir);
         _move.DesiredDir = dir;
     }
 
@@ -50,71 +92,88 @@ public class FishAIController : MonoBehaviour
         float angle = Random.Range(0, FullAngle);
         _wanderDir = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad));
     }
-    private Vector2 GetBaseDirection()
+    
+    private void SwitchState()
+    {
+        _stateTimer = 0f;
+
+        if (_state == State.Wander)
+        {
+            // Wander가 끝났을 때 일정 확률로 Idle 진입
+            if (Random.value < _idleChanceAfterWander)
+                EnterIdle();
+            else
+                EnterWander();
+        }
+        else // Idle -> Wander
+        {
+            EnterWander();
+        }
+    }
+
+    private void EnterIdle()
+    {
+        _state = State.Idle;
+        _stateDuration = Random.Range(_idleMinDuration, _idleMaxDuration);
+        _wanderTimer = 0f; // 다음 wander 때 새로 방향 정하게
+    }
+
+    private void EnterWander()
+    {
+        _state = State.Wander;
+        _stateDuration = Random.Range(2.0f, 4.0f);
+        _wanderTimer = 0f;
+    }
+   
+    private Vector2 GetWanderDirection()
     {
         _wanderTimer += Time.deltaTime;
         if (_wanderTimer >= _wanderChangeInterval)
         {
             _wanderTimer = 0f;
+            _wanderChangeInterval = Random.Range(0.8f, 1.4f);
 
             float jitter = Random.Range(-_wanderJitter, _wanderJitter);
-            float rad = jitter * Mathf.Deg2Rad;
-
-            Vector2 rotated = new Vector2(
-                _wanderDir.x * Mathf.Cos(rad) - _wanderDir.y * Mathf.Sin(rad),
-                _wanderDir.x * Mathf.Sin(rad) + _wanderDir.y * Mathf.Cos(rad)
-            );
-            _wanderDir = rotated.normalized;
+            _wanderDir = (Quaternion.Euler(0, 0, jitter) * _wanderDir).normalized;
         }
 
-        Vector2 result = _wanderDir;
-        
-        if (_diver != null)
-        {
-            Vector2 toDiver = _diver.position - transform.position;
-            float dist = toDiver.magnitude;
-            
-            // 일정 거리 이내 플레이어 있다면 반대 방향으로
-            if (dist < _fleeRadius)
-            {
-                Vector2 fleeDir = -toDiver.normalized;
-                float weight = Mathf.Clamp01(1f - dist / _fleeRadius); // 가까울수록 강하게
-                result = (result + fleeDir * _fleeStrength * weight).normalized;
-            }
-        }
+        return _wanderDir;
+    }
 
-        return result;
+    private bool TryGetFleeDir(out Vector2 fleeDir)
+    {
+        fleeDir = Vector2.zero;
+
+        Vector2 toDiver = _diver.position - transform.position;
+        float dist = toDiver.magnitude;
+        if (dist >= _fleeRadius) return false;
+
+        fleeDir = -toDiver.normalized;
+        return true;
     }
 
     private Vector2 ApplyObstacleAvoidance(Vector2 desired)
     {
-        if (desired.sqrMagnitude < EpsilonNum)  return desired;
-           
-
         Vector2 origin = transform.position;
         Vector2 forward = desired.normalized;
 
-        bool hitFront = Physics2D.Raycast(origin, forward, _rayDistance, _obstacleMask);
-        if (!hitFront) return desired;
-            
+        // 탐색할 방향들 (왼45, 오른45, 왼90, 오90)
+        float[] angles = { 0f, 45f, -45f, 90f, -90f };
 
-        // 왼쪽, 오른쪽 후보 중 더 여유 있는 쪽으로 회피
-        Vector2 leftDir = Quaternion.Euler(0, 0, _sideRayAngle) * forward;
-        Vector2 rightDir = Quaternion.Euler(0, 0, -_sideRayAngle) * forward;
-
-        bool hitLeft = Physics2D.Raycast(origin, leftDir, _rayDistance, _obstacleMask);
-        bool hitRight = Physics2D.Raycast(origin, rightDir, _rayDistance, _obstacleMask);
-
-        if (!hitLeft && hitRight) return leftDir;
-        if (!hitRight && hitLeft) return rightDir;
-        if (!hitLeft && !hitRight)
+        foreach (float ang in angles)
         {
-            // 둘 다 비면 랜덤
-            return (Random.value < HalfRatio ? leftDir : rightDir);
+            Vector2 dir = Quaternion.Euler(0, 0, ang) * forward;
+
+            bool hit = Physics2D.Raycast(origin, dir, _rayDistance, _obstacleMask);
+            if (!hit)
+            {
+                // 열린 방향을 찾으면 바로 그쪽으로 간다
+                return dir.normalized;
+            }
         }
 
-        // 셋 다 막혀 있으면 뒤로
-        return -forward;
+        // 완전 막힌 경우 → 제자리 유턴하지 말고 위로 살짝 치켜오르기 (물고기 특성)
+        return (forward + Vector2.up * 0.3f).normalized;
     }
 
 #if UNITY_EDITOR
@@ -123,7 +182,7 @@ public class FishAIController : MonoBehaviour
         if (!Application.isPlaying) return;
 
         Vector2 origin = transform.position;
-        Vector2 dir = _move != null ? _move.DesiredDir.normalized : Vector2.right;
+        Vector2 dir =  _move.DesiredDir.normalized;
 
         Gizmos.color = Color.yellow;
         Gizmos.DrawLine(origin, origin + dir * _rayDistance);

@@ -9,7 +9,7 @@ public class FishMoveController : MonoBehaviour
 {
     [Header("물리 이동 요소")]
     [SerializeField] private float _maxSpeed = 2.5f;
-    [SerializeField] private float _responsiveness = 4f;
+    [SerializeField, Range(8,13)] private float _responsiveness = 10f;
     [SerializeField] private float _buoyancy = 0.2f;
     [SerializeField] private float _maxVerticalSpeed = 3f;
 
