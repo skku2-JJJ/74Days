@@ -23,10 +23,10 @@ public class DailyReportUI : MonoBehaviour
     [System.Serializable]
     public class CrewReportItem
     {
-        public GameObject crewObject;           // Crew(Report) GameObject
+        public GameObject crewObject;           // Crew GameObject
         public TextMeshProUGUI nameText;        // Name
-        public TextMeshProUGUI mentText;        // Ment (대사)
-        public CrewsStateUpdate stateSliders;   // StateSliders (슬라이더 컴포넌트)
+        public TextMeshProUGUI mentText;        // 대사
+        public SliderUpdate stateSliders;   // StateSliders (슬라이더 컴포넌트)
     }
 
     void Awake()
@@ -47,11 +47,6 @@ public class DailyReportUI : MonoBehaviour
             DayManager.Instance.OnDayStart += OnDayStart;
             DayManager.Instance.OnPhaseChange += OnPhaseChanged;
         }
-    }
-
-    void Start()
-    {
-        // 패널은 항상 활성화 상태 (위치로 제어)
     }
 
     void OnDestroy()
@@ -76,12 +71,8 @@ public class DailyReportUI : MonoBehaviour
     // 페이즈 변경 시 호출 - 필요 시 사용
     private void OnPhaseChanged(DayPhase phase)
     {
-        // 애니메이션은 DailyReportUpDown에서 처리
+        
     }
-
-    // ========== 데이터 제어 ==========
-    // 실제 Show/Hide는 DailyReportUpDown에서 애니메이션으로 처리
-    // 여기서는 데이터 업데이트만 담당
 
     // ========== 정보 갱신 ==========
 

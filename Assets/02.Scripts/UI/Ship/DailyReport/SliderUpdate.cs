@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using static UnityEngine.Rendering.DebugUI;
 
-public class CrewsStateUpdate : MonoBehaviour
+public class SliderUpdate : MonoBehaviour
 {
     [SerializeField]
     private Slider _hpSlider;
