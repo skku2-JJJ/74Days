@@ -4493,7 +4493,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2020af944c8414458258d72ce8bc934, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 0}
 --- !u!114 &787228153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4506,7 +4505,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2020af944c8414458258d72ce8bc934, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 0}
 --- !u!61 &787228154
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9366,6 +9364,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1659843034300532898, guid: 7b9dd3b39a60bfd41943ac63a70b1bb4, type: 3}
+      propertyPath: m_Value
+      value: 0.01
+      objectReference: {fileID: 0}
     - target: {fileID: 2476604614766020265, guid: 7b9dd3b39a60bfd41943ac63a70b1bb4, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -9788,7 +9790,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2020af944c8414458258d72ce8bc934, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 0}
 --- !u!60 &1575925921
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -10143,7 +10144,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2020af944c8414458258d72ce8bc934, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 0}
 --- !u!61 &1634676371
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10532,7 +10532,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2020af944c8414458258d72ce8bc934, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 0}
 --- !u!60 &1654029715
 PolygonCollider2D:
   m_ObjectHideFlags: 0
