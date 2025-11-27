@@ -1,0 +1,2964 @@
+fileFormatVersion: 2
+guid: 9d1e61ab22670a84bb5abd0eb17d54c6
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7939226616819434115
+    second: pixelmojis_spritesheet_0
+  - first:
+      213: -4898751594135151257
+    second: pixelmojis_spritesheet_1
+  - first:
+      213: -1079632667837281241
+    second: pixelmojis_spritesheet_2
+  - first:
+      213: -2468574314867934925
+    second: pixelmojis_spritesheet_3
+  - first:
+      213: 6941944018850547890
+    second: pixelmojis_spritesheet_4
+  - first:
+      213: 8352596239809603731
+    second: pixelmojis_spritesheet_5
+  - first:
+      213: -1827894240661346943
+    second: pixelmojis_spritesheet_6
+  - first:
+      213: 3424623720113319113
+    second: pixelmojis_spritesheet_7
+  - first:
+      213: 5581831159724077261
+    second: pixelmojis_spritesheet_8
+  - first:
+      213: -6453904458041808107
+    second: pixelmojis_spritesheet_9
+  - first:
+      213: -8972251420121032854
+    second: pixelmojis_spritesheet_10
+  - first:
+      213: 1354476106424542958
+    second: pixelmojis_spritesheet_11
+  - first:
+      213: 2923947900515503549
+    second: pixelmojis_spritesheet_12
+  - first:
+      213: 2675796469510793393
+    second: pixelmojis_spritesheet_13
+  - first:
+      213: -3108637904850869352
+    second: pixelmojis_spritesheet_14
+  - first:
+      213: 4812483150687983671
+    second: pixelmojis_spritesheet_15
+  - first:
+      213: -4682263083500581803
+    second: pixelmojis_spritesheet_16
+  - first:
+      213: -2824349264472354051
+    second: pixelmojis_spritesheet_17
+  - first:
+      213: 7909375588257443427
+    second: pixelmojis_spritesheet_18
+  - first:
+      213: -6324607448617880071
+    second: pixelmojis_spritesheet_19
+  - first:
+      213: -84408911356754107
+    second: pixelmojis_spritesheet_20
+  - first:
+      213: 6541947632811290509
+    second: pixelmojis_spritesheet_21
+  - first:
+      213: 8518842225688127363
+    second: pixelmojis_spritesheet_22
+  - first:
+      213: -7299599593891481441
+    second: pixelmojis_spritesheet_23
+  - first:
+      213: -1790434616000834134
+    second: pixelmojis_spritesheet_24
+  - first:
+      213: 3641086487217188859
+    second: pixelmojis_spritesheet_25
+  - first:
+      213: -5501407990887443217
+    second: pixelmojis_spritesheet_26
+  - first:
+      213: 9090972356650765196
+    second: pixelmojis_spritesheet_27
+  - first:
+      213: 1914481946032129725
+    second: pixelmojis_spritesheet_28
+  - first:
+      213: -1252632775160558294
+    second: pixelmojis_spritesheet_29
+  - first:
+      213: -7546761959636639737
+    second: pixelmojis_spritesheet_30
+  - first:
+      213: -4968526483432913716
+    second: pixelmojis_spritesheet_31
+  - first:
+      213: 667350754653450490
+    second: pixelmojis_spritesheet_32
+  - first:
+      213: -551860241809478270
+    second: pixelmojis_spritesheet_33
+  - first:
+      213: 2386201040007647664
+    second: pixelmojis_spritesheet_34
+  - first:
+      213: 5507078651191287209
+    second: pixelmojis_spritesheet_35
+  - first:
+      213: -7836222794484713782
+    second: pixelmojis_spritesheet_36
+  - first:
+      213: 922897956405043005
+    second: pixelmojis_spritesheet_37
+  - first:
+      213: -4333078650477781946
+    second: pixelmojis_spritesheet_38
+  - first:
+      213: 421904133083932705
+    second: pixelmojis_spritesheet_39
+  - first:
+      213: 4861790047682728892
+    second: pixelmojis_spritesheet_40
+  - first:
+      213: 6623730297539168143
+    second: pixelmojis_spritesheet_41
+  - first:
+      213: -7419468569338762307
+    second: pixelmojis_spritesheet_42
+  - first:
+      213: 8059473468168735004
+    second: pixelmojis_spritesheet_43
+  - first:
+      213: -7710196948788481759
+    second: pixelmojis_spritesheet_44
+  - first:
+      213: -7621842361226958853
+    second: pixelmojis_spritesheet_45
+  - first:
+      213: -5787645067410727982
+    second: pixelmojis_spritesheet_46
+  - first:
+      213: 595438953111276320
+    second: pixelmojis_spritesheet_47
+  - first:
+      213: -3325060372416614406
+    second: pixelmojis_spritesheet_48
+  - first:
+      213: 1158534496872291769
+    second: pixelmojis_spritesheet_49
+  - first:
+      213: 7918530258916444945
+    second: pixelmojis_spritesheet_50
+  - first:
+      213: 3620921192305954869
+    second: pixelmojis_spritesheet_51
+  - first:
+      213: 1163032954934254337
+    second: pixelmojis_spritesheet_52
+  - first:
+      213: 5975690446999833841
+    second: pixelmojis_spritesheet_53
+  - first:
+      213: 8377178693602992260
+    second: pixelmojis_spritesheet_54
+  - first:
+      213: -3588596531357787289
+    second: pixelmojis_spritesheet_55
+  - first:
+      213: -2379680161861404134
+    second: pixelmojis_spritesheet_56
+  - first:
+      213: -4868227261156006831
+    second: pixelmojis_spritesheet_57
+  - first:
+      213: -7025910898488175445
+    second: pixelmojis_spritesheet_58
+  - first:
+      213: -4170315574067822867
+    second: pixelmojis_spritesheet_59
+  - first:
+      213: 3845509410411287684
+    second: pixelmojis_spritesheet_60
+  - first:
+      213: 7002983751462461668
+    second: pixelmojis_spritesheet_61
+  - first:
+      213: -2455742493421724991
+    second: pixelmojis_spritesheet_62
+  - first:
+      213: 4094451915351619809
+    second: pixelmojis_spritesheet_63
+  - first:
+      213: -6463337221217534551
+    second: pixelmojis_spritesheet_64
+  - first:
+      213: -4043776344758207883
+    second: pixelmojis_spritesheet_65
+  - first:
+      213: -7236601377483341868
+    second: pixelmojis_spritesheet_66
+  - first:
+      213: 39803563304113113
+    second: pixelmojis_spritesheet_67
+  - first:
+      213: 1853018374422031804
+    second: pixelmojis_spritesheet_68
+  - first:
+      213: -5201561632433045613
+    second: pixelmojis_spritesheet_69
+  - first:
+      213: -826115337173909671
+    second: pixelmojis_spritesheet_70
+  - first:
+      213: 4045794620103572781
+    second: pixelmojis_spritesheet_71
+  - first:
+      213: -2463305303366380097
+    second: pixelmojis_spritesheet_72
+  - first:
+      213: -4296207606109154556
+    second: pixelmojis_spritesheet_73
+  - first:
+      213: -2282170815054445490
+    second: pixelmojis_spritesheet_74
+  - first:
+      213: 5142998905293277815
+    second: pixelmojis_spritesheet_75
+  - first:
+      213: -6373068194546180754
+    second: pixelmojis_spritesheet_76
+  - first:
+      213: -8298207827676311613
+    second: pixelmojis_spritesheet_77
+  - first:
+      213: 2029983171880255338
+    second: pixelmojis_spritesheet_78
+  - first:
+      213: -3880165344663732212
+    second: pixelmojis_spritesheet_79
+  - first:
+      213: -4160784604775580587
+    second: pixelmojis_spritesheet_80
+  - first:
+      213: 6863980376946856050
+    second: pixelmojis_spritesheet_81
+  - first:
+      213: 5290570118567974641
+    second: pixelmojis_spritesheet_82
+  - first:
+      213: -2341104796110670946
+    second: pixelmojis_spritesheet_83
+  - first:
+      213: 3976696189733480986
+    second: pixelmojis_spritesheet_84
+  - first:
+      213: -7242621673278932172
+    second: pixelmojis_spritesheet_85
+  - first:
+      213: -2019956731951221144
+    second: pixelmojis_spritesheet_86
+  - first:
+      213: -4553677008642246264
+    second: pixelmojis_spritesheet_87
+  - first:
+      213: -5874590960998262913
+    second: pixelmojis_spritesheet_88
+  - first:
+      213: -7209373439568129642
+    second: pixelmojis_spritesheet_89
+  - first:
+      213: 7270803996657509535
+    second: pixelmojis_spritesheet_90
+  - first:
+      213: -5121590234295468723
+    second: pixelmojis_spritesheet_91
+  - first:
+      213: 4126461125729539752
+    second: pixelmojis_spritesheet_92
+  - first:
+      213: -7473320477869709118
+    second: pixelmojis_spritesheet_93
+  - first:
+      213: -6356103599268605242
+    second: pixelmojis_spritesheet_94
+  - first:
+      213: 6360084138338009788
+    second: pixelmojis_spritesheet_95
+  - first:
+      213: 2062752262345446787
+    second: pixelmojis_spritesheet_96
+  - first:
+      213: -1564575430539896302
+    second: pixelmojis_spritesheet_97
+  - first:
+      213: -1740414985466694023
+    second: pixelmojis_spritesheet_98
+  - first:
+      213: -1254940239275518089
+    second: pixelmojis_spritesheet_99
+  - first:
+      213: -969721960015482952
+    second: pixelmojis_spritesheet_100
+  - first:
+      213: 4860982473702069603
+    second: pixelmojis_spritesheet_101
+  - first:
+      213: -3164640483108128778
+    second: pixelmojis_spritesheet_102
+  - first:
+      213: 7284984755354894999
+    second: pixelmojis_spritesheet_103
+  - first:
+      213: -5394888234321387154
+    second: pixelmojis_spritesheet_104
+  - first:
+      213: 2977592196182243864
+    second: pixelmojis_spritesheet_105
+  - first:
+      213: 5342487131024141325
+    second: pixelmojis_spritesheet_106
+  - first:
+      213: 65648869511040945
+    second: pixelmojis_spritesheet_107
+  - first:
+      213: 5176893433041712538
+    second: pixelmojis_spritesheet_108
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 162
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7db621b47332d190800000000000000
+      internalID: -7939226616819434115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 144
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76d12bc3163240cb0800000000000000
+      internalID: -4898751594135151257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 162
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72cc6a90fcf5401f0800000000000000
+      internalID: -1079632667837281241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 144
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 339b4ac5dbcddbdd0800000000000000
+      internalID: -2468574314867934925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 162
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b80c3e1e4db65060800000000000000
+      internalID: 6941944018850547890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 144
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3986d12b6026ae370800000000000000
+      internalID: 8352596239809603731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 162
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 185e56a6fd302a6e0800000000000000
+      internalID: -1827894240661346943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_7
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 144
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9cc2bb60125b68f20800000000000000
+      internalID: 3424623720113319113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_8
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 162
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc07f8fadd5a67d40800000000000000
+      internalID: 5581831159724077261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_9
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 143
+        width: 18
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51bab14f6102f66a0800000000000000
+      internalID: -6453904458041808107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_10
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 162
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a671134ded82c7380800000000000000
+      internalID: -8972251420121032854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_11
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 144
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee6603ca7d01cc210800000000000000
+      internalID: 1354476106424542958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_12
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 162
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbdc9ffaf13f39820800000000000000
+      internalID: 2923947900515503549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_13
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 144
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b86f6846b6522520800000000000000
+      internalID: 2675796469510793393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_14
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 162
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 893ac0abb46ebd4d0800000000000000
+      internalID: -3108637904850869352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_15
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 144
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7385f4c8def59c240800000000000000
+      internalID: 4812483150687983671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_16
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 162
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55cc5038882450fb0800000000000000
+      internalID: -4682263083500581803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_17
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 144
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df25d79de45edc8d0800000000000000
+      internalID: -2824349264472354051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_18
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 162
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36e2b3d113fb3cd60800000000000000
+      internalID: 7909375588257443427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_19
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 144
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f57751e80b7a38a0800000000000000
+      internalID: -6324607448617880071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_20
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 162
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54704b6da8e14def0800000000000000
+      internalID: -84408911356754107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_21
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 144
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8face816baa9ca50800000000000000
+      internalID: 6541947632811290509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_22
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 126
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3872db79ed1093670800000000000000
+      internalID: 8518842225688127363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_23
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 108
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f98338328dc92ba90800000000000000
+      internalID: -7299599593891481441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_24
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 126
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa515bfe3391727e0800000000000000
+      internalID: -1790434616000834134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_25
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 108
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bff2e0b6edcb78230800000000000000
+      internalID: 3641086487217188859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_26
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 125
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe498aa749217a3b0800000000000000
+      internalID: -5501407990887443217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_27
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 108
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8b801d313f992e70800000000000000
+      internalID: 9090972356650765196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_28
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 126
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db6c422cf2b919a10800000000000000
+      internalID: 1914481946032129725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_29
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 108
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2d0b82b021cd9ee0800000000000000
+      internalID: -1252632775160558294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_30
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 126
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7006d6f6bf3844790800000000000000
+      internalID: -7546761959636639737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_31
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 108
+        width: 18
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc44cd9dc7f3c0bb0800000000000000
+      internalID: -4968526483432913716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_32
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 126
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af035bfb9f7e24900800000000000000
+      internalID: 667350754653450490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_33
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 108
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28de841b8066758f0800000000000000
+      internalID: -551860241809478270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_34
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 125
+        width: 18
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b1d258043d7d1120800000000000000
+      internalID: 2386201040007647664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_35
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 108
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9add4620bd21d6c40800000000000000
+      internalID: 5507078651191287209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_36
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 108
+        width: 20
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac67be1f2e4204390800000000000000
+      internalID: -7836222794484713782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_37
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 126
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3fd4773dcacecc00800000000000000
+      internalID: 922897956405043005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_38
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 126
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64c517eccefcdd3c0800000000000000
+      internalID: -4333078650477781946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_39
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 108
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 128acbdd297ead500800000000000000
+      internalID: 421904133083932705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_40
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 126
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb398ac1a4c887340800000000000000
+      internalID: 4861790047682728892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_41
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 108
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8780d09c973ceb50800000000000000
+      internalID: 6623730297539168143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_42
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 126
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbb236e65a0c80990800000000000000
+      internalID: -7419468569338762307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_43
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 108
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1902ea1b6009df60800000000000000
+      internalID: 8059473468168735004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_44
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 90
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1217927b9b0eff490800000000000000
+      internalID: -7710196948788481759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_45
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 72
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf7ea0531c6c93690800000000000000
+      internalID: -7621842361226958853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_46
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 90
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2db11f6b9772eafa0800000000000000
+      internalID: -5787645067410727982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_47
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 72
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02bc0a5b29c634800800000000000000
+      internalID: 595438953111276320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_48
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 89
+        width: 18
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aff216d45330bd1d0800000000000000
+      internalID: -3325060372416614406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_49
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 72
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9bddb1a9cf0f31010800000000000000
+      internalID: 1158534496872291769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_50
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 90
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11b85e9f05544ed60800000000000000
+      internalID: 7918530258916444945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_51
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 72
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5309413d3a8104230800000000000000
+      internalID: 3620921192305954869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_52
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 90
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10bddec7f4ce32010800000000000000
+      internalID: 1163032954934254337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_53
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 72
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1fcce1d0dcaede250800000000000000
+      internalID: 5975690446999833841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_54
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 89
+        width: 18
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4806d2c33a7b14470800000000000000
+      internalID: 8377178693602992260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_55
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 72
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76b583ac77eb23ec0800000000000000
+      internalID: -3588596531357787289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_56
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 90
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1af439308da9fed0800000000000000
+      internalID: -2379680161861404134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_57
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 72
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1546ce45915907cb0800000000000000
+      internalID: -4868227261156006831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_58
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 90
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba411104343fe7e90800000000000000
+      internalID: -7025910898488175445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_59
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 72
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dee7866a4101026c0800000000000000
+      internalID: -4170315574067822867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_60
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 90
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4849cf33f6efd5530800000000000000
+      internalID: 3845509410411287684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_61
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 72
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e0a0c95e989f2160800000000000000
+      internalID: 7002983751462461668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_62
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 90
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ca14cb96337bedd0800000000000000
+      internalID: -2455742493421724991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_63
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 72
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e8737cd25a62d830800000000000000
+      internalID: 4094451915351619809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_64
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 90
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9adb4c1aa0d9d46a0800000000000000
+      internalID: -6463337221217534551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_65
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 72
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57a3f8bd6de91e7c0800000000000000
+      internalID: -4043776344758207883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_66
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 54
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4dfb00a636d629b90800000000000000
+      internalID: -7236601377483341868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_67
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 36
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d3598341296d8000800000000000000
+      internalID: 39803563304113113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_68
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 54
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbd62b1d46e37b910800000000000000
+      internalID: 1853018374422031804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_69
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 36
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39ff68d114750d7b0800000000000000
+      internalID: -5201561632433045613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_70
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 54
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95f3f305a7c0984f0800000000000000
+      internalID: -826115337173909671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_71
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 36
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2db57d75cc852830800000000000000
+      internalID: 4045794620103572781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_72
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 54
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb5d283b0e490ddd0800000000000000
+      internalID: -2463305303366380097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_73
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 54
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 403588cc1fdc064c0800000000000000
+      internalID: -4296207606109154556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_74
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 36
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e448ae33cb91450e0800000000000000
+      internalID: -2282170815054445490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_75
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 54
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77a8a3e614a9f5740800000000000000
+      internalID: 5142998905293277815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_76
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 36
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6d1cb63e305e87a0800000000000000
+      internalID: -6373068194546180754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_77
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 54
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3cfccfe42f7d6dc80800000000000000
+      internalID: -8298207827676311613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_78
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 36
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6f71f380f2fb2c10800000000000000
+      internalID: 2029983171880255338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_79
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 35
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0089815d22e62ac0800000000000000
+      internalID: -3880165344663732212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_80
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 54
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55cff6d527ce146c0800000000000000
+      internalID: -4160784604775580587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_81
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 54
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2705b2139c1c14f50800000000000000
+      internalID: 6863980376946856050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_82
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 35
+        width: 18
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f65a800e71eb6940800000000000000
+      internalID: 5290570118567974641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_83
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 54
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e933cd57799b28fd0800000000000000
+      internalID: -2341104796110670946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_84
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 36
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1aa6b87d10103730800000000000000
+      internalID: 3976696189733480986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_85
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 36
+        width: 19
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43bf9a116f90d7b90800000000000000
+      internalID: -7242621673278932172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_86
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 18
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8667362fd0ca7f3e0800000000000000
+      internalID: -2019956731951221144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_87
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 18
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 889f30613e61ec0c0800000000000000
+      internalID: -4553677008642246264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_88
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 18
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f775af855a2497ea0800000000000000
+      internalID: -5874590960998262913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_89
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 36
+        width: 18
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 691d769bd0923fb90800000000000000
+      internalID: -7209373439568129642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_90
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 18
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f94e24c66b517e460800000000000000
+      internalID: 7270803996657509535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_91
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 18
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4d75b731d47ce8b0800000000000000
+      internalID: -5121590234295468723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_92
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 18
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a6519ae782244930800000000000000
+      internalID: 4126461125729539752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_93
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 18
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c86ce7ee9e694890800000000000000
+      internalID: -7473320477869709118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_94
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 17
+        width: 18
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c2530ad3759ac7a0800000000000000
+      internalID: -6356103599268605242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_95
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 18
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb2cb3f93de834850800000000000000
+      internalID: 6360084138338009788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_96
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 18
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 385dbb0f04e50ac10800000000000000
+      internalID: 2062752262345446787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_97
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 17
+        width: 18
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21a9d567fe2894ae0800000000000000
+      internalID: -1564575430539896302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_98
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 976bd75bacdc8d7e0800000000000000
+      internalID: -1740414985466694023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_99
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 0
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77793a7508e859ee0800000000000000
+      internalID: -1254940239275518089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_100
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 0
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8bfa162e30bda82f0800000000000000
+      internalID: -969721960015482952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_101
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 0
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36559642ecda57340800000000000000
+      internalID: 4860982473702069603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_102
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 0
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f7f4826f30f414d0800000000000000
+      internalID: -3164640483108128778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_103
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 0
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79280199907791560800000000000000
+      internalID: 7284984755354894999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_104
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 0
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e61e656fbb18125b0800000000000000
+      internalID: -5394888234321387154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_105
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 0
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81afa639358825920800000000000000
+      internalID: 2977592196182243864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_106
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0c2acd6db3542a40800000000000000
+      internalID: 5342487131024141325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_107
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 0
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1bf8c1b8c4b39e000800000000000000
+      internalID: 65648869511040945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelmojis_spritesheet_108
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 0
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a95f084262508d740800000000000000
+      internalID: 5176893433041712538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      pixelmojis_spritesheet_0: -7939226616819434115
+      pixelmojis_spritesheet_1: -4898751594135151257
+      pixelmojis_spritesheet_10: -8972251420121032854
+      pixelmojis_spritesheet_100: -969721960015482952
+      pixelmojis_spritesheet_101: 4860982473702069603
+      pixelmojis_spritesheet_102: -3164640483108128778
+      pixelmojis_spritesheet_103: 7284984755354894999
+      pixelmojis_spritesheet_104: -5394888234321387154
+      pixelmojis_spritesheet_105: 2977592196182243864
+      pixelmojis_spritesheet_106: 5342487131024141325
+      pixelmojis_spritesheet_107: 65648869511040945
+      pixelmojis_spritesheet_108: 5176893433041712538
+      pixelmojis_spritesheet_11: 1354476106424542958
+      pixelmojis_spritesheet_12: 2923947900515503549
+      pixelmojis_spritesheet_13: 2675796469510793393
+      pixelmojis_spritesheet_14: -3108637904850869352
+      pixelmojis_spritesheet_15: 4812483150687983671
+      pixelmojis_spritesheet_16: -4682263083500581803
+      pixelmojis_spritesheet_17: -2824349264472354051
+      pixelmojis_spritesheet_18: 7909375588257443427
+      pixelmojis_spritesheet_19: -6324607448617880071
+      pixelmojis_spritesheet_2: -1079632667837281241
+      pixelmojis_spritesheet_20: -84408911356754107
+      pixelmojis_spritesheet_21: 6541947632811290509
+      pixelmojis_spritesheet_22: 8518842225688127363
+      pixelmojis_spritesheet_23: -7299599593891481441
+      pixelmojis_spritesheet_24: -1790434616000834134
+      pixelmojis_spritesheet_25: 3641086487217188859
+      pixelmojis_spritesheet_26: -5501407990887443217
+      pixelmojis_spritesheet_27: 9090972356650765196
+      pixelmojis_spritesheet_28: 1914481946032129725
+      pixelmojis_spritesheet_29: -1252632775160558294
+      pixelmojis_spritesheet_3: -2468574314867934925
+      pixelmojis_spritesheet_30: -7546761959636639737
+      pixelmojis_spritesheet_31: -4968526483432913716
+      pixelmojis_spritesheet_32: 667350754653450490
+      pixelmojis_spritesheet_33: -551860241809478270
+      pixelmojis_spritesheet_34: 2386201040007647664
+      pixelmojis_spritesheet_35: 5507078651191287209
+      pixelmojis_spritesheet_36: -7836222794484713782
+      pixelmojis_spritesheet_37: 922897956405043005
+      pixelmojis_spritesheet_38: -4333078650477781946
+      pixelmojis_spritesheet_39: 421904133083932705
+      pixelmojis_spritesheet_4: 6941944018850547890
+      pixelmojis_spritesheet_40: 4861790047682728892
+      pixelmojis_spritesheet_41: 6623730297539168143
+      pixelmojis_spritesheet_42: -7419468569338762307
+      pixelmojis_spritesheet_43: 8059473468168735004
+      pixelmojis_spritesheet_44: -7710196948788481759
+      pixelmojis_spritesheet_45: -7621842361226958853
+      pixelmojis_spritesheet_46: -5787645067410727982
+      pixelmojis_spritesheet_47: 595438953111276320
+      pixelmojis_spritesheet_48: -3325060372416614406
+      pixelmojis_spritesheet_49: 1158534496872291769
+      pixelmojis_spritesheet_5: 8352596239809603731
+      pixelmojis_spritesheet_50: 7918530258916444945
+      pixelmojis_spritesheet_51: 3620921192305954869
+      pixelmojis_spritesheet_52: 1163032954934254337
+      pixelmojis_spritesheet_53: 5975690446999833841
+      pixelmojis_spritesheet_54: 8377178693602992260
+      pixelmojis_spritesheet_55: -3588596531357787289
+      pixelmojis_spritesheet_56: -2379680161861404134
+      pixelmojis_spritesheet_57: -4868227261156006831
+      pixelmojis_spritesheet_58: -7025910898488175445
+      pixelmojis_spritesheet_59: -4170315574067822867
+      pixelmojis_spritesheet_6: -1827894240661346943
+      pixelmojis_spritesheet_60: 3845509410411287684
+      pixelmojis_spritesheet_61: 7002983751462461668
+      pixelmojis_spritesheet_62: -2455742493421724991
+      pixelmojis_spritesheet_63: 4094451915351619809
+      pixelmojis_spritesheet_64: -6463337221217534551
+      pixelmojis_spritesheet_65: -4043776344758207883
+      pixelmojis_spritesheet_66: -7236601377483341868
+      pixelmojis_spritesheet_67: 39803563304113113
+      pixelmojis_spritesheet_68: 1853018374422031804
+      pixelmojis_spritesheet_69: -5201561632433045613
+      pixelmojis_spritesheet_7: 3424623720113319113
+      pixelmojis_spritesheet_70: -826115337173909671
+      pixelmojis_spritesheet_71: 4045794620103572781
+      pixelmojis_spritesheet_72: -2463305303366380097
+      pixelmojis_spritesheet_73: -4296207606109154556
+      pixelmojis_spritesheet_74: -2282170815054445490
+      pixelmojis_spritesheet_75: 5142998905293277815
+      pixelmojis_spritesheet_76: -6373068194546180754
+      pixelmojis_spritesheet_77: -8298207827676311613
+      pixelmojis_spritesheet_78: 2029983171880255338
+      pixelmojis_spritesheet_79: -3880165344663732212
+      pixelmojis_spritesheet_8: 5581831159724077261
+      pixelmojis_spritesheet_80: -4160784604775580587
+      pixelmojis_spritesheet_81: 6863980376946856050
+      pixelmojis_spritesheet_82: 5290570118567974641
+      pixelmojis_spritesheet_83: -2341104796110670946
+      pixelmojis_spritesheet_84: 3976696189733480986
+      pixelmojis_spritesheet_85: -7242621673278932172
+      pixelmojis_spritesheet_86: -2019956731951221144
+      pixelmojis_spritesheet_87: -4553677008642246264
+      pixelmojis_spritesheet_88: -5874590960998262913
+      pixelmojis_spritesheet_89: -7209373439568129642
+      pixelmojis_spritesheet_9: -6453904458041808107
+      pixelmojis_spritesheet_90: 7270803996657509535
+      pixelmojis_spritesheet_91: -5121590234295468723
+      pixelmojis_spritesheet_92: 4126461125729539752
+      pixelmojis_spritesheet_93: -7473320477869709118
+      pixelmojis_spritesheet_94: -6356103599268605242
+      pixelmojis_spritesheet_95: 6360084138338009788
+      pixelmojis_spritesheet_96: 2062752262345446787
+      pixelmojis_spritesheet_97: -1564575430539896302
+      pixelmojis_spritesheet_98: -1740414985466694023
+      pixelmojis_spritesheet_99: -1254940239275518089
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
