@@ -3,7 +3,7 @@
 public interface IFishCapturable
 {
     bool CanBeCaptured { get; }
-    
+    ResourceType Type { get; }
     // 유니티 Transform 노출
     Transform Transform { get; }
     
@@ -18,7 +18,8 @@ public interface IFishCapturable
     void OnCapture();
     void OnCaptureFailed();
 
-    void Get();
+    void Stored();
+    
     // -------------------------------------------------------------------------------
     
     // QTE 처리 ---------------------------------------------------------------------

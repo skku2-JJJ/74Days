@@ -27,6 +27,7 @@ public class FishVisualController : MonoBehaviour
     
     private const float HorizontalInputDeadZone = 0.01f;
     private const float VerticalInputDeadZone   = 0.01f;
+    private const float EpsilonNum = 0.0001f;
     
     private SpriteRenderer _sprite;
     private Animator _anim;
@@ -71,7 +72,7 @@ public class FishVisualController : MonoBehaviour
         if (_isFacingLocked) return;
         
         if (currentVelocity.magnitude < _minSpeedForFlip) return;
-        if (desiredDir.sqrMagnitude < Mathf.Epsilon) return;
+        if (desiredDir.sqrMagnitude < EpsilonNum) return;
         
         float x = desiredDir.x;
         
