@@ -117,4 +117,21 @@ public class FishVisualController : MonoBehaviour
         Quaternion targetRot = Quaternion.Euler(0f, 0f, targetAngle);
         _visualTransform.localRotation = Quaternion.Slerp(_visualTransform.localRotation, targetRot, _tiltLerpSpeed * Time.deltaTime);
     }
+    
+    /// <summary>
+    /// hit 시 투사체 반대 방향으로 flip
+    /// </summary>
+    /// <param name="worldDir"></param>
+    public void ForceLookDirection(Vector2 worldDir)
+    {
+        if (worldDir.sqrMagnitude < 0.0001f)
+            return;
+        bool shouldFaceRight = worldDir.x < transform.position.x;
+
+        if (shouldFaceRight == _isRightForward) return;
+        
+        _isRightForward = shouldFaceRight;
+        _sprite.flipX   = _isRightForward;
+    }
+
 }

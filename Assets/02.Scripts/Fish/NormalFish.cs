@@ -20,7 +20,11 @@ public class NormalFish : FishBase
     {
         _rigid = GetComponent<Rigidbody2D>();
         diver = GameObject.FindGameObjectWithTag("Player").transform;
-        
+
+        if (visualController == null)
+        {
+            visualController = GetComponentInChildren<FishVisualController>();
+        }
     }
 
     public override void OnCapture()
