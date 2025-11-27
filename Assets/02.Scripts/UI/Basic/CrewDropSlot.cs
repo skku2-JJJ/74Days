@@ -62,7 +62,7 @@ public class CrewDropSlot : MonoBehaviour, IDropHandler
             AddDistributedItem(resourceType);
 
             // 자원 슬롯 갱신
-            ResourceDistributionUI.Instance?.RefreshResourceSlot(resourceType);
+            ResourceDistributeUI.Instance?.RefreshResourceSlot(resourceType);
 
             Debug.Log($"[드롭 성공] {_crew.CrewName}에게 {resourceType} 분배");
         }

@@ -248,6 +248,7 @@ public class HarpoonShooter : MonoBehaviour
         {
             fish.Get();
         }
+        // fish -> 가방 
        
     }
     
