@@ -9,10 +9,15 @@ public class FishAIController : MonoBehaviour
         Wander
     }
 
+    [Header("State 결정 주기")]
+    [SerializeField] private float _minDecideStateDuration = 2.0f;
+    [SerializeField] private float _maxDecideStateDuration = 4.0f;
     
     [Header("Wander 설정")]
-    private float _wanderChangeInterval = 1.0f;
-    private float _wanderJitter = 70f; 
+    [SerializeField] private float _minDecideDirDuration = 0.8f;
+    [SerializeField] private float _maxDecideDirDuration = 1.4f;
+    [SerializeField] private float _wanderChangeInterval = 1.0f;
+    [SerializeField] private float _wanderJitter = 70f; 
     
     [Header("Idle 설정")]
     [SerializeField] private float _idleMinDuration = 1.0f;
@@ -26,7 +31,6 @@ public class FishAIController : MonoBehaviour
     [Header("장애물 회피")]
     [SerializeField] private LayerMask _obstacleMask;
     [SerializeField] private float _rayDistance = 1.2f;
-    [SerializeField] private float _sideRayAngle = 35f;
     
     [Header("플레이어 회피")]
     [SerializeField] private Transform _diver;
@@ -40,7 +44,7 @@ public class FishAIController : MonoBehaviour
 
     private const float FullAngle = 360f;
     private const float EpsilonNum = 0.001f;
-    private const float HalfRatio = 0.5f;
+    private const float DirCorrection = 0.3f;
     private void Awake()
     {
         Init();
@@ -121,7 +125,7 @@ public class FishAIController : MonoBehaviour
     private void EnterWander()
     {
         _state = State.Wander;
-        _stateDuration = Random.Range(2.0f, 4.0f);
+        _stateDuration = Random.Range(_minDecideDirDuration, _maxDecideDirDuration);
         _wanderTimer = 0f;
     }
    
@@ -131,7 +135,7 @@ public class FishAIController : MonoBehaviour
         if (_wanderTimer >= _wanderChangeInterval)
         {
             _wanderTimer = 0f;
-            _wanderChangeInterval = Random.Range(0.8f, 1.4f);
+            _wanderChangeInterval = Random.Range(_minDecideDirDuration, _maxDecideDirDuration);
 
             float jitter = Random.Range(-_wanderJitter, _wanderJitter);
             _wanderDir = (Quaternion.Euler(0, 0, jitter) * _wanderDir).normalized;
@@ -154,6 +158,8 @@ public class FishAIController : MonoBehaviour
 
     private Vector2 ApplyObstacleAvoidance(Vector2 desired)
     {
+        if (desired.magnitude < EpsilonNum) return Vector2.zero;
+        
         Vector2 origin = transform.position;
         Vector2 forward = desired.normalized;
 
@@ -173,7 +179,7 @@ public class FishAIController : MonoBehaviour
         }
 
         // 완전 막힌 경우 → 위로 살짝 치켜오르기 
-        return (forward + Vector2.up * 0.3f).normalized;
+        return (forward + Vector2.up * DirCorrection).normalized;
     }
 
 #if UNITY_EDITOR
