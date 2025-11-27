@@ -60,8 +60,8 @@ public class FishAIController : MonoBehaviour
             SwitchState();
         }
 
-        /*// 플레이어 회피
-        if (_diver != null && TryGetFleeDir(out Vector2 fleeDir))
+        // 플레이어 회피
+        /*if (_diver != null && TryGetFleeDir(out Vector2 fleeDir))
         {
             _move.DesiredDir = ApplyObstacleAvoidance(fleeDir);
             return;

@@ -30,7 +30,7 @@ public class FishVisualController : MonoBehaviour
     private SpriteRenderer _sprite;
     private Animator _anim;
 
-    private bool _isRightForward = true;
+    private bool _isRightForward;
 
     private void Awake()
     {
@@ -42,7 +42,7 @@ public class FishVisualController : MonoBehaviour
         Vector2 vel = _moveController.CurrentVelocity;
         Vector2 desired  = _moveController.DesiredDir;
         
-        //TransitAnimation(vel);
+        TransitAnimation(vel);
         HandleFlipX(desired, vel);
         UpdateTilt(desired);
     }
@@ -75,7 +75,7 @@ public class FishVisualController : MonoBehaviour
         if (right == _isRightForward) return;
         
         _isRightForward = right;
-        _sprite.flipX = !_isRightForward;
+        _sprite.flipX = _isRightForward;
     }
 
     private void UpdateTilt(Vector2 desiredDir)

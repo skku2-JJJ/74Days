@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  maxHealth: 0
+  maxHealth: 100
   captureHpRatioThreshold: 0.1
   OnDamaged:
     m_PersistentCalls:
