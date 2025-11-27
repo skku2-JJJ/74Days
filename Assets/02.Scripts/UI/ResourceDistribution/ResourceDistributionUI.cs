@@ -21,7 +21,8 @@ public class ResourceDistributionUI : MonoBehaviour
     [SerializeField] private Transform boxElementParent;        // BoxElement (인벤토리 슬롯 부모)
     [SerializeField] private Button divisionButton;             // DivisionButton (완료 버튼)
     [SerializeField] private TextMeshProUGUI titleText;         // TitleText (제목)
-
+    [SerializeField] private Button dayEndButton;
+    
     [Header("Resource Icons")]
     [SerializeField] private Sprite normalFishIcon;
     [SerializeField] private Sprite specialFishIcon;
@@ -31,6 +32,8 @@ public class ResourceDistributionUI : MonoBehaviour
 
     private List<CrewResourceItem> crewItems = new List<CrewResourceItem>();
     private List<InventorySlotUI> inventorySlots = new List<InventorySlotUI>();
+    
+    [SerializeField] private UIBasicOpenClose _distributeUI;
 
     void Awake()
     {
@@ -139,15 +142,6 @@ public class ResourceDistributionUI : MonoBehaviour
         }
 
         Debug.Log("[ResourceDistributionUI] 모든 DivisionBox 및 임시 예약 초기화 완료");
-    }
-
-    /// <summary>
-    /// UI 숨김 및 데이터 정리
-    /// </summary>
-    public void HideUI()
-    {
-        ClearSlots();
-        Debug.Log("[ResourceDistributionUI] UI 숨김 완료");
     }
 
     // ========== 선원 슬롯 관리 ==========
@@ -292,15 +286,14 @@ public class ResourceDistributionUI : MonoBehaviour
 
     // ========== 완료 버튼 ==========
 
-    private void OnCompleteButtonClicked()
+    public void OnCompleteButtonClicked()
     {
         Debug.Log("[ResourceDistributionUI] 완료 버튼 클릭 - 자원 분배 적용");
 
         // 1. 모든 DivisionBox 순회하여 할당된 자원 적용
         ApplyResourceDistribution();
-
-        // 2. UI 숨김
-        HideUI();
+        
+        _distributeUI.Close();
 
         // 3. Night 페이즈 처리 (내부적으로만)
         ProcessNightPhase();
@@ -385,17 +378,4 @@ public class ResourceDistributionUI : MonoBehaviour
     }
 
     // ========== 슬롯 정리 ==========
-
-    private void ClearSlots()
-    {
-        // 선원 슬롯 제거
-        foreach (var item in crewItems)
-        {
-            if (item != null)
-                Destroy(item.gameObject);
-        }
-        crewItems.Clear();
-
-        // 인벤토리 슬롯은 유지 (재사용)
-    }
 }
