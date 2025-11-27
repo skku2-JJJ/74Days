@@ -11,8 +11,8 @@ public class DiverVisualController : MonoBehaviour
     [SerializeField] private Transform _visualTransform;
     
     [Header("기울기(틸트)")]
-    [SerializeField] private float _verticalTiltAngle = 25f;   // 수직이동 최대 회전각
-    [SerializeField] private float _diagonalTiltAngle   = 15f;     // 대각선 이동 최대 회전각
+    [SerializeField] private float _verticalTiltAngle = 60f;   // 수직이동 최대 회전각
+    [SerializeField] private float _diagonalTiltAngle   = 30f;     // 대각선 이동 최대 회전각
     [SerializeField] private float _tiltLerpSpeed = 10f;     // 기울기 보간 속도
     
     [Header("애니메이터 설정")]
