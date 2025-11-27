@@ -8,7 +8,7 @@ public class DayShow : MonoBehaviour
     private void Start()
     {
         _textMeshProUGUI = GetComponent<TextMeshProUGUI>();
-        DayUpdate(2);
+        if (DayManager.Instance != null ) DayUpdate(DayManager.Instance.CurrentDay);
     }
     public void DayUpdate(int value)
     {
