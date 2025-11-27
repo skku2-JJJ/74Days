@@ -21,7 +21,6 @@ public class ResourceDistributionUI : MonoBehaviour
     [SerializeField] private Transform boxElementParent;        // BoxElement (인벤토리 슬롯 부모)
     [SerializeField] private Button divisionButton;             // DivisionButton (완료 버튼)
     [SerializeField] private TextMeshProUGUI titleText;         // TitleText (제목)
-    [SerializeField] private Button dayEndButton;
     
     [Header("Resource Icons")]
     [SerializeField] private Sprite normalFishIcon;
@@ -328,7 +327,8 @@ public class ResourceDistributionUI : MonoBehaviour
                     ResourceType resourceType = box.AssignedResource.Value;
 
                     // 자원 소비
-                    bool consumed = ShipManager.Instance.UseResource(resourceType, 1);
+                    //bool consumed = ShipManager.Instance.UseResource(resourceType, 1);
+                    bool consumed = true;
                     if (consumed)
                     {
                         // 선원에게 자원 적용

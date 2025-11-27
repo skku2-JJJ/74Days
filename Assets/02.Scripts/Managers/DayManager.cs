@@ -103,6 +103,7 @@ using System.Collections;
       public void StartDay()
       {
           OnDayStart?.Invoke(currentDay);
+          Debug.Log("dfsasf");
           ChangePhase(DayPhase.Morning);
       }
 
