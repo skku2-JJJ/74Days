@@ -31,16 +31,10 @@ public class FishMoveController : MonoBehaviour
     {
         if (IsMovementLocked)
         {
-            if (!_isVelocityInit)
-            {
-                _rigid.linearVelocity = Vector2.zero;
-                _isVelocityInit = true;
-            }
-           
+            _rigid.linearVelocity = Vector2.zero;
             return;
         }
         
-        _isVelocityInit = false;
         Move();
     }
 
