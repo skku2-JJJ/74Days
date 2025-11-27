@@ -116,6 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   diver: {fileID: 0}
+  visualController: {fileID: 0}
   _health: {fileID: 2052411475101747350}
   _hitFeedback: {fileID: 8161939080048225451}
   _captureStruggle: {fileID: 1880532392066982631}
@@ -296,7 +297,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 9ac146eb965354e8dabdbeef12886ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.54, y: 0.49}
