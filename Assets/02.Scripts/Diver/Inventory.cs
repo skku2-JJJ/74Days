@@ -51,4 +51,12 @@ public class Inventory
         }
         _items.Clear();
     }
+
+    public void Print()
+    {
+        foreach (var kvp in _items)
+        {
+            Debug.Log($"{kvp.Key}: {kvp.Value}");
+        }
+    }
 }

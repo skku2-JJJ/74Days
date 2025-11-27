@@ -45,7 +45,7 @@ public abstract class FishBase : MonoBehaviour, IFishCapturable
 
     public void Stored()
     {
-        Debug.Log($"{name} is Stored");
+        //Debug.Log($"{name} is Stored");
         Destroy(gameObject);
     }
 

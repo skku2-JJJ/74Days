@@ -30,6 +30,11 @@ public class DiverStatus : MonoBehaviour
     private void Update()
     {
         // TODO : 산소 감소
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            _diveBag.Print();
+        }
     }
 
     public void GainResource(ResourceType type, int amount = 1)
