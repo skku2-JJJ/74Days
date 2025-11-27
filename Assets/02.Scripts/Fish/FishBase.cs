@@ -8,10 +8,15 @@ public abstract class FishBase : MonoBehaviour, IFishCapturable
     [Header("다이버")]
     [SerializeField] protected Transform diver;
     
+    [Header("Visual")]
+    [SerializeField] protected FishVisualController visualController;
+    
     [Header("Core References")]
     [SerializeField] private FishHealth _health;
     [SerializeField] private FishHitFeedback _hitFeedback;
     [SerializeField] private FishCaptureStruggle _captureStruggle;
+    
+   
     
     public bool CanBeCaptured => _health.CanBeCaptured;
     public Transform Transform => this.transform;
@@ -20,6 +25,7 @@ public abstract class FishBase : MonoBehaviour, IFishCapturable
     {
         _health.TakeDamage(damage);
         _hitFeedback?.Play(harpoonDir);
+        
     }
 
     /// <summary>
@@ -50,12 +56,27 @@ public abstract class FishBase : MonoBehaviour, IFishCapturable
     public void BeginCaptureStruggle()
     {
         _captureStruggle?.Begin(diver);
+
+
+        if (visualController != null)
+        {
+            visualController.ForceLookAwayFrom(diver.position, true);
+        }
+       
     }
     
     public void UpdateCaptureStruggle(float struggle01) =>
         _captureStruggle?.UpdateIntensity(struggle01);
-    
-    public void EndCaptureStruggle() =>
+
+    public void EndCaptureStruggle()
+    {
         _captureStruggle?.End();
+        
+        if (visualController != null)
+        {
+            visualController.ForceLookAwayFrom(diver.position, false);
+        }
+    }
+       
     
 }
