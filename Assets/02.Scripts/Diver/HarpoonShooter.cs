@@ -35,6 +35,7 @@ public class HarpoonShooter : MonoBehaviour
     private Animator _animator;
     private InputController _inputController;
     private DiverMoveController _moveController;
+    private DiverStatus _diverStatus;
     private Camera _mainCam;
     private HarpoonCaptureQTE _captureQTE; // 포획 QTE
     
@@ -101,6 +102,7 @@ public class HarpoonShooter : MonoBehaviour
         _animator =  GetComponentInChildren<Animator>();
         _inputController = GetComponent<InputController>();
         _moveController = GetComponent<DiverMoveController>();
+        _diverStatus = GetComponent<DiverStatus>();
         _captureQTE = GetComponent<HarpoonCaptureQTE>();
         
         _mainCam = Camera.main;
@@ -246,9 +248,10 @@ public class HarpoonShooter : MonoBehaviour
         IFishCapturable fish = proj.GetComponentInChildren<IFishCapturable>();
         if (fish != null)
         {
-            //fish.Get();
+            _diverStatus.GainResource(fish.Type);
+            fish.Stored();
         }
-        // fish -> 가방 
+        
        
     }
     

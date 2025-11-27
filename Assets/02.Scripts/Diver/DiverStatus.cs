@@ -32,7 +32,7 @@ public class DiverStatus : MonoBehaviour
         // TODO : 산소 감소
     }
 
-    public void GainResource(ResourceType type, int amount)
+    public void GainResource(ResourceType type, int amount = 1)
     {
         DiveBag.Add(type, amount);
     }
@@ -40,6 +40,6 @@ public class DiverStatus : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        throw new NotImplementedException();
+        
     }
 }
