@@ -1,6 +1,7 @@
 ﻿// Day 시스템
 public enum DayPhase
 {
+    None,
     Morning,
     Diving,
     Evening,

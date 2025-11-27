@@ -10,13 +10,16 @@ public class SceneTransitionManager : MonoBehaviour
 {
     public static SceneTransitionManager Instance { get; private set; }
 
+    // DayManager가 참조할 목표 페이즈 (static)
+    public static DayPhase TargetPhase { get; set; } = DayPhase.None;
+
     [Header("Scene Names")]
     [SerializeField] private string shipSceneName = "Ship";
     [SerializeField] private string underwaterSceneName = "UnderWater";
+    [SerializeField] private string loadingSceneName = "Loading";  // 로딩 씬
 
     [Header("Transition Settings")]
     [SerializeField] private bool useLoadingScreen = true; // 로딩 화면 사용 여부
-    [SerializeField] private float minLoadingTime = 1f;   // 최소 로딩 시간
 
     private bool isTransitioning = false;
 
@@ -42,7 +45,7 @@ public class SceneTransitionManager : MonoBehaviour
     public void GoToUnderwater()
     {
         if (isTransitioning) return;
-        StartCoroutine(LoadSceneAndChangePhase(underwaterSceneName, DayPhase.Diving));
+        TransitionToScene(underwaterSceneName, DayPhase.Diving);
     }
 
     /// <summary>
@@ -51,56 +54,74 @@ public class SceneTransitionManager : MonoBehaviour
     public void GoToShip()
     {
         if (isTransitioning) return;
-        StartCoroutine(LoadSceneAndChangePhase(shipSceneName, DayPhase.Evening));
+        TransitionToScene(shipSceneName, DayPhase.Evening);
     }
 
     // ========== 내부 씬 로딩 ==========
 
-    // 씬 로드 + 페이즈 변경
-    private IEnumerator LoadSceneAndChangePhase(string sceneName, DayPhase targetPhase)
+    /// <summary>
+    /// 씬 전환 실행 (페이드 아웃 → Loading Scene)
+    /// </summary>
+    private void TransitionToScene(string targetScene, DayPhase targetPhase)
     {
         isTransitioning = true;
 
-        Debug.Log($"[SceneTransition] {sceneName} 씬으로 전환 시작");
+        // 목표 페이즈 저장 (DayManager가 sceneLoaded 이벤트에서 사용)
+        TargetPhase = targetPhase;
 
-        // 비동기 로딩
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
+        // 페이드 아웃 후 Loading Scene으로 전환
+        StartCoroutine(FadeOutAndLoadScene(targetScene, targetPhase));
+    }
 
-        if (useLoadingScreen)
+    /// <summary>
+    /// 페이드 아웃 후 Loading Scene으로 전환
+    /// </summary>
+    private IEnumerator FadeOutAndLoadScene(string targetScene, DayPhase targetPhase)
+    {
+        if (FadeManager.Instance == null)
         {
-            // 로딩 화면 사용 시 최소 로딩 시간 적용
-            asyncLoad.allowSceneActivation = false;
-            float startTime = Time.time;
-
-            // 로딩 준비 완료까지 대기
-            while (asyncLoad.progress < 0.9f)
-            {
-                yield return null;
-            }
-
-            // 최소 로딩 시간까지 대기
-            while (Time.time - startTime < minLoadingTime)
-            {
-                yield return null;
-            }
-
-            asyncLoad.allowSceneActivation = true;
+            Debug.LogError("[SceneTransition] FadeManager.Instance가 null입니다!");
+            yield break;
         }
 
-        // AsyncOperation이 완전히 끝날 때까지 대기
-        yield return asyncLoad.isDone;
+        // 검은색 페이드 아웃
+        Debug.Log($"[SceneTransition] 검은색 페이드 아웃 시작 → {targetScene}");
+        FadeManager.Instance.FadeOutToBlack(0.7f);
 
-        // 페이즈 변경
-        if (DayManager.Instance != null)
-        {
-            DayManager.Instance.ChangePhase(targetPhase);
-            Debug.Log($"[SceneTransition] 페이즈 변경 완료: {targetPhase}");
-        }
-        else
-        {
-            Debug.LogError("[SceneTransition] DayManager.Instance가 null입니다!");
-        }
+        // 페이드 아웃 완료 대기
+        yield return new WaitForSeconds(0.7f);
+
+        // Loading Scene 전환
+        LoadingManager.NextSceneName = targetScene;
+        Debug.Log($"[SceneTransition] Loading Scene으로 전환 (목표: {targetScene}, 페이즈: {targetPhase})");
+        SceneManager.LoadScene(loadingSceneName);
 
         isTransitioning = false;
+    }
+
+    // ========== 유틸리티 ==========
+
+    /// <summary>
+    /// 현재 씬 이름 반환
+    /// </summary>
+    public string GetCurrentSceneName()
+    {
+        return SceneManager.GetActiveScene().name;
+    }
+
+    /// <summary>
+    /// 배 씬에 있는지 확인
+    /// </summary>
+    public bool IsOnShip()
+    {
+        return GetCurrentSceneName() == shipSceneName;
+    }
+
+    /// <summary>
+    /// 수중 씬에 있는지 확인
+    /// </summary>
+    public bool IsUnderwater()
+    {
+        return GetCurrentSceneName() == underwaterSceneName;
     }
 }
