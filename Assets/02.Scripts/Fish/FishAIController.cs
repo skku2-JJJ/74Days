@@ -125,7 +125,7 @@ public class FishAIController : MonoBehaviour
     private void EnterWander()
     {
         _state = State.Wander;
-        _stateDuration = Random.Range(_minDecideDirDuration, _maxDecideDirDuration);
+        _stateDuration = Random.Range(_minDecideStateDuration, _maxDecideStateDuration);
         _wanderTimer = 0f;
     }
    
