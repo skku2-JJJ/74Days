@@ -6454,6 +6454,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _openPos: {x: 0, y: 0}
   _closePos: {x: 0, y: -1200}
+  _uiType: 0
 --- !u!114 &622894136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9984,6 +9985,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _openPos: {x: 0, y: 0}
   _closePos: {x: 0, y: -1200}
+  _uiType: 0
 --- !u!114 &944315827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16123,6 +16125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _openPos: {x: 0, y: 0}
   _closePos: {x: 0, y: -900}
+  _uiType: 0
 --- !u!1 &1625271839
 GameObject:
   m_ObjectHideFlags: 0
@@ -16490,7 +16493,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1312957599
   m_SortingLayer: -1
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -4285301957420186651, guid: 0cb8dfb222209b34099652452048b0c5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
