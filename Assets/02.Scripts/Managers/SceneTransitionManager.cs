@@ -60,7 +60,7 @@ public class SceneTransitionManager : MonoBehaviour
     // ========== 내부 씬 로딩 ==========
 
     /// <summary>
-    /// 씬 전환 실행 (Loading Scene 사용 여부 결정)
+    /// 씬 전환 실행 (페이드 아웃 → Loading Scene)
     /// </summary>
     private void TransitionToScene(string targetScene, DayPhase targetPhase)
     {
@@ -69,15 +69,59 @@ public class SceneTransitionManager : MonoBehaviour
         // 목표 페이즈 저장 (DayManager가 sceneLoaded 이벤트에서 사용)
         TargetPhase = targetPhase;
 
-        if (useLoadingScreen)
-        {
-            // Loading Scene을 거쳐서 전환
-            LoadingManager.NextSceneName = targetScene;
+        // 페이드 아웃 후 Loading Scene으로 전환
+        StartCoroutine(FadeOutAndLoadScene(targetScene, targetPhase));
+    }
 
-            Debug.Log($"[SceneTransition] Loading Scene을 통해 {targetScene}으로 전환 (목표 페이즈: {targetPhase})");
-            SceneManager.LoadScene(loadingSceneName);
+    /// <summary>
+    /// 페이드 아웃 후 Loading Scene으로 전환
+    /// </summary>
+    private IEnumerator FadeOutAndLoadScene(string targetScene, DayPhase targetPhase)
+    {
+        if (FadeManager.Instance == null)
+        {
+            Debug.LogError("[SceneTransition] FadeManager.Instance가 null입니다!");
+            yield break;
         }
-        
+
+        // 검은색 페이드 아웃
+        Debug.Log($"[SceneTransition] 검은색 페이드 아웃 시작 → {targetScene}");
+        FadeManager.Instance.FadeOutToBlack(0.7f);
+
+        // 페이드 아웃 완료 대기
+        yield return new WaitForSeconds(0.7f);
+
+        // Loading Scene 전환
+        LoadingManager.NextSceneName = targetScene;
+        Debug.Log($"[SceneTransition] Loading Scene으로 전환 (목표: {targetScene}, 페이즈: {targetPhase})");
+        SceneManager.LoadScene(loadingSceneName);
+
         isTransitioning = false;
+    }
+
+    // ========== 유틸리티 ==========
+
+    /// <summary>
+    /// 현재 씬 이름 반환
+    /// </summary>
+    public string GetCurrentSceneName()
+    {
+        return SceneManager.GetActiveScene().name;
+    }
+
+    /// <summary>
+    /// 배 씬에 있는지 확인
+    /// </summary>
+    public bool IsOnShip()
+    {
+        return GetCurrentSceneName() == shipSceneName;
+    }
+
+    /// <summary>
+    /// 수중 씬에 있는지 확인
+    /// </summary>
+    public bool IsUnderwater()
+    {
+        return GetCurrentSceneName() == underwaterSceneName;
     }
 }

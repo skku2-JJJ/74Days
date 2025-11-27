@@ -59,6 +59,12 @@ public class LoadingManager : MonoBehaviour
 
     void Start()
     {
+        // 로딩 화면 페이드 인
+        if (FadeManager.Instance != null)
+        {
+            FadeManager.Instance.FadeIn(0.7f);
+        }
+
         // 씬별 로딩 문구 표시
         ShowRandomLoadingText();
 
@@ -135,6 +141,13 @@ public class LoadingManager : MonoBehaviour
         // 100% 표시
         UpdateProgressUI(1f);
         Debug.Log($"[Loading] 진행률 100% - 씬 전환 시작");
+
+        // 다음 씬으로 넘어가기 전 검은색 페이드 아웃
+        if (FadeManager.Instance != null)
+        {
+            FadeManager.Instance.FadeOutToBlack(0.7f);
+            yield return new WaitForSeconds(0.7f);  // 페이드 완료 대기
+        }
 
         // 씬 활성화 허용
         asyncLoad.allowSceneActivation = true;

@@ -90,6 +90,13 @@ using System.Collections;
 
           ChangePhase(targetPhase);
           Debug.Log($"[DayManager] 페이즈 변경 완료: {targetPhase}");
+
+          // 씬 로드 완료 후 페이드 인
+          if (FadeManager.Instance != null)
+          {
+              FadeManager.Instance.FadeIn(1f);
+              Debug.Log($"[DayManager] 페이드 인 시작 - 게임 화면 표시");
+          }
       }
 
       // 하루 시작
