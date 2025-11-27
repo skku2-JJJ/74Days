@@ -52,5 +52,26 @@ public class DailyReportUpDown : MonoBehaviour
 
     }
 
-    
+    private void CloseInternal()
+    {
+        if (!_isOpen) return; // 이미 닫혀있으면 무시
+        if (UIManager.Instance == null)
+        {
+            Debug.LogWarning("UIManager가 존재하지 않습니다. Close()을 실행할 수 없습니다.");
+            return;
+        }
+
+        _isOpen = false;
+
+        _crewsUI.anchoredPosition = _closePos;
+        UIManager.Instance.IsOpened = false;
+    }
+
+    //씬이 바뀔 때 자동으로 닫아준다
+    private void OnDestroy()
+    {
+        CloseInternal();
+    }
+
+
 }
