@@ -96,12 +96,6 @@ public class ResourceDistributeUI : MonoBehaviour
             // Evening이 아닌 페이즈로 전환되면 패널 닫기
             Hide();
 
-            // Night 페이즈일 때는 슬롯도 정리
-            if (phase == DayPhase.Night)
-            {
-                Debug.Log("[ResourceDistributionUI] Night 페이즈 진입 → 슬롯 정리");
-                ClearSlots();
-            }
         }
     }
 
@@ -278,12 +272,6 @@ public class ResourceDistributeUI : MonoBehaviour
     private void OnCompleteButtonClicked()
     {
         Hide();
-
-        // Night 페이즈로 진행
-        if (DayManager.Instance != null)
-        {
-            DayManager.Instance.GoToNight();
-        }
 
         Debug.Log("[자원 분배] 분배 완료 버튼 클릭");
     }

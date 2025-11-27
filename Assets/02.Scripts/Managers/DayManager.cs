@@ -124,9 +124,6 @@ using System.Collections;
               case DayPhase.Evening:
                   HandleEveningPhase();
                   break;
-              case DayPhase.Night:
-                  HandleNightPhase();
-                  break;
           }
       }
 
@@ -156,19 +153,6 @@ using System.Collections;
 
           ChangePhase(DayPhase.Evening);
           Debug.Log("[페이즈 전환] Diving → Evening");
-      }
-
-      // Evening → Night
-      public void GoToNight()
-      {
-          if (currentPhase != DayPhase.Evening)
-          {
-              Debug.LogWarning($"[페이즈 전환 실패] Evening 페이즈에서만 Night로 갈 수 있습니다! (현재: {currentPhase})");
-              return;
-          }
-
-          ChangePhase(DayPhase.Night);
-          Debug.Log("[페이즈 전환] Evening → Night");
       }
 
       // 하루 종료
@@ -204,14 +188,7 @@ using System.Collections;
       {
           // 저녁: 자원 분배 시간
           // UI로 자원 분배 화면 표시
-      }
-
-      private void HandleNightPhase()
-      {
-          // 밤: 배/선원 일일 노화 처리 및 하루 마무리
-          ShipManager.Instance?.ProcessDailyShipDeterioration();
-          CrewManager.Instance?.ProcessDailyNeeds();
-          EndDay();
+          // 완료 버튼 클릭 시 ResourceDistributionUI에서 EndDay() 호출
       }
 
       private void HandleGameEnd()

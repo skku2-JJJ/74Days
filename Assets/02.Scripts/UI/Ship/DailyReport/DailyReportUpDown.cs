@@ -66,7 +66,7 @@ public class DailyReportUpDown : MonoBehaviour
         _isOpen = true;
         _crewsUI.DOAnchorPos(_closePos, 0.3f).SetEase(Ease.InSine).OnComplete(() =>
         {
-            _reoportUI.DOAnchorPos(_openPos, 0.5f).SetEase(Ease.OutBack);
+            _reoportUI.DOAnchorPos(_openPos, 1f).SetEase(Ease.OutBack);
         });
     }
 

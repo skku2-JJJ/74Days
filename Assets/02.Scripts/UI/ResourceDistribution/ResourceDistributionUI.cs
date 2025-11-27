@@ -287,21 +287,43 @@ public class ResourceDistributionUI : MonoBehaviour
 
     public void OnCompleteButtonClicked()
     {
-        Debug.Log("[ResourceDistributionUI] 완료 버튼 클릭 - 자원 분배 적용");
+        Debug.Log("[ResourceDistributionUI] 완료 버튼 클릭 - 하루 종료 처리 시작");
 
-        // 1. 모든 DivisionBox 순회하여 할당된 자원 적용
-        ApplyResourceDistribution();
-        
+        // UI 닫기
         _distributeUI.Close();
 
-        // 3. Night 페이즈 처리 (내부적으로만)
-        ProcessNightPhase();
+        // Fade Out → 처리 → Fade In 순차 실행
+        if (FadeManager.Instance != null)
+        {
+            FadeManager.Instance.FadeOutToBlack(2.5f, () =>
+            {
+                // Fade Out 완료 후 실행
+                ProcessEndOfDay();
 
-        // 4. 다음날 Morning 페이즈로 전환
+                // Fade In
+                FadeManager.Instance.FadeIn(3f);
+            });
+        }
+    }
+
+    /// <summary>
+    /// 하루 종료 처리 (자원 분배 적용 + 노화 처리 + 다음날 전환)
+    /// </summary>
+    private void ProcessEndOfDay()
+    {
+        // 1. 모든 DivisionBox 순회하여 할당된 자원 적용
+        ApplyResourceDistribution();
+
+        // 2. 일일 노화 처리 (배/선원)
+        ProcessDailyDeterioration();
+
+        // 3. 다음날 Morning 페이즈로 전환
         if (DayManager.Instance != null)
         {
             DayManager.Instance.EndDay();
         }
+
+        Debug.Log("[ResourceDistributionUI] 하루 종료 처리 완료");
     }
 
     /// <summary>
@@ -326,27 +348,24 @@ public class ResourceDistributionUI : MonoBehaviour
                 {
                     ResourceType resourceType = box.AssignedResource.Value;
 
-                    // 자원 소비
-                    //bool consumed = ShipManager.Instance.UseResource(resourceType, 1);
-                    bool consumed = true;
-                    if (consumed)
-                    {
-                        // 선원에게 자원 적용
-                        bool assigned = CrewManager.Instance.AssignResourceToCrew(
-                            box.GetAssignedCrew(),
-                            resourceType,
-                            1
-                        );
+                    // 자원 소비는 AssignResourceToCrew() 내부에서 처리됨 (중복 방지)
+                    // AssignResourceToCrew()가 내부적으로 ShipManager.UseResource()를 호출함
 
-                        if (assigned)
-                        {
-                            totalResourcesApplied++;
-                            Debug.Log($"[ResourceDistributionUI] {box.GetAssignedCrew().CrewName}에게 {resourceType} 적용 완료");
-                        }
+                    // 선원에게 자원 적용
+                    bool assigned = CrewManager.Instance.AssignResourceToCrew(
+                        box.GetAssignedCrew(),
+                        resourceType,
+                        1
+                    );
+
+                    if (assigned)
+                    {
+                        totalResourcesApplied++;
+                        Debug.Log($"[ResourceDistributionUI] {box.GetAssignedCrew().CrewName}에게 {resourceType} 적용 완료");
                     }
                     else
                     {
-                        Debug.LogWarning($"[ResourceDistributionUI] {resourceType} 자원 소비 실패!");
+                        Debug.LogWarning($"[ResourceDistributionUI] {box.GetAssignedCrew().CrewName}에게 {resourceType} 할당 실패 (자원 부족 또는 유효하지 않은 자원)");
                     }
                 }
             }
@@ -356,11 +375,12 @@ public class ResourceDistributionUI : MonoBehaviour
     }
 
     /// <summary>
-    /// Night 페이즈 로직 실행 (UI 표시 없이)
+    /// 일일 노화 처리 (배/선원)
+    /// Evening 완료 시 하루가 끝나며 노화 처리
     /// </summary>
-    private void ProcessNightPhase()
+    private void ProcessDailyDeterioration()
     {
-        Debug.Log("[ResourceDistributionUI] Night 페이즈 내부 처리 시작");
+        Debug.Log("[ResourceDistributionUI] 일일 노화 처리 시작");
 
         // 선원 일일 노화 및 사망 체크
         if (CrewManager.Instance != null)
@@ -374,7 +394,7 @@ public class ResourceDistributionUI : MonoBehaviour
             ShipManager.Instance.ProcessDailyShipDeterioration();
         }
 
-        Debug.Log("[ResourceDistributionUI] Night 페이즈 내부 처리 완료");
+        Debug.Log("[ResourceDistributionUI] 일일 노화 처리 완료");
     }
 
     // ========== 슬롯 정리 ==========

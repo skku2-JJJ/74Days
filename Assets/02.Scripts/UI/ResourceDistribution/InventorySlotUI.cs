@@ -83,15 +83,34 @@ public class InventorySlotUI : MonoBehaviour
         int availableAmount = currentAmount - temporaryReserved;
         bool hasItems = availableAmount > 0;
 
-        // 드래그 가능 여부 설정
+        // 드래그 가능 여부 설정 및 위치 초기화
         if (draggableItem != null)
         {
             draggableItem.enabled = hasItems;
+
+            // 가용량이 0일 때 draggableItem을 원위치로 강제 복귀
+            if (!hasItems)
+            {
+                var rectTransform = draggableItem.GetComponent<RectTransform>();
+                if (rectTransform != null)
+                {
+                    // OnEndDrag에서 사용하는 것과 동일한 로직
+                    rectTransform.anchoredPosition = Vector2.zero; // 부모 기준 원점으로
+
+                    var canvasGroup = draggableItem.GetComponent<CanvasGroup>();
+                    if (canvasGroup != null)
+                    {
+                        canvasGroup.alpha = 1f;
+                        canvasGroup.blocksRaycasts = true;
+                    }
+                }
+            }
         }
 
-        // 아이콘 투명도 조정
+        // 아이콘 표시/숨김 및 투명도 조정
         if (iconImage != null)
         {
+            iconImage.enabled = true; // 항상 아이콘은 표시 (Editor에서 할당된 sprite 유지)
             iconImage.color = hasItems ? normalColor : emptyColor;
         }
 
@@ -100,17 +119,6 @@ public class InventorySlotUI : MonoBehaviour
         {
             amountText.color = hasItems ? Color.white : new Color(1f, 1f, 1f, 0.5f);
         }
-    }
-
-    // ========== 아이템 사용 ==========
-
-    /// <summary>
-    /// 드롭 성공 시 호출 (DraggableInventoryItem에서 호출)
-    /// </summary>
-    public void OnItemUsed()
-    {
-        UpdateAmount();
-        Debug.Log($"[InventorySlotUI] {ResourceType} 사용 - 남은 수량: {currentAmount}");
     }
 
     // ========== 임시 예약 관리 ==========
