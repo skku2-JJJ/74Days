@@ -22,11 +22,41 @@ public class DailyReportUpDown : MonoBehaviour
     {
         _reoportUI = GetComponent<RectTransform>();
         _reoportUI.anchoredPosition = _closePos;
+
+        // DayManager 페이즈 변경 이벤트 구독
+        if (DayManager.Instance != null)
+        {
+            DayManager.Instance.OnPhaseChange += OnPhaseChanged;
+        }
+    }
+
+    void OnDestroy()
+    {
+        // 이벤트 구독 해제
+        if (DayManager.Instance != null)
+        {
+            DayManager.Instance.OnPhaseChange -= OnPhaseChanged;
+        }
+
+        CloseInternal();
+    }
+
+    /// <summary>
+    /// 페이즈 변경 시 호출
+    /// </summary>
+    private void OnPhaseChanged(DayPhase phase)
+    {
+        if (phase == DayPhase.Morning)
+        {
+            // Morning 페이즈 시작 시 자동으로 열기
+            Open();
+            Debug.Log("[DailyReportUpDown] Morning 페이즈 - 아침 리포트 자동 열기");
+        }
     }
 
     void Update()
     {
-        
+
     }
 
     public void Open()
@@ -66,12 +96,4 @@ public class DailyReportUpDown : MonoBehaviour
         _crewsUI.anchoredPosition = _closePos;
         UIManager.Instance.IsOpened = false;
     }
-
-    //씬이 바뀔 때 자동으로 닫아준다
-    private void OnDestroy()
-    {
-        CloseInternal();
-    }
-
-
 }
