@@ -3,9 +3,9 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
 
-public class ResourceDistributionUI : MonoBehaviour
+public class ResourceDistributeUI : MonoBehaviour
 {
-    public static ResourceDistributionUI Instance { get; private set; }
+    public static ResourceDistributeUI Instance { get; private set; }
 
     [Header("Header")]
     [SerializeField] private TextMeshProUGUI _dayTextUI;
