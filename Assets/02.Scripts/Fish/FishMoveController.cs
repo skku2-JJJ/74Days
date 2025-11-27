@@ -13,6 +13,9 @@ public class FishMoveController : MonoBehaviour
     [SerializeField] private float _buoyancy = 0.2f;
     [SerializeField] private float _maxVerticalSpeed = 3f;
 
+    private float _burstTimer;
+    private Vector2 _burstVelocity;
+    
     private Rigidbody2D _rigid;
     
     public Vector2 DesiredDir { get; set; } // 이동 방향
@@ -32,6 +35,14 @@ public class FishMoveController : MonoBehaviour
         if (IsMovementLocked)
         {
             _rigid.linearVelocity = Vector2.zero;
+            return;
+        }
+        
+        // 버스트 중
+        if (_burstTimer > 0f)
+        {
+            _burstTimer -= Time.fixedDeltaTime;
+            _rigid.linearVelocity = _burstVelocity;
             return;
         }
         
@@ -61,5 +72,15 @@ public class FishMoveController : MonoBehaviour
         currentVel.y = Mathf.Clamp(currentVel.y, -_maxVerticalSpeed, _maxVerticalSpeed);
 
         _rigid.linearVelocity = currentVel;
+    }
+    
+    /// <summary>
+    /// 도망 모드.
+    /// QTE 실패(탈출) 시 호출.
+    /// </summary>
+    public void PlayBurst(Vector2 dir, float speed, float duration)
+    {
+        _burstTimer = duration;
+        _burstVelocity = dir.normalized * speed;
     }
 }
