@@ -39,13 +39,6 @@ public class CrewManager : MonoBehaviour
         }
     }
 
-    void Start()
-    {
-        // 테스트용 초기 선원 생성
-        InitializeDefaultCrew();
-        PrintAllCrewStatus();
-    }
-
     // ========== 테스트용 선원 관리 ==========
 
     // 선원 추가
@@ -142,7 +135,7 @@ public class CrewManager : MonoBehaviour
     // 자원이 식량(Hunger) 카테고리인지 확인
     private bool IsHungerResource(ResourceType type)
     {
-        return type == ResourceType.Fish || type == ResourceType.Shellfish || type == ResourceType.Seaweed;
+        return type == ResourceType.NormalFish || type == ResourceType.SpecialFish || type == ResourceType.Seaweed;
     }
 
     // ========== 일일 처리 ==========
@@ -210,17 +203,7 @@ public class CrewManager : MonoBehaviour
             Debug.Log(crew.GetStatusSummary());
         }
     }
-
-    // 테스트 용 초기 생성 코드
-    private void InitializeDefaultCrew()
-    {
-        // 기본 선원 3명 생성
-        AddCrew(new CrewMember("선원1", 1));
-        AddCrew(new CrewMember("선원2", 2));
-        AddCrew(new CrewMember("선원3", 3));
-
-        Debug.Log($"[초기화] 기본 선원 {TotalCrew}명 생성 완료");
-    }
+    
 
     // 선원 요약 정보
     public string GetCrewSummary()

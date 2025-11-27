@@ -1,6 +1,7 @@
 ﻿// Day 시스템
 public enum DayPhase
 {
+    None,
     Morning,
     Diving,
     Evening,
@@ -10,8 +11,8 @@ public enum DayPhase
 // 자원 종류
 public enum ResourceType
 {
-    Fish,
-    Shellfish,
+    NormalFish,
+    SpecialFish,
     Seaweed,
     CleanWater,
     Herbs,

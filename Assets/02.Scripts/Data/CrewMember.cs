@@ -119,8 +119,8 @@ public class CrewMember
 
         switch (type)
         {
-            case ResourceType.Fish:
-            case ResourceType.Shellfish:
+            case ResourceType.NormalFish:
+            case ResourceType.SpecialFish:
             case ResourceType.Seaweed:
                 // 식량: 배고픔 회복
                 Hunger = Mathf.Min(100, Hunger + FoodHungerRecovery * amount);
