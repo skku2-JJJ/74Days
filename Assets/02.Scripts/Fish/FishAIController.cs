@@ -3,10 +3,11 @@
 [RequireComponent(typeof(FishMoveController))]
 public class FishAIController : MonoBehaviour
 {
-    private enum State
+    private enum EFishState
     {
         Idle,
-        Wander
+        Wander,
+        Escape
     }
 
     [Header("State 결정 주기")]
@@ -24,7 +25,7 @@ public class FishAIController : MonoBehaviour
     [SerializeField] private float _idleMaxDuration = 3.0f;
     [SerializeField] private float _idleChanceAfterWander = 0.4f;
 
-    private State _state = State.Wander;
+    private EFishState _eFishState = EFishState.Wander;
     private float _stateTimer;
     private float _stateDuration;
     
@@ -37,11 +38,15 @@ public class FishAIController : MonoBehaviour
     [SerializeField] private float _fleeRadius = 4f;
     [SerializeField] private float _fleeStrength = 1.5f;
     
-
+    [Header("Escape 설정")]
+    [SerializeField] private float _escapeDuration = 3f;
+    
     private FishMoveController _move;
     private Vector2 _wanderDir = Vector2.right;
     private float _wanderTimer;
 
+    private Vector2 _escapeDir;
+    
     private const float FullAngle = 360f;
     private const float EpsilonNum = 0.001f;
     private const float DirCorrection = 0.3f;
@@ -70,21 +75,8 @@ public class FishAIController : MonoBehaviour
             _move.DesiredDir = ApplyObstacleAvoidance(fleeDir);
             return;
         }*/
-        
-        Vector2 dir = Vector2.zero;
 
-        switch (_state)
-        {
-            case State.Idle:
-                dir = Vector2.zero; 
-                break;
-            case State.Wander:
-                dir = GetWanderDirection();    
-                break;
-        }
-
-        dir = ApplyObstacleAvoidance(dir);
-        _move.DesiredDir = dir;
+        DecideMoveDir();
     }
 
     private void Init()
@@ -101,32 +93,86 @@ public class FishAIController : MonoBehaviour
     {
         _stateTimer = 0f;
 
-        if (_state == State.Wander)
+        switch (_eFishState)
         {
-            // 일정 확률로 Idle 진입
-            if (Random.value < _idleChanceAfterWander)
-                EnterIdle();
-            else
+            case EFishState.Wander:
+                if (Random.value < _idleChanceAfterWander)
+                    EnterIdle();
+                else
+                    EnterWander();
+                break;
+            
+            case EFishState.Idle:
+            case EFishState.Escape:
+            default:
                 EnterWander();
-        }
-        else 
-        {
-            EnterWander();
+                break;
         }
     }
 
+    private void DecideMoveDir()
+    {
+        Vector2 dir = Vector2.zero;
+
+        switch (_eFishState)
+        {
+            case EFishState.Idle:
+                dir = Vector2.zero; 
+                break;
+            case EFishState.Wander:
+                dir = GetWanderDirection();    
+                break;
+            case EFishState.Escape:
+                dir = _escapeDir;       
+                break;
+        }
+
+        dir = ApplyObstacleAvoidance(dir);
+        _move.DesiredDir = dir;
+    }
+    
+    
+
     private void EnterIdle()
     {
-        _state = State.Idle;
+        _eFishState = EFishState.Idle;
         _stateDuration = Random.Range(_idleMinDuration, _idleMaxDuration);
         _wanderTimer = 0f; 
     }
 
     private void EnterWander()
     {
-        _state = State.Wander;
-        _stateDuration = Random.Range(_minDecideDirDuration, _maxDecideDirDuration);
+        _eFishState = EFishState.Wander;
+        _stateDuration = Random.Range(_minDecideStateDuration, _maxDecideStateDuration);
         _wanderTimer = 0f;
+    }
+    
+    
+    /// <summary>
+    /// QTE 실패 등으로 인해 도망 상태로 전환
+    /// </summary>
+    public void EnterEscape(Vector2 fleeDir, float escapeSpeed)
+    {
+        _eFishState = EFishState.Escape;
+        _stateTimer = 0f;
+        _stateDuration = _escapeDuration;
+
+        if (fleeDir.sqrMagnitude > EpsilonNum)
+        {
+            _escapeDir = fleeDir.normalized;
+        }
+        else
+        {
+            _escapeDir = _wanderDir; 
+        }
+      
+           
+
+        if (_move != null)
+        {
+          // Escape 속도 적용
+            _move.SetOverrideSpeed(escapeSpeed, _escapeDuration);
+        }
     }
    
     private Vector2 GetWanderDirection()
@@ -163,7 +209,7 @@ public class FishAIController : MonoBehaviour
         Vector2 origin = transform.position;
         Vector2 forward = desired.normalized;
 
-        // 탐색할 방향들 (왼45, 오른45, 왼90, 오90)
+        // 장애물 탐색 방향 (왼45, 오른45, 왼90, 오90)
         float[] angles = { 0f, 45f, -45f, 90f, -90f };
 
         foreach (float ang in angles)
@@ -181,6 +227,8 @@ public class FishAIController : MonoBehaviour
         // 완전 막힌 경우 → 위로 살짝 치켜오르기 
         return (forward + Vector2.up * DirCorrection).normalized;
     }
+    
+   
 
 #if UNITY_EDITOR
     private void OnDrawGizmosSelected()

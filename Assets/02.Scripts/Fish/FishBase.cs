@@ -5,6 +5,9 @@ using UnityEngine;
 /// </summary>
 public abstract class FishBase : MonoBehaviour, IFishCapturable
 {
+    [Header("Fish 타입")]
+    [SerializeField] private ResourceType _fishType;
+    
     [Header("다이버")]
     [SerializeField] protected Transform diver;
     
@@ -19,8 +22,9 @@ public abstract class FishBase : MonoBehaviour, IFishCapturable
    
     
     public bool CanBeCaptured => _health.CanBeCaptured;
+    public ResourceType Type => _fishType;
     public Transform Transform => this.transform;
-    
+
     public virtual void TakeHarpoonHit(float damage, Vector2 harpoonDir)
     {
         _health.TakeDamage(damage);
@@ -39,19 +43,11 @@ public abstract class FishBase : MonoBehaviour, IFishCapturable
     /// </summary>
     public abstract void OnCaptureFailed();
 
-    
-    /// <summary>
-    /// 물고기 retrieve 성공 시 호출
-    /// </summary>
-    public void Get()
+    public void Stored()
     {
-        // 인벤토리 추가, 이펙트 등
-        Debug.Log($"{name} captured!");
-        gameObject.SetActive(false);
+        //Debug.Log($"{name} is Stored");
+        Destroy(gameObject);
     }
-    
-    
-
 
     public void BeginCaptureStruggle()
     {

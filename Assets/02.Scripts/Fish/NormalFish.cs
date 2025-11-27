@@ -5,10 +5,12 @@ using Random = UnityEngine.Random;
 public class NormalFish : FishBase
 {
     [Header("Escape Settings")]
-    [SerializeField] private float _escapeBurstSpeed = 8f;   // QTE 실패 시 한번에 튀는 속도
-    [SerializeField] private float _escapeRandomFactor = 0.2f; // 방향 랜덤 섞기 정도
+    [SerializeField] private float _escapeBurstSpeed = 15f;   
+    [SerializeField] private float _escapeRandomFactor = 0.2f; 
+    
     
     private Rigidbody2D _rigid;
+    private FishAIController _aiController;
     
     private void Awake()
     {
@@ -19,6 +21,8 @@ public class NormalFish : FishBase
     private void Init()
     {
         _rigid = GetComponent<Rigidbody2D>();
+        _aiController = GetComponent<FishAIController>();
+        
         diver = GameObject.FindGameObjectWithTag("Player").transform;
 
         if (visualController == null)
@@ -47,8 +51,9 @@ public class NormalFish : FishBase
             dir = Random.insideUnitCircle.normalized;
         }
         
-        float speed = _escapeBurstSpeed;
-        _rigid.linearVelocity = dir * speed;
+     
+        _aiController.EnterEscape(dir, _escapeBurstSpeed);
+        return;
         
     }
     
