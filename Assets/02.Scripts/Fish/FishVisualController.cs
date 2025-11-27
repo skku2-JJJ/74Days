@@ -71,7 +71,7 @@ public class FishVisualController : MonoBehaviour
         if (_isFacingLocked) return;
         
         if (currentVelocity.magnitude < _minSpeedForFlip) return;
-        if (desiredDir.sqrMagnitude < 0.0001f) return;
+        if (desiredDir.sqrMagnitude < Mathf.Epsilon) return;
         
         float x = desiredDir.x;
         
@@ -89,12 +89,6 @@ public class FishVisualController : MonoBehaviour
     {
         float horizontalMove = desiredDir.x;
         float verticalMove   = desiredDir.y;
-        
-        if (Mathf.Abs(verticalMove) < VerticalInputDeadZone && Mathf.Abs(horizontalMove) < HorizontalInputDeadZone)
-        {
-            SetVisualTilt(0f);
-            return;
-        }
         
         // 수직 입력 없으면 서서히 0도로 복귀
         if (Mathf.Abs(verticalMove) < VerticalInputDeadZone)
