@@ -1,10 +1,17 @@
 using UnityEngine;
 
+public enum EFishType
+{
+    
+}
 /// <summary>
 /// 물고기 추상 클래스
 /// </summary>
 public abstract class FishBase : MonoBehaviour, IFishCapturable
 {
+    [Header("Fish 타입")]
+    [SerializeField] private EFishType _fishType;
+    
     [Header("다이버")]
     [SerializeField] protected Transform diver;
     
@@ -20,7 +27,9 @@ public abstract class FishBase : MonoBehaviour, IFishCapturable
     
     public bool CanBeCaptured => _health.CanBeCaptured;
     public Transform Transform => this.transform;
-    
+
+    public EFishType FishType => _fishType;
+
     public virtual void TakeHarpoonHit(float damage, Vector2 harpoonDir)
     {
         _health.TakeDamage(damage);

@@ -246,7 +246,7 @@ public class HarpoonShooter : MonoBehaviour
         IFishCapturable fish = proj.GetComponentInChildren<IFishCapturable>();
         if (fish != null)
         {
-            fish.Get();
+            //fish.Get();
         }
         // fish -> 가방 
        

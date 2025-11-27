@@ -17,6 +17,7 @@ public enum ResourceType
     CleanWater,
     Herbs,
     Wood,
+    
 }
 
 // 선원 상태
