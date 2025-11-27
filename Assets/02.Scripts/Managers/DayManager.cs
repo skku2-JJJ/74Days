@@ -9,7 +9,7 @@ using System.Collections;
 
       [Header("Day Settings")]
       [SerializeField] private int currentDay = 1;
-      [SerializeField] private int maxDays = 100;
+      [SerializeField] private int maxDays = 74;
 
       [Header("Day Phases")]
       public DayPhase currentPhase = DayPhase.None;
@@ -22,7 +22,7 @@ using System.Collections;
       public int CurrentDay => currentDay;
       public int MaxDays => maxDays;
       public DayPhase CurrentPhase => currentPhase;
-      public bool IsGameOver => currentDay >= maxDays;
+      public bool IsGameOver => currentDay >= maxDays || IsAllCrewDead() || IsShipDestroyed();
 
       void Awake()
       {
@@ -103,7 +103,6 @@ using System.Collections;
       public void StartDay()
       {
           OnDayStart?.Invoke(currentDay);
-          Debug.Log("dfsasf");
           ChangePhase(DayPhase.Morning);
       }
 
@@ -123,9 +122,6 @@ using System.Collections;
                   break;
               case DayPhase.Evening:
                   HandleEveningPhase();
-                  break;
-              case DayPhase.Night:
-                  HandleNightPhase();
                   break;
           }
       }
@@ -156,19 +152,6 @@ using System.Collections;
 
           ChangePhase(DayPhase.Evening);
           Debug.Log("[페이즈 전환] Diving → Evening");
-      }
-
-      // Evening → Night
-      public void GoToNight()
-      {
-          if (currentPhase != DayPhase.Evening)
-          {
-              Debug.LogWarning($"[페이즈 전환 실패] Evening 페이즈에서만 Night로 갈 수 있습니다! (현재: {currentPhase})");
-              return;
-          }
-
-          ChangePhase(DayPhase.Night);
-          Debug.Log("[페이즈 전환] Evening → Night");
       }
 
       // 하루 종료
@@ -204,14 +187,7 @@ using System.Collections;
       {
           // 저녁: 자원 분배 시간
           // UI로 자원 분배 화면 표시
-      }
-
-      private void HandleNightPhase()
-      {
-          // 밤: 배/선원 일일 노화 처리 및 하루 마무리
-          ShipManager.Instance?.ProcessDailyShipDeterioration();
-          CrewManager.Instance?.ProcessDailyNeeds();
-          EndDay();
+          // 완료 버튼 클릭 시 ResourceDistributionUI에서 EndDay() 호출
       }
 
       private void HandleGameEnd()
@@ -219,5 +195,127 @@ using System.Collections;
           // 게임 종료 처리
           int survivedCrew = CrewManager.Instance.GetSurvivedCrewCount();
           Debug.Log($"Game Over! Survived Crew: {survivedCrew}/{CrewManager.Instance.TotalCrew}");
+      }
+
+      // ========== Evening 완료 처리 ==========
+
+      /// <summary>
+      /// Evening 완료 처리 (자원 분배 → 노화 → 다음 날 전환)
+      /// ResourceDistributionUI에서 호출
+      /// </summary>
+      public void CompleteEvening()
+      {
+          Debug.Log("[DayManager] Evening 완료 처리 시작");
+
+          // 1. 자원 분배 적용
+          ApplyResourceDistribution();
+
+          // 2. 일일 노화 처리 (배/선원)
+          ProcessDailyDeterioration();
+
+          // 3. 다음날로 전환 (EndDay에서 게임 종료 체크)
+          EndDay();
+
+          Debug.Log("[DayManager] Evening 완료 처리 완료");
+      }
+
+      /// <summary>
+      /// 모든 선원의 DivisionBox를 순회하여 할당된 자원 적용
+      /// </summary>
+      private void ApplyResourceDistribution()
+      {
+          Debug.Log("[DayManager] 자원 분배 적용 시작");
+
+          if (ResourceDistributionUI.Instance == null)
+          {
+              Debug.LogWarning("[DayManager] ResourceDistributionUI.Instance가 null입니다!");
+              return;
+          }
+
+          int totalResourcesApplied = 0;
+
+          // ResourceDistributionUI에서 모든 CrewResourceItem 가져오기
+          var crewItems = ResourceDistributionUI.Instance.GetComponentsInChildren<CrewResourceItem>();
+
+          foreach (var crewItem in crewItems)
+          {
+              if (crewItem == null || !crewItem.gameObject.activeInHierarchy) continue;
+
+              // 각 선원의 DivisionBox 가져오기
+              var divisionBoxes = crewItem.GetComponentsInChildren<DivisionBoxSlot>();
+
+              foreach (var box in divisionBoxes)
+              {
+                  if (box.HasResource)
+                  {
+                      ResourceType resourceType = box.AssignedResource.Value;
+
+                      // 자원 소비는 AssignResourceToCrew() 내부에서 처리됨 (중복 방지)
+                      // AssignResourceToCrew()가 내부적으로 ShipManager.UseResource()를 호출함
+
+                      // 선원에게 자원 적용
+                      bool assigned = CrewManager.Instance.AssignResourceToCrew(
+                          box.GetAssignedCrew(),
+                          resourceType,
+                          1
+                      );
+
+                      if (assigned)
+                      {
+                          totalResourcesApplied++;
+                          Debug.Log($"[DayManager] {box.GetAssignedCrew().CrewName}에게 {resourceType} 적용 완료");
+                      }
+                      else
+                      {
+                          Debug.LogWarning($"[DayManager] {box.GetAssignedCrew().CrewName}에게 {resourceType} 할당 실패 (자원 부족 또는 유효하지 않은 자원)");
+                      }
+                  }
+              }
+          }
+
+          Debug.Log($"[DayManager] 총 {totalResourcesApplied}개 자원 적용 완료");
+      }
+
+      /// <summary>
+      /// 일일 노화 처리 (배/선원)
+      /// </summary>
+      private void ProcessDailyDeterioration()
+      {
+          Debug.Log("[DayManager] 일일 노화 처리 시작");
+
+          // 선원 일일 노화 및 사망 체크
+          if (CrewManager.Instance != null)
+          {
+              CrewManager.Instance.ProcessDailyNeeds();
+          }
+
+          // 배 일일 노화
+          if (ShipManager.Instance != null)
+          {
+              ShipManager.Instance.ProcessDailyShipDeterioration();
+          }
+
+          Debug.Log("[DayManager] 일일 노화 처리 완료");
+      }
+
+      // ========== 게임 종료 조건 체크 ==========
+
+      /// <summary>
+      /// 선원이 모두 사망했는지 확인
+      /// </summary>
+      private bool IsAllCrewDead()
+      {
+          return CrewManager.Instance != null &&
+                 CrewManager.Instance.GetSurvivedCrewCount() == 0;
+      }
+
+      /// <summary>
+      /// 배가 파괴되었는지 확인
+      /// </summary>
+      private bool IsShipDestroyed()
+      {
+          return ShipManager.Instance != null &&
+                 ShipManager.Instance.Ship != null &&
+                 ShipManager.Instance.Ship.Hp <= 0;
       }
   }

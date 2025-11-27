@@ -287,95 +287,26 @@ public class ResourceDistributionUI : MonoBehaviour
 
     public void OnCompleteButtonClicked()
     {
-        Debug.Log("[ResourceDistributionUI] 완료 버튼 클릭 - 자원 분배 적용");
+        Debug.Log("[ResourceDistributionUI] 완료 버튼 클릭 - Evening 종료");
 
-        // 1. 모든 DivisionBox 순회하여 할당된 자원 적용
-        ApplyResourceDistribution();
-        
+        // UI 닫기
         _distributeUI.Close();
 
-        // 3. Night 페이즈 처리 (내부적으로만)
-        ProcessNightPhase();
-
-        // 4. 다음날 Morning 페이즈로 전환
-        if (DayManager.Instance != null)
+        // Fade Out → DayManager에 위임 → Fade In
+        if (FadeManager.Instance != null)
         {
-            DayManager.Instance.EndDay();
-        }
-    }
-
-    /// <summary>
-    /// 모든 선원의 DivisionBox를 순회하여 할당된 자원 적용
-    /// </summary>
-    private void ApplyResourceDistribution()
-    {
-        Debug.Log("[ResourceDistributionUI] 자원 분배 적용 시작");
-
-        int totalResourcesApplied = 0;
-
-        foreach (var crewItem in crewItems)
-        {
-            if (crewItem == null) continue;
-
-            // 각 선원의 DivisionBox 가져오기
-            var divisionBoxes = crewItem.GetComponentsInChildren<DivisionBoxSlot>();
-
-            foreach (var box in divisionBoxes)
+            FadeManager.Instance.FadeOutToBlack(2.5f, () =>
             {
-                if (box.HasResource)
+                // Fade Out 완료 후 DayManager에 Evening 완료 처리 위임
+                if (DayManager.Instance != null)
                 {
-                    ResourceType resourceType = box.AssignedResource.Value;
-
-                    // 자원 소비
-                    //bool consumed = ShipManager.Instance.UseResource(resourceType, 1);
-                    bool consumed = true;
-                    if (consumed)
-                    {
-                        // 선원에게 자원 적용
-                        bool assigned = CrewManager.Instance.AssignResourceToCrew(
-                            box.GetAssignedCrew(),
-                            resourceType,
-                            1
-                        );
-
-                        if (assigned)
-                        {
-                            totalResourcesApplied++;
-                            Debug.Log($"[ResourceDistributionUI] {box.GetAssignedCrew().CrewName}에게 {resourceType} 적용 완료");
-                        }
-                    }
-                    else
-                    {
-                        Debug.LogWarning($"[ResourceDistributionUI] {resourceType} 자원 소비 실패!");
-                    }
+                    DayManager.Instance.CompleteEvening();
                 }
-            }
-        }
 
-        Debug.Log($"[ResourceDistributionUI] 총 {totalResourcesApplied}개 자원 적용 완료");
+                // Fade In
+                FadeManager.Instance.FadeIn(3f);
+            });
+        }
     }
 
-    /// <summary>
-    /// Night 페이즈 로직 실행 (UI 표시 없이)
-    /// </summary>
-    private void ProcessNightPhase()
-    {
-        Debug.Log("[ResourceDistributionUI] Night 페이즈 내부 처리 시작");
-
-        // 선원 일일 노화 및 사망 체크
-        if (CrewManager.Instance != null)
-        {
-            CrewManager.Instance.ProcessDailyNeeds();
-        }
-
-        // 배 일일 노화
-        if (ShipManager.Instance != null)
-        {
-            ShipManager.Instance.ProcessDailyShipDeterioration();
-        }
-
-        Debug.Log("[ResourceDistributionUI] Night 페이즈 내부 처리 완료");
-    }
-
-    // ========== 슬롯 정리 ==========
 }

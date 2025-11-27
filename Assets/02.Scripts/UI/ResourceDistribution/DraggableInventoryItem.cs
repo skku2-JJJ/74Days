@@ -55,10 +55,10 @@ public class DraggableInventoryItem : MonoBehaviour,
     /// </summary>
     public void OnBeginDrag(PointerEventData eventData)
     {
-        // 수량 확인
-        if (parentSlot != null && parentSlot.CurrentAmount <= 0)
+        // 가용 수량 확인 (temporaryReserved 고려)
+        if (parentSlot != null && parentSlot.AvailableAmount <= 0)
         {
-            Debug.LogWarning($"[DraggableInventoryItem] {ResourceType} 수량이 0입니다!");
+            Debug.LogWarning($"[DraggableInventoryItem] {ResourceType} 가용 수량이 0입니다!");
             return;
         }
 
@@ -101,19 +101,4 @@ public class DraggableInventoryItem : MonoBehaviour,
         }
     }
 
-    // ========== 드롭 성공 콜백 ==========
-
-    /// <summary>
-    /// 드롭 성공 시 CrewResourceItem에서 호출
-    /// </summary>
-    public void OnDropSuccess()
-    {
-        Debug.Log($"[DraggableInventoryItem] {ResourceType} 드롭 성공 - 수량 감소");
-
-        // 부모 슬롯에 아이템 사용 알림
-        if (parentSlot != null)
-        {
-            parentSlot.OnItemUsed();
-        }
-    }
 }

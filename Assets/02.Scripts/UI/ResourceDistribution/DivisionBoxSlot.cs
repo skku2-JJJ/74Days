@@ -93,9 +93,14 @@ public class DivisionBoxSlot : MonoBehaviour, IDropHandler, IPointerClickHandler
     /// </summary>
     public void OnPointerClick(PointerEventData eventData)
     {
+        Debug.Log($"[DivisionBoxSlot] OnPointerClick 호출 - 버튼: {eventData.button}");
+
         // 우클릭 확인
         if (eventData.button != PointerEventData.InputButton.Right)
+        {
+            Debug.Log("[DivisionBoxSlot] 우클릭이 아님");
             return;
+        }
 
         // 할당된 자원이 있는지 확인
         if (!assignedResource.HasValue)
@@ -105,6 +110,7 @@ public class DivisionBoxSlot : MonoBehaviour, IDropHandler, IPointerClickHandler
         }
 
         ResourceType removedResource = assignedResource.Value;
+        Debug.Log($"[DivisionBoxSlot] 자원 제거 시작 - {removedResource}");
 
         // InventorySlot에 예약 취소 알림
         NotifyInventoryReservation(removedResource, false);
@@ -112,7 +118,7 @@ public class DivisionBoxSlot : MonoBehaviour, IDropHandler, IPointerClickHandler
         // 자원 제거
         ClearResource();
 
-        Debug.Log($"[DivisionBoxSlot] {assignedCrew.CrewName}의 {boxType} 박스에서 {removedResource} 제거");
+        Debug.Log($"[DivisionBoxSlot] {assignedCrew.CrewName}의 {boxType} 박스에서 {removedResource} 제거 완료");
     }
 
     // ========== 자원 검증 ==========
@@ -165,6 +171,8 @@ public class DivisionBoxSlot : MonoBehaviour, IDropHandler, IPointerClickHandler
     /// </summary>
     public void ClearResource()
     {
+        Debug.Log($"[DivisionBoxSlot] ClearResource 호출 - 현재 자원: {assignedResource}");
+
         assignedResource = null;
 
         // 아이콘 숨김
@@ -172,6 +180,11 @@ public class DivisionBoxSlot : MonoBehaviour, IDropHandler, IPointerClickHandler
         {
             iconImage.sprite = null;
             iconImage.enabled = false;
+            Debug.Log($"[DivisionBoxSlot] 아이콘 숨김 완료 - enabled: {iconImage.enabled}");
+        }
+        else
+        {
+            Debug.LogWarning("[DivisionBoxSlot] iconImage가 null입니다!");
         }
     }
 

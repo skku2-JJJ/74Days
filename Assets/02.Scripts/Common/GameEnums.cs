@@ -4,8 +4,7 @@ public enum DayPhase
     None,
     Morning,
     Diving,
-    Evening,
-    Night
+    Evening
 }
 
 // 자원 종류
