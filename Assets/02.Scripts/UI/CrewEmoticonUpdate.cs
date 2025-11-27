@@ -20,6 +20,15 @@ public class CrewEmoticonUpdate : MonoBehaviour
             DayManager.Instance.OnDayStart += OnDayStart;
         }
     }
+    
+    void OnDestroy()
+    {
+        // 이벤트 구독 해제
+        if (DayManager.Instance != null)
+        {
+            DayManager.Instance.OnDayStart -= OnDayStart;
+        }
+    }
     void Start()
     {
         EmojiUpdate();
@@ -42,8 +51,8 @@ public class CrewEmoticonUpdate : MonoBehaviour
 
         foreach (var crewMember in crewMembers)
         {
-            Debug.Log(crewMember.CrewName);
             if (crewMember.CrewID != _crewID) continue;
+            Debug.Log(crewMember.CrewName);
             _emoticon.sprite = Sprites[(int)crewMember.Status];
         }
     }

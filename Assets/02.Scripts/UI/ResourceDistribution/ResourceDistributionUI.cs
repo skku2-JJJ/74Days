@@ -21,7 +21,6 @@ public class ResourceDistributionUI : MonoBehaviour
     [SerializeField] private Transform boxElementParent;        // BoxElement (인벤토리 슬롯 부모)
     [SerializeField] private Button divisionButton;             // DivisionButton (완료 버튼)
     [SerializeField] private TextMeshProUGUI titleText;         // TitleText (제목)
-    [SerializeField] private Button dayEndButton;
     
     [Header("Resource Icons")]
     [SerializeField] private Sprite normalFishIcon;
