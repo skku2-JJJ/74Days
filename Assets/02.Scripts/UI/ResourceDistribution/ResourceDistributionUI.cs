@@ -327,7 +327,8 @@ public class ResourceDistributionUI : MonoBehaviour
                     ResourceType resourceType = box.AssignedResource.Value;
 
                     // 자원 소비
-                    bool consumed = ShipManager.Instance.UseResource(resourceType, 1);
+                    //bool consumed = ShipManager.Instance.UseResource(resourceType, 1);
+                    bool consumed = true;
                     if (consumed)
                     {
                         // 선원에게 자원 적용
