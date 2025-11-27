@@ -6,12 +6,11 @@ public class NormalFish : FishBase
 {
     [Header("Escape Settings")]
     [SerializeField] private float _escapeBurstSpeed = 15f;   
-    [SerializeField] private float _escapeBurstDuration = 3f;
     [SerializeField] private float _escapeRandomFactor = 0.2f; 
     
     
     private Rigidbody2D _rigid;
-    private FishMoveController _moveController;
+    private FishAIController _aiController;
     
     private void Awake()
     {
@@ -22,7 +21,8 @@ public class NormalFish : FishBase
     private void Init()
     {
         _rigid = GetComponent<Rigidbody2D>();
-        _moveController = GetComponent<FishMoveController>();
+        _aiController = GetComponent<FishAIController>();
+        
         diver = GameObject.FindGameObjectWithTag("Player").transform;
 
         if (visualController == null)
@@ -51,7 +51,9 @@ public class NormalFish : FishBase
             dir = Random.insideUnitCircle.normalized;
         }
         
-        _moveController.PlayBurst(dir, _escapeBurstSpeed, _escapeBurstDuration);
+     
+        _aiController.EnterEscape(dir, _escapeBurstSpeed);
+        return;
         
     }
     
