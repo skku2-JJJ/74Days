@@ -20,6 +20,7 @@ public class FishVisualController : MonoBehaviour
     [SerializeField] private float _animSpeedLerp = 10f;
 
     [Header("플립 조건")]
+    [SerializeField] private bool _textureFacesRight = false; // 에셋 기본 방향
     [SerializeField] private float _flipDirThreshold = 0.25f;   
     [SerializeField] private float _minSpeedForFlip = 0.2f;    
     
@@ -31,6 +32,7 @@ public class FishVisualController : MonoBehaviour
     private Animator _anim;
 
     private bool _isRightForward;
+    private bool _isFacingLocked = false;
 
     private void Awake()
     {
@@ -51,6 +53,9 @@ public class FishVisualController : MonoBehaviour
     {
         _sprite = GetComponent<SpriteRenderer>();
         _anim = GetComponent<Animator>();
+        
+        _isRightForward = _textureFacesRight? _sprite.flipX : !_sprite.flipX;
+        ApplyFacing();
     }
 
     private void TransitAnimation(Vector2 currentVelocity)
@@ -63,6 +68,8 @@ public class FishVisualController : MonoBehaviour
     }
     private void HandleFlipX(Vector2 desiredDir, Vector2 currentVelocity)
     {
+        if (_isFacingLocked) return;
+        
         if (currentVelocity.magnitude < _minSpeedForFlip) return;
         if (desiredDir.sqrMagnitude < 0.0001f) return;
         
@@ -75,7 +82,7 @@ public class FishVisualController : MonoBehaviour
         if (right == _isRightForward) return;
         
         _isRightForward = right;
-        _sprite.flipX = _isRightForward;
+        ApplyFacing(); 
     }
 
     private void UpdateTilt(Vector2 desiredDir)
@@ -118,20 +125,24 @@ public class FishVisualController : MonoBehaviour
         _visualTransform.localRotation = Quaternion.Slerp(_visualTransform.localRotation, targetRot, _tiltLerpSpeed * Time.deltaTime);
     }
     
-    /// <summary>
-    /// hit 시 투사체 반대 방향으로 flip
-    /// </summary>
-    /// <param name="worldDir"></param>
-    public void ForceLookDirection(Vector2 worldDir)
+    
+    // 🔥 QTE 등에서 방향을 강제로 고정할 때 호출
+    public void ForceLookAwayFrom(Vector2 diverWorldPos, bool lockFacing)
     {
-        if (worldDir.sqrMagnitude < 0.0001f)
-            return;
-        bool shouldFaceRight = worldDir.x < transform.position.x;
+        bool shouldFaceRight = diverWorldPos.x < transform.position.x;
 
-        if (shouldFaceRight == _isRightForward) return;
-        
         _isRightForward = shouldFaceRight;
-        _sprite.flipX   = _isRightForward;
+        ApplyFacing();
+
+        _isFacingLocked = lockFacing;
+    }
+    public void SetFacingLock(bool locked)
+    {
+        _isFacingLocked = locked;
     }
 
+    private void ApplyFacing()
+    {
+        _sprite.flipX = _textureFacesRight ? !_isRightForward : _isRightForward;
+    }
 }

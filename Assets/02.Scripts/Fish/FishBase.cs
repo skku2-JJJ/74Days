@@ -25,11 +25,7 @@ public abstract class FishBase : MonoBehaviour, IFishCapturable
     {
         _health.TakeDamage(damage);
         _hitFeedback?.Play(harpoonDir);
-
-        if (visualController != null)
-        {
-            visualController.ForceLookDirection(harpoonDir);
-        }
+        
     }
 
     /// <summary>
@@ -60,12 +56,27 @@ public abstract class FishBase : MonoBehaviour, IFishCapturable
     public void BeginCaptureStruggle()
     {
         _captureStruggle?.Begin(diver);
+
+
+        if (visualController != null)
+        {
+            visualController.ForceLookAwayFrom(diver.position, true);
+        }
+       
     }
     
     public void UpdateCaptureStruggle(float struggle01) =>
         _captureStruggle?.UpdateIntensity(struggle01);
-    
-    public void EndCaptureStruggle() =>
+
+    public void EndCaptureStruggle()
+    {
         _captureStruggle?.End();
+        
+        if (visualController != null)
+        {
+            visualController.ForceLookAwayFrom(diver.position, false);
+        }
+    }
+       
     
 }
