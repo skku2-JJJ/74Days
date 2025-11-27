@@ -31,7 +31,6 @@ RectTransform:
   m_Children:
   - {fileID: 2670445941044710583}
   - {fileID: 308308527223717987}
-  - {fileID: 2791851722588568933}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
@@ -87,13 +86,14 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_Children:
+  - {fileID: 2791851722588568933}
   m_Father: {fileID: 1103142016878590031}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 100.4, y: -14.4}
-  m_SizeDelta: {x: 134.3, y: 96.3}
+  m_AnchoredPosition: {x: 99, y: -14.4}
+  m_SizeDelta: {x: 123, y: 96.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7881820241063171528
 CanvasRenderer:
@@ -144,6 +144,7 @@ GameObject:
   - component: {fileID: 2791851722588568933}
   - component: {fileID: 2454262424286791090}
   - component: {fileID: 8117435725191122127}
+  - component: {fileID: 4233687657411158068}
   m_Layer: 0
   m_Name: Emoticon
   m_TagString: Untagged
@@ -163,11 +164,11 @@ RectTransform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 0}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 1103142016878590031}
+  m_Father: {fileID: 2670445941044710583}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 101.5, y: -22.7}
+  m_AnchoredPosition: {x: 1.0999756, y: -8.300007}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2454262424286791090
@@ -208,6 +209,28 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &4233687657411158068
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4131998604034349853}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4857003d87323034781492cc9bd372a8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5157005248366670428
 GameObject:
   m_ObjectHideFlags: 0

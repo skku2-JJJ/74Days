@@ -11,6 +11,15 @@ public class CrewEmoticonUpdate : MonoBehaviour
 
     [SerializeField]
     private Sprite[] Sprites;
+    void Awake()
+    {
+
+        // DayManager 이벤트 구독 (Start보다 먼저 실행되는 Awake에서)
+        if (DayManager.Instance != null)
+        {
+            DayManager.Instance.OnDayStart += OnDayStart;
+        }
+    }
     void Start()
     {
         EmojiUpdate();
@@ -37,5 +46,11 @@ public class CrewEmoticonUpdate : MonoBehaviour
             if (crewMember.CrewID != _crewID) continue;
             _emoticon.sprite = Sprites[(int)crewMember.Status];
         }
+    }
+
+    // 새 날 시작 시 호출
+    private void OnDayStart(int day)
+    {
+        EmojiUpdate();
     }
 }
