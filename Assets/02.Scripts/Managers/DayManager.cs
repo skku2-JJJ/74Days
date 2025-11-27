@@ -1,5 +1,7 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System;
+using System.Collections;
 
  public class DayManager : MonoBehaviour
   {
@@ -10,7 +12,7 @@ using System;
       [SerializeField] private int maxDays = 100;
 
       [Header("Day Phases")]
-      public DayPhase currentPhase = DayPhase.Morning;
+      public DayPhase currentPhase = DayPhase.None;
 
       // 이벤트 시스템
       public event Action<int> OnDayStart;
@@ -29,6 +31,9 @@ using System;
           {
               Instance = this;
               DontDestroyOnLoad(gameObject);
+
+              // 씬 로드 완료 이벤트 구독
+              SceneManager.sceneLoaded += OnSceneLoaded;
           }
           else
           {
@@ -36,9 +41,55 @@ using System;
           }
       }
 
+      void OnDestroy()
+      {
+          // 이벤트 구독 해제
+          if (Instance == this)
+          {
+              SceneManager.sceneLoaded -= OnSceneLoaded;
+          }
+      }
+
       void Start()
       {
           StartDay();
+      }
+
+      // 씬 로드 완료 시 자동 호출 (Unity 이벤트)
+      private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+      {
+          // Loading Scene은 무시
+          if (scene.name == "Loading")
+          {
+              Debug.Log($"[DayManager] Loading Scene 로드됨 - 페이즈 변경 안 함");
+              return;
+          }
+
+          // SceneTransitionManager가 설정한 목표 페이즈 확인
+          if (SceneTransitionManager.TargetPhase != DayPhase.None)
+          {
+              Debug.Log($"[DayManager] {scene.name} 씬 로드 완료 - 목표 페이즈: {SceneTransitionManager.TargetPhase}");
+
+              // 1프레임 대기 후 페이즈 변경 (UI Awake 완료 보장)
+              StartCoroutine(ChangePhaseAfterFrame(SceneTransitionManager.TargetPhase));
+
+              // 페이즈 변경 완료 후 초기화
+              SceneTransitionManager.TargetPhase = DayPhase.None;
+          }
+          else
+          {
+              Debug.Log($"[DayManager] {scene.name} 씬 로드됨 - 목표 페이즈 없음 (현재 페이즈 유지: {currentPhase})");
+          }
+      }
+
+      // 1프레임 후 페이즈 변경 (UI Awake 완료 보장)
+      private IEnumerator ChangePhaseAfterFrame(DayPhase targetPhase)
+      {
+          // UI의 Awake가 완료될 때까지 1프레임 대기
+          yield return null;
+
+          ChangePhase(targetPhase);
+          Debug.Log($"[DayManager] 페이즈 변경 완료: {targetPhase}");
       }
 
       // 하루 시작

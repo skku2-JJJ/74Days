@@ -6,13 +6,13 @@ using System.Collections;
 
 /// <summary>
 /// Loading Scene에서 실제 씬을 비동기로 로드하고 진행률을 표시
-/// SceneTransitionManager가 static 변수를 통해 로드할 씬과 페이즈를 전달
+/// SceneTransitionManager가 static 변수를 통해 로드할 씬 이름을 전달
+/// 페이즈 관리는 DayManager가 sceneLoaded 이벤트에서 처리
 /// </summary>
 public class LoadingManager : MonoBehaviour
 {
     // SceneTransitionManager가 설정하는 static 변수
     public static string NextSceneName { get; set; }
-    public static DayPhase TargetPhase { get; set; }
 
     [Header("UI References")]
     [SerializeField] private Slider _progressBar;
@@ -22,6 +22,27 @@ public class LoadingManager : MonoBehaviour
 
     [Header("Settings")]
     [SerializeField] private float _minLoadingTime = 2f;  // 최소 로딩 시간
+
+    [Header("Loading Texts")]
+    [SerializeField] private string[] _toUnderwaterTexts = new string[]
+    {
+        "바다 놀러가는 중...",
+        "물고기 잡으러 가는 중...",
+        "다이빙 준비 중...",
+        "잠수 장비 챙기는 중...",
+        "심해로 향하는 중...",
+        "보물을 찾아 떠나는 중..."
+    };
+
+    [SerializeField] private string[] _toShipTexts = new string[]
+    {
+        "집으로 가는 중...",
+        "선원들 보러 가는 중...",
+        "오늘의 수확을 확인하는 중...",
+        "따뜻한 배로 돌아가는 중...",
+        "귀환 준비 중...",
+        "배에서 쉬러 가는 중..."
+    };
 
     [Header("Loading Tips")]
     [SerializeField] private string[] _loadingTips = new string[]
@@ -38,11 +59,43 @@ public class LoadingManager : MonoBehaviour
 
     void Start()
     {
+        // 씬별 로딩 문구 표시
+        ShowRandomLoadingText();
+
         // 랜덤 팁 표시
         ShowRandomTip();
 
         // 로딩 시작
         StartCoroutine(LoadSceneAsync());
+    }
+
+    private void ShowRandomLoadingText()
+    {
+        if (_loadingText == null) return;
+
+        string[] texts = null;
+
+        // 어느 씬으로 가는지에 따라 다른 문구 배열 선택
+        if (NextSceneName == "UnderWater")
+        {
+            texts = _toUnderwaterTexts;
+        }
+        else if (NextSceneName == "Ship")
+        {
+            texts = _toShipTexts;
+        }
+
+        // 랜덤 문구 선택
+        if (texts != null && texts.Length > 0)
+        {
+            int randomIndex = Random.Range(0, texts.Length);
+            _loadingText.text = texts[randomIndex];
+        }
+        else
+        {
+            // Fallback
+            _loadingText.text = "Loading...";
+        }
     }
 
     private void ShowRandomTip()
@@ -59,48 +112,39 @@ public class LoadingManager : MonoBehaviour
         // 시작 시간 기록
         float startTime = Time.time;
 
-        // 비동기 로딩 시작
+        // 백그라운드에서 씬 로딩 시작 (화면에는 표시 안 함)
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(NextSceneName);
         asyncLoad.allowSceneActivation = false;  // 자동 활성화 방지
 
-        Debug.Log($"[Loading] {NextSceneName} 씬 로딩 시작");
+        Debug.Log($"[Loading] {NextSceneName} 씬 로딩 시작 (최소 {_minLoadingTime}초 표시)");
 
-        // 로딩 진행
-        while (!asyncLoad.isDone)
+        // 최소 로딩 시간 동안 진행도 표시 (0% → 100%)
+        while (Time.time - startTime < _minLoadingTime)
         {
-            // 진행률 계산 (0.0 ~ 0.9 → 0% ~ 90%)
-            float progress = Mathf.Clamp01(asyncLoad.progress / 0.9f);
+            float elapsedTime = Time.time - startTime;
+
+            // 시간 기준으로 진행률 계산 (0% → 100%)
+            float progress = Mathf.Clamp01(elapsedTime / _minLoadingTime);
 
             // UI 업데이트
             UpdateProgressUI(progress);
 
-            // 로딩 완료 + 최소 시간 경과 체크
-            if (asyncLoad.progress >= 0.9f && Time.time - startTime >= _minLoadingTime)
-            {
-                // 100% 표시
-                UpdateProgressUI(1f);
-
-                Debug.Log($"[Loading] {NextSceneName} 씬 로딩 완료");
-
-                // 씬 활성화 허용
-                asyncLoad.allowSceneActivation = true;
-            }
-
             yield return null;
         }
 
-        // 씬 전환 완료 후 페이즈 변경
-        yield return null;  // 1프레임 대기 (새 씬의 Awake 완료)
+        // 100% 표시
+        UpdateProgressUI(1f);
+        Debug.Log($"[Loading] 진행률 100% - 씬 전환 시작");
 
-        if (DayManager.Instance != null)
-        {
-            DayManager.Instance.ChangePhase(TargetPhase);
-            Debug.Log($"[Loading] 페이즈 변경 완료: {TargetPhase}");
-        }
-        else
-        {
-            Debug.LogError("[Loading] DayManager.Instance가 null입니다!");
-        }
+        // 씬 활성화 허용
+        asyncLoad.allowSceneActivation = true;
+
+        // 씬 전환 완료 대기
+        yield return asyncLoad;
+
+        // 로딩 완료!
+        // 페이즈 변경은 DayManager.OnSceneLoaded()에서 자동으로 처리됨
+        Debug.Log($"[Loading] {NextSceneName} 씬 전환 완료 - DayManager가 페이즈 관리");
     }
 
     private void UpdateProgressUI(float progress)
