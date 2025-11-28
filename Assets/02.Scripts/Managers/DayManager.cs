@@ -201,7 +201,13 @@ using System.Collections.Generic;
       private void HandleEveningPhase()
       {
           // 저녁: 자원 분배 시간
-          // 자원은 이미 SceneTransitionManager.GoToShip()에서 ShipInventory로 전달됨
+
+          // SceneTransitionManager에서 pending된 DiverBag 자원을 ShipInventory에 적용
+          if (SceneTransitionManager.Instance != null)
+          {
+              SceneTransitionManager.Instance.ApplyPendingResources();
+          }
+
           // UI로 자원 분배 화면 표시 (ResourceDistributionUI.OnPhaseChanged에서 자동)
           // 완료 버튼 클릭 시 ResourceDistributionUI에서 CompleteEvening() 호출
       }

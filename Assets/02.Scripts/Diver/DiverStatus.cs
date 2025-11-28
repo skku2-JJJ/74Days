@@ -13,8 +13,8 @@ public class DiverStatus : MonoBehaviour
     [SerializeField] private float _maxOxygen = 100f;
     [SerializeField] private float _oxygenConsumePerSecond = 1f;
 
-    // 가방
-    private Inventory _diveBag  = new Inventory();
+    [Header("가방")]
+    [SerializeField] private Inventory _diveBag  = new Inventory();
     
     // 프로퍼티
     public float MaxHp => _maxHp;
@@ -40,6 +40,7 @@ public class DiverStatus : MonoBehaviour
     public void GainResource(ResourceType type, int amount = 1)
     {
         DiveBag.Add(type, amount);
+        Debug.Log($"[DiverStatus] {type} +{amount} 획득 (현재: {DiveBag.GetAmount(type)}개)");
     }
 
 
