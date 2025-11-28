@@ -33,7 +33,7 @@ public class ResourceDistributionUI : MonoBehaviour
     private List<CrewResourceItem> crewItems = new List<CrewResourceItem>();
     private List<InventorySlotUI> inventorySlots = new List<InventorySlotUI>();
     
-    [SerializeField] private UIBasicUpDown _distributeUI;
+    [SerializeField] private UIBasicOpenClose _distributeUI;
 
     void Awake()
     {

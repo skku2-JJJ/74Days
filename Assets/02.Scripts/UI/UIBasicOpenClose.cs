@@ -1,7 +1,7 @@
 using DG.Tweening;
 using UnityEngine;
 
-public class UIBasicUpDown : MonoBehaviour
+public class UIBasicOpenClose : MonoBehaviour
 {
     private RectTransform _ui;
 
