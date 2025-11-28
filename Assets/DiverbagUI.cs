@@ -1,25 +1,28 @@
+using System;
 using TMPro;
 using UnityEngine;
 
 public class DiverbagUI : MonoBehaviour
 {
+    [Header("참조")]
     [SerializeField] private DiverStatus _diverStatus;
+    private ResourceDatabase _resourceDatabase;
+   
+    
+    [Header("Slots")]
     [SerializeField] private DiverbagSlotUI[] _slots;
-    [SerializeField] private ResourceDatabase _db;
 
-    private void OnEnable()
+
+    private void Awake()
     {
-        Refresh();
+        Init();
     }
 
-
-    private void Update()
+    private void Init()
     {
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            Refresh();
-        }
+        _resourceDatabase = GetComponent<ResourceDatabase>();
     }
+
     public void Refresh()
     {
         var items = _diverStatus.DiveBag.Items;
@@ -34,16 +37,11 @@ public class DiverbagUI : MonoBehaviour
             var type = kvp.Key;
             var amount = kvp.Value;
 
-            var data = _db.Get(type);
+            var data = _resourceDatabase.Get(type);
             _slots[i].gameObject.SetActive(true);
             _slots[i].Set(data, amount);
             i++;
         }
-
-        // 남은 슬롯들은 숨김
-        for (; i < _slots.Length; i++)
-        {
-            _slots[i].Hide();
-        }
+        
     }
 }

@@ -2,12 +2,15 @@ using UnityEngine;
 
 public class O2Bar : SegmentedBar
 {
-    public int testO2 = 100;
+    [SerializeField] private DiverStatus _diver;
+    
     public override int GetValue()
     {
-        //현재체력을 받아온다
-        //_currentHP = Player.Instance.HP ~
-        //test용
-        return testO2;
+        if (_diver == null || _diver.MaxOxygen <= 0) return 0;
+
+        float ratio = (float)_diver.CurrentOxygen / _diver.MaxOxygen;
+        int percent = Mathf.RoundToInt(ratio * 100f);
+
+        return percent;
     }
 }

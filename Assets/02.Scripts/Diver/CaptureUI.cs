@@ -12,12 +12,34 @@ public class CaptureUI : MonoBehaviour
     // 참조
     private Slider _gaugeSlider;
     private HarpoonShooter _shooter;
+    private DiverStatus _diverStatus;
     private SpriteRenderer _diverSprite;
     private CanvasGroup _canvasGroup; 
     private RectTransform _rectTransform;
     private Camera _camera;
     
     private void Awake()
+    {
+        Init();
+    }
+
+    private void Update()
+    {
+        if (_shooter == null || _gaugeSlider == null || _diverStatus == null) return;
+        
+        if (_diverStatus.IsDead || !_shooter.IsCapturing)
+        {
+            _canvasGroup.alpha = 0f;
+        }
+        else
+        {
+            _canvasGroup.alpha = 1f;
+            UpdatePosition();
+            UpdateGauge();
+        }
+    }
+
+    private void Init()
     {
         if (_player == null)
         {
@@ -40,27 +62,11 @@ public class CaptureUI : MonoBehaviour
         
         _shooter = _player.GetComponent<HarpoonShooter>();
         _diverSprite = _player.GetComponentInChildren<SpriteRenderer>();
+        _diverStatus = _player.GetComponent<DiverStatus>();
         
         _rectTransform = GetComponent<RectTransform>();
         _camera = Camera.main;
     }
-
-    private void Update()
-    {
-        if (_shooter == null || _gaugeSlider == null) return;
-        
-        if (!_shooter.IsCapturing)
-        {
-            _canvasGroup.alpha = 0f;
-            return;
-        }
-        
-        _canvasGroup.alpha = 1f;
-       
-        UpdatePosition();
-        UpdateGauge();
-    }
-    
     private void UpdatePosition()
     {
      

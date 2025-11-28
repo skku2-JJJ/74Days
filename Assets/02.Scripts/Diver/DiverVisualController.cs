@@ -206,8 +206,7 @@ public class DiverVisualController : MonoBehaviour
         float tiltDir = Mathf.Sign(verticalMove);   // 위,아래 방향 (+1 / -1)
         float facingSign = _isRightForward ? 1f : -1f; // 좌,우 방향 (+1 / -1)
         
-        // 👉 화면 기준으로 "위/아래"가 항상 일관되게 보이도록
-        //    facingSign을 곱해줌
+        //  화면 기준으로 위/아래가 항상 일관되게 보이도록
         float baseAngle = tiltDir * facingSign * maxTilt;
         
         // 입력 강도에 따라 조금씩만 차이나게

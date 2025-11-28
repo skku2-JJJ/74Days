@@ -29,6 +29,7 @@ public class DiverAimArrow : MonoBehaviour
     private bool _hideWhenNotAiming = true;
 
     // 참조
+    private DiverStatus _diverStatus;
     private HarpoonShooter _harpoonShooter;
     private Transform _diverTransform;
     private Camera _mainCam;
@@ -47,6 +48,12 @@ public class DiverAimArrow : MonoBehaviour
 
     private void LateUpdate()
     {
+        if (_diverStatus.IsDead)
+        {
+            _renderer.enabled = false;
+            return;
+        }
+        
         UpdateArrowRenderer();
         UpdateArrowTransform();
         UpdateArrowVisuals();
@@ -64,6 +71,9 @@ public class DiverAimArrow : MonoBehaviour
             enabled = false;
             return;
         }
+        
+        _diverStatus = GetComponentInParent<DiverStatus>(); 
+        
         _diverTransform = _harpoonShooter.transform;
     }
 
