@@ -2,12 +2,15 @@ using UnityEngine;
 
 public class HpBar : SegmentedBar
 {
-    public int testHP = 100;
+    [SerializeField] private DiverStatus _diver;
+    
     public override int GetValue()
     {
-        //현재체력을 받아온다
-        //_currentHP = Player.Instance.HP ~
-        //test용
-        return testHP;
+        if (_diver == null || _diver.MaxHp <= 0) return 0;
+        
+        float ratio = (float)_diver.CurrentHp / _diver.MaxHp; 
+        int percent = Mathf.RoundToInt(ratio * 100f);         
+
+        return percent;
     }
 }

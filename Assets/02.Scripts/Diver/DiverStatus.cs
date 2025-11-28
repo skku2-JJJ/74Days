@@ -143,14 +143,13 @@ public class DiverStatus : MonoBehaviour
         if (IsDead) return;
         _isDead = true;
         
-        DropAllItems();
+        // DropAllItems();
     }
 
-    private void DropAllItems()
+    /*
+     보류
+     private void DropAllItems()
     {
-        // 여기서 DiveBag에 있는 아이템들을 실제 월드에 드랍
-        // Inventory에 Items 프로퍼티가 있다고 가정 (IReadOnlyDictionary<ResourceType, int> Items)
-
         foreach (var kvp in _diveBag.Items)
         {
             ResourceType type = kvp.Key;
@@ -160,8 +159,8 @@ public class DiverStatus : MonoBehaviour
             // 예: DropManager.Instance.Spawn(type, amount, transform.position);
         }
 
-        _diveBag.Clear(); // 다 떨궜으니 가방 비우기
-    }
+        _diveBag.Clear(); 
+    }*/
 
     
     public void GainResource(ResourceType type, int amount = 1)
