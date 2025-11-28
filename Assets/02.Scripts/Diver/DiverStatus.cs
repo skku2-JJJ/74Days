@@ -21,7 +21,7 @@ public class DiverStatus : MonoBehaviour
     [SerializeField] private int _oxygenDepletedDamagePerTick = 5;  
     
     // 참조
-    private DiverVisualController _visualController;
+    private Animator _animator;
     
     // 타이머
     private float _oxygenConsumeAccumulator = 0f; 
@@ -44,7 +44,11 @@ public class DiverStatus : MonoBehaviour
 
     public bool IsDead => _isDead;
 
-    
+
+    private void Awake()
+    {
+        Init();
+    }
 
     private void Update()
     {
@@ -55,7 +59,7 @@ public class DiverStatus : MonoBehaviour
 
     private void Init()
     {
-        _visualController = GetComponentInChildren<DiverVisualController>();
+        _animator = GetComponentInChildren<Animator>();
     }
     
     private void HandleOxygen()
@@ -143,6 +147,7 @@ public class DiverStatus : MonoBehaviour
         if (IsDead) return;
         _isDead = true;
         
+        _animator.SetTrigger("Die");
         // DropAllItems();
     }
 
