@@ -13,7 +13,7 @@ public class DiverbagSlotUI : MonoBehaviour
     public void Set(ResourceData data, int amount)
     {
         _icon.sprite = data.Icon;
-        _nameText.text = data.DisplayName;
+        //_nameText.text = data.DisplayName;
         _amountText.text = amount.ToString();
     }
 
