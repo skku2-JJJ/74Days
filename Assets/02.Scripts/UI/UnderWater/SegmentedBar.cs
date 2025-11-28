@@ -22,8 +22,6 @@ abstract public class SegmentedBar : MonoBehaviour
     }
     public void GaugeUpdate()
     {
-
-        
         CurrentGauge = GetValue();
         float gaugeArrange = CurrentGauge * 0.1f;
 

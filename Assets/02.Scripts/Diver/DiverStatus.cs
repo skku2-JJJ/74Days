@@ -5,26 +5,28 @@ using UnityEngine;
 public class DiverStatus : MonoBehaviour
 {
     [Header("체력")]
-    [SerializeField] private float _currentHp = 100f;
-    [SerializeField] private float _maxHp = 100f;
+    [SerializeField] private int _currentHp = 100;
+    [SerializeField] private int _maxHp = 100;
 
     [Header("산소")]
-    [SerializeField] private float _currentOxygen = 100f;
-    [SerializeField] private float _maxOxygen = 100f;
-    [SerializeField] private float _oxygenConsumePerSecond = 1f;
+    [SerializeField] private int _currentOxygen = 100;
+    [SerializeField] private int _maxOxygen = 100;
+    [SerializeField] private int _oxygenConsumePerSecond = 1;
     
     [Header("가방 UI")]
     [SerializeField] private DiverbagUI _bagUI;
     
     [Header("산소 고갈 시 체력 손실 설정")]
-    [SerializeField] private float _oxygenDepletedDamageInterval = 1f;   
-    [SerializeField] private float _oxygenDepletedDamagePerTick = 10f;  
+    [SerializeField] private float  _oxygenDepletedDamageInterval = 1f;   
+    [SerializeField] private int _oxygenDepletedDamagePerTick = 5;  
     
     // 참조
     private DiverVisualController _visualController;
     
     // 타이머
+    private float _oxygenConsumeAccumulator = 0f; 
     private float _oxygenDepletedTimer = 0f;
+   
     
     // 플래그
     private bool _isDead = false;
@@ -33,20 +35,16 @@ public class DiverStatus : MonoBehaviour
     private Inventory _diveBag  = new Inventory();
     
     // 프로퍼티
-    public float MaxHp => _maxHp;
-    public float CurrentHp => _currentHp;
-    public float MaxOxygen => _maxOxygen;
-    public float CurrentOxygen => _currentOxygen;
+    public int MaxHp => _maxHp;
+    public int CurrentHp => _currentHp;
+    public int MaxOxygen => _maxOxygen;
+    public int CurrentOxygen => _currentOxygen;
 
     public Inventory DiveBag => _diveBag;
 
     public bool IsDead => _isDead;
 
-
-    private void Awake()
-    {
-        
-    }
+    
 
     private void Update()
     {
@@ -62,61 +60,74 @@ public class DiverStatus : MonoBehaviour
     
     private void HandleOxygen()
     {
-        if (_currentOxygen > 0f)
+        // 산소 소모
+        if (_currentOxygen > 0)
         {
-            float oxygenConsume = _oxygenConsumePerSecond * Time.deltaTime;
-            _currentOxygen = Mathf.Max(0f, _currentOxygen - oxygenConsume);
-        }
+            _oxygenConsumeAccumulator += _oxygenConsumePerSecond * Time.deltaTime;
 
-        // 산소가 0이면, 일정 간격으로 체력 손실
-        if (_currentOxygen <= 0f)
+            if (_oxygenConsumeAccumulator >= 1f)
+            {
+                int ticks = Mathf.FloorToInt(_oxygenConsumeAccumulator);
+                if (ticks > 0)
+                {
+                    int totalConsume = ticks;
+                    _currentOxygen = Mathf.Max(0, _currentOxygen - totalConsume);
+                    _oxygenConsumeAccumulator -= ticks;
+                }
+            }
+
+            _oxygenDepletedTimer = 0f;
+        }
+        
+        // 체력 소모
+        else
         {
             _oxygenDepletedTimer += Time.deltaTime;
 
             if (_oxygenDepletedTimer >= _oxygenDepletedDamageInterval)
             {
-                _oxygenDepletedTimer = 0f;
-                TakeDamage(_oxygenDepletedDamagePerTick);
+                int ticks = Mathf.FloorToInt(_oxygenDepletedTimer / _oxygenDepletedDamageInterval);
+                if (ticks > 0)
+                {
+                    int totalDamage = ticks * _oxygenDepletedDamagePerTick;
+                    _oxygenDepletedTimer -= ticks * _oxygenDepletedDamageInterval;
+                    TakeDamage(totalDamage);
+                }
             }
-        }
-        else
-        {
-            // 산소가 다시 차면 타이머 리셋
-            _oxygenDepletedTimer = 0f;
         }
     }
 
-    public void TakeDamage(float amount)
+    public void TakeDamage(int  amount)
     {
         if (IsDead) return;
-        if (amount <= 0f) return;
+        if (amount <= 0) return;
 
         _currentHp -= amount;
 
-        if (_currentHp <= 0f)
+        if (_currentHp <= 0)
         {
-            _currentHp = 0f;
+            _currentHp = 0;
             Die();
         }
 
         // TODO: HP UI 갱신
     }
 
-    public void Heal(float amount)
+    public void Heal(int amount)
     {
         if (IsDead) return;
-        if (amount <= 0f) return;
+        if (amount <= 0) return;
 
-        _currentHp = Mathf.Clamp(_currentHp + amount, 0f, _maxHp);
+        _currentHp = Mathf.Clamp(_currentHp + amount, 0, _maxHp);
         
         // TODO: HP UI 갱신
     }
 
-    public void RestoreOxygen(float amount)
+    public void RestoreOxygen(int amount)
     {
         if (amount <= 0f) return;
 
-        _currentOxygen = Mathf.Clamp(_currentOxygen + amount, 0f, _maxOxygen);
+        _currentOxygen = Mathf.Clamp(_currentOxygen + amount, 0, _maxOxygen);
 
         // 산소가 다시 차면, 산소 고갈 데미지 타이머 리셋
         if (_currentOxygen > 0f)
