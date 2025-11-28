@@ -3,38 +3,37 @@ using UnityEngine;
 public class HarpoonAimUI : MonoBehaviour
 {
     [Header("참조")]
-    [SerializeField] private DiverMoveController _moveController;
-    [SerializeField] private HarpoonShooter _harpoonShooter;
+    [SerializeField] private Transform _diverTransform;
     [SerializeField] private RectTransform _rectTransform;
-
+   
+    
     [Header("표시 설정")]
     [SerializeField] private float _distanceFromPlayer = 80f; // 플레이어 기준 픽셀 거리
     [SerializeField] private bool _hideWhenNotAiming = true;
 
+    private DiverMoveController _moveController;
+    private HarpoonShooter _harpoonShooter;
+    private DiverStatus _diverStatus;
     private Camera _mainCam;
     private Canvas _canvas;
+    
 
     private void Awake()
     {
-        if (_rectTransform == null)
-            _rectTransform = GetComponent<RectTransform>();
-
-        if (_moveController == null)
-            _moveController = FindObjectOfType<DiverMoveController>();
-
-        if (_harpoonShooter == null && _moveController != null)
-            _harpoonShooter = _moveController.GetComponent<HarpoonShooter>();
-
-        _mainCam = Camera.main;
-        _canvas = GetComponentInParent<Canvas>();
+       Init();
     }
 
     private void LateUpdate()
     {
         if (_moveController == null || _canvas == null) return;
+        if (_diverStatus.IsDead)
+        {
+            _rectTransform.gameObject.SetActive(false);
+            return;
+        }
 
+        
         bool isAiming = _harpoonShooter != null && _harpoonShooter.IsAiming;
-
         if (!isAiming)
         {
             if (_hideWhenNotAiming && _rectTransform.gameObject.activeSelf)
@@ -45,6 +44,22 @@ public class HarpoonAimUI : MonoBehaviour
         if (!_rectTransform.gameObject.activeSelf)
             _rectTransform.gameObject.SetActive(true);
 
+        RotateHarpoonAimUI();
+    }
+
+    private void Init()
+    {
+        _rectTransform = GetComponent<RectTransform>();
+        _moveController = _diverTransform.GetComponent<DiverMoveController>();
+        _harpoonShooter = _diverTransform.GetComponent<HarpoonShooter>();
+        _diverStatus = _diverTransform.GetComponent<DiverStatus>();
+
+        _mainCam = Camera.main;
+        _canvas = GetComponentInParent<Canvas>();
+    }
+    
+    private void RotateHarpoonAimUI()
+    {
         // 1) 다이버 월드 → 스크린 좌표
         Vector3 diverWorld = _moveController.transform.position;
         Vector3 diverScreen = _mainCam.WorldToScreenPoint(diverWorld);

@@ -39,6 +39,7 @@ public class DiverMoveController : MonoBehaviour
     // 참조
     private InputController _inputController;
     private HarpoonShooter _harpoonShooter; 
+    private DiverStatus _diverStatus;
     
     private Vector2 _moveInput;
     
@@ -54,6 +55,12 @@ public class DiverMoveController : MonoBehaviour
 
     private void Update()
     {
+        if (_diverStatus.IsDead)
+        {
+            _moveInput = Vector2.zero;
+            return;
+        }
+        
         GetMoveInput();
         HandleBoostState();
     }
@@ -67,6 +74,7 @@ public class DiverMoveController : MonoBehaviour
         _rigid = GetComponent<Rigidbody2D>();
         _inputController = GetComponent<InputController>();
         _harpoonShooter = GetComponent<HarpoonShooter>();
+        _diverStatus = GetComponent<DiverStatus>();
     }
 
     private void GetMoveInput()

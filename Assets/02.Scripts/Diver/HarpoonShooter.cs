@@ -85,7 +85,17 @@ public class HarpoonShooter : MonoBehaviour
     private void Update()
     {
         _coolTimer += Time.unscaledDeltaTime; 
+        
+        if (_diverStatus.IsDead)
+        {
+            if (Time.timeScale != 1f)
+                Time.timeScale = 1f;
 
+            _isAiming = false;
+            _isCharging = false;
+            return;
+        }
+        
         // QTE 진행 중이면 여기서만 처리
         if (IsCapturing)
         {

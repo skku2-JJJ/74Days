@@ -42,11 +42,6 @@ public class DiverbagUI : MonoBehaviour
             _slots[i].Set(data, amount);
             i++;
         }
-
-        /*// 남은 슬롯들은 숨김
-        for (; i < _slots.Length; i++)
-        {
-            _slots[i].Hide();
-        }*/
+        
     }
 }
