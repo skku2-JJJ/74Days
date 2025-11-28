@@ -79,13 +79,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4362de6b5afeb3043adbb5fc879814df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _fishType: 15
   diver: {fileID: 0}
   visualController: {fileID: 0}
   _health: {fileID: 4120988750882348428}
   _hitFeedback: {fileID: 7190758866927789950}
   _captureStruggle: {fileID: 7921121330931671157}
   _escapeBurstSpeed: 20
-  _escapeBurstDuration: 3
   _escapeRandomFactor: 0.2
 --- !u!114 &6066860343029886791
 MonoBehaviour:
@@ -131,6 +131,7 @@ MonoBehaviour:
   _diver: {fileID: 0}
   _fleeRadius: 4
   _fleeStrength: 1.5
+  _escapeDuration: 3
 --- !u!114 &7190758866927789950
 MonoBehaviour:
   m_ObjectHideFlags: 0

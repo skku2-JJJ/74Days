@@ -17,6 +17,23 @@ public enum ResourceType
     Herbs,
     Wood,
     
+    // 물고기 --------------------------------------
+    // 짜바리들
+    BlowFish,
+    BlueTang,
+    DameselFish,
+    EmeraldFish,
+    FileFish,
+    TinyFish,
+    Nemo,
+    PinkFish,
+    
+    // 고밸류
+    SawShark,
+    StripedMarlin,
+    Turtle,
+    Grouper,
+    // ---------------------------------------------
 }
 
 // 선원 상태

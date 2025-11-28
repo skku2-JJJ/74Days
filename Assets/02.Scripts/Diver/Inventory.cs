@@ -43,12 +43,13 @@ public class Inventory
     /// <summary>
     /// 이 인벤토리 객체의 모든 아이템을 target으로 옮김.
     /// </summary>
-    public void MoveAllTo(Inventory target)
+    public void MoveAllTo(Dictionary<ResourceType, int> target)
     {
-        foreach (var kvp in _items)
+        /*foreach (var kvp in _items)
         {
             target.Add(kvp.Key, kvp.Value);
-        }
+        }*/
+        target = new Dictionary<ResourceType, int>(_items);
         _items.Clear();
     }
 
