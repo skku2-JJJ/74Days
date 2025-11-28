@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af9ab4b959d63e44388bd3a4c02b0cde, type: 3}
+  m_Name: EmeraldFish
+  m_EditorClassIdentifier: 
+  Type: 9
+  DisplayName: "\uC5D0\uBA54\uB784\uB4DC\uD53C\uC26C"
+  Icon: {fileID: 21300000, guid: da0e9797a844cdb40acd04553ccec1fa, type: 3}
+  Description: 
