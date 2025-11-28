@@ -12,6 +12,14 @@ public class DiverbagUI : MonoBehaviour
         Refresh();
     }
 
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            Refresh();
+        }
+    }
     public void Refresh()
     {
         var items = _diverStatus.DiveBag.Items;
