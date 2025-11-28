@@ -111,21 +111,15 @@ public class Ship
             return false;
 
         // 목재 개수 확인
-        if (_inventory.Wood < materialAmount)
+        if (_inventory.GetResourceAmount(ResourceType.Wood) < materialAmount)
             return false;
 
         // 재료 소비
-        _inventory.ConsumeResource(ResourceType.Wood, materialAmount);
+        _inventory.ConsumeResource(ResourceType.TinyFish, materialAmount);
 
         RepairShip(materialAmount);
 
         return true;
-    }
-
-    // 자원 상태 요약
-    public string GetResourceSummary()
-    {
-        return _inventory.GetResourceSummary();
     }
 
     // ========== 배 상태 메서드 ==========

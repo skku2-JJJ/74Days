@@ -191,12 +191,12 @@ public class ResourceDistributeUI : MonoBehaviour
         }
 
         // 각 자원 타입별로 슬롯 생성
-        CreateResourceSlot(ResourceType.NormalFish, "생선");
-        CreateResourceSlot(ResourceType.SpecialFish, "조개");
-        CreateResourceSlot(ResourceType.Seaweed, "해초");
-        CreateResourceSlot(ResourceType.CleanWater, "물");
-        CreateResourceSlot(ResourceType.Herbs, "약초");
-        CreateResourceSlot(ResourceType.Wood, "목재");
+        CreateResourceSlot(ResourceType.BlowFish, "생선");
+        CreateResourceSlot(ResourceType.DameselFish, "조개");
+        CreateResourceSlot(ResourceType.EmeraldFish, "해초");
+        CreateResourceSlot(ResourceType.BlueTang, "물");
+        CreateResourceSlot(ResourceType.FileFish, "약초");
+        CreateResourceSlot(ResourceType.TinyFish, "목재");
 
         Debug.Log($"[CreateResourceSlots] 총 {_resourceSlots.Count}개 슬롯 생성 완료");
     }

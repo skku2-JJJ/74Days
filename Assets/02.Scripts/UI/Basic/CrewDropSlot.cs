@@ -93,12 +93,12 @@ public class CrewDropSlot : MonoBehaviour, IDropHandler
     {
         return type switch
         {
-            ResourceType.NormalFish => _fishIconUI,
-            ResourceType.SpecialFish => _shellfishIconUI,
-            ResourceType.Seaweed => _seaweedIconUI,
-            ResourceType.CleanWater => _waterIconUI,
-            ResourceType.Herbs => _herbsIconUI,
-            ResourceType.Wood => _woodIconUI,
+            ResourceType.BlowFish => _fishIconUI,
+            ResourceType.DameselFish => _shellfishIconUI,
+            ResourceType.EmeraldFish => _seaweedIconUI,
+            ResourceType.BlueTang => _waterIconUI,
+            ResourceType.FileFish => _herbsIconUI,
+            ResourceType.TinyFish => _woodIconUI,
             _ => null
         };
     }

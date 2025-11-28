@@ -10,13 +10,6 @@ public enum DayPhase
 // 자원 종류
 public enum ResourceType
 {
-    NormalFish,
-    SpecialFish,
-    Seaweed,
-    CleanWater,
-    Herbs,
-    Wood,
-    
     // 물고기 --------------------------------------
     // 짜바리들
     BlowFish,
@@ -34,6 +27,8 @@ public enum ResourceType
     Turtle,
     Grouper,
     // ---------------------------------------------
+    Water,
+    Wood
 }
 
 // 선원 상태

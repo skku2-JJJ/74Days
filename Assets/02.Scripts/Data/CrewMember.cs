@@ -119,27 +119,27 @@ public class CrewMember
 
         switch (type)
         {
-            case ResourceType.NormalFish:
-            case ResourceType.SpecialFish:
-            case ResourceType.Seaweed:
+            case ResourceType.BlowFish:
+            case ResourceType.DameselFish:
+            case ResourceType.EmeraldFish:
                 // 식량: 배고픔 회복
                 Hunger = Mathf.Min(100, Hunger + FoodHungerRecovery * amount);
                 HasReceivedFoodToday = true;
                 break;
 
-            case ResourceType.CleanWater:
+            case ResourceType.BlueTang:
                 // 물: 갈증 회복
                 Thirst = Mathf.Min(100, Thirst + WaterThirstRecovery * amount);
                 HasReceivedWaterToday = true;
                 break;
 
-            case ResourceType.Herbs:
+            case ResourceType.FileFish:
                 // 약초: 체온 회복
                 Temperature = Mathf.Min(100, Temperature + HerbsTemperatureRecovery * amount);
                 HasReceivedMedicineToday = true;
                 break;
 
-            case ResourceType.Wood:
+            case ResourceType.TinyFish:
                 // 목재는 선원에게 줄 수 없음
                 Debug.LogWarning($"{CrewName}에게 목재를 줄 수 없습니다!");
                 break;

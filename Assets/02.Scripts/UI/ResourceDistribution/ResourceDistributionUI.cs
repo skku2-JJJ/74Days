@@ -207,11 +207,11 @@ public class ResourceDistributionUI : MonoBehaviour
 
         ResourceType[] resources = new ResourceType[]
         {
-            ResourceType.NormalFish,
-            ResourceType.SpecialFish,
-            ResourceType.Seaweed,
-            ResourceType.CleanWater,
-            ResourceType.Herbs
+            ResourceType.BlowFish,
+            ResourceType.DameselFish,
+            ResourceType.EmeraldFish,
+            ResourceType.BlueTang,
+            ResourceType.FileFish
         };
 
         for (int i = 0; i < resources.Length && i < boxElementParent.childCount; i++)
@@ -272,15 +272,15 @@ public class ResourceDistributionUI : MonoBehaviour
     {
         switch (type)
         {
-            case ResourceType.NormalFish:
+            case ResourceType.BlowFish:
                 return normalFishIcon;
-            case ResourceType.SpecialFish:
+            case ResourceType.DameselFish:
                 return specialFishIcon;
-            case ResourceType.Seaweed:
+            case ResourceType.EmeraldFish:
                 return seaweedIcon;
-            case ResourceType.CleanWater:
+            case ResourceType.BlueTang:
                 return cleanWaterIcon;
-            case ResourceType.Herbs:
+            case ResourceType.FileFish:
                 return herbsIcon;
             default:
                 return null;

@@ -60,24 +60,24 @@ public class InventoryUI : MonoBehaviour
 
         // 식량
         if (_fishTextUI != null)
-            _fishTextUI.text = $"{ShipManager.Instance.GetResourceAmount(ResourceType.NormalFish)}";
+            _fishTextUI.text = $"{ShipManager.Instance.GetResourceAmount(ResourceType.BlowFish)}";
 
         if (_shellfishTextUI != null)
-            _shellfishTextUI.text = $"{ShipManager.Instance.GetResourceAmount(ResourceType.SpecialFish)}";
+            _shellfishTextUI.text = $"{ShipManager.Instance.GetResourceAmount(ResourceType.DameselFish)}";
 
         if (_seaweedTextUI != null)
-            _seaweedTextUI.text = $"{ShipManager.Instance.GetResourceAmount(ResourceType.Seaweed)}";
+            _seaweedTextUI.text = $"{ShipManager.Instance.GetResourceAmount(ResourceType.EmeraldFish)}";
 
         // 물
         if (_waterTextUI != null)
-            _waterTextUI.text = $"{ShipManager.Instance.GetResourceAmount(ResourceType.CleanWater)}";
+            _waterTextUI.text = $"{ShipManager.Instance.GetResourceAmount(ResourceType.BlueTang)}";
 
         // 의료
         if (_herbsTextUI != null)
-            _herbsTextUI.text = $"{ShipManager.Instance.GetResourceAmount(ResourceType.Herbs)}";
+            _herbsTextUI.text = $"{ShipManager.Instance.GetResourceAmount(ResourceType.FileFish)}";
 
         // 수리 재료
         if (_woodTextUI != null)
-            _woodTextUI.text = $"{ShipManager.Instance.GetResourceAmount(ResourceType.Wood)}";
+            _woodTextUI.text = $"{ShipManager.Instance.GetResourceAmount(ResourceType.TinyFish)}";
     }
 }
