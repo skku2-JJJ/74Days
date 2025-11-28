@@ -9,7 +9,8 @@ public class ShipManager : MonoBehaviour
 
     // 이벤트
     public event Action<Ship> OnShipStatusChanged;
-    public event Action<ResourceType, int> OnResourceChanged;
+    public event Action<ResourceType, int> OnResourceChanged;  // 특정 자원 변경
+    public event Action OnInventoryChanged;  // 인벤토리 전체 변경 (여러 자원 동시 변경 시)
 
     public Ship Ship => ship;
 
@@ -26,11 +27,28 @@ public class ShipManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        // 배 초기화
+        // 배 객체 생성
         if (ship == null)
         {
             ship = new Ship();
         }
+    }
+
+    void Start()
+    {
+        // ResourceDatabase에서 초기 인벤토리 로드
+        if (ResourceDatabaseManager.Instance != null && ResourceDatabaseManager.Instance.Database != null)
+        {
+            ship.InitializeInventory(ResourceDatabaseManager.Instance.Database);
+            Debug.Log("[ShipManager] Ship 인벤토리 초기화 완료");
+        }
+        else
+        {
+            Debug.LogError("[ShipManager] ResourceDatabaseManager를 찾을 수 없습니다!");
+        }
+
+        // 초기 상태 로그
+        Debug.Log(ship.GetShipStatusSummary());
     }
 
     // ========== 배 상태 관리 ==========
@@ -84,7 +102,10 @@ public class ShipManager : MonoBehaviour
     public void AddResource(ResourceType type, int amount)
     {
         ship.AddResource(type, amount);
+
+        // 이벤트 발생
         OnResourceChanged?.Invoke(type, amount);
+        OnInventoryChanged?.Invoke();
 
         Debug.Log($"[자원 획득] {type} +{amount} (현재: {ship.GetResourceAmount(type)})");
     }
@@ -96,7 +117,10 @@ public class ShipManager : MonoBehaviour
 
         if (success)
         {
+            // 이벤트 발생
             OnResourceChanged?.Invoke(type, -amount);
+            OnInventoryChanged?.Invoke();
+
             Debug.Log($"[자원 사용] {type} -{amount} (현재: {ship.GetResourceAmount(type)})");
         }
         else

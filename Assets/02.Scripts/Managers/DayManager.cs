@@ -28,12 +28,13 @@ using System.Collections.Generic;
       // ========== 일일 수확량 추적 ==========
 
       /// <summary>
-      /// 오늘 수집한 자원 (UnderWater Scene에서 수집)
+      /// 오늘 수집한 자원 (읽기 전용 복사본 - UI 표시용)
+      /// 실제 자원은 SceneTransitionManager에서 ShipInventory로 직접 전달됨
       /// </summary>
       private Inventory _todayHarvest = new Inventory();
 
       /// <summary>
-      /// 오늘의 수확량 (읽기 전용)
+      /// 오늘의 수확량 (읽기 전용 - UI 표시 전용)
       /// </summary>
       public IReadOnlyDictionary<ResourceType, int> TodayHarvest => _todayHarvest.Items;
 
@@ -199,10 +200,8 @@ using System.Collections.Generic;
 
       private void HandleEveningPhase()
       {
-          // Evening Phase 시작 시 TodayHarvest → Ship 인벤토리 전달
-          TransferHarvestToShip();
-
           // 저녁: 자원 분배 시간
+          // 자원은 이미 SceneTransitionManager.GoToShip()에서 ShipInventory로 전달됨
           // UI로 자원 분배 화면 표시 (ResourceDistributionUI.OnPhaseChanged에서 자동)
           // 완료 버튼 클릭 시 ResourceDistributionUI에서 CompleteEvening() 호출
       }
@@ -337,7 +336,8 @@ using System.Collections.Generic;
       // ========== 일일 수확량 관리 ==========
 
       /// <summary>
-      /// 씬 전환 시 DiverBag의 자원을 TodayHarvest에 기록
+      /// 씬 전환 시 DiverBag의 자원을 TodayHarvest에 기록 (UI 표시 전용 복사본)
+      /// 실제 자원은 SceneTransitionManager.GoToShip()에서 ShipInventory로 직접 전달됨
       /// SceneTransitionManager.GoToShip()에서 호출
       /// </summary>
       public void RecordTodayHarvest(Inventory diverBag)
@@ -348,9 +348,9 @@ using System.Collections.Generic;
               return;
           }
 
-          Debug.Log("[DayManager] 오늘의 수확량 기록 시작");
+          Debug.Log("[DayManager] 오늘의 수확량 기록 시작 (UI 표시용)");
 
-          // DiverBag의 모든 자원을 TodayHarvest에 복사
+          // DiverBag의 모든 자원을 TodayHarvest에 복사 (읽기 전용)
           int totalHarvested = 0;
           foreach (var item in diverBag.Items)
           {
@@ -359,32 +359,11 @@ using System.Collections.Generic;
               Debug.Log($"[DayManager] {item.Key}: {item.Value}개");
           }
 
-          Debug.Log($"[DayManager] 총 수확량: {totalHarvested}개");
+          Debug.Log($"[DayManager] 총 수확량: {totalHarvested}개 (UI 표시 전용)");
       }
 
-      /// <summary>
-      /// TodayHarvest의 자원을 Ship 인벤토리로 전달
-      /// CompleteEvening()에서 호출
-      /// </summary>
-      private void TransferHarvestToShip()
-      {
-          if (ShipManager.Instance == null)
-          {
-              Debug.LogWarning("[DayManager] ShipManager를 찾을 수 없습니다!");
-              return;
-          }
-
-          Debug.Log("[DayManager] 수확 자원을 Ship으로 전달 시작");
-
-          int totalTransferred = 0;
-          foreach (var item in _todayHarvest.Items)
-          {
-              ShipManager.Instance.AddResource(item.Key, item.Value);
-              totalTransferred += item.Value;
-          }
-
-          Debug.Log($"[DayManager] 총 {totalTransferred}개 자원을 Ship에 추가 완료");
-      }
+      // TransferHarvestToShip() 메서드 제거됨
+      // 자원은 SceneTransitionManager.GoToShip()에서 ShipInventory로 직접 전달됨
 
       /// <summary>
       /// 일일 수확량 초기화 (새로운 날 시작 시)

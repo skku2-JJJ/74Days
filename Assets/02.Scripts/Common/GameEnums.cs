@@ -7,6 +7,16 @@ public enum DayPhase
     Evening
 }
 
+// 자원 카테고리
+public enum ResourceCategory
+{
+    Food,       // 식량 (물고기)
+    Water,      // 물
+    Medicine,   // 약초
+    Material,   // 수리 재료 (목재)
+    Special     // 특수 (공격형 등)
+}
+
 // 자원 종류
 public enum ResourceType
 {
@@ -16,14 +26,14 @@ public enum ResourceType
     BlueTang,
     EmeraldFish,
     Nemo,
-    
+
     // 고밸류
     SawShark,
     StripedMarlin,
     Turtle,
     Grouper,
     // ---------------------------------------------
-    
+
     // 공격형
     Attack1,
     Attack2,

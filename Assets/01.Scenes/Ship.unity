@@ -351,6 +351,7 @@ GameObject:
   - component: {fileID: 9676878}
   - component: {fileID: 9676880}
   - component: {fileID: 9676879}
+  - component: {fileID: 9676881}
   m_Layer: 5
   m_Name: InventorySlot8
   m_TagString: Untagged
@@ -417,6 +418,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9676877}
   m_CullTransparentMesh: 1
+--- !u!114 &9676881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9676877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dba92584469aef3448f1cee4329749d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iconImage: {fileID: 1580335627}
+  amountText: {fileID: 1227498734}
+  draggableItem: {fileID: 0}
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  emptyColor: {r: 1, g: 1, b: 1, a: 0.3}
 --- !u!1 &10510778
 GameObject:
   m_ObjectHideFlags: 0
@@ -747,7 +765,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9f41833d8711d524a98e544d9e0cc569, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3d9bcf6080954694692a23fabd1ad6b4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1313,7 +1331,7 @@ GameObject:
   - component: {fileID: 90078748}
   - component: {fileID: 90078749}
   m_Layer: 5
-  m_Name: Row2
+  m_Name: SlotContainer2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2421,6 +2439,51 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &147877182
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 147877183}
+  - component: {fileID: 147877184}
+  m_Layer: 0
+  m_Name: ResourceDatabaseManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &147877183
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 147877182}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &147877184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 147877182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad8ca0053ed21b943a3b5bb421f9b997, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  database: {fileID: 11400000, guid: c68d254aa1ce4bb4893c0e6160f51d92, type: 2}
 --- !u!1 &157800301
 GameObject:
   m_ObjectHideFlags: 0
@@ -2675,7 +2738,7 @@ GameObject:
   - component: {fileID: 166886010}
   - component: {fileID: 166886009}
   m_Layer: 5
-  m_Name: InventorySlot (4)
+  m_Name: SawSharkSlot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3828,7 +3891,7 @@ GameObject:
   - component: {fileID: 257510214}
   - component: {fileID: 257510213}
   m_Layer: 5
-  m_Name: InventorySlot (4)
+  m_Name: WaterSlot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4690,6 +4753,7 @@ GameObject:
   - component: {fileID: 359983537}
   - component: {fileID: 359983539}
   - component: {fileID: 359983538}
+  - component: {fileID: 359983540}
   m_Layer: 5
   m_Name: InventorySlot7
   m_TagString: Untagged
@@ -4756,6 +4820,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 359983536}
   m_CullTransparentMesh: 1
+--- !u!114 &359983540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 359983536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dba92584469aef3448f1cee4329749d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iconImage: {fileID: 1547702409}
+  amountText: {fileID: 1127741720}
+  draggableItem: {fileID: 0}
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  emptyColor: {r: 1, g: 1, b: 1, a: 0.3}
 --- !u!1 &369725106
 GameObject:
   m_ObjectHideFlags: 0
@@ -5594,7 +5675,7 @@ GameObject:
   - component: {fileID: 450643511}
   - component: {fileID: 450643510}
   m_Layer: 5
-  m_Name: InventorySlot (5)
+  m_Name: StripedMarlinSlot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5671,7 +5752,7 @@ GameObject:
   - component: {fileID: 466389391}
   - component: {fileID: 466389390}
   m_Layer: 5
-  m_Name: InventorySlot (2)
+  m_Name: EmeraldFishSlot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7533,7 +7614,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: da0e9797a844cdb40acd04553ccec1fa, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -9664,7 +9745,7 @@ GameObject:
   - component: {fileID: 819660117}
   - component: {fileID: 819660116}
   m_Layer: 5
-  m_Name: Row1
+  m_Name: SlotContainer1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9741,7 +9822,7 @@ GameObject:
   - component: {fileID: 820964870}
   - component: {fileID: 820964869}
   m_Layer: 5
-  m_Name: InventorySlot (5)
+  m_Name: HerbSlot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10203,6 +10284,7 @@ GameObject:
   - component: {fileID: 858865276}
   - component: {fileID: 858865278}
   - component: {fileID: 858865277}
+  - component: {fileID: 858865279}
   m_Layer: 5
   m_Name: InventorySlot5
   m_TagString: Untagged
@@ -10269,6 +10351,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 858865275}
   m_CullTransparentMesh: 1
+--- !u!114 &858865279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 858865275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dba92584469aef3448f1cee4329749d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iconImage: {fileID: 706873188}
+  amountText: {fileID: 1983575324}
+  draggableItem: {fileID: 0}
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  emptyColor: {r: 1, g: 1, b: 1, a: 0.3}
 --- !u!1 &866867345
 GameObject:
   m_ObjectHideFlags: 0
@@ -10891,19 +10990,6 @@ MonoBehaviour:
   boxElementParent: {fileID: 1655204210}
   divisionButton: {fileID: 45209585}
   titleText: {fileID: 955128975}
-  _blowFishIcon: {fileID: 21300000, guid: 79b471b6e9e02c24d8d03f210b9b5f37, type: 3}
-  _blueTangIcon: {fileID: 21300000, guid: 3f064c5fe9d48904fb05b77e6eff6ce7, type: 3}
-  _emeraldFishIcon: {fileID: 21300000, guid: da0e9797a844cdb40acd04553ccec1fa, type: 3}
-  _nemoIcon: {fileID: 21300000, guid: 56ebec7bfda1a8e4588498acadb00756, type: 3}
-  _sawSharkIcon: {fileID: 21300000, guid: 3d9bcf6080954694692a23fabd1ad6b4, type: 3}
-  _stripedMarlinIcon: {fileID: 21300000, guid: fea1c4dae3d297044ad3663fe2986e6c, type: 3}
-  _turtleIcon: {fileID: 21300000, guid: febdb55f6b2c3d04dbfe2a5d5d99fd28, type: 3}
-  _grouperIcon: {fileID: 21300000, guid: 9ac146eb965354e8dabdbeef12886ea6, type: 3}
-  _attack1Icon: {fileID: 21300000, guid: 9f41833d8711d524a98e544d9e0cc569, type: 3}
-  _attack2Icon: {fileID: 21300000, guid: 124483392c74bad4f930f5082d224ab9, type: 3}
-  _waterIcon: {fileID: -8067775423508554327, guid: be02628b74957e941953c477177254ae, type: 3}
-  _herbIcon: {fileID: -699804339384155940, guid: be02628b74957e941953c477177254ae, type: 3}
-  _woodIcon: {fileID: 21300000, guid: efe2ac1e04c61d1429e370eb4e493aa0, type: 3}
   _distributeUI: {fileID: 944315826}
 --- !u!61 &952222018 stripped
 BoxCollider2D:
@@ -11655,7 +11741,7 @@ GameObject:
   - component: {fileID: 1022041410}
   - component: {fileID: 1022041409}
   m_Layer: 5
-  m_Name: InventorySlot
+  m_Name: TurtleSlot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11779,7 +11865,7 @@ GameObject:
   - component: {fileID: 1047805236}
   - component: {fileID: 1047805235}
   m_Layer: 5
-  m_Name: InventorySlot (2)
+  m_Name: Attack1Slot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13169,6 +13255,7 @@ GameObject:
   - component: {fileID: 1213321151}
   - component: {fileID: 1213321153}
   - component: {fileID: 1213321152}
+  - component: {fileID: 1213321154}
   m_Layer: 5
   m_Name: InventorySlot9
   m_TagString: Untagged
@@ -13235,6 +13322,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1213321150}
   m_CullTransparentMesh: 1
+--- !u!114 &1213321154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1213321150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dba92584469aef3448f1cee4329749d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iconImage: {fileID: 547875328}
+  amountText: {fileID: 1436094529}
+  draggableItem: {fileID: 0}
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  emptyColor: {r: 1, g: 1, b: 1, a: 0.3}
 --- !u!1 &1226722462
 GameObject:
   m_ObjectHideFlags: 0
@@ -14300,7 +14404,7 @@ GameObject:
   - component: {fileID: 1309601860}
   - component: {fileID: 1309601859}
   m_Layer: 5
-  m_Name: InventorySlot (3)
+  m_Name: Attack2Slot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18034,18 +18138,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 453b5e6172343ad4fbf34bf78ac6e6bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _blowFishTextUI: {fileID: 1631244789}
-  _blueTangTextUI: {fileID: 971880914}
-  _emeraldFishTextUI: {fileID: 718981497}
-  _nemoTextUI: {fileID: 431031572}
-  _sawSharkTextUI: {fileID: 1861699327}
-  _stripedMarlinTextUI: {fileID: 674629105}
-  _turtleTextUI: {fileID: 1982796425}
-  _grouperTextUI: {fileID: 332597356}
-  _attack1TextUI: {fileID: 1718488167}
-  _attack2TextUI: {fileID: 894737874}
-  _waterTextUI: {fileID: 1151056295}
-  _herbsTextUI: {fileID: 1668266533}
+  _resourceSlotsContainers:
+  - {fileID: 819660115}
+  - {fileID: 90078748}
   _panelRootUI: {fileID: 1625000534}
   _closeButtonUI: {fileID: 1697940551}
 --- !u!114 &1625000539
@@ -19085,7 +19180,7 @@ GameObject:
   - component: {fileID: 1666810154}
   - component: {fileID: 1666810153}
   m_Layer: 5
-  m_Name: InventorySlot(1)
+  m_Name: BlueTangSlot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21062,7 +21157,7 @@ GameObject:
   - component: {fileID: 1830063254}
   - component: {fileID: 1830063253}
   m_Layer: 5
-  m_Name: InventorySlot (3)
+  m_Name: NemoSlot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22099,6 +22194,7 @@ GameObject:
   - component: {fileID: 1968907090}
   - component: {fileID: 1968907092}
   - component: {fileID: 1968907091}
+  - component: {fileID: 1968907093}
   m_Layer: 5
   m_Name: InventorySlot6
   m_TagString: Untagged
@@ -22165,6 +22261,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1968907089}
   m_CullTransparentMesh: 1
+--- !u!114 &1968907093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968907089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dba92584469aef3448f1cee4329749d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iconImage: {fileID: 171528710}
+  amountText: {fileID: 1154826919}
+  draggableItem: {fileID: 0}
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  emptyColor: {r: 1, g: 1, b: 1, a: 0.3}
 --- !u!1 &1979607963
 GameObject:
   m_ObjectHideFlags: 0
@@ -22563,7 +22676,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: da0e9797a844cdb40acd04553ccec1fa, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -22803,7 +22916,7 @@ GameObject:
   - component: {fileID: 2033009165}
   - component: {fileID: 2033009164}
   m_Layer: 5
-  m_Name: InventorySlot(1)
+  m_Name: GrouperSlot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23034,7 +23147,7 @@ GameObject:
   - component: {fileID: 2036494076}
   - component: {fileID: 2036494075}
   m_Layer: 5
-  m_Name: InventorySlot
+  m_Name: BlowFishSlot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25893,3 +26006,4 @@ SceneRoots:
   - {fileID: 1679301019}
   - {fileID: 781721880}
   - {fileID: 157800303}
+  - {fileID: 147877183}
