@@ -1,17 +1,28 @@
+using System;
 using TMPro;
 using UnityEngine;
 
 public class DiverbagUI : MonoBehaviour
 {
+    [Header("참조")]
     [SerializeField] private DiverStatus _diverStatus;
-    [SerializeField] private DiverbagSlotUI[] _slots;
-    [SerializeField] private ResourceDatabase _db;
-
-    private void OnEnable()
-    {
-        Refresh();
-    }
+    private ResourceDatabase _resourceDatabase;
+   
     
+    [Header("Slots")]
+    [SerializeField] private DiverbagSlotUI[] _slots;
+
+
+    private void Awake()
+    {
+        Init();
+    }
+
+    private void Init()
+    {
+        _resourceDatabase = GetComponent<ResourceDatabase>();
+    }
+
     public void Refresh()
     {
         var items = _diverStatus.DiveBag.Items;
@@ -26,7 +37,7 @@ public class DiverbagUI : MonoBehaviour
             var type = kvp.Key;
             var amount = kvp.Value;
 
-            var data = _db.Get(type);
+            var data = _resourceDatabase.Get(type);
             _slots[i].gameObject.SetActive(true);
             _slots[i].Set(data, amount);
             i++;
