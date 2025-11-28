@@ -65,6 +65,13 @@ public class DiverAimArrow : MonoBehaviour
         _renderer = GetComponent<SpriteRenderer>();
         
         _harpoonShooter = GetComponentInParent<HarpoonShooter>();
+        if (_harpoonShooter == null)
+        {
+            Debug.LogError("HarpoonShooter 컴포넌트를 부모에서 찾을 수 없습니다.", this);
+            enabled = false;
+            return;
+        }
+        
         _diverStatus = GetComponentInParent<DiverStatus>(); 
         
         _diverTransform = _harpoonShooter.transform;

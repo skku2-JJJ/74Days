@@ -25,23 +25,18 @@ public class CaptureUI : MonoBehaviour
 
     private void Update()
     {
-        if (_shooter == null || _gaugeSlider == null) return;
-        if ( _diverStatus.IsDead)
+        if (_shooter == null || _gaugeSlider == null || _diverStatus == null) return;
+        
+        if (_diverStatus.IsDead || !_shooter.IsCapturing)
         {
             _canvasGroup.alpha = 0f;
-            return;
         }
-        
-        if (!_shooter.IsCapturing)
+        else
         {
-            _canvasGroup.alpha = 0f;
-            return;
+            _canvasGroup.alpha = 1f;
+            UpdatePosition();
+            UpdateGauge();
         }
-        
-        _canvasGroup.alpha = 1f;
-       
-        UpdatePosition();
-        UpdateGauge();
     }
 
     private void Init()

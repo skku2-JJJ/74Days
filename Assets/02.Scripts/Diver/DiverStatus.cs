@@ -72,12 +72,8 @@ public class DiverStatus : MonoBehaviour
             if (_oxygenConsumeAccumulator >= 1f)
             {
                 int ticks = Mathf.FloorToInt(_oxygenConsumeAccumulator);
-                if (ticks > 0)
-                {
-                    int totalConsume = ticks;
-                    _currentOxygen = Mathf.Max(0, _currentOxygen - totalConsume);
-                    _oxygenConsumeAccumulator -= ticks;
-                }
+                _currentOxygen = Mathf.Max(0, _currentOxygen - ticks);
+                _oxygenConsumeAccumulator -= ticks;
             }
 
             _oxygenDepletedTimer = 0f;
@@ -91,12 +87,9 @@ public class DiverStatus : MonoBehaviour
             if (_oxygenDepletedTimer >= _oxygenDepletedDamageInterval)
             {
                 int ticks = Mathf.FloorToInt(_oxygenDepletedTimer / _oxygenDepletedDamageInterval);
-                if (ticks > 0)
-                {
-                    int totalDamage = ticks * _oxygenDepletedDamagePerTick;
-                    _oxygenDepletedTimer -= ticks * _oxygenDepletedDamageInterval;
-                    TakeDamage(totalDamage);
-                }
+                int totalDamage = ticks * _oxygenDepletedDamagePerTick;
+                _oxygenDepletedTimer -= ticks * _oxygenDepletedDamageInterval;
+                TakeDamage(totalDamage);
             }
         }
     }
@@ -129,7 +122,7 @@ public class DiverStatus : MonoBehaviour
 
     public void RestoreOxygen(int amount)
     {
-        if (amount <= 0f) return;
+        if (amount <= 0) return;
 
         _currentOxygen = Mathf.Clamp(_currentOxygen + amount, 0, _maxOxygen);
 
