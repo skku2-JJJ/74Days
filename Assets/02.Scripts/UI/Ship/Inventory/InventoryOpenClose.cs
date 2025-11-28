@@ -8,7 +8,7 @@ using UnityEngine;
 public class InventoryOpenClose : MonoBehaviour
 {
     [SerializeField]
-    private UIBasicOpenClose _inventoryUI;
+    private UIBasicUpDown _inventoryUI;
 
     private bool _isInside = false;
 
