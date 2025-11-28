@@ -115,7 +115,7 @@ public class Ship
             return false;
 
         // 재료 소비
-        _inventory.ConsumeResource(ResourceType.TinyFish, materialAmount);
+        _inventory.ConsumeResource(ResourceType.Wood, materialAmount);
 
         RepairShip(materialAmount);
 

@@ -99,13 +99,13 @@ public class CrewManager : MonoBehaviour
             return false;
         }
 
-        if (resourceType == ResourceType.BlueTang && crew.HasReceivedWaterToday)
+        if (resourceType == ResourceType.Water && crew.HasReceivedWaterToday)
         {
             Debug.LogWarning($"[자원 분배 실패] {crew.CrewName}은(는) 오늘 이미 물을 받았습니다!");
             return false;
         }
 
-        if (resourceType == ResourceType.FileFish && crew.HasReceivedMedicineToday)
+        if (resourceType == ResourceType.Herb && crew.HasReceivedMedicineToday)
         {
             Debug.LogWarning($"[자원 분배 실패] {crew.CrewName}은(는) 오늘 이미 약초를 받았습니다!");
             return false;
@@ -135,7 +135,16 @@ public class CrewManager : MonoBehaviour
     // 자원이 식량(Hunger) 카테고리인지 확인
     private bool IsHungerResource(ResourceType type)
     {
-        return type == ResourceType.BlowFish || type == ResourceType.DameselFish || type == ResourceType.EmeraldFish;
+        return type == ResourceType.BlowFish || 
+               type == ResourceType.BlueTang || 
+               type == ResourceType.EmeraldFish ||
+               type == ResourceType.Nemo ||
+               type == ResourceType.SawShark ||
+               type == ResourceType.StripedMarlin ||
+               type == ResourceType.Turtle ||
+               type == ResourceType.Grouper ||
+               type == ResourceType.Attack1 ||
+               type == ResourceType.Attack2;
     }
 
     // ========== 일일 처리 ==========

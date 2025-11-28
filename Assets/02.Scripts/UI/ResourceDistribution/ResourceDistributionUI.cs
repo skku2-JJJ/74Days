@@ -23,11 +23,19 @@ public class ResourceDistributionUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI titleText;         // TitleText (제목)
     
     [Header("Resource Icons")]
-    [SerializeField] private Sprite normalFishIcon;
-    [SerializeField] private Sprite specialFishIcon;
-    [SerializeField] private Sprite seaweedIcon;
-    [SerializeField] private Sprite cleanWaterIcon;
-    [SerializeField] private Sprite herbsIcon;
+    [SerializeField] private Sprite _blowFishIcon;
+    [SerializeField] private Sprite _blueTangIcon;
+    [SerializeField] private Sprite _emeraldFishIcon;
+    [SerializeField] private Sprite _nemoIcon;
+    [SerializeField] private Sprite _sawSharkIcon;
+    [SerializeField] private Sprite _stripedMarlinIcon;
+    [SerializeField] private Sprite _turtleIcon;
+    [SerializeField] private Sprite _grouperIcon;
+    [SerializeField] private Sprite _attack1Icon;
+    [SerializeField] private Sprite _attack2Icon;
+    [SerializeField] private Sprite _waterIcon;
+    [SerializeField] private Sprite _herbIcon;
+    [SerializeField] private Sprite _woodIcon;
 
     private List<CrewResourceItem> crewItems = new List<CrewResourceItem>();
     private List<InventorySlotUI> inventorySlots = new List<InventorySlotUI>();
@@ -204,10 +212,18 @@ public class ResourceDistributionUI : MonoBehaviour
         ResourceType[] resources = new ResourceType[]
         {
             ResourceType.BlowFish,
-            ResourceType.DameselFish,
-            ResourceType.EmeraldFish,
             ResourceType.BlueTang,
-            ResourceType.FileFish
+            ResourceType.EmeraldFish,
+            ResourceType.Nemo,
+            ResourceType.SawShark,
+            ResourceType.StripedMarlin,
+            ResourceType.Turtle,
+            ResourceType.Grouper,
+            ResourceType.Attack1,
+            ResourceType.Attack2,
+            ResourceType.Water,
+            ResourceType.Herb,
+            ResourceType.Wood,
         };
 
         for (int i = 0; i < resources.Length && i < boxElementParent.childCount; i++)
@@ -269,15 +285,29 @@ public class ResourceDistributionUI : MonoBehaviour
         switch (type)
         {
             case ResourceType.BlowFish:
-                return normalFishIcon;
-            case ResourceType.DameselFish:
-                return specialFishIcon;
-            case ResourceType.EmeraldFish:
-                return seaweedIcon;
+                return _blowFishIcon;
             case ResourceType.BlueTang:
-                return cleanWaterIcon;
-            case ResourceType.FileFish:
-                return herbsIcon;
+                return _blueTangIcon;
+            case ResourceType.EmeraldFish:
+                return _emeraldFishIcon;
+            case ResourceType.Nemo:
+                return _nemoIcon;
+            case ResourceType.SawShark:
+                return _sawSharkIcon;
+            case ResourceType.StripedMarlin:
+                return _stripedMarlinIcon;
+            case ResourceType.Turtle:
+                return _turtleIcon;
+            case ResourceType.Grouper:
+                return _grouperIcon;
+            case ResourceType.Attack1:
+                return _attack1Icon;
+            case ResourceType.Attack2:
+                return _attack2Icon;
+            case ResourceType.Water:
+                return _waterIcon;
+            case ResourceType.Herb:
+                return _herbIcon;
             default:
                 return null;
         }
