@@ -19,7 +19,8 @@ public class ResourceDistributionUI : MonoBehaviour
     [SerializeField] private RectTransform divisionUI;          // DivisionUI (메인 패널)
     [SerializeField] private Transform crewsParent;             // Crews (선원 리스트 부모)
     [SerializeField] private Transform boxElementParent;        // BoxElement (인벤토리 슬롯 부모)
-    [SerializeField] private Button divisionButton;             // DivisionButton (완료 버튼)
+    [SerializeField] private GameObject _divisionTable;          // division 영역
+    [SerializeField] private GameObject _divisionGuide;          // division 가이드
     [SerializeField] private TextMeshProUGUI titleText;         // TitleText (제목)
     
     [Header("Resource Icons")]
@@ -32,7 +33,7 @@ public class ResourceDistributionUI : MonoBehaviour
     private List<CrewResourceItem> crewItems = new List<CrewResourceItem>();
     private List<InventorySlotUI> inventorySlots = new List<InventorySlotUI>();
     
-    [SerializeField] private UIBasicOpenClose _distributeUI;
+    [SerializeField] private UIBasicUpDown _distributeUI;
 
     void Awake()
     {
@@ -51,9 +52,10 @@ public class ResourceDistributionUI : MonoBehaviour
     void Start()
     {
         // 초기 상태: DivisionButton 숨김
-        if (divisionButton != null)
+        if (_divisionTable != null)
         {
-            divisionButton.gameObject.SetActive(false);
+            _divisionTable.SetActive(false);
+            _divisionGuide.SetActive(false);
         }
 
         // Evening 페이즈 구독
@@ -84,17 +86,19 @@ public class ResourceDistributionUI : MonoBehaviour
             ShowUI();
 
             // DivisionButton 활성화
-            if (divisionButton != null)
+            if (_divisionTable != null)
             {
-                divisionButton.gameObject.SetActive(true);
+                _divisionTable.SetActive(true);
+                _divisionGuide.SetActive(true);
             }
         }
         else
         {
             // Evening이 아닌 페이즈에서는 DivisionButton 숨김
-            if (divisionButton != null)
+            if (_divisionTable != null)
             {
-                divisionButton.gameObject.SetActive(false);
+                _divisionTable.SetActive(false);
+                _divisionGuide.SetActive(false);
             }
         }
     }

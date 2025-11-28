@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class Bag : MonoBehaviour
 {
-    private UIBasicOpenClose _openClose;
+    private UIBasicUpDown _openClose;
     void Start()
     {
-        _openClose = GetComponent<UIBasicOpenClose>();
+        _openClose = GetComponent<UIBasicUpDown>();
     }
 
     void Update()
