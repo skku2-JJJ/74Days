@@ -129,6 +129,7 @@ MonoBehaviour:
   _diagonalTiltAngle: 15
   _tiltLerpSpeed: 10
   _animSpeedLerp: 10
+  _textureFacesRight: 0
   _flipDirThreshold: 0.25
   _minSpeedForFlip: 0.2
 --- !u!1 &7850211851399627728
@@ -210,7 +211,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4362de6b5afeb3043adbb5fc879814df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _fishType: 6
   diver: {fileID: 0}
+  visualController: {fileID: 0}
   _health: {fileID: 616909714093216990}
   _hitFeedback: {fileID: 7656488403086179163}
   _captureStruggle: {fileID: 3449729598606230473}
@@ -244,6 +247,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8015212bde934230804656c73218552b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _minDecideStateDuration: 2
+  _maxDecideStateDuration: 4
+  _minDecideDirDuration: 0.8
+  _maxDecideDirDuration: 1.4
+  _wanderChangeInterval: 1
+  _wanderJitter: 70
   _idleMinDuration: 1
   _idleMaxDuration: 3
   _idleChanceAfterWander: 0.4
@@ -251,10 +260,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   _rayDistance: 1.2
-  _sideRayAngle: 35
   _diver: {fileID: 0}
   _fleeRadius: 4
   _fleeStrength: 1.5
+  _escapeDuration: 3
 --- !u!114 &7656488403086179163
 MonoBehaviour:
   m_ObjectHideFlags: 0
