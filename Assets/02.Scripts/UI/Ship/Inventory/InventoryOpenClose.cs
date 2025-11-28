@@ -59,6 +59,8 @@ public class InventoryOpenClose : MonoBehaviour
         {
             _inventoryUI.Open();
             Debug.Log("[InventoryOpenClose] Inventory 열기");
+
+            // 더 이상 수동 업데이트 불필요 (이벤트로 자동 업데이트됨)
         }
     }
 }

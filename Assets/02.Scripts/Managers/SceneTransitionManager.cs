@@ -50,21 +50,43 @@ public class SceneTransitionManager : MonoBehaviour
 
     /// <summary>
     /// 배 씬으로 전환 (Diving → Evening)
+    /// DiverBag의 자원을 ShipInventory로 직접 전달 (간소화)
     /// </summary>
     public void GoToShip()
     {
         if (isTransitioning) return;
 
-        // UnderWater → Ship 전환 직전: DiverBag → TodayHarvest 기록
+        // UnderWater → Ship 전환 직전: DiverBag → ShipInventory 직접 전달
         DiverStatus diver = FindObjectOfType<DiverStatus>();
-        if (diver != null && DayManager.Instance != null)
+        if (diver != null)
         {
-            DayManager.Instance.RecordTodayHarvest(diver.DiveBag);
-            Debug.Log("[SceneTransition] 오늘의 수확량 기록 완료");
+            // DiverBag의 자원을 ShipManager에 직접 추가
+            if (ShipManager.Instance != null)
+            {
+                int totalTransferred = 0;
+                foreach (var item in diver.DiveBag.Items)
+                {
+                    ShipManager.Instance.AddResource(item.Key, item.Value);
+                    totalTransferred += item.Value;
+                    Debug.Log($"[SceneTransition] {item.Key} +{item.Value}개 → Ship");
+                }
+
+                Debug.Log($"[SceneTransition] 총 {totalTransferred}개 자원을 Ship에 직접 추가 완료");
+
+                // TodayHarvest에도 기록 (UI 표시용 - 읽기 전용)
+                if (DayManager.Instance != null)
+                {
+                    DayManager.Instance.RecordTodayHarvest(diver.DiveBag);
+                }
+            }
+            else
+            {
+                Debug.LogWarning("[SceneTransition] ShipManager를 찾을 수 없습니다!");
+            }
         }
         else
         {
-            Debug.LogWarning("[SceneTransition] DiverStatus 또는 DayManager를 찾을 수 없습니다!");
+            Debug.LogWarning("[SceneTransition] DiverStatus를 찾을 수 없습니다!");
         }
 
         TransitionToScene(shipSceneName, DayPhase.Evening);

@@ -44,6 +44,19 @@ public class Ship
         _inventory = new ShipInventory();
     }
 
+    /// <summary>
+    /// 인벤토리 초기화 (ResourceDatabase에서 초기값 로드)
+    /// </summary>
+    public void InitializeInventory(ResourceDatabase database)
+    {
+        if (_inventory == null)
+        {
+            _inventory = new ShipInventory();
+        }
+
+        _inventory.Initialize(database);
+    }
+
     // 하루 경과 시 배 노화
     public void DailyDeterioration()
     {

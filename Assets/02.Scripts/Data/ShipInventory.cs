@@ -5,29 +5,40 @@ using System.Collections.Generic;
 public class ShipInventory
 {
     private Inventory _inventory = new Inventory();
+    private bool _isInitialized = false;
 
     /// <summary>
     /// 모든 자원 (읽기 전용)
     /// </summary>
     public IReadOnlyDictionary<ResourceType, int> Items => _inventory.Items;
 
-    // 생성자에서 초기값 설정
-    public ShipInventory()
+    /// <summary>
+    /// ResourceDatabase에서 초기값을 로드하여 인벤토리 초기화
+    /// </summary>
+    public void Initialize(ResourceDatabase database)
     {
-        // 초기화
-        _inventory.Add(ResourceType.BlowFish, 5);
-        _inventory.Add(ResourceType.BlueTang, 3);
-        _inventory.Add(ResourceType.EmeraldFish, 2);
-        _inventory.Add(ResourceType.Nemo, 5);
-        _inventory.Add(ResourceType.SawShark, 3);
-        _inventory.Add(ResourceType.StripedMarlin, 2);
-        _inventory.Add(ResourceType.Turtle, 5);
-        _inventory.Add(ResourceType.Grouper, 3);
-        _inventory.Add(ResourceType.Attack1, 2);
-        _inventory.Add(ResourceType.Attack2, 5);
-        _inventory.Add(ResourceType.Water, 2);
-        _inventory.Add(ResourceType.Herb, 5);
-        _inventory.Add(ResourceType.Wood, 3);
+        if (_isInitialized)
+        {
+            Debug.LogWarning("[ShipInventory] 이미 초기화되었습니다!");
+            return;
+        }
+
+        if (database == null)
+        {
+            Debug.LogError("[ShipInventory] ResourceDatabase가 null입니다!");
+            return;
+        }
+
+        // ResourceDatabase에서 초기 인벤토리 로드
+        var initialInventory = database.GetInitialInventory();
+
+        foreach (var kvp in initialInventory)
+        {
+            _inventory.Add(kvp.Key, kvp.Value);
+        }
+
+        _isInitialized = true;
+        Debug.Log($"[ShipInventory] 초기화 완료 - {_inventory.Items.Count}종류 자원");
     }
 
     // ========== 자원 관리 ==========
@@ -38,6 +49,7 @@ public class ShipInventory
     public void AddResource(ResourceType type, int amount)
     {
         _inventory.Add(type, amount);
+        Debug.Log($"[ShipInventory] AddResource 후 - {type}: {_inventory.GetAmount(type)}개, 전체 아이템 수: {_inventory.Items.Count}");
     }
 
     /// <summary>
@@ -53,7 +65,9 @@ public class ShipInventory
     /// </summary>
     public int GetResourceAmount(ResourceType type)
     {
-        return _inventory.GetAmount(type);
+        int amount = _inventory.GetAmount(type);
+        Debug.Log($"[ShipInventory] GetResourceAmount - {type}: {amount}개, 전체 아이템 수: {_inventory.Items.Count}");
+        return amount;
     }
 
     // ========== 자원 카테고리별 합계 ==========
