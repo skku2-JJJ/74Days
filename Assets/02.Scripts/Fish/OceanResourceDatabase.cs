@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ResourceDatabase : MonoBehaviour
+public class OceanResourceDatabase : MonoBehaviour
 {
     [SerializeField] private ResourceData[] _resources;
 
