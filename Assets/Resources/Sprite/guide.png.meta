@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 070d2d361da688b4186ccbba2da920f3
+guid: 57ee18cbb1a27834781f6fb746892a51
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -855298285791758126
-    second: 1_0
+      213: -2655380259140938692
+    second: guide_0
   - first:
-      213: 9180251791023625898
-    second: 1_1
+      213: 5020929314535946767
+    second: guide_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -49,12 +49,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -99,29 +99,16 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 1_0
+      name: guide_0
       rect:
         serializedVersion: 2
-        x: 6
-        y: 6
-        width: 21
+        x: 20
+        y: 20
+        width: 39
         height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -131,18 +118,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2d8b16a9dbe5124f0800000000000000
-      internalID: -855298285791758126
+      spriteID: c34d15e19b1362bd0800000000000000
+      internalID: -2655380259140938692
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 1_1
+      name: guide_1
       rect:
         serializedVersion: 2
-        x: 7
-        y: 27
+        x: 30
+        y: 6
         width: 19
         height: 14
       alignment: 0
@@ -153,8 +140,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: aa65b986d5ec66f70800000000000000
-      internalID: 9180251791023625898
+      spriteID: f0ab24b0c9ceda540800000000000000
+      internalID: 5020929314535946767
       vertices: []
       indices: 
       edges: []
@@ -163,7 +150,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -173,8 +160,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      1_0: -855298285791758126
-      1_1: 9180251791023625898
+      guide_0: -2655380259140938692
+      guide_1: 5020929314535946767
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
