@@ -23,12 +23,7 @@ public class ResourceDistributionUI : MonoBehaviour
     [SerializeField] private GameObject _divisionGuide;          // division 가이드
     [SerializeField] private TextMeshProUGUI titleText;         // TitleText (제목)
     
-    [Header("Resource Icons")]
-    [SerializeField] private Sprite normalFishIcon;
-    [SerializeField] private Sprite specialFishIcon;
-    [SerializeField] private Sprite seaweedIcon;
-    [SerializeField] private Sprite cleanWaterIcon;
-    [SerializeField] private Sprite herbsIcon;
+    // Resource Icons는 ResourceDatabase에서 가져오므로 제거됨
 
     private List<CrewResourceItem> crewItems = new List<CrewResourceItem>();
     private List<InventorySlotUI> inventorySlots = new List<InventorySlotUI>();
@@ -64,6 +59,12 @@ public class ResourceDistributionUI : MonoBehaviour
             DayManager.Instance.OnPhaseChange += OnPhaseChanged;
         }
 
+        // ShipManager 자원 변경 이벤트 구독 (실시간 업데이트)
+        if (ShipManager.Instance != null)
+        {
+            ShipManager.Instance.OnResourceChanged += OnResourceChanged;
+        }
+
         Debug.Log("[ResourceDistributionUI] 초기화 완료 - Evening 페이즈 대기 중");
     }
 
@@ -74,6 +75,22 @@ public class ResourceDistributionUI : MonoBehaviour
         {
             DayManager.Instance.OnPhaseChange -= OnPhaseChanged;
         }
+
+        if (ShipManager.Instance != null)
+        {
+            ShipManager.Instance.OnResourceChanged -= OnResourceChanged;
+        }
+    }
+
+    // ========== 이벤트 핸들러 ==========
+
+    /// <summary>
+    /// 자원 변경 시 호출 (실시간 업데이트)
+    /// </summary>
+    private void OnResourceChanged(ResourceType type, int amount)
+    {
+        // 해당 자원 슬롯만 업데이트 (최적화)
+        RefreshResourceSlot(type);
     }
 
     // ========== 페이즈 변경 이벤트 ==========
@@ -199,22 +216,22 @@ public class ResourceDistributionUI : MonoBehaviour
     // ========== 자원 슬롯 관리 ==========
 
     /// <summary>
-    /// 인벤토리 슬롯 초기화 (InventorySlot0~9)
+    /// 인벤토리 슬롯 초기화 (동적 생성 - ResourceDatabase 기반)
     /// </summary>
     private void InitializeInventorySlots()
     {
         inventorySlots.Clear();
 
-        ResourceType[] resources = new ResourceType[]
+        // ResourceDatabase에서 모든 자원 목록 가져오기
+        if (ResourceDatabaseManager.Instance == null || ResourceDatabaseManager.Instance.Database == null)
         {
-            ResourceType.NormalFish,
-            ResourceType.SpecialFish,
-            ResourceType.Seaweed,
-            ResourceType.CleanWater,
-            ResourceType.Herbs
-        };
+            Debug.LogError("[ResourceDistributionUI] ResourceDatabaseManager를 찾을 수 없습니다!");
+            return;
+        }
 
-        for (int i = 0; i < resources.Length && i < boxElementParent.childCount; i++)
+        var allResources = ResourceDatabaseManager.Instance.Database.allResources;
+
+        for (int i = 0; i < allResources.Count && i < boxElementParent.childCount; i++)
         {
             Transform slotTransform = boxElementParent.GetChild(i);
             var slot = slotTransform.GetComponent<InventorySlotUI>();
@@ -224,12 +241,16 @@ public class ResourceDistributionUI : MonoBehaviour
                 slot = slotTransform.gameObject.AddComponent<InventorySlotUI>();
             }
 
-            // 아이콘은 Unity Editor에서 미리 할당됨
-            slot.Initialize(resources[i]);
-            inventorySlots.Add(slot);
+            // ResourceMetaData에서 ResourceType 가져와서 초기화
+            var resourceData = allResources[i];
+            if (resourceData != null)
+            {
+                slot.Initialize(resourceData.resourceType);
+                inventorySlots.Add(slot);
+            }
         }
 
-        Debug.Log($"[ResourceDistributionUI] 자원 슬롯 {inventorySlots.Count}개 초기화 완료");
+        Debug.Log($"[ResourceDistributionUI] 자원 슬롯 {inventorySlots.Count}개 초기화 완료 (데이터 기반)");
     }
 
     /// <summary>
@@ -267,24 +288,17 @@ public class ResourceDistributionUI : MonoBehaviour
 
     /// <summary>
     /// 자원 타입에 맞는 아이콘 스프라이트 반환 (DivisionBoxSlot에서도 사용)
+    /// ResourceDatabase에서 가져옴 (데이터 기반)
     /// </summary>
     public Sprite GetResourceIcon(ResourceType type)
     {
-        switch (type)
+        if (ResourceDatabaseManager.Instance == null || ResourceDatabaseManager.Instance.Database == null)
         {
-            case ResourceType.NormalFish:
-                return normalFishIcon;
-            case ResourceType.SpecialFish:
-                return specialFishIcon;
-            case ResourceType.Seaweed:
-                return seaweedIcon;
-            case ResourceType.CleanWater:
-                return cleanWaterIcon;
-            case ResourceType.Herbs:
-                return herbsIcon;
-            default:
-                return null;
+            Debug.LogWarning("[ResourceDistributionUI] ResourceDatabaseManager를 찾을 수 없습니다!");
+            return null;
         }
+
+        return ResourceDatabaseManager.Instance.Database.GetIcon(type);
     }
 
     // ========== 완료 버튼 ==========

@@ -44,6 +44,19 @@ public class Ship
         _inventory = new ShipInventory();
     }
 
+    /// <summary>
+    /// 인벤토리 초기화 (ResourceDatabase에서 초기값 로드)
+    /// </summary>
+    public void InitializeInventory(ResourceDatabase database)
+    {
+        if (_inventory == null)
+        {
+            _inventory = new ShipInventory();
+        }
+
+        _inventory.Initialize(database);
+    }
+
     // 하루 경과 시 배 노화
     public void DailyDeterioration()
     {
@@ -111,7 +124,7 @@ public class Ship
             return false;
 
         // 목재 개수 확인
-        if (_inventory.Wood < materialAmount)
+        if (_inventory.GetResourceAmount(ResourceType.Wood) < materialAmount)
             return false;
 
         // 재료 소비
@@ -120,12 +133,6 @@ public class Ship
         RepairShip(materialAmount);
 
         return true;
-    }
-
-    // 자원 상태 요약
-    public string GetResourceSummary()
-    {
-        return _inventory.GetResourceSummary();
     }
 
     // ========== 배 상태 메서드 ==========

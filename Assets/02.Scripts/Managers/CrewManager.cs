@@ -92,20 +92,22 @@ public class CrewManager : MonoBehaviour
             return false;
         }
 
-        // 3. 오늘 이미 해당 카테고리 자원을 받았는지 체크
-        if (IsHungerResource(resourceType) && crew.HasReceivedFoodToday)
+        // 3. 오늘 이미 해당 카테고리 자원을 받았는지 체크 (데이터 기반)
+        var category = GetResourceCategory(resourceType);
+
+        if (category == ResourceCategory.Food && crew.HasReceivedFoodToday)
         {
             Debug.LogWarning($"[자원 분배 실패] {crew.CrewName}은(는) 오늘 이미 식량을 받았습니다!");
             return false;
         }
 
-        if (resourceType == ResourceType.CleanWater && crew.HasReceivedWaterToday)
+        if (category == ResourceCategory.Water && crew.HasReceivedWaterToday)
         {
             Debug.LogWarning($"[자원 분배 실패] {crew.CrewName}은(는) 오늘 이미 물을 받았습니다!");
             return false;
         }
 
-        if (resourceType == ResourceType.Herbs && crew.HasReceivedMedicineToday)
+        if (category == ResourceCategory.Medicine && crew.HasReceivedMedicineToday)
         {
             Debug.LogWarning($"[자원 분배 실패] {crew.CrewName}은(는) 오늘 이미 약초를 받았습니다!");
             return false;
@@ -132,10 +134,16 @@ public class CrewManager : MonoBehaviour
         return true;
     }
 
-    // 자원이 식량(Hunger) 카테고리인지 확인
-    private bool IsHungerResource(ResourceType type)
+    // 자원의 카테고리 가져오기 (데이터 기반)
+    private ResourceCategory GetResourceCategory(ResourceType type)
     {
-        return type == ResourceType.NormalFish || type == ResourceType.SpecialFish || type == ResourceType.Seaweed;
+        if (ResourceDatabaseManager.Instance == null || ResourceDatabaseManager.Instance.Database == null)
+        {
+            Debug.LogWarning("[CrewManager] ResourceDatabaseManager를 찾을 수 없습니다!");
+            return ResourceCategory.Food; // 기본값
+        }
+
+        return ResourceDatabaseManager.Instance.Database.GetCategory(type);
     }
 
     // ========== 일일 처리 ==========

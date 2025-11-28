@@ -6,7 +6,7 @@ public class DiverbagUI : MonoBehaviour
 {
     [Header("참조")]
     [SerializeField] private DiverStatus _diverStatus;
-    private ResourceDatabase _resourceDatabase;
+    private OceanResourceDatabase _oceanResourceDatabase;
    
     
     [Header("Slots")]
@@ -20,7 +20,7 @@ public class DiverbagUI : MonoBehaviour
 
     private void Init()
     {
-        _resourceDatabase = GetComponent<ResourceDatabase>();
+        _oceanResourceDatabase = GetComponent<OceanResourceDatabase>();
     }
 
     public void Refresh()
@@ -37,7 +37,7 @@ public class DiverbagUI : MonoBehaviour
             var type = kvp.Key;
             var amount = kvp.Value;
 
-            var data = _resourceDatabase.Get(type);
+            var data = _oceanResourceDatabase.Get(type);
             _slots[i].gameObject.SetActive(true);
             _slots[i].Set(data, amount);
             i++;
