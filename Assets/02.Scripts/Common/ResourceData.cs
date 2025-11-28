@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Game/Resource Data")]
+[CreateAssetMenu(menuName = "ScriptableObject/Resource Data")]
 public class ResourceData : ScriptableObject
 {
     public ResourceType Type;       
