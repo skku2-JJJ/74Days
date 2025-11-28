@@ -14,12 +14,8 @@ public enum ResourceType
     // 짜바리들
     BlowFish,
     BlueTang,
-    DameselFish,
     EmeraldFish,
-    FileFish,
-    TinyFish,
     Nemo,
-    PinkFish,
     
     // 고밸류
     SawShark,
@@ -27,7 +23,12 @@ public enum ResourceType
     Turtle,
     Grouper,
     // ---------------------------------------------
+    
+    // 공격형
+    Attack1,
+    Attack2,
     Water,
+    Herb,
     Wood
 }
 

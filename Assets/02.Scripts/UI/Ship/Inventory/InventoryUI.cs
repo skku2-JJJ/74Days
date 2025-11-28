@@ -7,9 +7,16 @@ public class InventoryUI : MonoBehaviour
     public static InventoryUI Instance { get; private set; }
 
     [Header("Food Resources")]
-    [SerializeField] private TextMeshProUGUI _fishTextUI;
-    [SerializeField] private TextMeshProUGUI _shellfishTextUI;
-    [SerializeField] private TextMeshProUGUI _seaweedTextUI;
+    [SerializeField] private TextMeshProUGUI _blowFishTextUI;
+    [SerializeField] private TextMeshProUGUI _blueTangTextUI;
+    [SerializeField] private TextMeshProUGUI _emeraldFishTextUI;
+    [SerializeField] private TextMeshProUGUI _nemoTextUI;
+    [SerializeField] private TextMeshProUGUI _sawSharkTextUI;
+    [SerializeField] private TextMeshProUGUI _stripedMarlinTextUI;
+    [SerializeField] private TextMeshProUGUI _turtleTextUI;
+    [SerializeField] private TextMeshProUGUI _grouperTextUI;
+    [SerializeField] private TextMeshProUGUI _attack1TextUI;
+    [SerializeField] private TextMeshProUGUI _attack2TextUI;
 
     [Header("Water")]
     [SerializeField] private TextMeshProUGUI _waterTextUI;
@@ -18,7 +25,7 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _herbsTextUI;
 
     [Header("Repair Materials")]
-    [SerializeField] private TextMeshProUGUI _woodTextUI;
+    //[SerializeField] private TextMeshProUGUI _woodTextUI;
 
     [Header("Panel")]
     [SerializeField] private GameObject _panelRootUI;
@@ -59,25 +66,46 @@ public class InventoryUI : MonoBehaviour
         if (ShipManager.Instance == null) return;
 
         // 식량
-        if (_fishTextUI != null)
-            _fishTextUI.text = $"{ShipManager.Instance.GetResourceAmount(ResourceType.BlowFish)}";
+        if (_blowFishTextUI != null)
+            _blowFishTextUI.text = $"{ShipManager.Instance.GetResourceAmount(ResourceType.BlowFish)}";
 
-        if (_shellfishTextUI != null)
-            _shellfishTextUI.text = $"{ShipManager.Instance.GetResourceAmount(ResourceType.DameselFish)}";
+        if (_blueTangTextUI != null)
+            _blueTangTextUI.text = $"{ShipManager.Instance.GetResourceAmount(ResourceType.BlueTang)}";
 
-        if (_seaweedTextUI != null)
-            _seaweedTextUI.text = $"{ShipManager.Instance.GetResourceAmount(ResourceType.EmeraldFish)}";
+        if (_emeraldFishTextUI != null)
+            _emeraldFishTextUI.text = $"{ShipManager.Instance.GetResourceAmount(ResourceType.EmeraldFish)}";
+        
+        if (_nemoTextUI != null)
+            _nemoTextUI.text = $"{ShipManager.Instance.GetResourceAmount(ResourceType.Nemo)}";
+        
+        if (_sawSharkTextUI != null)
+            _sawSharkTextUI.text = $"{ShipManager.Instance.GetResourceAmount(ResourceType.SawShark)}";
+        
+        if (_stripedMarlinTextUI != null)
+            _stripedMarlinTextUI.text = $"{ShipManager.Instance.GetResourceAmount(ResourceType.StripedMarlin)}";
+        
+        if (_turtleTextUI != null)
+            _turtleTextUI.text = $"{ShipManager.Instance.GetResourceAmount(ResourceType.Turtle)}";
+        
+        if (_grouperTextUI != null)
+            _grouperTextUI.text = $"{ShipManager.Instance.GetResourceAmount(ResourceType.Grouper)}";
+        
+        if (_attack1TextUI != null)
+            _attack1TextUI.text = $"{ShipManager.Instance.GetResourceAmount(ResourceType.Attack1)}";
+        
+        if (_attack2TextUI != null)
+            _attack2TextUI.text = $"{ShipManager.Instance.GetResourceAmount(ResourceType.Attack2)}";
 
         // 물
         if (_waterTextUI != null)
-            _waterTextUI.text = $"{ShipManager.Instance.GetResourceAmount(ResourceType.BlueTang)}";
+            _waterTextUI.text = $"{ShipManager.Instance.GetResourceAmount(ResourceType.Water)}";
 
         // 의료
         if (_herbsTextUI != null)
-            _herbsTextUI.text = $"{ShipManager.Instance.GetResourceAmount(ResourceType.FileFish)}";
+            _herbsTextUI.text = $"{ShipManager.Instance.GetResourceAmount(ResourceType.Herb)}";
 
         // 수리 재료
-        if (_woodTextUI != null)
-            _woodTextUI.text = $"{ShipManager.Instance.GetResourceAmount(ResourceType.TinyFish)}";
+       // if (_woodTextUI != null)
+       //     _woodTextUI.text = $"{ShipManager.Instance.GetResourceAmount(ResourceType.Wood)}";
     }
 }

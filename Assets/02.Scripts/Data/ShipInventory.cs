@@ -17,17 +17,16 @@ public class ShipInventory
         // 초기화
         _inventory.Add(ResourceType.BlowFish, 5);
         _inventory.Add(ResourceType.BlueTang, 3);
-        _inventory.Add(ResourceType.DameselFish, 2);
-        _inventory.Add(ResourceType.EmeraldFish, 5);
-        _inventory.Add(ResourceType.FileFish, 3);
-        _inventory.Add(ResourceType.TinyFish, 2);
+        _inventory.Add(ResourceType.EmeraldFish, 2);
         _inventory.Add(ResourceType.Nemo, 5);
-        _inventory.Add(ResourceType.PinkFish, 3);
-        _inventory.Add(ResourceType.SawShark, 2);
-        _inventory.Add(ResourceType.StripedMarlin, 5);
-        _inventory.Add(ResourceType.Turtle, 3);
-        _inventory.Add(ResourceType.Grouper, 2);
-        _inventory.Add(ResourceType.Water, 5);
+        _inventory.Add(ResourceType.SawShark, 3);
+        _inventory.Add(ResourceType.StripedMarlin, 2);
+        _inventory.Add(ResourceType.Turtle, 5);
+        _inventory.Add(ResourceType.Grouper, 3);
+        _inventory.Add(ResourceType.Attack1, 2);
+        _inventory.Add(ResourceType.Attack2, 5);
+        _inventory.Add(ResourceType.Water, 2);
+        _inventory.Add(ResourceType.Herb, 5);
         _inventory.Add(ResourceType.Wood, 3);
     }
 

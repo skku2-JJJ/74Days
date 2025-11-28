@@ -76,7 +76,7 @@ public class FixShip : MonoBehaviour
 
     public void holdItemUpdate()
     {
-        _holdAmount = ShipManager.Instance.GetResourceAmount(ResourceType.TinyFish);
+        _holdAmount = ShipManager.Instance.GetResourceAmount(ResourceType.Wood);
     }
 
     public void Fix()
