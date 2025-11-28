@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 
  public class DayManager : MonoBehaviour
   {
@@ -23,6 +24,18 @@ using System.Collections;
       public int MaxDays => maxDays;
       public DayPhase CurrentPhase => currentPhase;
       public bool IsGameOver => currentDay >= maxDays || IsAllCrewDead() || IsShipDestroyed();
+
+      // ========== 일일 수확량 추적 ==========
+
+      /// <summary>
+      /// 오늘 수집한 자원 (UnderWater Scene에서 수집)
+      /// </summary>
+      private Inventory _todayHarvest = new Inventory();
+
+      /// <summary>
+      /// 오늘의 수확량 (읽기 전용)
+      /// </summary>
+      public IReadOnlyDictionary<ResourceType, int> TodayHarvest => _todayHarvest.Items;
 
       void Awake()
       {
@@ -103,6 +116,7 @@ using System.Collections;
       public void StartDay()
       {
           OnDayStart?.Invoke(currentDay);
+          ResetDailyHarvest(); // 새로운 날 시작 시 수확량 초기화
           ChangePhase(DayPhase.Morning);
       }
 
@@ -172,7 +186,7 @@ using System.Collections;
 
       private void HandleMorningPhase()
       {
-          // 아침: 배/선원 상태 확인 (노화 처리 X)
+          // 아침: 배/선원 상태 확인
           ShipManager.Instance?.CheckShipStatus();
           CrewManager.Instance?.UpdateCrewNeeds();
       }
@@ -185,9 +199,12 @@ using System.Collections;
 
       private void HandleEveningPhase()
       {
+          // Evening Phase 시작 시 TodayHarvest → Ship 인벤토리 전달
+          TransferHarvestToShip();
+
           // 저녁: 자원 분배 시간
-          // UI로 자원 분배 화면 표시
-          // 완료 버튼 클릭 시 ResourceDistributionUI에서 EndDay() 호출
+          // UI로 자원 분배 화면 표시 (ResourceDistributionUI.OnPhaseChanged에서 자동)
+          // 완료 버튼 클릭 시 ResourceDistributionUI에서 CompleteEvening() 호출
       }
 
       private void HandleGameEnd()
@@ -215,8 +232,6 @@ using System.Collections;
 
           // 3. 다음날로 전환 (EndDay에서 게임 종료 체크)
           EndDay();
-
-          Debug.Log("[DayManager] Evening 완료 처리 완료");
       }
 
       /// <summary>
@@ -317,5 +332,83 @@ using System.Collections;
           return ShipManager.Instance != null &&
                  ShipManager.Instance.Ship != null &&
                  ShipManager.Instance.Ship.Hp <= 0;
+      }
+
+      // ========== 일일 수확량 관리 ==========
+
+      /// <summary>
+      /// 씬 전환 시 DiverBag의 자원을 TodayHarvest에 기록
+      /// SceneTransitionManager.GoToShip()에서 호출
+      /// </summary>
+      public void RecordTodayHarvest(Inventory diverBag)
+      {
+          if (diverBag == null)
+          {
+              Debug.LogWarning("[DayManager] DiverBag이 null입니다!");
+              return;
+          }
+
+          Debug.Log("[DayManager] 오늘의 수확량 기록 시작");
+
+          // DiverBag의 모든 자원을 TodayHarvest에 복사
+          int totalHarvested = 0;
+          foreach (var item in diverBag.Items)
+          {
+              _todayHarvest.Add(item.Key, item.Value);
+              totalHarvested += item.Value;
+              Debug.Log($"[DayManager] {item.Key}: {item.Value}개");
+          }
+
+          Debug.Log($"[DayManager] 총 수확량: {totalHarvested}개");
+      }
+
+      /// <summary>
+      /// TodayHarvest의 자원을 Ship 인벤토리로 전달
+      /// CompleteEvening()에서 호출
+      /// </summary>
+      private void TransferHarvestToShip()
+      {
+          if (ShipManager.Instance == null)
+          {
+              Debug.LogWarning("[DayManager] ShipManager를 찾을 수 없습니다!");
+              return;
+          }
+
+          Debug.Log("[DayManager] 수확 자원을 Ship으로 전달 시작");
+
+          int totalTransferred = 0;
+          foreach (var item in _todayHarvest.Items)
+          {
+              ShipManager.Instance.AddResource(item.Key, item.Value);
+              totalTransferred += item.Value;
+          }
+
+          Debug.Log($"[DayManager] 총 {totalTransferred}개 자원을 Ship에 추가 완료");
+      }
+
+      /// <summary>
+      /// 일일 수확량 초기화 (새로운 날 시작 시)
+      /// </summary>
+      private void ResetDailyHarvest()
+      {
+          _todayHarvest.Clear();
+          Debug.Log("[DayManager] 일일 수확량 초기화");
+      }
+
+      /// <summary>
+      /// 오늘의 수확량을 모두 제거 (다이버 사망 시 사용)
+      /// </summary>
+      public void ClearTodayHarvest()
+      {
+          _todayHarvest.Clear();
+          Debug.Log("[DayManager] 오늘의 수확량 초기화 (다이버 사망)");
+      }
+
+      /// <summary>
+      /// 특정 자원의 오늘 수확량 조회
+      /// </summary>
+      public int GetTodayHarvestAmount(ResourceType type)
+      {
+          return _todayHarvest.GetAmount(type);
       }
   }

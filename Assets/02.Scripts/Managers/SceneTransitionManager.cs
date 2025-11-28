@@ -54,6 +54,19 @@ public class SceneTransitionManager : MonoBehaviour
     public void GoToShip()
     {
         if (isTransitioning) return;
+
+        // UnderWater → Ship 전환 직전: DiverBag → TodayHarvest 기록
+        DiverStatus diver = FindObjectOfType<DiverStatus>();
+        if (diver != null && DayManager.Instance != null)
+        {
+            DayManager.Instance.RecordTodayHarvest(diver.DiveBag);
+            Debug.Log("[SceneTransition] 오늘의 수확량 기록 완료");
+        }
+        else
+        {
+            Debug.LogWarning("[SceneTransition] DiverStatus 또는 DayManager를 찾을 수 없습니다!");
+        }
+
         TransitionToScene(shipSceneName, DayPhase.Evening);
     }
 

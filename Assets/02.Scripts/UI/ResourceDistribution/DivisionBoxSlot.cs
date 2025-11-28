@@ -131,15 +131,15 @@ public class DivisionBoxSlot : MonoBehaviour, IDropHandler, IPointerClickHandler
         switch (boxType)
         {
             case BoxType.Hunger:
-                return type == ResourceType.NormalFish ||
-                       type == ResourceType.SpecialFish ||
-                       type == ResourceType.Seaweed;
+                return type == ResourceType.BlowFish ||
+                       type == ResourceType.DameselFish ||
+                       type == ResourceType.EmeraldFish;
 
             case BoxType.Thirst:
-                return type == ResourceType.CleanWater;
+                return type == ResourceType.BlueTang;
 
             case BoxType.Temperature:
-                return type == ResourceType.Herbs;
+                return type == ResourceType.FileFish;
 
             default:
                 return false;

@@ -45,11 +45,13 @@ public class Inventory
     /// </summary>
     public void MoveAllTo(Dictionary<ResourceType, int> target)
     {
-        /*foreach (var kvp in _items)
+        foreach (var kvp in _items)
         {
-            target.Add(kvp.Key, kvp.Value);
-        }*/
-        target = new Dictionary<ResourceType, int>(_items);
+            if (target.ContainsKey(kvp.Key))
+                target[kvp.Key] += kvp.Value;
+            else
+                target[kvp.Key] = kvp.Value;
+        }
         _items.Clear();
     }
 

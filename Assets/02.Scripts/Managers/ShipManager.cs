@@ -33,13 +33,6 @@ public class ShipManager : MonoBehaviour
         }
     }
 
-    void Start()
-    {
-        // 초기 상태 로그
-        Debug.Log(ship.GetShipStatusSummary());
-        Debug.Log(ship.GetResourceSummary());
-    }
-
     // ========== 배 상태 관리 ==========
 
     // 배 상태 확인 (아침)
@@ -118,12 +111,6 @@ public class ShipManager : MonoBehaviour
     public int GetResourceAmount(ResourceType type)
     {
         return ship.GetResourceAmount(type);
-    }
-
-    // 자원 전체 상태 출력
-    public void PrintResourceStatus()
-    {
-        Debug.Log(ship.GetResourceSummary());
     }
 
     // ========== 배 수리 ==========
