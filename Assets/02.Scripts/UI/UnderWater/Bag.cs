@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Bag : MonoBehaviour
 {
+    
     private UIBasicOpenClose _openClose;
     void Start()
     {
@@ -10,14 +11,16 @@ public class Bag : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.R))
         {
             if (_openClose == null) return;
+            
             _openClose.Open();
         }
-        if (Input.GetKeyUp(KeyCode.LeftShift))
+        if (Input.GetKeyUp(KeyCode.R))
         {
             if (_openClose == null) return;
+            
             _openClose.Close();
         }
         

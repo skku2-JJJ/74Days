@@ -11,15 +11,7 @@ public class DiverbagUI : MonoBehaviour
     {
         Refresh();
     }
-
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            Refresh();
-        }
-    }
+    
     public void Refresh()
     {
         var items = _diverStatus.DiveBag.Items;
@@ -40,10 +32,10 @@ public class DiverbagUI : MonoBehaviour
             i++;
         }
 
-        // 남은 슬롯들은 숨김
+        /*// 남은 슬롯들은 숨김
         for (; i < _slots.Length; i++)
         {
             _slots[i].Hide();
-        }
+        }*/
     }
 }
