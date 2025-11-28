@@ -115,12 +115,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4362de6b5afeb3043adbb5fc879814df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _fishType: 17
   diver: {fileID: 0}
   visualController: {fileID: 0}
   _health: {fileID: 2052411475101747350}
   _hitFeedback: {fileID: 8161939080048225451}
   _captureStruggle: {fileID: 1880532392066982631}
-  _escapeBurstSpeed: 8
+  _escapeBurstSpeed: 12
   _escapeRandomFactor: 0.2
 --- !u!114 &2052411475101747350
 MonoBehaviour:
@@ -206,6 +207,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8015212bde934230804656c73218552b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _minDecideStateDuration: 2
+  _maxDecideStateDuration: 4
+  _minDecideDirDuration: 0.8
+  _maxDecideDirDuration: 1.4
+  _wanderChangeInterval: 1
+  _wanderJitter: 70
   _idleMinDuration: 1
   _idleMaxDuration: 3
   _idleChanceAfterWander: 0.4
@@ -213,10 +220,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   _rayDistance: 2
-  _sideRayAngle: 35
   _diver: {fileID: 0}
   _fleeRadius: 8
   _fleeStrength: 1.5
+  _escapeDuration: 3
 --- !u!1 &6415113090266888062
 GameObject:
   m_ObjectHideFlags: 0

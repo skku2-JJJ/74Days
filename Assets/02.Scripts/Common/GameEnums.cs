@@ -4,8 +4,7 @@ public enum DayPhase
     None,
     Morning,
     Diving,
-    Evening,
-    Night
+    Evening
 }
 
 // 자원 종류
@@ -17,6 +16,24 @@ public enum ResourceType
     CleanWater,
     Herbs,
     Wood,
+    
+    // 물고기 --------------------------------------
+    // 짜바리들
+    BlowFish,
+    BlueTang,
+    DameselFish,
+    EmeraldFish,
+    FileFish,
+    TinyFish,
+    Nemo,
+    PinkFish,
+    
+    // 고밸류
+    SawShark,
+    StripedMarlin,
+    Turtle,
+    Grouper,
+    // ---------------------------------------------
 }
 
 // 선원 상태

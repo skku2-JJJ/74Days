@@ -83,7 +83,6 @@ public class PhaseControlUI : MonoBehaviour
             DayPhase.Morning => "아침",
             DayPhase.Diving => "잠수 중",
             DayPhase.Evening => "저녁",
-            DayPhase.Night => "밤",
             _ => "알 수 없음"
         };
 

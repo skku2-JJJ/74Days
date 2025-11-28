@@ -45,7 +45,7 @@ public class ShipManager : MonoBehaviour
     // 배 상태 확인 (아침)
     public void CheckShipStatus()
     {
-        Debug.Log($"[아침] 배 상태 확인 - 전체 상태: {ship.OverallCondition:F1}%");
+        Debug.Log($"[아침] 배 상태 확인 - 전체 상태: {ship.Hp:F1}%");
 
         if (ship.IsCritical)
         {
@@ -66,7 +66,7 @@ public class ShipManager : MonoBehaviour
         ship.DailyDeterioration();
         OnShipStatusChanged?.Invoke(ship);
 
-        Debug.Log($"[밤] 배 노화 - 전체 상태: {ship.OverallCondition:F1}%");
+        Debug.Log($"[밤] 배 노화 - 전체 상태: {ship.Hp:F1}%");
 
         if (ship.IsCritical)
         {

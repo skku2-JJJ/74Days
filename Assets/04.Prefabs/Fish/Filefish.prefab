@@ -129,6 +129,7 @@ MonoBehaviour:
   _diagonalTiltAngle: 15
   _tiltLerpSpeed: 10
   _animSpeedLerp: 10
+  _textureFacesRight: 0
   _flipDirThreshold: 0.25
   _minSpeedForFlip: 0.2
 --- !u!1 &9061231603341791466
@@ -149,8 +150,8 @@ GameObject:
   - component: {fileID: 1900856686399257848}
   - component: {fileID: 6028128335337531464}
   m_Layer: 0
-  m_Name: FileFish
-  m_TagString: Finish
+  m_Name: Filefish
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -226,6 +227,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8015212bde934230804656c73218552b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _minDecideStateDuration: 2
+  _maxDecideStateDuration: 4
+  _minDecideDirDuration: 0.8
+  _maxDecideDirDuration: 1.4
+  _wanderChangeInterval: 1
+  _wanderJitter: 70
   _idleMinDuration: 1
   _idleMaxDuration: 3
   _idleChanceAfterWander: 0.4
@@ -233,10 +240,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   _rayDistance: 1.2
-  _sideRayAngle: 35
   _diver: {fileID: 0}
   _fleeRadius: 4
   _fleeStrength: 1.5
+  _escapeDuration: 3
 --- !u!114 &6776736908518959965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,7 +312,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4362de6b5afeb3043adbb5fc879814df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _fishType: 10
   diver: {fileID: 0}
+  visualController: {fileID: 0}
   _health: {fileID: 7688238853198595615}
   _hitFeedback: {fileID: 6776736908518959965}
   _captureStruggle: {fileID: 4736495059540473216}
