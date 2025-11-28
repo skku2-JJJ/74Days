@@ -8,7 +8,7 @@ public class Bag : MonoBehaviour
 
     void Start()
     {
-        _openClose = GetComponent<UIBasicUpDown>();
+        _openClose = GetComponent<UIBasicOpenClose>();
     }
 
     void Update()

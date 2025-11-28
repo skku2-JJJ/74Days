@@ -3,7 +3,7 @@ using UnityEngine;
 public class DistributionUIOpenClose : MonoBehaviour
 {
     [SerializeField]
-    private UIBasicUpDown _divisionUI;
+    private UIBasicOpenClose _divisionUI;
 
     private bool _isInside = false;
 
