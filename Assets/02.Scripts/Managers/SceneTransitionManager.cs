@@ -13,6 +13,9 @@ public class SceneTransitionManager : MonoBehaviour
     // DayManager가 참조할 목표 페이즈 (static)
     public static DayPhase TargetPhase { get; set; } = DayPhase.None;
 
+    // DiverBag 임시 저장소 (씬 전환 시 데이터 보존용)
+    private static Inventory _pendingDiverBag = null;
+
     [Header("Scene Names")]
     [SerializeField] private string shipSceneName = "Ship";
     [SerializeField] private string underwaterSceneName = "UnderWater";
@@ -50,10 +53,33 @@ public class SceneTransitionManager : MonoBehaviour
 
     /// <summary>
     /// 배 씬으로 전환 (Diving → Evening)
+    /// DiverBag을 static 변수에 저장 후 씬 전환 (데이터 보존)
     /// </summary>
     public void GoToShip()
     {
         if (isTransitioning) return;
+
+        // UnderWater → Ship 전환 직전: DiverBag을 static 변수에 복사
+        DiverStatus diver = FindObjectOfType<DiverStatus>();
+        if (diver != null)
+        {
+            // DiverBag을 static 변수에 복사 (씬 전환 후에도 유지)
+            _pendingDiverBag = new Inventory();
+            _pendingDiverBag.CopyFrom(diver.DiveBag);
+
+            int totalItems = 0;
+            foreach (var item in _pendingDiverBag.Items)
+            {
+                totalItems += item.Value;
+            }
+
+            Debug.Log($"[SceneTransition] DiverBag 백업 완료: {_pendingDiverBag.Items.Count}종 {totalItems}개 자원");
+        }
+        else
+        {
+            Debug.LogWarning("[SceneTransition] DiverStatus를 찾을 수 없습니다!");
+        }
+
         TransitionToScene(shipSceneName, DayPhase.Evening);
     }
 
@@ -97,6 +123,48 @@ public class SceneTransitionManager : MonoBehaviour
         SceneManager.LoadScene(loadingSceneName);
 
         isTransitioning = false;
+    }
+
+    // ========== Pending 자원 적용 ==========
+
+    /// <summary>
+    /// Ship 씬 로드 후 pending된 DiverBag 자원을 ShipInventory에 적용
+    /// DayManager.HandleEveningPhase()에서 호출
+    /// </summary>
+    public void ApplyPendingResources()
+    {
+        if (_pendingDiverBag == null)
+        {
+            Debug.Log("[SceneTransition] Pending 자원 없음 (이미 적용되었거나 없음)");
+            return;
+        }
+
+        if (ShipManager.Instance == null)
+        {
+            Debug.LogWarning("[SceneTransition] ShipManager.Instance가 null입니다! 자원 적용 실패");
+            return;
+        }
+
+        Debug.Log("[SceneTransition] Pending 자원 적용 시작...");
+
+        int totalTransferred = 0;
+        foreach (var item in _pendingDiverBag.Items)
+        {
+            ShipManager.Instance.AddResource(item.Key, item.Value);
+            totalTransferred += item.Value;
+            Debug.Log($"[SceneTransition] {item.Key} +{item.Value}개 → Ship");
+        }
+
+        Debug.Log($"[SceneTransition] 총 {totalTransferred}개 자원을 Ship에 추가 완료");
+
+        // TodayHarvest에도 기록 (UI 표시용 - 읽기 전용)
+        if (DayManager.Instance != null)
+        {
+            DayManager.Instance.RecordTodayHarvest(_pendingDiverBag);
+        }
+
+        // 사용 후 정리
+        _pendingDiverBag = null;
     }
 
     // ========== 유틸리티 ==========

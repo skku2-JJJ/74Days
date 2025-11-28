@@ -117,31 +117,51 @@ public class CrewMember
         if (!IsAlive) return;
         if (amount <= 0) return;
 
-        switch (type)
+        // ResourceDatabase에서 자원 정보 가져오기
+        if (ResourceDatabaseManager.Instance == null || ResourceDatabaseManager.Instance.Database == null)
         {
-            case ResourceType.NormalFish:
-            case ResourceType.SpecialFish:
-            case ResourceType.Seaweed:
-                // 식량: 배고픔 회복
-                Hunger = Mathf.Min(100, Hunger + FoodHungerRecovery * amount);
+            Debug.LogWarning($"[CrewMember] ResourceDatabaseManager를 찾을 수 없습니다!");
+            return;
+        }
+
+        var resourceData = ResourceDatabaseManager.Instance.Database.GetData(type);
+        if (resourceData == null)
+        {
+            Debug.LogWarning($"[CrewMember] {type}의 ResourceMetaData를 찾을 수 없습니다!");
+            return;
+        }
+
+        // 데이터 기반 회복량 적용
+        if (resourceData.hungerRecovery > 0)
+        {
+            Hunger = Mathf.Min(100, Hunger + resourceData.hungerRecovery * amount);
+        }
+
+        if (resourceData.thirstRecovery > 0)
+        {
+            Thirst = Mathf.Min(100, Thirst + resourceData.thirstRecovery * amount);
+        }
+
+        if (resourceData.temperatureRecovery > 0)
+        {
+            Temperature = Mathf.Min(100, Temperature + resourceData.temperatureRecovery * amount);
+        }
+
+        // 카테고리별 일일 플래그 업데이트
+        switch (resourceData.category)
+        {
+            case ResourceCategory.Food:
                 HasReceivedFoodToday = true;
                 break;
-
-            case ResourceType.CleanWater:
-                // 물: 갈증 회복
-                Thirst = Mathf.Min(100, Thirst + WaterThirstRecovery * amount);
+            case ResourceCategory.Water:
                 HasReceivedWaterToday = true;
                 break;
-
-            case ResourceType.Herbs:
-                // 약초: 체온 회복
-                Temperature = Mathf.Min(100, Temperature + HerbsTemperatureRecovery * amount);
+            case ResourceCategory.Medicine:
                 HasReceivedMedicineToday = true;
                 break;
-
-            case ResourceType.Wood:
-                // 목재는 선원에게 줄 수 없음
-                Debug.LogWarning($"{CrewName}에게 목재를 줄 수 없습니다!");
+            case ResourceCategory.Material:
+                // 수리 재료는 선원에게 줄 수 없음
+                Debug.LogWarning($"{CrewName}에게 {resourceData.displayName}을(를) 줄 수 없습니다!");
                 break;
         }
     }
