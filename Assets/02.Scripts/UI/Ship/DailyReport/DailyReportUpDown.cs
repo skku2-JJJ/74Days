@@ -62,6 +62,10 @@ public class DailyReportUpDown : MonoBehaviour
     public void Open()
     {
         if (_isOpen) return; // 이미 열려있으면 무시
+
+        _crewsUI.DOKill();
+        _reoportUI.DOKill();
+
         UIManager.Instance.IsOpened = true;
         _isOpen = true;
         _crewsUI.DOAnchorPos(_closePos, 0.3f).SetEase(Ease.InSine).OnComplete(() =>
@@ -73,6 +77,10 @@ public class DailyReportUpDown : MonoBehaviour
     public void Close()
     {
         if (!_isOpen) return; // 이미 닫혀있으면 무시
+
+        _crewsUI.DOKill();
+        _reoportUI.DOKill();
+
         UIManager.Instance.IsOpened = false;
         _isOpen = false;
         _reoportUI.DOAnchorPos(_closePos, 0.5f).SetEase(Ease.InBack).OnComplete(() =>
