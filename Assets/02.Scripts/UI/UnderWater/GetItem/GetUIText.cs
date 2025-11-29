@@ -5,20 +5,24 @@ public class GetUIText : MonoBehaviour
 {
 
     [SerializeField]
-    private TextMeshProUGUI _TextMeshProUGUI;
-    void Start()
-    {
-        _TextMeshProUGUI = GetComponent<TextMeshProUGUI>();
-    }
+    private TextMeshProUGUI _statTextMeshProUGUI;
+
+    [SerializeField]
+    private TextMeshProUGUI _nameTextMeshProUGUI;
+
 
     // Update is called once per frame
     void Update()
     {
         
     }
-
-    public void TextUpdate(ResourceCategory ItemstatType, int value)
+    public void NameTextUpdate(ResourceType name)
     {
-        _TextMeshProUGUI.text = $"{ItemstatType}\n+ {value}";
+        _nameTextMeshProUGUI.text = $"{name.ToString()}";
+    }
+
+    public void StatTextUpdate(ResourceCategory ItemstatType, int value)
+    {
+        _statTextMeshProUGUI.text = $"{ItemstatType.ToString()}\n+ {value}";
     }
 }

@@ -16,11 +16,12 @@ public class GetItemUIUpdate : MonoBehaviour
         _slideInOut = gameObject.GetComponent<GetUISlideInOut>();
     }
 
-    public void UIUpdate(Sprite sprite, ResourceCategory type, int stat)
+    public void UIUpdate(ResourceType type, Sprite sprite, ResourceCategory category, int stat)
     {
         if (_slideInOut != null) _slideInOut.PlayInOut();
 
-        _getUIText.TextUpdate(type, stat);
+        _getUIText.NameTextUpdate(type);
+        _getUIText.StatTextUpdate(category, stat);
         _image.sprite = sprite;
     }
 }
