@@ -9,6 +9,8 @@ public class InventoryOpenClose : MonoBehaviour
 {
     [SerializeField]
     private UIBasicOpenClose _inventoryUI;
+    [SerializeField]
+    private AudioClip _inventoryAudioClip;
 
     private bool _isInside = false;
 
@@ -41,6 +43,7 @@ public class InventoryOpenClose : MonoBehaviour
             {
                 _inventoryUI.Close();
                 Debug.Log("[InventoryOpenClose] 범위 벗어남 - Inventory 자동 닫기");
+                SoundPlay(_inventoryAudioClip);
             }
         }
     }
@@ -54,13 +57,21 @@ public class InventoryOpenClose : MonoBehaviour
         {
             _inventoryUI.Close();
             Debug.Log("[InventoryOpenClose] Inventory 닫기");
+            SoundPlay(_inventoryAudioClip);
         }
         else
         {
             _inventoryUI.Open();
             Debug.Log("[InventoryOpenClose] Inventory 열기");
 
+            SoundPlay(_inventoryAudioClip);
             // 더 이상 수동 업데이트 불필요 (이벤트로 자동 업데이트됨)
         }
+    }
+
+    private void SoundPlay(AudioClip audioClip)
+    {
+        if (audioClip == null) return;
+        SoundManager.Instance.PlaySound(audioClip);
     }
 }
