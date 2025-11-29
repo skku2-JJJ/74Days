@@ -17,7 +17,7 @@ public class GetUIText : MonoBehaviour
         
     }
 
-    void TextUpdate(string ItemstatType, int value)
+    public void TextUpdate(ResourceCategory ItemstatType, int value)
     {
         _TextMeshProUGUI.text = $"{ItemstatType}\n+ {value}";
     }

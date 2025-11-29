@@ -16,10 +16,9 @@ public class GetUISlideInOut : MonoBehaviour
     {
         _panel = GetComponent<RectTransform>();
         Init();
-        PlayInOut();
     }
 
-    void PlayInOut()
+    public void PlayInOut()
     {
         Sequence seq = DOTween.Sequence();
 

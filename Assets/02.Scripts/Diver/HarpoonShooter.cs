@@ -1,6 +1,8 @@
 using System.Collections;
 using Unity.Cinemachine;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// 조준/발사/회수 컨트롤러
@@ -27,10 +29,13 @@ public class HarpoonShooter : MonoBehaviour
     
     [Header("조준 / 슬로우 모션")]
     [SerializeField] private float _aimTimeScale = 0.4f;       
-    [SerializeField] private float _timeScaleLerpSpeed = 10f; 
+    [SerializeField] private float _timeScaleLerpSpeed = 10f;
     
-    
-    
+    [Header("UI")]
+    [SerializeField] private GetItemUIUpdate _getUI;
+
+
+
     // 컴포넌트 / 참조
     private Animator _animator;
     private InputController _inputController;
@@ -259,7 +264,11 @@ public class HarpoonShooter : MonoBehaviour
         if (fish != null)
         {
             _diverStatus.GainResource(fish.Type);
+
+            Sprite spirte = fish.Transform.GetComponentInChildren<SpriteRenderer>().sprite;
+            _getUI.UIUpdate(spirte, ResourceCategory.Food, 1); //Get UI update
             fish.Stored();
+            Debug.Log(fish);  
         }
         
        
