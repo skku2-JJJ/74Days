@@ -20,6 +20,7 @@ public class GetUISlideInOut : MonoBehaviour
 
     public void PlayInOut()
     {
+        _panel.DOKill();
         Sequence seq = DOTween.Sequence();
 
         seq.Append(_panel.DOAnchorPos(_inPos, 0.5f).SetEase(Ease.OutQuad))// 안으로 들어오기
