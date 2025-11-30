@@ -14,11 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   depthZone: 0
   entries:
-  - resourcePrefab: {fileID: 0}
-    weight: 0
-  - resourcePrefab: {fileID: 0}
-    weight: 0
-  - resourcePrefab: {fileID: 0}
-    weight: 0
-  - resourcePrefab: {fileID: 0}
-    weight: 0
+  - resourcePrefab: {fileID: 8335960668610973638, guid: d255b0fb61e2418418d585b62e0c35d2, type: 3}
+    weight: 30
+  - resourcePrefab: {fileID: 4426130977042683097, guid: 998a128309086a2489378ccb4fc00b6e, type: 3}
+    weight: 30
+  - resourcePrefab: {fileID: 2514165014951089591, guid: 021c9c306b467434e8b51cfd57d7d48e, type: 3}
+    weight: 30

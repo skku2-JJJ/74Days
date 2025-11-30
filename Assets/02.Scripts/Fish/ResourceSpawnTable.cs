@@ -25,7 +25,7 @@ public class ResourceSpawnTable : ScriptableObject
     /// <summary>
     /// 가중치 기반 랜덤으로 리소스 프리팹 하나 반환
     /// </summary>
-    public GameObject GetRandomFishPrefab()
+    public GameObject GetRandomResourcePrefab()
     {
         if (entries == null || entries.Count == 0)
             return null;

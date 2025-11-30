@@ -228,7 +228,7 @@ public class FishSpawnManager : MonoBehaviour
 
     private void SpawnFishAt(ResourceSpawnTable table, Vector2 pos)
     {
-        GameObject prefab = table.GetRandomFishPrefab();
+        GameObject prefab = table.GetRandomResourcePrefab();
         if (prefab == null) return;
 
         Instantiate(prefab, pos, Quaternion.identity);
