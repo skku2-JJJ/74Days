@@ -34,7 +34,7 @@ public class FishAIController : MonoBehaviour
     [SerializeField] private float _rayDistance = 1.2f;
     
     [Header("플레이어 회피")]
-    [SerializeField] private Transform _diver;
+    private Transform _diver;
     [SerializeField] private float _fleeRadius = 4f;
     [SerializeField] private float _fleeStrength = 1.5f;
     

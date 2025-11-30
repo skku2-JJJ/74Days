@@ -79,7 +79,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4362de6b5afeb3043adbb5fc879814df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fishType: 7
+  _fishType: 1
   diver: {fileID: 0}
   visualController: {fileID: 0}
   _health: {fileID: 5845641924043066897}
@@ -126,7 +126,7 @@ MonoBehaviour:
   _idleChanceAfterWander: 0.4
   _obstacleMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   _rayDistance: 1.2
   _diver: {fileID: 0}
   _fleeRadius: 4
