@@ -40,6 +40,9 @@ public class FishSpawnManager : MonoBehaviour
     [SerializeField] private int maxTotalFishCount = 40;    // 전체 최대 물고기 수
     [SerializeField] private Transform player;              // 플레이어 Transform
 
+    [Header("디스폰 설정")]
+    [SerializeField] private float despawnDistanceFromCamera = 35f; // 카메라로부터 이 이상 떨어지면 디스폰
+    
     [Header("Collision & Density Check")]
     [SerializeField] private float collisionCheckRadius = 0.5f;
     [SerializeField] private LayerMask groundLayer;         // 지형 레이어
@@ -78,6 +81,8 @@ public class FishSpawnManager : MonoBehaviour
             _timer = 0f;
             TrySpawnRuntime();
         }
+        
+        DespawnFarFish();
     }
     
     private IEnumerator InitialSpawnRoutine()
@@ -338,6 +343,28 @@ public class FishSpawnManager : MonoBehaviour
 
         _cam = Camera.main;
     }
+    
+    private void DespawnFarFish()
+    {
+        Vector3 camPos = _cam.transform.position;
+        
+        for (int i = _activeFish.Count - 1; i >= 0; i--)
+        {
+            FishBase fish = _activeFish[i];
+            if (fish == null)
+            {
+                _activeFish.RemoveAt(i);
+                continue;
+            }
+
+            float dist = Vector2.Distance(fish.transform.position, camPos);
+            if (dist > despawnDistanceFromCamera)
+            {
+                Destroy(fish.gameObject);
+            }
+        }
+    }
+    
     private void OnDrawGizmosSelected()
     {
         // 스폰 영역
