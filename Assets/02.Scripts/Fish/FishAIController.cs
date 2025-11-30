@@ -209,23 +209,22 @@ public class FishAIController : MonoBehaviour
         Vector2 origin = transform.position;
         Vector2 forward = desired.normalized;
 
-        // 장애물 탐색 방향 (왼45, 오른45, 왼90, 오90)
-        float[] angles = { 0f, 45f, -45f, 90f, -90f };
+        // 1. 정면으로 먼저 체크
+        RaycastHit2D hit = Physics2D.Raycast(origin, forward, _rayDistance, _obstacleMask);
 
-        foreach (float ang in angles)
-        {
-            Vector2 dir = Quaternion.Euler(0, 0, ang) * forward;
+        // 앞에 아무것도 없으면 그냥 원하는 방향으로 감
+        if (!hit)
+            return forward;
 
-            bool hit = Physics2D.Raycast(origin, dir, _rayDistance, _obstacleMask);
-            if (!hit)
-            {
-                // 열린 방향을 찾으면 바로 그쪽으로 간다
-                return dir.normalized;
-            }
-        }
+        // 2. 벽을 따라 미끄러지는 방향 계산 (법선의 수직 방향 = 탄젠트)
+        Vector2 normal  = hit.normal;
+        Vector2 tangent = new Vector2(-normal.y, normal.x); // Perpendicular
 
-        // 완전 막힌 경우 → 위로 살짝 치켜오르기 
-        return (forward + Vector2.up * DirCorrection).normalized;
+        // 3. 원래 가려던 쪽과 더 비슷한 방향으로 선택
+        if (Vector2.Dot(tangent, forward) < 0f)
+            tangent = -tangent;
+
+        return tangent.normalized;
     }
     
    

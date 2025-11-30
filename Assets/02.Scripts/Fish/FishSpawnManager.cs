@@ -41,7 +41,7 @@ public class FishSpawnManager : MonoBehaviour
     [SerializeField] private Transform player;              // 플레이어 Transform
 
     [Header("디스폰 설정")]
-    [SerializeField] private float despawnDistanceFromCamera = 35f; // 카메라로부터 이 이상 떨어지면 디스폰
+    [SerializeField] private float despawnDistanceFromCamera = 70f; // 카메라로부터 이 이상 떨어지면 디스폰
     
     [Header("Collision & Density Check")]
     [SerializeField] private float collisionCheckRadius = 0.5f;
