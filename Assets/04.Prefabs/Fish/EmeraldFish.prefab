@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 7144643665713048763}
   - component: {fileID: 2274796130467702298}
   - component: {fileID: 7600559586461979340}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EmeraldFish
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -80,11 +80,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fishType: 2
-  diver: {fileID: 0}
-  visualController: {fileID: 0}
-  _health: {fileID: 7144643665713048763}
-  _hitFeedback: {fileID: 4192585014036718078}
-  _captureStruggle: {fileID: 2274796130467702298}
+  despawnDistanceFromCamera: 30
   _escapeBurstSpeed: 8
   _escapeRandomFactor: 0.2
 --- !u!114 &1396580377617515186
@@ -128,7 +124,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   _rayDistance: 1.2
-  _diver: {fileID: 0}
   _fleeRadius: 4
   _fleeStrength: 1.5
   _escapeDuration: 3
@@ -236,7 +231,7 @@ GameObject:
   - component: {fileID: 6325885409516325260}
   - component: {fileID: 8789043528305620039}
   - component: {fileID: 5453167075954113024}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}

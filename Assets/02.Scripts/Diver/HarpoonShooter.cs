@@ -258,7 +258,7 @@ public class HarpoonShooter : MonoBehaviour
         IFishCapturable fish = proj.GetComponentInChildren<IFishCapturable>();
         if (fish != null)
         {
-            _diverStatus.GainResource(fish.Type);
+            _diverStatus.GainResource(fish.FishType);
             fish.Stored();
         }
         

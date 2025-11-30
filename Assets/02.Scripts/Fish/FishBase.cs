@@ -9,17 +9,21 @@ public abstract class FishBase : MonoBehaviour, IFishCapturable
     [Header("Fish 타입")]
     [SerializeField] private ResourceType _fishType;
     
+    [Header("디스폰 기준 거리")]
+    [SerializeField] private float despawnDistanceFromCamera = 30f;
+    
     // 참조
     protected Transform diver;
     protected FishVisualController visualController;
+    private Camera _cam;
     private FishHealth _health;
     private FishHitFeedback _hitFeedback;
     private FishCaptureStruggle _captureStruggle;
-    
+  
    
     
     public bool CanBeCaptured => _health.CanBeCaptured;
-    public ResourceType Type => _fishType;
+    public ResourceType FishType => _fishType;
     public Transform Transform => this.transform;
 
     protected void Awake()
@@ -81,6 +85,35 @@ public abstract class FishBase : MonoBehaviour, IFishCapturable
         _health = GetComponent<FishHealth>();
         _hitFeedback = GetComponent<FishHitFeedback>();
         _captureStruggle = GetComponent<FishCaptureStruggle>();
+        
+        _cam = Camera.main;
     }
     
+    // 물고기 스폰 관련 --------------------------------------------
+    private void OnEnable()
+    {
+        if (FishSpawnManager.Instance != null)
+        {
+            FishSpawnManager.Instance.RegisterFish(this);
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (FishSpawnManager.Instance != null)
+        {
+            FishSpawnManager.Instance.UnregisterFish(this);
+        }
+    }
+
+    private void Update()
+    {
+        Vector3 camPos = _cam.transform.position;
+
+        if (Vector2.Distance(transform.position, camPos) > despawnDistanceFromCamera)
+        {
+            Destroy(gameObject);
+        }
+    }
+    // -----------------------------------------------------------
 }

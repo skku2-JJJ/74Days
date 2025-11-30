@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1228283650943189717}
   - component: {fileID: 2196507570724460947}
   - component: {fileID: 4021789165886675701}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 3388285725873148075}
   - component: {fileID: 5655130823958426077}
   - component: {fileID: 3728548316081397604}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Nemo
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -212,11 +212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fishType: 3
-  diver: {fileID: 0}
-  visualController: {fileID: 0}
-  _health: {fileID: 3388285725873148075}
-  _hitFeedback: {fileID: 3621341387071329682}
-  _captureStruggle: {fileID: 5655130823958426077}
+  despawnDistanceFromCamera: 30
   _escapeBurstSpeed: 8
   _escapeRandomFactor: 0.2
 --- !u!114 &9144736079992492598
@@ -260,7 +256,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   _rayDistance: 1.2
-  _diver: {fileID: 0}
   _fleeRadius: 4
   _fleeStrength: 1.5
   _escapeDuration: 3

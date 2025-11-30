@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3601562045554433684}
   - component: {fileID: 8378969861887478733}
   - component: {fileID: 8222771365459378068}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 463891761283144143}
   - component: {fileID: 5958012929994943950}
   - component: {fileID: 7306618142823707263}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Turtle
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -212,11 +212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fishType: 6
-  diver: {fileID: 0}
-  visualController: {fileID: 0}
-  _health: {fileID: 463891761283144143}
-  _hitFeedback: {fileID: 1062915906682772678}
-  _captureStruggle: {fileID: 5958012929994943950}
+  despawnDistanceFromCamera: 30
   _escapeBurstSpeed: 10
   _escapeRandomFactor: 0.2
 --- !u!114 &6789207177189485712
@@ -260,7 +256,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   _rayDistance: 1.2
-  _diver: {fileID: 0}
   _fleeRadius: 4
   _fleeStrength: 1.5
   _escapeDuration: 3
