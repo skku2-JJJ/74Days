@@ -20,6 +20,7 @@ public class SceneTransitionManager : MonoBehaviour
     [SerializeField] private string shipSceneName = "Ship";
     [SerializeField] private string underwaterSceneName = "UnderWater";
     [SerializeField] private string loadingSceneName = "Loading";  // 로딩 씬
+    [SerializeField] private string gameOverSceneName = "GameOver";  // 게임 오버 씬
 
     [Header("Transition Settings")]
     [SerializeField] private bool useLoadingScreen = true; // 로딩 화면 사용 여부
@@ -81,6 +82,45 @@ public class SceneTransitionManager : MonoBehaviour
         }
 
         TransitionToScene(shipSceneName, DayPhase.Evening);
+    }
+
+    /// <summary>
+    /// 게임 오버 씬으로 전환 (로딩 씬 없이 직접 전환)
+    /// 게임 종료 시 호출 (DayManager.HandleGameEnd에서 호출)
+    /// </summary>
+    public void GoToGameOver()
+    {
+        if (isTransitioning) return;
+
+        Debug.Log("[SceneTransition] 게임 오버 씬으로 전환 시작");
+        StartCoroutine(FadeOutAndLoadGameOver());
+    }
+
+    /// <summary>
+    /// 페이드 아웃 후 게임 오버 씬 직접 로드 (로딩 씬 없이)
+    /// </summary>
+    private IEnumerator FadeOutAndLoadGameOver()
+    {
+        isTransitioning = true;
+
+        if (FadeManager.Instance == null)
+        {
+            Debug.LogError("[SceneTransition] FadeManager.Instance가 null입니다!");
+            yield break;
+        }
+
+        // 검은색 페이드 아웃 (긴 시간으로 여운 주기)
+        Debug.Log($"[SceneTransition] 게임 오버 페이드 아웃 시작 (2초)");
+        FadeManager.Instance.FadeOutToBlack(2f);
+
+        // 페이드 아웃 완료 대기
+        yield return new WaitForSeconds(2f);
+
+        // GameOver 씬 직접 로드 (로딩 씬 거치지 않음)
+        Debug.Log($"[SceneTransition] GameOver 씬 직접 로드");
+        SceneManager.LoadScene(gameOverSceneName);
+
+        isTransitioning = false;
     }
 
     // ========== 내부 씬 로딩 ==========

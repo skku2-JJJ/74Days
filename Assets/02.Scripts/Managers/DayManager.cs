@@ -214,9 +214,58 @@ using System.Collections.Generic;
 
       private void HandleGameEnd()
       {
-          // 게임 종료 처리
+          Debug.Log("[DayManager] 게임 종료 처리 시작");
+
+          // 통계 수집
           int survivedCrew = CrewManager.Instance.GetSurvivedCrewCount();
-          Debug.Log($"Game Over! Survived Crew: {survivedCrew}/{CrewManager.Instance.TotalCrew}");
+          int totalCrew = CrewManager.Instance.TotalCrew;
+          float shipHp = ShipManager.Instance.Ship.Hp;
+
+          // 게임 오버 이유 판단
+          bool isVictory = false;
+          GameOverReason reason = GameOverReason.None;
+
+          if (currentDay >= maxDays)
+          {
+              isVictory = true;
+              reason = GameOverReason.Victory;
+              Debug.Log($"[게임 종료] 🎉 승리! 74일 생존 성공!");
+          }
+          else if (IsAllCrewDead())
+          {
+              isVictory = false;
+              reason = GameOverReason.AllCrewDead;
+              Debug.Log($"[게임 종료] 💀 패배 - 선원 전멸");
+          }
+          else if (IsShipDestroyed())
+          {
+              isVictory = false;
+              reason = GameOverReason.ShipDestroyed;
+              Debug.Log($"[게임 종료] 💀 패배 - 배 파괴");
+          }
+
+          // GameOverData에 저장
+          GameOverData.RecordGameState(
+              currentDay,
+              survivedCrew,
+              totalCrew,
+              shipHp,
+              isVictory,
+              reason
+          );
+
+          // 통계 출력
+          GameOverData.Print();
+
+          // 게임 오버 씬으로 전환
+          if (SceneTransitionManager.Instance != null)
+          {
+              SceneTransitionManager.Instance.GoToGameOver();
+          }
+          else
+          {
+              Debug.LogError("[DayManager] SceneTransitionManager를 찾을 수 없습니다!");
+          }
       }
 
       // ========== Evening 완료 처리 ==========
