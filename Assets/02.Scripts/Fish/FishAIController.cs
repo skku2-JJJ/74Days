@@ -35,7 +35,7 @@ public class FishAIController : MonoBehaviour
     
     [Header("플레이어 회피")]
     private Transform _diver;
-    [SerializeField] private float _fleeRadius = 4f;
+    [SerializeField] private float _fleeRadius = 3f;
     [SerializeField] private float _fleeStrength = 1.5f;
     
     [Header("Escape 설정")]
@@ -72,8 +72,8 @@ public class FishAIController : MonoBehaviour
             SwitchState();
         }
 
-        // 플레이어 회피
-        /*if (_diver != null && TryGetFleeDir(out Vector2 fleeDir))
+        /*// 플레이어 회피
+        if (_diver != null && TryGetFleeDir(out Vector2 fleeDir))
         {
             _move.DesiredDir = ApplyObstacleAvoidance(fleeDir);
             return;

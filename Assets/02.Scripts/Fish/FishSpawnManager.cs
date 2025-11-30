@@ -26,9 +26,9 @@ public class FishSpawnManager : MonoBehaviour
     [SerializeField] private float middleMaxY = -40f;
     
     [Header("Spawn Tables")]
-    [SerializeField] private FishSpawnTable shallowTable;
-    [SerializeField] private FishSpawnTable middleTable;
-    [SerializeField] private FishSpawnTable deepTable;
+    [SerializeField] private ResourceSpawnTable shallowTable;
+    [SerializeField] private ResourceSpawnTable middleTable;
+    [SerializeField] private ResourceSpawnTable deepTable;
 
     [Header("Initial Spawn Counts")]
     [SerializeField] private int initialShallowCount = 12;
@@ -129,7 +129,7 @@ public class FishSpawnManager : MonoBehaviour
         return EOceanDepthZone.Deep;
     }
 
-    private FishSpawnTable GetTable(EOceanDepthZone zone)
+    private ResourceSpawnTable GetTable(EOceanDepthZone zone)
     {
         return zone switch
         {
@@ -153,7 +153,7 @@ public class FishSpawnManager : MonoBehaviour
 
     private void SpawnInitialForZone(EOceanDepthZone zone, int count, bool allowOnScreen)
     {
-        FishSpawnTable table = GetTable(zone);
+        ResourceSpawnTable table = GetTable(zone);
         if (table == null || count <= 0) return;
 
         const int maxTryPerFish = 30;
@@ -196,7 +196,7 @@ public class FishSpawnManager : MonoBehaviour
         // 플레이어 깊이 기준으로 어떤 구역에 스폰할지 선택
         float targetY = player != null ? player.position.y : 0f;
         EOceanDepthZone zone = GetDepthZone(targetY);
-        FishSpawnTable table = GetTable(zone);
+        ResourceSpawnTable table = GetTable(zone);
         if (table == null) return;
 
         const int maxTry = 20;
@@ -226,7 +226,7 @@ public class FishSpawnManager : MonoBehaviour
 
     // Spawn Helpers -----------------------------------------------------------------------------------
 
-    private void SpawnFishAt(FishSpawnTable table, Vector2 pos)
+    private void SpawnFishAt(ResourceSpawnTable table, Vector2 pos)
     {
         GameObject prefab = table.GetRandomFishPrefab();
         if (prefab == null) return;
