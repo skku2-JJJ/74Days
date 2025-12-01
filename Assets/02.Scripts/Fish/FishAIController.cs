@@ -52,7 +52,17 @@ public class FishAIController : MonoBehaviour
     
     private const float FullAngle = 360f;
     private const float EpsilonNum = 0.001f;
-    private const float DirCorrection = 0.3f;
+    private const float MaxStuckTime = 1.5f;
+    
+    private static readonly Vector2[] _escapeSampleDirs = {
+        Vector2.up, Vector2.down,
+        Vector2.left, Vector2.right,
+        (Vector2.up + Vector2.right).normalized,
+        (Vector2.up + Vector2.left).normalized,
+        (Vector2.down + Vector2.right).normalized,
+        (Vector2.down + Vector2.left).normalized,
+    };
+    
     private void Awake()
     {
         Init();
@@ -244,7 +254,7 @@ public class FishAIController : MonoBehaviour
 
         _lastPos = currPos;
 
-        if (_stuckTimer > 1.5f)
+        if (_stuckTimer > MaxStuckTime)
         {
             // 끼임 탈출
             Vector2 escapeDir = GetEscapeDirectionFromWalls();
@@ -258,23 +268,13 @@ public class FishAIController : MonoBehaviour
     private Vector2 GetEscapeDirectionFromWalls()
     {
         Vector2 origin = transform.position;
-
-        // 벽 탐색
-        Vector2[] sampleDirs = {
-            Vector2.up, Vector2.down,
-            Vector2.left, Vector2.right,
-            (Vector2.up + Vector2.right).normalized,
-            (Vector2.up + Vector2.left).normalized,
-            (Vector2.down + Vector2.right).normalized,
-            (Vector2.down + Vector2.left).normalized,
-        };
-
+        
         float checkDist = 1.5f; 
 
         Vector2 accumulated = Vector2.zero;
         bool foundWall = false;
 
-        foreach (var dir in sampleDirs)
+        foreach (var dir in _escapeSampleDirs)
         {
             RaycastHit2D hit = Physics2D.Raycast(origin, dir, checkDist, _obstacleMask);
             if (hit)

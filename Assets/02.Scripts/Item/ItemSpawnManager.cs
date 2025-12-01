@@ -17,13 +17,9 @@ public class ItemSpawnManager : MonoBehaviour
 
     private void Awake()
     {
-        _spawnPoints = GetComponentsInChildren<Transform>();
-        
-        for(int i = 0; i<_spawnPoints.Length; i++)
+        foreach (Transform child in transform)
         {
-            if(i==0) continue;
-            
-            _points.Add(_spawnPoints[i]);
+            _points.Add(child);
         }
     }
 
