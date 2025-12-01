@@ -131,11 +131,7 @@ public class FishVisualController : MonoBehaviour
 
         _isFacingLocked = lockFacing;
     }
-    public void SetFacingLock(bool locked)
-    {
-        _isFacingLocked = locked;
-    }
-
+    
     private void ApplyFacing()
     {
         _sprite.flipX = _textureFacesRight ? !_isRightForward : _isRightForward;
