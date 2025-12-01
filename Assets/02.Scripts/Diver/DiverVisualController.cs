@@ -64,7 +64,6 @@ public class DiverVisualController : MonoBehaviour
     {
         AnimatorStateInfo stateInfo = _animator.GetCurrentAnimatorStateInfo(0);
         
-        UpdateTurnFlip(stateInfo); // 방향전환 애니메이션과 함께 sprite flip
         UpdateTilt(stateInfo);
     }
 
@@ -79,66 +78,48 @@ public class DiverVisualController : MonoBehaviour
         _mainCam = Camera.main;
     }
 
+    
     private void HandleFacing()
     {
-        // 마우스 기준 flip
-        bool isAiming = _harpoonShooter.IsAiming;
-
-        if (isAiming)
+        bool desiredRight = _isRightForward;
+        
+        if (_harpoonShooter.IsAiming)
         {
-            HandleFacingWhileAiming();
-            return;
-        }
-        
-        // 키보드 기준 flip 
-        // X축 입력이 거의 없으면 방향 유지
-        if (Mathf.Abs(_moveInput.x) < _turnInputThreshold) return;
-           
+            Vector3 mouseWorld = _mainCam.ScreenToWorldPoint(Input.mousePosition);
+            mouseWorld.z = 0f;
 
-        bool isRightInput = _moveInput.x > 0f;
-
-        // 이미 그 방향을 보고 있으면 turn 하지 않음
-        if (isRightInput == _isRightForward)  return;
-        
-        _isRightForward = isRightInput;
-        
-        if (IsAnimationMoving)
-        {
-            // 방향 전환 감지
-            _pendingFlip = true;
-            _hasFlippedThisTurn = false;
-            
-            _animator.SetTrigger(SwimTurnHash);
+            desiredRight = mouseWorld.x >= _moveController.transform.position.x;
         }
         else
         {
-            _spriteRenderer.flipX = !_isRightForward;
-
-            // Turn 플립 로직 안 타도록 OFF 처리
-            _pendingFlip = false;
-            _hasFlippedThisTurn = true;
+           
+            if (Mathf.Abs(_moveInput.x) >= _turnInputThreshold)
+            {
+                desiredRight = _moveInput.x > 0f;
+            }
+            
         }
+
+        ApplyFacing(desiredRight);
     }
-    
-    private void HandleFacingWhileAiming()
+    private void ApplyFacing(bool isRight)
     {
-        Vector3 mouseWorld = _mainCam.ScreenToWorldPoint(Input.mousePosition);
-        mouseWorld.z = 0;
-
-        bool isRightByMouse = mouseWorld.x >= _moveController.transform.position.x;
-
-        if (isRightByMouse == _isRightForward)
+        if (isRight == _isRightForward)
             return;
 
-        _isRightForward = isRightByMouse;
+        bool wasMoving = IsAnimationMoving;
 
-        // 조준 중에는 Turn 애니 없이 바로 flip
-        _spriteRenderer.flipX = !_isRightForward;
+        _isRightForward = isRight;
 
-        // Turn 관련 상태는 꺼둔다
-        _pendingFlip = false;
-        _hasFlippedThisTurn = true;
+        // 턴 애니는 "방향이 바뀐 프레임에서만" 트리거
+        if (wasMoving)
+        {
+            _animator.SetTrigger(SwimTurnHash);
+        }
+        
+        _spriteRenderer.flipX = isRight ? false : true; 
     }
+   
     
     private void UpdateAnimator()
     {
@@ -151,24 +132,7 @@ public class DiverVisualController : MonoBehaviour
         _animator.SetFloat("Speed", smoothed);
     }
     
-    private void UpdateTurnFlip(AnimatorStateInfo stateInfo)
-    {
-        if (!_pendingFlip) return;
-        
-       
-
-        // 현재 애니메이션 상태가 "Turn" 태그가 아니거나 이미 flip한 경우
-        if (!stateInfo.IsTag("Turn") || _hasFlippedThisTurn)  return;
-           
-        
-        // normalizedTime [0, 1] -> 애니 시작 시 0 
-        if (stateInfo.normalizedTime >= _turnFlipTime)
-        {
-            _spriteRenderer.flipX = !_isRightForward;
-            _hasFlippedThisTurn = true;
-            _pendingFlip = false;
-        }
-    }
+   
     
     private void UpdateTilt(AnimatorStateInfo stateInfo)
     {
