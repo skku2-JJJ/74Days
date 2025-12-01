@@ -1008,10 +1008,6 @@ PrefabInstance:
       value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 8471914529627960063, guid: 7b9dd3b39a60bfd41943ac63a70b1bb4, type: 3}
-      propertyPath: _image
-      value: 
-      objectReference: {fileID: 2064593318}
-    - target: {fileID: 8471914529627960063, guid: 7b9dd3b39a60bfd41943ac63a70b1bb4, type: 3}
       propertyPath: _crewID
       value: 1
       objectReference: {fileID: 0}
@@ -1019,26 +1015,6 @@ PrefabInstance:
       propertyPath: _emoticon
       value: 
       objectReference: {fileID: 1080715601}
-    - target: {fileID: 8471914529627960063, guid: 7b9dd3b39a60bfd41943ac63a70b1bb4, type: 3}
-      propertyPath: _spritesEmoticon.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8471914529627960063, guid: 7b9dd3b39a60bfd41943ac63a70b1bb4, type: 3}
-      propertyPath: '_spritesEmoticon.Array.data[0]'
-      value: 
-      objectReference: {fileID: 1591491378828385410, guid: e38bacfabb53fee46885e458138ab598, type: 3}
-    - target: {fileID: 8471914529627960063, guid: 7b9dd3b39a60bfd41943ac63a70b1bb4, type: 3}
-      propertyPath: '_spritesEmoticon.Array.data[1]'
-      value: 
-      objectReference: {fileID: -4916030381253642596, guid: 67584b8bbb8a7f64b83b8b531f1971d8, type: 3}
-    - target: {fileID: 8471914529627960063, guid: 7b9dd3b39a60bfd41943ac63a70b1bb4, type: 3}
-      propertyPath: '_spritesEmoticon.Array.data[2]'
-      value: 
-      objectReference: {fileID: 1776252492984597158, guid: 453593581c48b1d498345de098b8f43a, type: 3}
-    - target: {fileID: 8471914529627960063, guid: 7b9dd3b39a60bfd41943ac63a70b1bb4, type: 3}
-      propertyPath: '_spritesEmoticon.Array.data[3]'
-      value: 
-      objectReference: {fileID: 1643061459587416177, guid: f01434963b2ccd9488a0e831c1042d57, type: 3}
     - target: {fileID: 8577929030215612396, guid: 7b9dd3b39a60bfd41943ac63a70b1bb4, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1505,10 +1481,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8471914529627960063, guid: 7b9dd3b39a60bfd41943ac63a70b1bb4, type: 3}
-      propertyPath: _image
-      value: 
-      objectReference: {fileID: 484644205}
-    - target: {fileID: 8471914529627960063, guid: 7b9dd3b39a60bfd41943ac63a70b1bb4, type: 3}
       propertyPath: _crewID
       value: 0
       objectReference: {fileID: 0}
@@ -1516,26 +1488,6 @@ PrefabInstance:
       propertyPath: _emoticon
       value: 
       objectReference: {fileID: 2099635747}
-    - target: {fileID: 8471914529627960063, guid: 7b9dd3b39a60bfd41943ac63a70b1bb4, type: 3}
-      propertyPath: _spritesEmoticon.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8471914529627960063, guid: 7b9dd3b39a60bfd41943ac63a70b1bb4, type: 3}
-      propertyPath: '_spritesEmoticon.Array.data[0]'
-      value: 
-      objectReference: {fileID: 1591491378828385410, guid: e38bacfabb53fee46885e458138ab598, type: 3}
-    - target: {fileID: 8471914529627960063, guid: 7b9dd3b39a60bfd41943ac63a70b1bb4, type: 3}
-      propertyPath: '_spritesEmoticon.Array.data[1]'
-      value: 
-      objectReference: {fileID: -4916030381253642596, guid: 67584b8bbb8a7f64b83b8b531f1971d8, type: 3}
-    - target: {fileID: 8471914529627960063, guid: 7b9dd3b39a60bfd41943ac63a70b1bb4, type: 3}
-      propertyPath: '_spritesEmoticon.Array.data[2]'
-      value: 
-      objectReference: {fileID: 1776252492984597158, guid: 453593581c48b1d498345de098b8f43a, type: 3}
-    - target: {fileID: 8471914529627960063, guid: 7b9dd3b39a60bfd41943ac63a70b1bb4, type: 3}
-      propertyPath: '_spritesEmoticon.Array.data[3]'
-      value: 
-      objectReference: {fileID: 1643061459587416177, guid: f01434963b2ccd9488a0e831c1042d57, type: 3}
     - target: {fileID: 8525093377172509378, guid: 7b9dd3b39a60bfd41943ac63a70b1bb4, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -4196,7 +4148,7 @@ MonoBehaviour:
   crewMembers:
   - CrewName: "\uC9C0\uC6D0"
     CrewID: 0
-    Hunger: 29.2
+    Hunger: 20
     Thirst: 100
     Temperature: 100
     IsAlive: 1
@@ -5213,17 +5165,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.7489557, y: 1.5604987}
   m_EdgeRadius: 0
---- !u!114 &484644205 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3145119950125014817, guid: 7b9dd3b39a60bfd41943ac63a70b1bb4, type: 3}
-  m_PrefabInstance: {fileID: 114280387}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &490583807
 GameObject:
   m_ObjectHideFlags: 0
@@ -9879,17 +9820,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 866867345}
   m_CullTransparentMesh: 1
---- !u!114 &881060047 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3145119950125014817, guid: 7b9dd3b39a60bfd41943ac63a70b1bb4, type: 3}
-  m_PrefabInstance: {fileID: 1511494211}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &894737872
 GameObject:
   m_ObjectHideFlags: 0
@@ -16999,22 +16929,6 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -3882289411741883795, guid: b6c00bdde13883b4a9a8adcb4f6b9625, type: 3}
-    - target: {fileID: 3145119950125014817, guid: 7b9dd3b39a60bfd41943ac63a70b1bb4, type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3145119950125014817, guid: 7b9dd3b39a60bfd41943ac63a70b1bb4, type: 3}
-      propertyPath: m_Color.b
-      value: 0.9811321
-      objectReference: {fileID: 0}
-    - target: {fileID: 3145119950125014817, guid: 7b9dd3b39a60bfd41943ac63a70b1bb4, type: 3}
-      propertyPath: m_Color.g
-      value: 0.9811321
-      objectReference: {fileID: 0}
-    - target: {fileID: 3145119950125014817, guid: 7b9dd3b39a60bfd41943ac63a70b1bb4, type: 3}
-      propertyPath: m_Color.r
-      value: 0.9811321
-      objectReference: {fileID: 0}
     - target: {fileID: 3371782302917591156, guid: 7b9dd3b39a60bfd41943ac63a70b1bb4, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -17044,10 +16958,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8471914529627960063, guid: 7b9dd3b39a60bfd41943ac63a70b1bb4, type: 3}
-      propertyPath: _image
-      value: 
-      objectReference: {fileID: 881060047}
-    - target: {fileID: 8471914529627960063, guid: 7b9dd3b39a60bfd41943ac63a70b1bb4, type: 3}
       propertyPath: _crewID
       value: 2
       objectReference: {fileID: 0}
@@ -17055,26 +16965,6 @@ PrefabInstance:
       propertyPath: _emoticon
       value: 
       objectReference: {fileID: 2123563993}
-    - target: {fileID: 8471914529627960063, guid: 7b9dd3b39a60bfd41943ac63a70b1bb4, type: 3}
-      propertyPath: _spritesEmoticon.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8471914529627960063, guid: 7b9dd3b39a60bfd41943ac63a70b1bb4, type: 3}
-      propertyPath: '_spritesEmoticon.Array.data[0]'
-      value: 
-      objectReference: {fileID: 1591491378828385410, guid: e38bacfabb53fee46885e458138ab598, type: 3}
-    - target: {fileID: 8471914529627960063, guid: 7b9dd3b39a60bfd41943ac63a70b1bb4, type: 3}
-      propertyPath: '_spritesEmoticon.Array.data[1]'
-      value: 
-      objectReference: {fileID: -4916030381253642596, guid: 67584b8bbb8a7f64b83b8b531f1971d8, type: 3}
-    - target: {fileID: 8471914529627960063, guid: 7b9dd3b39a60bfd41943ac63a70b1bb4, type: 3}
-      propertyPath: '_spritesEmoticon.Array.data[2]'
-      value: 
-      objectReference: {fileID: 1776252492984597158, guid: 453593581c48b1d498345de098b8f43a, type: 3}
-    - target: {fileID: 8471914529627960063, guid: 7b9dd3b39a60bfd41943ac63a70b1bb4, type: 3}
-      propertyPath: '_spritesEmoticon.Array.data[3]'
-      value: 
-      objectReference: {fileID: 1643061459587416177, guid: f01434963b2ccd9488a0e831c1042d57, type: 3}
     - target: {fileID: 8577929030215612396, guid: 7b9dd3b39a60bfd41943ac63a70b1bb4, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -24290,17 +24180,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.56666666, y: 0.36345667}
   m_EdgeRadius: 0
---- !u!114 &2064593318 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3145119950125014817, guid: 7b9dd3b39a60bfd41943ac63a70b1bb4, type: 3}
-  m_PrefabInstance: {fileID: 64345470}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2080047819
 GameObject:
   m_ObjectHideFlags: 0
