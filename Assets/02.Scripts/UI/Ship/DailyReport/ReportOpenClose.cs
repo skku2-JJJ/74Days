@@ -9,6 +9,8 @@ public class ReportOpenClose : MonoBehaviour
 {
     [SerializeField]
     private DailyReportUpDown _reportUI;
+    [SerializeField]
+    private AudioClip _reportAudioClip;
 
     private bool _isInside = false;
 
@@ -41,6 +43,7 @@ public class ReportOpenClose : MonoBehaviour
             {
                 _reportUI.Close();
                 Debug.Log("[ReportOpenClose] 범위 벗어남 - Report 자동 닫기");
+                SoundPlay(_reportAudioClip);
             }
         }
     }
@@ -54,11 +57,20 @@ public class ReportOpenClose : MonoBehaviour
         {
             _reportUI.Close();
             Debug.Log("[ReportOpenClose] Report 닫기");
+            SoundPlay(_reportAudioClip);
+
         }
         else
         {
             _reportUI.Open();
             Debug.Log("[ReportOpenClose] Report 열기");
+            SoundPlay(_reportAudioClip);
         }
+    }
+
+    private void SoundPlay(AudioClip audioClip)
+    {
+        if (audioClip == null) return;
+        SoundManager.Instance.PlaySound(audioClip);
     }
 }
