@@ -36,6 +36,7 @@ public class CrewUIpdate : MonoBehaviour
     {
         _crew = FindCrew();
         EmojiUpdate();
+        ImageUpdate();
     }
 
     void Update()
@@ -45,7 +46,15 @@ public class CrewUIpdate : MonoBehaviour
 
     void ImageUpdate()
     {
-        
+        if (_crew == null)
+        {
+            Debug.Log("해당 크루는 존재하지 않습니다.");
+            return;
+        }
+        if (!_crew.IsAlive)
+        {
+            _image.sprite = _spritesImage[1];
+        }
     }
 
     void EmojiUpdate()
@@ -82,5 +91,16 @@ public class CrewUIpdate : MonoBehaviour
     private void OnDayStart(int day)
     {
         EmojiUpdate();
+        ImageUpdate();
+    }
+
+    void Init()
+    {
+        if (_crew == null)
+        {
+            Debug.Log("해당 크루는 존재하지 않습니다.");
+            return;
+        }
+        _image.sprite = _spritesImage[0];
     }
 }
