@@ -4479,10 +4479,12 @@ MonoBehaviour:
   crewMembers:
   - CrewName: "\uC9C0\uC6D0"
     CrewID: 0
-    Hunger: 29.2
+    AliveSprite: {fileID: -4541953881127276176, guid: 33554e98983775148b697ba2eacdf621, type: 3}
+    DeadSprite: {fileID: 5046992295978812273, guid: 7b12a5ab98020c748836bbad5a5c146f, type: 3}
+    Hunger: 0
     Thirst: 100
     Temperature: 100
-    IsAlive: 1
+    IsAlive: 0
     MinHungerDecrease: 10
     MaxHungerDecrease: 20
     MinThirstDecrease: 15
@@ -4499,6 +4501,8 @@ MonoBehaviour:
     HasReceivedMedicineToday: 0
   - CrewName: "\uBBFC\uAD00"
     CrewID: 1
+    AliveSprite: {fileID: 7416814803530838349, guid: eff0b547dc1116849bc8191d643c60e0, type: 3}
+    DeadSprite: {fileID: 6207276918003571233, guid: 17952ba59844f01478a8254fd9e93510, type: 3}
     Hunger: 100
     Thirst: 60
     Temperature: 100
@@ -4519,10 +4523,12 @@ MonoBehaviour:
     HasReceivedMedicineToday: 0
   - CrewName: "\uC7AC\uD604"
     CrewID: 2
+    AliveSprite: {fileID: -3882289411741883795, guid: b6c00bdde13883b4a9a8adcb4f6b9625, type: 3}
+    DeadSprite: {fileID: -3006545364638393876, guid: 4320c92da2da3884b8353d481bcdfd5d, type: 3}
     Hunger: 100
     Thirst: 100
     Temperature: 100
-    IsAlive: 1
+    IsAlive: 0
     MinHungerDecrease: 10
     MaxHungerDecrease: 20
     MinThirstDecrease: 15
@@ -10169,6 +10175,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dayCountText: {fileID: 1648185475}
+--- !u!114 &855688194 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8313021721822901213, guid: 50ad643773507d54c90abc16a583e6bc, type: 3}
+  m_PrefabInstance: {fileID: 5404640594335729772}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &866867345
 GameObject:
   m_ObjectHideFlags: 0
@@ -15463,14 +15480,17 @@ MonoBehaviour:
     nameText: {fileID: 7764607986573285544}
     mentText: {fileID: 1240112490441520435}
     stateSliders: {fileID: 1308237525}
+    crewImage: {fileID: 1610036673}
   - crewObject: {fileID: 1723592852679078057}
     nameText: {fileID: 7764607986505521929}
     mentText: {fileID: 1240112490374018706}
     stateSliders: {fileID: 628879971}
+    crewImage: {fileID: 1505767148}
   - crewObject: {fileID: 1723592851784721477}
     nameText: {fileID: 7764607987355996133}
     mentText: {fileID: 1240112489112658558}
     stateSliders: {fileID: 1591190845}
+    crewImage: {fileID: 855688194}
   _panelRoot: {fileID: 1345418314}
 --- !u!1 &1346136346
 GameObject:
@@ -17066,6 +17086,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2140457965}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1505767148 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2436589883160665689, guid: aee864c33ef40c34db48cf763b6920b6, type: 3}
+  m_PrefabInstance: {fileID: 669532770261499669}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1506868342
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18411,6 +18442,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1600455175}
   m_CullTransparentMesh: 1
+--- !u!114 &1610036673 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4875944041680089908, guid: 481d580fae585ff42b010c4ebb3b94c3, type: 3}
+  m_PrefabInstance: {fileID: 5005336996350142309}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1611291082
 GameObject:
   m_ObjectHideFlags: 0

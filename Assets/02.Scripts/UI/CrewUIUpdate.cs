@@ -13,7 +13,7 @@ public class CrewUIpdate : MonoBehaviour
 
     [Header("죽은 선원 이미지 변경")]
     [SerializeField] private Image _image;
-    [SerializeField] private Sprite[] _spritesImage;
+
     void Awake()
     {
 
@@ -51,10 +51,9 @@ public class CrewUIpdate : MonoBehaviour
             Debug.Log("해당 크루는 존재하지 않습니다.");
             return;
         }
-        if (!_crew.IsAlive)
-        {
-            _image.sprite = _spritesImage[1];
-        }
+
+        _image.sprite = _crew.IsAlive ? _crew.AliveSprite : _crew.DeadSprite;
+        
     }
 
     void EmojiUpdate()
@@ -94,13 +93,4 @@ public class CrewUIpdate : MonoBehaviour
         ImageUpdate();
     }
 
-    void Init()
-    {
-        if (_crew == null)
-        {
-            Debug.Log("해당 크루는 존재하지 않습니다.");
-            return;
-        }
-        _image.sprite = _spritesImage[0];
-    }
 }

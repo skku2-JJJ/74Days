@@ -27,6 +27,7 @@ public class DailyReportUI : MonoBehaviour
         public TextMeshProUGUI nameText;        // Name
         public TextMeshProUGUI mentText;        // 대사
         public SliderUpdate stateSliders;   // StateSliders (슬라이더 컴포넌트)
+        public Image crewImage;   // 이미지
     }
 
     void Awake()
@@ -175,6 +176,12 @@ public class DailyReportUI : MonoBehaviour
             item.stateSliders.HpSliderUpdate(crew.Hunger);
             item.stateSliders.WaterSliderUpdate(crew.Thirst);
             item.stateSliders.WarmSliderUpdate(crew.Temperature);
+        }
+
+        //sprite 업데이트
+        if (item.crewImage != null)
+        {
+            item.crewImage.sprite = crew.IsAlive ? crew.AliveSprite : crew.DeadSprite;
         }
     }
 
