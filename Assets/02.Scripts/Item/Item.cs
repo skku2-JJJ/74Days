@@ -35,25 +35,15 @@ public class Item : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // 플레이어와 부딪히면 가방에 넣고 삭제
-        if (!other.CompareTag("Player"))
-            return;
-
-        /*// 플레이어 쪽에서 자원 수집 컴포넌트 찾기
-        var collector = other.GetComponent<IResourceCollector>();
-        if (collector == null)
+        if (!other.CompareTag("Player"))  return;
+        
+        DiverStatus diverStatus = other.GetComponent<DiverStatus>();
+        
+        if (diverStatus != null)
         {
-            collector = other.GetComponentInParent<IResourceCollector>();
-        }
-
-        if (collector != null)
-        {
-            collector.CollectResource(_resourceType, _amount);
+            diverStatus.GainResource(_resourceType, _amount);
             Destroy(gameObject);
         }
-        else
-        {
-            Debug.LogWarning("Player에 IResourceCollector가 없습니다.");
-        }*/
+        
     }
 }
