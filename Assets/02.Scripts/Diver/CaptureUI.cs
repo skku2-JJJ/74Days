@@ -13,7 +13,7 @@ public class CaptureUI : MonoBehaviour
     private Slider _gaugeSlider;
     private HarpoonShooter _shooter;
     private DiverStatus _diverStatus;
-    private SpriteRenderer _diverSprite;
+    private SpriteRenderer _diverRenderer;
     private CanvasGroup _canvasGroup; 
     private RectTransform _rectTransform;
     private Camera _camera;
@@ -61,7 +61,7 @@ public class CaptureUI : MonoBehaviour
         _gaugeSlider = GetComponent<Slider>();
         
         _shooter = _player.GetComponent<HarpoonShooter>();
-        _diverSprite = _player.GetComponentInChildren<SpriteRenderer>();
+        _diverRenderer = _player.GetComponentInChildren<SpriteRenderer>();
         _diverStatus = _player.GetComponent<DiverStatus>();
         
         _rectTransform = GetComponent<RectTransform>();
@@ -74,9 +74,9 @@ public class CaptureUI : MonoBehaviour
         
         bool facingRight = true;
 
-        if (_diverSprite != null)
+        if (_diverRenderer != null)
         {
-            facingRight = !_diverSprite.flipX;
+            facingRight = !_diverRenderer.flipX;
         }
         
         float dir = facingRight ? -1f : 1f;
@@ -85,6 +85,12 @@ public class CaptureUI : MonoBehaviour
         screenPos.y += _screenOffset.y;
 
         _rectTransform.position = screenPos;
+        
+        // UI 좌우 반전
+        Vector3 scale = _rectTransform.localScale;
+        scale.x = -dir;             
+        _rectTransform.localScale = scale;
+        
     }
 
     private void UpdateGauge()
