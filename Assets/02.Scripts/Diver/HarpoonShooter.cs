@@ -30,9 +30,6 @@ public class HarpoonShooter : MonoBehaviour
     [Header("조준 / 슬로우 모션")]
     [SerializeField] private float _aimTimeScale = 0.4f;       
     [SerializeField] private float _timeScaleLerpSpeed = 10f;
-    
-    [Header("UI")]
-    [SerializeField] private GetItemUIUpdate _getUI;
 
 
 
@@ -263,17 +260,6 @@ public class HarpoonShooter : MonoBehaviour
         IFishCapturable fish = proj.GetComponentInChildren<IFishCapturable>();
         if (fish != null)
         {
-            ResourceType resourceType = fish.FishType;
-            ResourceMetaData data = ResourceDatabaseManager.GetData(resourceType);
-
-            if (data != null)
-            {
-                Sprite spirte = data.icon;
-                ResourceCategory category = data.category;
-                float hungerRecovery = data.hungerRecovery;
-                _getUI.UIUpdate(resourceType, spirte, category, hungerRecovery); //Get UI update
-            }
-
             _diverStatus.GainResource(fish.FishType);
             fish.Stored();
             Debug.Log(fish);  
