@@ -8,9 +8,9 @@ public class DiverbagSlotUI : MonoBehaviour
     [SerializeField] private Image _icon;
     [SerializeField] private TextMeshProUGUI _amountText;
     
-    public void Set(ResourceData data, int amount)
+    public void Set(ResourceMetaData data, int amount)
     {
-        _icon.sprite = data.Icon;
+        _icon.sprite = data.icon;
         _amountText.text = amount.ToString();
     }
 

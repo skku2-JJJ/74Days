@@ -24,7 +24,9 @@ public class FishMoveController : MonoBehaviour
 
     public Vector2 CurrentVelocity => _rigid.linearVelocity;
 
-   
+    public float MaxSpeed => _maxSpeed;
+
+
     // Escape/QTE 등에서 잠깐 속도를 덮어쓰는 용도
     private float _overrideSpeed = -1f;
     private float _overrideSpeedTimer = 0f;

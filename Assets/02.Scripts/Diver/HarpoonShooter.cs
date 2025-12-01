@@ -269,6 +269,7 @@ public class HarpoonShooter : MonoBehaviour
             ResourceType resourceType = fish.Type;
 
             _getUI.UIUpdate(resourceType, spirte, ResourceCategory.Food, 1); //Get UI update
+            _diverStatus.GainResource(fish.FishType);
             fish.Stored();
             Debug.Log(fish);  
         }
@@ -290,7 +291,7 @@ public class HarpoonShooter : MonoBehaviour
         
         _currentProjectile.AttachToFish(fish.Transform);
         
-        _animator.SetTrigger("Struggle");
+        _animator.SetBool("Pull", true);
     }
     
     /// <summary>
@@ -320,7 +321,7 @@ public class HarpoonShooter : MonoBehaviour
         _currentProjectile = null;
         _hasHarpoonOut = false;
         
-        _animator.SetTrigger("StruggleEnd");
+        _animator.SetBool("Pull", false);
     }
 
     
