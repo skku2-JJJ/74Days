@@ -42,6 +42,8 @@ public class Item : MonoBehaviour
         if (diverStatus != null)
         {
             diverStatus.GainResource(_resourceType, _amount);
+            // TODO : 아이템 획득 vfx, sfx
+            
             Destroy(gameObject);
         }
         
