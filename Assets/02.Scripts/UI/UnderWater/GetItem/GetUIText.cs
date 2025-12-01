@@ -16,12 +16,12 @@ public class GetUIText : MonoBehaviour
     {
         
     }
-    public void NameTextUpdate(ResourceType name)
+    public void NameTextUpdate(string name)
     {
-        _nameTextMeshProUGUI.text = $"{name.ToString()}";
+        _nameTextMeshProUGUI.text = $"{name}";
     }
 
-    public void StatTextUpdate(ResourceCategory ItemstatType, int value)
+    public void StatTextUpdate(ResourceCategory ItemstatType, float value)
     {
         _statTextMeshProUGUI.text = $"{ItemstatType.ToString()}\n+ {value}";
     }
