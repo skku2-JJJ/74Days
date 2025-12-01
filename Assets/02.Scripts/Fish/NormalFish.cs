@@ -14,7 +14,8 @@ public class NormalFish : FishBase
     
     private void Awake()
     {
-       Init();
+        base.Awake();
+        Init();
     }
     
 

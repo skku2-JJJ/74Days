@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 /// <summary>
@@ -8,22 +9,23 @@ public abstract class FishBase : MonoBehaviour, IFishCapturable
     [Header("Fish 타입")]
     [SerializeField] private ResourceType _fishType;
     
-    [Header("다이버")]
-    [SerializeField] protected Transform diver;
-    
-    [Header("Visual")]
-    [SerializeField] protected FishVisualController visualController;
-    
-    [Header("Core References")]
-    [SerializeField] private FishHealth _health;
-    [SerializeField] private FishHitFeedback _hitFeedback;
-    [SerializeField] private FishCaptureStruggle _captureStruggle;
-    
+    // 참조
+    protected Transform diver;
+    protected FishVisualController visualController;
+    private FishHealth _health;
+    private FishHitFeedback _hitFeedback;
+    private FishCaptureStruggle _captureStruggle;
+  
    
     
     public bool CanBeCaptured => _health.CanBeCaptured;
-    public ResourceType Type => _fishType;
+    public ResourceType FishType => _fishType;
     public Transform Transform => this.transform;
+
+    protected void Awake()
+    {
+       Init();
+    }
 
     public virtual void TakeHarpoonHit(float damage, Vector2 harpoonDir)
     {
@@ -73,6 +75,30 @@ public abstract class FishBase : MonoBehaviour, IFishCapturable
             visualController.ForceLookAwayFrom(diver.position, false);
         }
     }
-       
+
+    private void Init()
+    {
+        _health = GetComponent<FishHealth>();
+        _hitFeedback = GetComponent<FishHitFeedback>();
+        _captureStruggle = GetComponent<FishCaptureStruggle>();
+    }
     
+    // 물고기 스폰 관련 --------------------------------------------
+    private void OnEnable()
+    {
+        if (FishSpawnManager.Instance != null)
+        {
+            FishSpawnManager.Instance.RegisterFish(this);
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (FishSpawnManager.Instance != null)
+        {
+            FishSpawnManager.Instance.UnregisterFish(this);
+        }
+    }
+    
+    // -----------------------------------------------------------
 }

@@ -34,8 +34,8 @@ public class FishAIController : MonoBehaviour
     [SerializeField] private float _rayDistance = 1.2f;
     
     [Header("플레이어 회피")]
-    [SerializeField] private Transform _diver;
-    [SerializeField] private float _fleeRadius = 4f;
+    private Transform _diver;
+    [SerializeField] private float _fleeRadius = 3f;
     [SerializeField] private float _fleeStrength = 1.5f;
     
     [Header("Escape 설정")]
@@ -47,9 +47,22 @@ public class FishAIController : MonoBehaviour
 
     private Vector2 _escapeDir;
     
+    private Vector2 _lastPos;
+    private float _stuckTimer;
+    
     private const float FullAngle = 360f;
     private const float EpsilonNum = 0.001f;
-    private const float DirCorrection = 0.3f;
+    private const float MaxStuckTime = 1.5f;
+    
+    private static readonly Vector2[] _escapeSampleDirs = {
+        Vector2.up, Vector2.down,
+        Vector2.left, Vector2.right,
+        (Vector2.up + Vector2.right).normalized,
+        (Vector2.up + Vector2.left).normalized,
+        (Vector2.down + Vector2.right).normalized,
+        (Vector2.down + Vector2.left).normalized,
+    };
+    
     private void Awake()
     {
         Init();
@@ -69,14 +82,15 @@ public class FishAIController : MonoBehaviour
             SwitchState();
         }
 
-        // 플레이어 회피
-        /*if (_diver != null && TryGetFleeDir(out Vector2 fleeDir))
+        /*// 플레이어 회피
+        if (_diver != null && TryGetFleeDir(out Vector2 fleeDir))
         {
             _move.DesiredDir = ApplyObstacleAvoidance(fleeDir);
             return;
         }*/
 
         DecideMoveDir();
+        CheckStuck();
     }
 
     private void Init()
@@ -209,27 +223,76 @@ public class FishAIController : MonoBehaviour
         Vector2 origin = transform.position;
         Vector2 forward = desired.normalized;
 
-        // 장애물 탐색 방향 (왼45, 오른45, 왼90, 오90)
-        float[] angles = { 0f, 45f, -45f, 90f, -90f };
+        // 1. 정면으로 먼저 체크
+        RaycastHit2D hit = Physics2D.Raycast(origin, forward, _rayDistance, _obstacleMask);
 
-        foreach (float ang in angles)
+        // 앞에 아무것도 없으면 그냥 원하는 방향으로 감
+        if (!hit)
+            return forward;
+
+        // 2. 벽을 따라 미끄러지는 방향 계산 (법선의 수직 방향 = 탄젠트)
+        Vector2 normal  = hit.normal;
+        Vector2 tangent = new Vector2(-normal.y, normal.x); // Perpendicular
+
+        // 3. 원래 가려던 쪽과 더 비슷한 방향으로 선택
+        if (Vector2.Dot(tangent, forward) < 0f)
+            tangent = -tangent;
+
+        return tangent.normalized;
+    }
+    
+    private void CheckStuck()
+    {
+        Vector2 currPos = transform.position;
+        float moved = (currPos - _lastPos).magnitude;
+
+        // 거의 안 움직였으면 타이머 증가
+        if (moved < 0.01f)
+            _stuckTimer += Time.deltaTime;
+        else
+            _stuckTimer = 0f;
+
+        _lastPos = currPos;
+
+        if (_stuckTimer > MaxStuckTime)
         {
-            Vector2 dir = Quaternion.Euler(0, 0, ang) * forward;
+            // 끼임 탈출
+            Vector2 escapeDir = GetEscapeDirectionFromWalls();
+            
+            EnterEscape(escapeDir,   _move.MaxSpeed * 1.5f);
+            _stuckTimer = 0f;
+        }
+    }
+   
 
-            bool hit = Physics2D.Raycast(origin, dir, _rayDistance, _obstacleMask);
-            if (!hit)
+    private Vector2 GetEscapeDirectionFromWalls()
+    {
+        Vector2 origin = transform.position;
+        
+        float checkDist = 1.5f; 
+
+        Vector2 accumulated = Vector2.zero;
+        bool foundWall = false;
+
+        foreach (var dir in _escapeSampleDirs)
+        {
+            RaycastHit2D hit = Physics2D.Raycast(origin, dir, checkDist, _obstacleMask);
+            if (hit)
             {
-                // 열린 방향을 찾으면 바로 그쪽으로 간다
-                return dir.normalized;
+                foundWall = true;
+                
+                accumulated += hit.normal; //벽 표면의 법선 벡터
             }
         }
 
-        // 완전 막힌 경우 → 위로 살짝 치켜오르기 
-        return (forward + Vector2.up * DirCorrection).normalized;
+        if (!foundWall)
+        {
+            return Vector2.up;
+        }
+        
+        return accumulated.normalized;
     }
     
-   
-
 #if UNITY_EDITOR
     private void OnDrawGizmosSelected()
     {

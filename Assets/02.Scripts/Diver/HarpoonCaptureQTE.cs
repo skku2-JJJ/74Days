@@ -128,6 +128,8 @@ public class HarpoonCaptureQTE : MonoBehaviour
             _impulseSource?.GenerateImpulse(dir * shakeStrength);
         }
         
+        
+        
         if (_captureGauge >= 1f)
         {
             FinishCapture(true);

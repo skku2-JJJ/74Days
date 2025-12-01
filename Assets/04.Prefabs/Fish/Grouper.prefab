@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 1880532392066982631}
   - component: {fileID: 8728734494323546626}
   - component: {fileID: 3845388601873344741}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Grouper
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -115,12 +115,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4362de6b5afeb3043adbb5fc879814df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fishType: 17
-  diver: {fileID: 0}
-  visualController: {fileID: 0}
-  _health: {fileID: 2052411475101747350}
-  _hitFeedback: {fileID: 8161939080048225451}
-  _captureStruggle: {fileID: 1880532392066982631}
+  _fishType: 7
+  despawnDistanceFromCamera: 30
   _escapeBurstSpeed: 12
   _escapeRandomFactor: 0.2
 --- !u!114 &2052411475101747350
@@ -220,7 +216,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   _rayDistance: 2
-  _diver: {fileID: 0}
   _fleeRadius: 8
   _fleeStrength: 1.5
   _escapeDuration: 3
@@ -236,7 +231,7 @@ GameObject:
   - component: {fileID: 9123016753242652183}
   - component: {fileID: 4642538778789072975}
   - component: {fileID: 1066394530323231213}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
