@@ -18,13 +18,15 @@ public class Tutorial : MonoBehaviour
         "파도에 한참을 떠밀려온 모양이다." , 
         "식량과 물 등의 자원을 모두 잃고 남겨진 것은 배 한 척뿐이다.", 
         "육지까지 돌아가기 걸리는 시간은 74일",
-        "74일동안 선원들과 함께 살아남아야 한다.",
+        "74일 동안 선원들과 함께 살아남아야 한다.",
         "매일 낮 바다에 들어가 자원을 구해와야겠다.",
+        "배 위 표시된 곳을 주위 깊게 보자",
         "선상 가운데 테이블 위 책에는 매일 선원들의 상태가 기록되고,",
-        "이곳에서 수집한 자원을 확인 할 수 있다.",
+        "이곳에서 수집한 자원을 확인할 수 있다.",
         "매일 밤 이곳에서 선원들과 자원을 분배한다.",
-        "배또한 성하지 않으니 이곳에서 배도 수리하도록 하자",
-        "선원과 배의 상태를 확인해 바다로 내려가자"
+        "배 또한 성하지 않으니 이곳에서 배도 수리하도록 하자",
+        "선원과 배의 상태를 확인해 바다로 내려가자",
+        "배와 연결된 다리에서 Space Bar를 누르면 바다로 떠날 수 있다."
     };
     private int order = 0;
     private bool isTyping = false;
@@ -106,19 +108,19 @@ public class Tutorial : MonoBehaviour
                 _guides[2].SetActive(false);
                 _guides[3].SetActive(false);
                 break;
-            case 6:
+            case 7:
                 _guides[0].SetActive(false);
                 _guides[1].SetActive(true);
                 _guides[2].SetActive(false);
                 _guides[3].SetActive(false);
                 break;
-            case 7:
+            case 8:
                 _guides[0].SetActive(false);
                 _guides[1].SetActive(false);
                 _guides[2].SetActive(true);
                 _guides[3].SetActive(false);
                 break;
-            case 8:
+            case 9:
                 _guides[0].SetActive(false);
                 _guides[1].SetActive(false);
                 _guides[2].SetActive(false);
