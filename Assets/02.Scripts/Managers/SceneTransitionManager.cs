@@ -85,6 +85,18 @@ public class SceneTransitionManager : MonoBehaviour
     }
 
     /// <summary>
+    /// 게임 시작 시 Ship 씬으로 전환 (Morning 페이즈)
+    /// MainMenu에서 "게임 시작" 버튼 클릭 시 호출
+    /// </summary>
+    public void StartNewGame()
+    {
+        if (isTransitioning) return;
+
+        Debug.Log("[SceneTransition] 새 게임 시작 - Ship 씬으로 전환 (Morning)");
+        TransitionToScene(shipSceneName, DayPhase.Morning);
+    }
+
+    /// <summary>
     /// 게임 오버 씬으로 전환 (로딩 씬 없이 직접 전환)
     /// 게임 종료 시 호출 (DayManager.HandleGameEnd에서 호출)
     /// </summary>

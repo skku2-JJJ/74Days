@@ -166,24 +166,24 @@ public class GameOverUI : MonoBehaviour
     /// </summary>
     private void OnRestartClicked()
     {
-        Debug.Log("[GameOverUI] 재시작 버튼 클릭");
+        Debug.Log("[GameOverUI] 재시작 버튼 클릭 - MainMenu로 이동");
 
         // 게임 데이터 초기화
         GameOverData.Reset();
 
-        // 페이드 아웃 후 Ship 씬 재로드
+        // 페이드 아웃 후 MainMenu 씬으로 이동
         if (FadeManager.Instance != null)
         {
             FadeManager.Instance.FadeOutToBlack(1f, () =>
             {
-                // Ship 씬으로 전환 (Manager들은 DontDestroyOnLoad로 유지됨)
-                SceneManager.LoadScene("Ship");
+                // MainMenu 씬으로 전환 (사용자가 게임 시작 버튼을 다시 누름)
+                SceneManager.LoadScene("GameStart");
             });
         }
         else
         {
             // FadeManager 없으면 바로 전환
-            SceneManager.LoadScene("Ship");
+            SceneManager.LoadScene("GameStart");
         }
     }
 

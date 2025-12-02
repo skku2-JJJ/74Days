@@ -4637,7 +4637,7 @@ MonoBehaviour:
     CrewID: 0
     AliveSprite: {fileID: -4541953881127276176, guid: 33554e98983775148b697ba2eacdf621, type: 3}
     DeadSprite: {fileID: 5046992295978812273, guid: 7b12a5ab98020c748836bbad5a5c146f, type: 3}
-    Hunger: 5
+    Hunger: 1
     Thirst: 100
     Temperature: 100
     IsAlive: 1
@@ -4660,7 +4660,7 @@ MonoBehaviour:
     AliveSprite: {fileID: 7416814803530838349, guid: eff0b547dc1116849bc8191d643c60e0, type: 3}
     DeadSprite: {fileID: 6207276918003571233, guid: 17952ba59844f01478a8254fd9e93510, type: 3}
     Hunger: 100
-    Thirst: 5
+    Thirst: 1
     Temperature: 100
     IsAlive: 1
     MinHungerDecrease: 10
@@ -4683,7 +4683,7 @@ MonoBehaviour:
     DeadSprite: {fileID: -3006545364638393876, guid: 4320c92da2da3884b8353d481bcdfd5d, type: 3}
     Hunger: 100
     Thirst: 100
-    Temperature: 5
+    Temperature: 1
     IsAlive: 1
     MinHungerDecrease: 10
     MaxHungerDecrease: 20
