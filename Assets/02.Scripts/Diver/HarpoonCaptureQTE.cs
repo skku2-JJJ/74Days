@@ -111,53 +111,7 @@ public class HarpoonCaptureQTE : MonoBehaviour
         _shooter = GetComponent<HarpoonShooter>();
         _input = GetComponent<InputController>();
         _impulseSource = GetComponent<CinemachineImpulseSource>();
-
         
-        // QTE 난이도 스케일 초기화
-        if (_durationScale  == null)
-        {
-            _durationScale = new QteDifficultyScale
-            {
-                easyMultiplier = 1.3f,
-                hardMultiplier = 0.7f
-            };
-        }
-
-        if (_decayScale == null)
-        {
-            _decayScale = new QteDifficultyScale
-            {
-                easyMultiplier = 0.7f,
-                hardMultiplier = 1.6f
-            };
-        }
-
-        if (_gainScale == null)
-        {
-            _gainScale = new QteDifficultyScale
-            {
-                easyMultiplier = 1.4f,
-                hardMultiplier = 0.7f
-            };
-        }
-
-        if (_startGaugeScale == null)
-        {
-            _startGaugeScale = new QteDifficultyScale
-            {
-                easyMultiplier = 1.1f,
-                hardMultiplier = 0.5f
-            };
-        }
-
-        if ( _minGaugeScale == null)
-        {
-            _minGaugeScale = new QteDifficultyScale
-            {
-                easyMultiplier = 0.7f,
-                hardMultiplier = 1.2f
-            };
-        }
     }
     
     private void SetupDifficultyForFish(IFishCapturable fish)
