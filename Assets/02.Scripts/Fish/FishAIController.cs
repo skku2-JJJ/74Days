@@ -92,26 +92,44 @@ public class FishAIController : MonoBehaviour
            
         _attackCoolTimer += Time.deltaTime;
 
-        if (_isAggressive && _eFishState != EFishState.Escape)
+        // 1순위 -> Escape
+        if (_eFishState == EFishState.Escape)
         {
-            UpdateAggroState();   // ★ 플레이어와 거리 보고 Chase/Attack 상태 전환
+            _stateTimer += Time.deltaTime;
+
+            if (_stateTimer >= _stateDuration)
+            {
+                EnterWander();
+            }
+
+            DecideMoveDir();
+            CheckStuck();
+            return; 
         }
         
-
-        _stateTimer += Time.deltaTime;
-
-        if (_stateTimer >= _stateDuration)
+        // 2순위 -> Attack
+        if (_isAggressive)
         {
-            SwitchState();
+            HandleAggro();  
+        }
+        
+        if (_isAggressive && _eFishState != EFishState.Escape)
+        {
+            UpdateAggroState();  
         }
 
-        /*// 플레이어 회피
-        if (_diver != null && TryGetFleeDir(out Vector2 fleeDir))
+        // 3순위 -> Idle/Wander
+        if (_eFishState == EFishState.Idle || _eFishState == EFishState.Wander)
         {
-            _move.DesiredDir = ApplyObstacleAvoidance(fleeDir);
-            return;
-        }*/
+            _stateTimer += Time.deltaTime;
 
+            if (_stateTimer >= _stateDuration)
+            {
+                SwitchState();
+            }
+        }
+
+        
         DecideMoveDir();
         CheckStuck();
     }
@@ -176,6 +194,34 @@ public class FishAIController : MonoBehaviour
         else
         {
             EnterChase();
+        }
+    }
+
+    private void HandleAggro()
+    {
+        if (_diver == null)  return;
+        
+        Vector2 toDiver = (Vector2)_diver.position - (Vector2)transform.position;
+        float dist = toDiver.magnitude;
+        
+        if (dist <= _attackRange && _attackCoolTimer <= 0f)
+        {
+            EnterAttack();
+            return;
+        }
+        
+        if (dist <= _aggroRadius)
+        {
+            if (_eFishState != EFishState.Chase && _eFishState != EFishState.Attack)
+            {
+                EnterChase();  
+            }
+            return;
+        }
+        
+        if (_eFishState == EFishState.Chase || _eFishState == EFishState.Attack)
+        {
+            EnterWander();
         }
     }
 
@@ -319,18 +365,7 @@ public class FishAIController : MonoBehaviour
         return _wanderDir;
     }
 
-    private bool TryGetFleeDir(out Vector2 fleeDir)
-    {
-        fleeDir = Vector2.zero;
-
-        Vector2 toDiver = _diver.position - transform.position;
-        float dist = toDiver.magnitude;
-        if (dist >= _fleeRadius) return false;
-
-        fleeDir = -toDiver.normalized;
-        return true;
-    }
-
+    
     private Vector2 ApplyObstacleAvoidance(Vector2 desired)
     {
         if (desired.magnitude < EpsilonNum) return Vector2.zero;
