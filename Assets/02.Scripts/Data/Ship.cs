@@ -7,14 +7,14 @@ public class Ship
     public string ShipName = "JJJ";
 
     [Header("Ship Condition")]
-    [Range(0, 100)] public float Hp = 100f;    // 배 체력
+    [Range(0, 100)] public float Hp = 50f;    // 배 체력
 
     [Header("Ship Resources")]
     [SerializeField] private ShipInventory _inventory;
 
     [Header("Ship Status")]
     public bool IsAbleToSail = true;                          // 항해 가능 여부
-    public float DailyDeteriorationRate = 1f;                // 일일 노화율
+    public float DailyDeteriorationRate = 10f;                // 일일 노화율
 
     [Header("Status Thresholds")]
     public float CriticalHpThreshold = 30f;
