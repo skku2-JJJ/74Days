@@ -317,7 +317,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _visualTransform: {fileID: 2743110065132091774}
   _escapeMoveSpeed: 3
-  _maxStruggleAngle: 30
+  _maxStruggleAngle: 25
   _struggleFrequency: 7
 --- !u!58 &6250962042305260196
 CircleCollider2D:
