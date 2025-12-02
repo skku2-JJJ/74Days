@@ -342,11 +342,20 @@ public class FishAIController : MonoBehaviour
         float dist = Vector2.Distance(_diver.position, transform.position);
         if (dist > _attackRange * _rangeOffsetFactor) return; 
         
+        // 데미지 적용
         DiverStatus diverStatus = _diver.GetComponent<DiverStatus>();
         if (diverStatus != null)
         {
             diverStatus.TakeDamage();  
             Debug.Log("Attack!");
+        }
+        
+        // 넉백
+        DiverMoveController diverMove = _diver.GetComponent<DiverMoveController>();
+        if (diverMove != null)
+        {
+            Vector2 knockDir = ((Vector2)_diver.position - (Vector2)transform.position).normalized;
+            diverMove.AddRecoil(knockDir);
         }
         
     }
