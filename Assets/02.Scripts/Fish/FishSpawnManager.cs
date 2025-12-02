@@ -32,8 +32,8 @@ public class FishSpawnManager : MonoBehaviour
 
     [Header("Initial Spawn Counts")]
     [SerializeField] private int initialShallowCount = 12;
-    [SerializeField] private int initialMiddleCount = 10;
-    [SerializeField] private int initialDeepCount = 8;
+    [SerializeField] private int initialMiddleCount = 12;
+    [SerializeField] private int initialDeepCount = 12;
 
     [Header("런타임 스폰 Setting")]
     [SerializeField] private float spawnInterval = 2f;      // 몇 초마다 스폰 시도할지
@@ -83,6 +83,27 @@ public class FishSpawnManager : MonoBehaviour
         }
         
         DespawnFarFish();
+    }
+    
+    /// <summary>
+    /// 지형 충돌 체크 + 수심별 랜덤 위치 공용으로 쓸 수 있는 헬퍼
+    /// </summary>
+    public bool TryGetSpawnPositionForObstacle(EOceanDepthZone zone, out Vector2 position, int maxTry = 20)
+    {
+        for (int i = 0; i < maxTry; i++)
+        {
+        
+            Vector2 p = GetRandomPositionInZone(zone);   
+            
+            if (Physics2D.OverlapCircle(p, collisionCheckRadius, groundLayer) != null)
+                continue;
+
+            position = p;
+            return true;
+        }
+
+        position = default;
+        return false;
     }
     
     private IEnumerator InitialSpawnRoutine()

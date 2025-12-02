@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(FishMoveController))]
-public class JellyFishAI : MonoBehaviour
+public class JellyFishAI : Obstacle
 {
       [Header("Movement Settings")]
     [SerializeField] private float _wanderMaxSpeed = 0.5f;            
