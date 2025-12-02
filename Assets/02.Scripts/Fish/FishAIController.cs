@@ -35,9 +35,13 @@ public class FishAIController : MonoBehaviour
 
     [Header("공격형 설정")]
     [SerializeField] private bool _isAggressive = false;   
-    [SerializeField] private float _aggroRadius = 4f;      
-    [SerializeField] private float _attackRange = 0.8f;    
-    [SerializeField] private float _attackCooltime = 1.5f; 
+    [SerializeField] private float _aggroRadius = 7f;
+    [SerializeField] private float _chaseStateDuration = 5f;
+    [SerializeField] private float _attackRange = 4f;    
+    [SerializeField] private float _attackCooltime = 1.5f;
+    [SerializeField] private float _attackDashSpeedMultiplier = 2.5f; 
+    [SerializeField] private float _attackDashDuration = 0.25f;       
+    private Vector2 _attackDir;                                 
     private float _attackCoolTimer = 0f;
     
     
@@ -189,16 +193,28 @@ public class FishAIController : MonoBehaviour
                 break;
             
             case EFishState.Chase:
-            case EFishState.Attack:
                 if (_diver != null)
                 {
                     dir = ((Vector2)_diver.position - (Vector2)transform.position).normalized;
                 }
                 break;
+            
+            case EFishState.Attack:
+                dir = _attackDir;
+                break;
         }
 
-        dir = ApplyObstacleAvoidance(dir);
-        _move.DesiredDir = dir;
+        
+        if (_eFishState == EFishState.Attack)
+        {
+            _move.DesiredDir = _attackDir;
+        }
+        else
+        {
+            dir = ApplyObstacleAvoidance(dir);
+            _move.DesiredDir = dir;
+        }
+       
     }
     
     
@@ -223,17 +239,22 @@ public class FishAIController : MonoBehaviour
 
         _eFishState = EFishState.Chase;
         _stateTimer = 0f;
-        _stateDuration = 5f; // 추격 상태 유지 시간 설정
+        _stateDuration = _chaseStateDuration; 
     }
 
     private void EnterAttack()
     {
         _eFishState = EFishState.Attack;
         _stateTimer = 0f;
-        _stateDuration = 0.3f; // 공격 모션동안 공격상태 유지
+        _stateDuration = _attackDashDuration; 
         _attackCoolTimer = 0f;
 
-        TryHitPlayer(); 
+        
+        _attackDir = ((Vector2)_diver.position - (Vector2)transform.position).normalized;
+        _move.SetOverrideSpeed(_move.MaxSpeed * _attackDashSpeedMultiplier, _attackDashDuration);
+        
+        TryHitPlayer();
+        _animator.SetTrigger("Attack");
     }
     
     
@@ -277,9 +298,7 @@ public class FishAIController : MonoBehaviour
             diverStatus.TakeDamage(1);  
             Debug.Log("Attack!");
         }
-
-        // TODO : 공격 애니메이션 
-        _animator.SetTrigger("Attack");
+        
     }
     
     private Vector2 GetWanderDirection()
