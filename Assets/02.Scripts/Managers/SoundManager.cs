@@ -31,4 +31,21 @@ public class SoundManager : MonoBehaviour
         audioSource.PlayOneShot(audioClip);
         
     }
+    public void PlaySoundOnly(AudioClip audioClip)
+    {
+        if (audioSource == null)
+        {
+            Debug.Log("오디오소스없음");
+            return;
+        }
+        audioSource.clip = audioClip;
+        audioSource.Play();
+
+    }
+
+    public void PlayStop()
+    {
+        audioSource.Stop();
+        audioSource.clip = null;    
+    }
 }

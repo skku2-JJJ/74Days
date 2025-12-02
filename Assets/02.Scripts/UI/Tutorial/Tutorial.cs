@@ -4,9 +4,13 @@ using System.Collections;
 public class Tutorial : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI textUI;
-    [SerializeField] private float delay = 0.05f; // 글자 간격
+    [SerializeField] private float _delay = 0.07f; // 글자 간격
     [SerializeField] private GameObject _tutorialBox;
     private bool _isNext = false;
+    [SerializeField] private AudioClip[] _typingClips;
+
+    [SerializeField] private GameObject[] _guides;
+
     private string[] fullText = 
     { 
         "파도에 한참을 떠밀려온 모양이다." , 
@@ -27,17 +31,19 @@ public class Tutorial : MonoBehaviour
 
     void Start()
     {
-        NextText();
+        Init();
     }
 
     IEnumerator TypeRoutine()
     {
         isTyping = true;
         textUI.text = "";
+        
         foreach (char c in fullText[order])
         {
+            SoundManager.Instance.PlaySound(_typingClips[Random.Range(0, 3)]);
+            yield return new WaitForSeconds(_delay);
             textUI.text += c;
-            yield return new WaitForSeconds(delay);
         }
 
         isTyping = false;
@@ -53,14 +59,50 @@ public class Tutorial : MonoBehaviour
             isTyping = false;
         }
 
+        switch (order)
+        {
+            case 7:
+                _guides[0].SetActive(true);
+                _guides[1].SetActive(false);
+                _guides[2].SetActive(false);
+                break;
+            case 8:
+                _guides[0].SetActive(false);
+                _guides[1].SetActive(true);
+                _guides[2].SetActive(false);
+                break;
+            case 9:
+                _guides[0].SetActive(false);
+                _guides[1].SetActive(false);
+                _guides[2].SetActive(true);
+                break;
+        }
         // 다음 문장으로
         
         if (order < fullText.Length) typingCoroutine = StartCoroutine(TypeRoutine());
         else
         {
-            _tutorialBox.SetActive(false);
+            GameStart();
         }
         
+        
+    }
+    void Init()
+    {
+        order = 0;
+        _tutorialBox.SetActive(true);
+        foreach (var guide in _guides)
+        {
+            guide.SetActive(false);
+        }
+    }
+
+    void GameStart()
+    {
+        _tutorialBox.SetActive(false);
+        _guides[0].SetActive(true);
+        _guides[1].SetActive(true);
+        _guides[2].SetActive(false);
     }
 
 }
