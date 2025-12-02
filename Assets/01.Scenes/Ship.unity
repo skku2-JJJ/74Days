@@ -6991,33 +6991,9 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1194390378843797751, guid: b6999432a0055fd45b41e196c874878e, type: 3}
-      propertyPath: m_SortingLayer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1194390378843797751, guid: b6999432a0055fd45b41e196c874878e, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1194390378843797751, guid: b6999432a0055fd45b41e196c874878e, type: 3}
-      propertyPath: m_SortingLayerID
-      value: -415232809
-      objectReference: {fileID: 0}
     - target: {fileID: 1759946546774652031, guid: b6999432a0055fd45b41e196c874878e, type: 3}
       propertyPath: m_PointLightOuterRadius
       value: 1.58
-      objectReference: {fileID: 0}
-    - target: {fileID: 3838676237324503861, guid: b6999432a0055fd45b41e196c874878e, type: 3}
-      propertyPath: m_SortingLayer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3838676237324503861, guid: b6999432a0055fd45b41e196c874878e, type: 3}
-      propertyPath: m_SortingOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3838676237324503861, guid: b6999432a0055fd45b41e196c874878e, type: 3}
-      propertyPath: m_SortingLayerID
-      value: -415232809
       objectReference: {fileID: 0}
     - target: {fileID: 6335915110450494569, guid: b6999432a0055fd45b41e196c874878e, type: 3}
       propertyPath: m_Name
