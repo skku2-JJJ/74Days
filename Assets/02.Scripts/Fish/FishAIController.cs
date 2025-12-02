@@ -43,6 +43,7 @@ public class FishAIController : MonoBehaviour
     [SerializeField] private float _attackDashDuration = 0.25f;       
     private Vector2 _attackDir;                                 
     private float _attackCoolTimer = 0f;
+    private float _rangeOffsetFactor = 1.2f;
     
     
     
@@ -59,10 +60,12 @@ public class FishAIController : MonoBehaviour
     
     [Header("Escape 설정")]
     [SerializeField] private float _escapeDuration = 3f;
+    private float _escapeSpeedFactor = 1.5f;
     private Vector2 _escapeDir;
     
     private const float FullAngle = 360f;
     private const float EpsilonNum = 0.001f;
+    private const float StuckCriterion = 0.01f;
     private const float MaxStuckTime = 1.5f;
     
     private static readonly Vector2[] _escapeSampleDirs = {
@@ -290,7 +293,7 @@ public class FishAIController : MonoBehaviour
         if (_diver == null) return;
 
         float dist = Vector2.Distance(_diver.position, transform.position);
-        if (dist > _attackRange * 1.2f) return; // 약간 여유
+        if (dist > _attackRange * _rangeOffsetFactor) return; 
         
         DiverStatus diverStatus = _diver.GetComponent<DiverStatus>();
         if (diverStatus != null)
@@ -334,19 +337,16 @@ public class FishAIController : MonoBehaviour
         
         Vector2 origin = transform.position;
         Vector2 forward = desired.normalized;
-
-        // 1. 정면으로 먼저 체크
+        
         RaycastHit2D hit = Physics2D.Raycast(origin, forward, _rayDistance, _obstacleMask);
-
-        // 앞에 아무것도 없으면 그냥 원하는 방향으로 감
-        if (!hit)
-            return forward;
-
-        // 2. 벽을 따라 미끄러지는 방향 계산 (법선의 수직 방향 = 탄젠트)
+        
+        if (!hit)  return forward;
+        
+        // 벽을 따라 미끄러지는 방향 계산 
         Vector2 normal  = hit.normal;
         Vector2 tangent = new Vector2(-normal.y, normal.x); // Perpendicular
 
-        // 3. 원래 가려던 쪽과 더 비슷한 방향으로 선택
+        // 원래 가려던 쪽과 더 비슷한 방향으로 선택
         if (Vector2.Dot(tangent, forward) < 0f)
             tangent = -tangent;
 
@@ -359,7 +359,7 @@ public class FishAIController : MonoBehaviour
         float moved = (currPos - _lastPos).magnitude;
 
         // 거의 안 움직였으면 타이머 증가
-        if (moved < 0.01f)
+        if (moved < StuckCriterion)
             _stuckTimer += Time.deltaTime;
         else
             _stuckTimer = 0f;
@@ -371,7 +371,7 @@ public class FishAIController : MonoBehaviour
             // 끼임 탈출
             Vector2 escapeDir = GetEscapeDirectionFromWalls();
             
-            EnterEscape(escapeDir,   _move.MaxSpeed * 1.5f);
+            EnterEscape(escapeDir,   _move.MaxSpeed * _escapeSpeedFactor);
             _stuckTimer = 0f;
         }
     }
@@ -393,7 +393,7 @@ public class FishAIController : MonoBehaviour
             {
                 foundWall = true;
                 
-                accumulated += hit.normal; //벽 표면의 법선 벡터
+                accumulated += hit.normal; 
             }
         }
 
@@ -416,59 +416,16 @@ public class FishAIController : MonoBehaviour
         Gizmos.color = Color.yellow;
         //Gizmos.DrawLine(origin, origin + dir * _rayDistance);
         
-        // 2) 어그로 거리 / 공격 거리 원으로 표시
+       
         if (_isAggressive)
         {
             // 어그로 범위
-            Gizmos.color = new Color(1f, 0.5f, 0f, 0.4f); // 살짝 투명한 주황색
+            Gizmos.color = Color.magenta; 
             Gizmos.DrawWireSphere(origin, _aggroRadius);
 
             // 공격 범위
-            Gizmos.color = new Color(1f, 0f, 0f, 0.7f);   // 좀 더 진한 빨간색
+            Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(origin, _attackRange);
-        }
-
-        // 3) 플레이어 방향 레이캐스트 (라인 색으로 막힘/안막힘 표시)
-        if (_diver != null && _isAggressive)
-        {
-            Vector2 toDiver = (Vector2)_diver.position - origin;
-            float distToDiver = toDiver.magnitude;
-
-            if (distToDiver > 0.001f)
-            {
-                Vector2 dirToDiver = toDiver.normalized;
-
-                // 실제로 레이캐스트 날려보기 (어그로 거리까지만)
-                RaycastHit2D hit = Physics2D.Raycast(
-                    origin,
-                    dirToDiver,
-                    _aggroRadius,
-                    _obstacleMask
-                );
-
-                Color rayColor;
-
-                if (hit.collider == null)
-                {
-                    // 아무것도 안 막고 있음 → 라인 초록색
-                    rayColor = Color.green;
-                }
-                else if (hit.collider.transform == _diver)
-                {
-                    // 레이가 직접 플레이어에 닿음 → 초록색
-                    rayColor = Color.green;
-                }
-                else
-                {
-                    // 중간에 벽 / 장애물이 막고 있음 → 빨간색
-                    rayColor = Color.red;
-                }
-
-                Gizmos.color = rayColor;
-                // 실제 레이 길이는 플레이어까지 or 어그로 반경까지만
-                float lineLen = Mathf.Min(distToDiver, _aggroRadius);
-                Gizmos.DrawLine(origin, origin + dirToDiver * lineLen);
-            }
         }
     }
 #endif
