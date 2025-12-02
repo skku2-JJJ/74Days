@@ -212,6 +212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fishType: 8
+  _qteDifficulty01: 0.8
   _escapeBurstSpeed: 8
   _escapeRandomFactor: 0.2
 --- !u!114 &551552660865721424
@@ -226,7 +227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 952370d1f14e5024182ca2cb75826df0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxSpeed: 4
+  _maxSpeed: 6
   _responsiveness: 10
   _buoyancy: 0.2
   _maxVerticalSpeed: 3
