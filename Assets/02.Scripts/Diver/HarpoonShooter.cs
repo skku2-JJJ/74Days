@@ -263,10 +263,10 @@ public class HarpoonShooter : MonoBehaviour
         IFishCapturable fish = proj.GetComponentInChildren<IFishCapturable>();
         if (fish != null)
         {
-            _diverStatus.GainResource(fish.Type);
+            _diverStatus.GainResource(fish.FishType);
 
             Sprite spirte = fish.Transform.GetComponentInChildren<SpriteRenderer>().sprite;
-            ResourceType resourceType = fish.Type;
+            ResourceType resourceType = fish.FishType;
 
             _getUI.UIUpdate(resourceType, spirte, ResourceCategory.Food, 1); //Get UI update
             _diverStatus.GainResource(fish.FishType);
