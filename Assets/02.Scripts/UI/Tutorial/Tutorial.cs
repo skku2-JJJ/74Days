@@ -31,7 +31,7 @@ public class Tutorial : MonoBehaviour
 
     void Start()
     {
-        Init();
+        if (DayManager.Instance.CurrentDay == 1 && DayManager.Instance.currentPhase == DayPhase.Morning) Init();  
     }
 
     IEnumerator TypeRoutine()
@@ -47,7 +47,6 @@ public class Tutorial : MonoBehaviour
         }
 
         isTyping = false;
-        order++;
     }
 
     public void NextText()
@@ -59,26 +58,10 @@ public class Tutorial : MonoBehaviour
             isTyping = false;
         }
 
-        switch (order)
-        {
-            case 7:
-                _guides[0].SetActive(true);
-                _guides[1].SetActive(false);
-                _guides[2].SetActive(false);
-                break;
-            case 8:
-                _guides[0].SetActive(false);
-                _guides[1].SetActive(true);
-                _guides[2].SetActive(false);
-                break;
-            case 9:
-                _guides[0].SetActive(false);
-                _guides[1].SetActive(false);
-                _guides[2].SetActive(true);
-                break;
-        }
         // 다음 문장으로
-        
+        if ( typingCoroutine != null ) order++;
+        ShowGuide();
+
         if (order < fullText.Length) typingCoroutine = StartCoroutine(TypeRoutine());
         else
         {
@@ -103,6 +86,38 @@ public class Tutorial : MonoBehaviour
         _guides[0].SetActive(true);
         _guides[1].SetActive(true);
         _guides[2].SetActive(false);
+        _guides[3].SetActive(false);
+    }
+
+    void ShowGuide()
+    {
+        switch (order)
+        {
+            case 5:
+                _guides[0].SetActive(true);
+                _guides[1].SetActive(false);
+                _guides[2].SetActive(false);
+                _guides[3].SetActive(false);
+                break;
+            case 6:
+                _guides[0].SetActive(false);
+                _guides[1].SetActive(true);
+                _guides[2].SetActive(false);
+                _guides[3].SetActive(false);
+                break;
+            case 7:
+                _guides[0].SetActive(false);
+                _guides[1].SetActive(false);
+                _guides[2].SetActive(true);
+                _guides[3].SetActive(false);
+                break;
+            case 8:
+                _guides[0].SetActive(false);
+                _guides[1].SetActive(false);
+                _guides[2].SetActive(false);
+                _guides[3].SetActive(true);
+                break;
+        }
     }
 
 }
