@@ -4,6 +4,8 @@ public class DistributionUIOpenClose : MonoBehaviour
 {
     [SerializeField]
     private UIBasicOpenClose _divisionUI;
+    [SerializeField]
+    private AudioClip _clip;
 
     private bool _isInside = false;
 
@@ -54,6 +56,13 @@ public class DistributionUIOpenClose : MonoBehaviour
         {
             _divisionUI.Open();
             Debug.Log("[DistributionUIOpenClose] divisionUI 열기");
+            SoundPlay(_clip);
         }
+    }
+
+    private void SoundPlay(AudioClip audioClip)
+    {
+        if (audioClip == null) return;
+        SoundManager.Instance.PlaySound(audioClip);
     }
 }

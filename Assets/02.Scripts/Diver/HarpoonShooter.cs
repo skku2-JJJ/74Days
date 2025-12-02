@@ -264,12 +264,6 @@ public class HarpoonShooter : MonoBehaviour
         if (fish != null)
         {
             _diverStatus.GainResource(fish.FishType);
-
-            Sprite spirte = fish.Transform.GetComponentInChildren<SpriteRenderer>().sprite;
-            ResourceType resourceType = fish.FishType;
-
-            _getUI.UIUpdate(resourceType, spirte, ResourceCategory.Food, 1); //Get UI update
-            _diverStatus.GainResource(fish.FishType);
             fish.Stored();
             Debug.Log(fish);  
         }

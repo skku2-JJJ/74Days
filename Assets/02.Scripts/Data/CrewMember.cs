@@ -7,6 +7,10 @@ public class CrewMember
     public string CrewName;
     public int CrewID;
 
+    [Header("sprite")]
+    public Sprite AliveSprite;
+    public Sprite DeadSprite;
+
     [Header("Vital Status")]
     [Range(0, 100)] public float Hunger = 100f;          // 배고픔 (0=굶어죽음, 100=배부름)
     [Range(0, 100)] public float Thirst = 100f;          // 갈증 (0=탈수, 100=충분)
