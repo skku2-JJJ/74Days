@@ -147,6 +147,11 @@ public class ShipManager : MonoBehaviour
         if (success)
         {
             OnShipStatusChanged?.Invoke(ship);
+
+            // 인벤토리 변경 이벤트 발생 (실시간 UI 업데이트)
+            OnResourceChanged?.Invoke(ResourceType.Wood, -materialAmount);
+            OnInventoryChanged?.Invoke();
+
             float repairAmount = materialAmount;
             Debug.Log($"[수리 완료] Hp +{repairAmount:F1}% (재료 소비: {materialAmount})");
         }
