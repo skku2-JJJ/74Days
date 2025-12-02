@@ -275,10 +275,11 @@ public class FishAIController : MonoBehaviour
         if (diverStatus != null)
         {
             diverStatus.TakeDamage(1);  
+            Debug.Log("Attack!");
         }
 
         // TODO : 공격 애니메이션 
-        _animator?.SetTrigger("Attack");
+        _animator.SetTrigger("Attack");
     }
     
     private Vector2 GetWanderDirection()
