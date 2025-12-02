@@ -18,8 +18,11 @@ public class DiverStatus : MonoBehaviour
     
     [Header("산소 고갈 시 체력 손실 설정")]
     [SerializeField] private float  _oxygenDepletedDamageInterval = 1f;   
-    [SerializeField] private int _oxygenDepletedDamagePerTick = 5;  
-    
+    [SerializeField] private int _oxygenDepletedDamagePerTick = 5;
+
+    [Header("UI")]
+    [SerializeField] private GetItemUIUpdate _getUI;
+
     // 참조
     private Animator _animator;
     
@@ -163,6 +166,8 @@ public class DiverStatus : MonoBehaviour
     
     public void GainResource(ResourceType type, int amount = 1)
     {
+        _getUI.UIUpdate(type); //Get UI update
+
         DiveBag.Add(type, amount);
 
         if (_bagUI != null)
