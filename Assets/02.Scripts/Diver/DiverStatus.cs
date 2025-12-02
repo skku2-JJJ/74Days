@@ -110,8 +110,7 @@ public class DiverStatus : MonoBehaviour
             Die();
             return;
         }
-
-        // TODO: HP UI 갱신, 피격 애니메이션
+        
         _animator?.SetTrigger("Hit");
         
     }
