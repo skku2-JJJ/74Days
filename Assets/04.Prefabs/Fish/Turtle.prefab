@@ -212,7 +212,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fishType: 6
-  despawnDistanceFromCamera: 30
   _escapeBurstSpeed: 10
   _escapeRandomFactor: 0.2
 --- !u!114 &6789207177189485712
@@ -252,6 +251,10 @@ MonoBehaviour:
   _idleMinDuration: 1
   _idleMaxDuration: 3
   _idleChanceAfterWander: 0.4
+  _isAggressive: 0
+  _aggroRadius: 4
+  _attackRange: 0.8
+  _attackCooltime: 1.5
   _obstacleMask:
     serializedVersion: 2
     m_Bits: 8
@@ -313,8 +316,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _visualTransform: {fileID: 9035933729197419907}
   _escapeMoveSpeed: 3
-  _maxStruggleAngle: 15
-  _struggleFrequency: 7
+  _maxStruggleAngle: 30
+  _struggleFrequency: 14
 --- !u!58 &7306618142823707263
 CircleCollider2D:
   m_ObjectHideFlags: 0
