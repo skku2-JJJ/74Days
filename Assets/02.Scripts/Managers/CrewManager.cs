@@ -7,6 +7,9 @@ public class CrewManager : MonoBehaviour
 {
     public static CrewManager Instance { get; private set; }
 
+    [Header("Crew Data")]
+    [SerializeField] private CrewDatabase crewDatabase;  // 선원 데이터베이스
+
     [SerializeField] private List<CrewMember> crewMembers = new List<CrewMember>();
 
     // 이벤트
@@ -246,23 +249,43 @@ public class CrewManager : MonoBehaviour
     }
 
     /// <summary>
-    /// 초기 선원 3명을 100% 상태로 생성
+    /// CrewDatabase에서 초기 선원들을 로드하여 생성
     /// </summary>
     private void InitializeDefaultCrew()
     {
-        string[] defaultNames = { "지원", "민관", "재현" };
-
-        for (int i = 0; i < 3; i++)
+        // CrewDatabase가 할당되지 않았을 경우 경고
+        if (crewDatabase == null)
         {
-            // CrewMember 생성자: (string name, int id)
-            CrewMember newCrew = new CrewMember(defaultNames[i], i);
+            Debug.LogError("[CrewManager] CrewDatabase가 할당되지 않았습니다! Unity Inspector에서 CrewDatabase를 할당하세요.");
+            return;
+        }
 
-            // 스탯은 생성자에서 이미 100%로 초기화됨 (CrewMember 기본값)
-            // 필요 시 추가 설정 가능
-            newCrew.ResetDailyResourceFlags();
+        // CrewDatabase 초기화
+        crewDatabase.Initialize();
 
-            crewMembers.Add(newCrew);
-            Debug.Log($"[CrewManager] 선원 생성: {newCrew.CrewName} (ID: {newCrew.CrewID})");
+        // 기본 선원 프리셋 가져오기 (3명)
+        List<CrewPreset> defaultPresets = crewDatabase.GetDefaultCrewPresets(3);
+
+        if (defaultPresets.Count == 0)
+        {
+            Debug.LogError("[CrewManager] CrewDatabase에 선원 프리셋이 없습니다!");
+            return;
+        }
+
+        // CrewPreset에서 CrewMember 인스턴스 생성
+        foreach (var preset in defaultPresets)
+        {
+            CrewMember newCrew = CrewMember.FromPreset(preset);
+
+            if (newCrew != null)
+            {
+                crewMembers.Add(newCrew);
+                Debug.Log($"[CrewManager] 선원 생성 완료: {newCrew.CrewName} (ID: {newCrew.CrewID}) - 스프라이트: {(newCrew.AliveSprite != null ? "있음" : "없음")}");
+            }
+            else
+            {
+                Debug.LogError($"[CrewManager] CrewPreset에서 CrewMember 생성 실패: {preset.crewName}");
+            }
         }
     }
 }

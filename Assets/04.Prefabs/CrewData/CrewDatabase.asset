@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c37ab2a146e3a4d08a164b5b094f9f6c, type: 3}
+  m_Name: CrewDatabase
+  m_EditorClassIdentifier: 
+  allCrewPresets:
+  - {fileID: 11400000, guid: c1c20d0ae8140410ab67bcfddc048fd9, type: 2}
+  - {fileID: 11400000, guid: 5aa4f54de66094477beb753fa4755429, type: 2}
+  - {fileID: 11400000, guid: d7a156ec06fac4b8ab67b7b175be3a78, type: 2}

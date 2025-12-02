@@ -4658,6 +4658,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f851065565659b64dbf2c401ef0edac4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  crewDatabase: {fileID: 11400000, guid: 7371e2e3073cb40cabfaee0099d7982a, type: 2}
   crewMembers:
   - CrewName: "\uC9C0\uC6D0"
     CrewID: 0

@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35d77187d10de4dbe93cc2f77f6b36b5, type: 3}
+  m_Name: CrewPreset 2
+  m_EditorClassIdentifier: 
+  crewName: "\uC7AC\uD604"
+  crewID: 2
+  aliveSprite: {fileID: -3882289411741883795, guid: b6c00bdde13883b4a9a8adcb4f6b9625, type: 3}
+  deadSprite: {fileID: -3006545364638393876, guid: 4320c92da2da3884b8353d481bcdfd5d, type: 3}
+  initialHunger: 100
+  initialThirst: 100
+  initialTemperature: 100
+  minHungerDecrease: 10
+  maxHungerDecrease: 20
+  minThirstDecrease: 15
+  maxThirstDecrease: 25
+  minTemperatureDecrease: 0
+  maxTemperatureDecrease: 10
+  foodHungerRecovery: 25
+  waterThirstRecovery: 30
+  herbsTemperatureRecovery: 20
+  criticalThreshold: 20
+  poorThreshold: 50
