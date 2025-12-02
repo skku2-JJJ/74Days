@@ -30,7 +30,7 @@ public class FishVisualController : MonoBehaviour
     private const float EpsilonNum = 0.0001f;
     
     private SpriteRenderer _sprite;
-    private Animator _anim;
+    private Animator _animator;
 
     private bool _isRightForward;
     private bool _isFacingLocked = false;
@@ -53,7 +53,7 @@ public class FishVisualController : MonoBehaviour
     private void Init()
     {
         _sprite = GetComponent<SpriteRenderer>();
-        _anim = GetComponent<Animator>();
+        _animator = GetComponent<Animator>();
         
         _isRightForward = _textureFacesRight? _sprite.flipX : !_sprite.flipX;
         ApplyFacing();
@@ -61,11 +61,10 @@ public class FishVisualController : MonoBehaviour
 
     private void TransitAnimation(Vector2 currentVelocity)
     {
-        // 1) Speed 파라미터
         float targetSpeed = Mathf.Clamp01(currentVelocity.magnitude);
-        float current = _anim.GetFloat("Speed");
+        float current = _animator.GetFloat("Speed");
         float smoothed = Mathf.Lerp(current, targetSpeed, _animSpeedLerp * Time.deltaTime);
-        _anim.SetFloat("Speed", smoothed);
+        _animator.SetFloat("Speed", smoothed);
     }
     private void HandleFlipX(Vector2 desiredDir, Vector2 currentVelocity)
     {
@@ -76,7 +75,7 @@ public class FishVisualController : MonoBehaviour
         
         float x = desiredDir.x;
         
-        if (Mathf.Abs(x) < _flipDirThreshold) return; // 거의 수직이면 방향 유지
+        if (Mathf.Abs(x) < _flipDirThreshold) return; 
             
 
         bool right = x > 0f;
@@ -121,7 +120,7 @@ public class FishVisualController : MonoBehaviour
     }
     
     
-    // 🔥 QTE 등에서 방향을 강제로 고정할 때 호출
+    //  QTE 등에서 방향을 강제로 고정할 때 호출
     public void ForceLookAwayFrom(Vector2 diverWorldPos, bool lockFacing)
     {
         bool shouldFaceRight = diverWorldPos.x < transform.position.x;
