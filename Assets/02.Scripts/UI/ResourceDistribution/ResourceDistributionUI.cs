@@ -168,6 +168,7 @@ public class ResourceDistributionUI : MonoBehaviour
 
     /// <summary>
     /// 생존한 선원들의 슬롯 초기화 (Editor에 배치된 슬롯 재사용)
+    /// ID 기반 매칭: Slot i는 CrewID i인 선원을 표시
     /// </summary>
     private void CreateCrewSlots()
     {
@@ -182,35 +183,38 @@ public class ResourceDistributionUI : MonoBehaviour
         // Editor에 미리 배치된 CrewResourceItem 슬롯들 찾기
         var existingCrews = crewsParent.GetComponentsInChildren<CrewResourceItem>(true);
 
-        // 생존한 선원만 표시
-        var aliveCrews = CrewManager.Instance.CrewMembers
-            .Where(c => c.IsAlive)
-            .ToList();
+        // 전체 선원 목록 가져오기
+        var allCrews = CrewManager.Instance.CrewMembers;
 
-        Debug.Log($"[ResourceDistributionUI] 생존 선원 {aliveCrews.Count}명, 기존 슬롯 {existingCrews.Length}개");
+        Debug.Log($"[ResourceDistributionUI] 전체 선원 {allCrews.Count}명, 기존 슬롯 {existingCrews.Length}개");
 
-        // 생존 선원 수만큼 슬롯 활성화 및 초기화
+        // ID 기반 매칭: Slot i → CrewID가 i인 선원
         for (int i = 0; i < existingCrews.Length; i++)
         {
-            if (i < aliveCrews.Count)
+            // CrewID가 i인 선원 찾기
+            var crew = allCrews.FirstOrDefault(c => c.CrewID == i);
+
+            // 해당 선원이 존재하고 생존 중이면 슬롯 활성화
+            if (crew != null && crew.IsAlive)
             {
-                // 슬롯 활성화 및 데이터 초기화
                 existingCrews[i].gameObject.SetActive(true);
-                existingCrews[i].Initialize(aliveCrews[i]);
+                existingCrews[i].Initialize(crew);
                 crewItems.Add(existingCrews[i]);
+                Debug.Log($"[ResourceDistributionUI] Slot {i} → {crew.CrewName} (ID: {crew.CrewID})");
             }
             else
             {
-                // 남은 슬롯은 숨김
+                // 선원이 없거나 사망한 경우 슬롯 숨김
                 existingCrews[i].gameObject.SetActive(false);
+
+                if (crew != null && !crew.IsAlive)
+                {
+                    Debug.Log($"[ResourceDistributionUI] Slot {i} → 사망한 선원 {crew.CrewName} (숨김)");
+                }
             }
         }
 
-        // 선원이 슬롯보다 많으면 경고
-        if (aliveCrews.Count > existingCrews.Length)
-        {
-            Debug.LogWarning($"[ResourceDistributionUI] 생존 선원({aliveCrews.Count})이 슬롯({existingCrews.Length})보다 많습니다!");
-        }
+        Debug.Log($"[ResourceDistributionUI] 활성화된 선원 슬롯: {crewItems.Count}개");
     }
 
     // ========== 자원 슬롯 관리 ==========
