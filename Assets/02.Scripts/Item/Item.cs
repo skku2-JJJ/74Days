@@ -8,7 +8,8 @@ public class Item : MonoBehaviour
     [Header("아이템 정보")]
     [SerializeField] private ResourceType _resourceType;
     [SerializeField] private int _amount = 1;
-
+    [SerializeField] private int _oxygenAmount = 10;
+    
     [Header("Floating 설정")]
     [SerializeField] private float _bobAmplitude = 0.1f;   
     [SerializeField] private float _bobFrequency = 2f;    
@@ -42,6 +43,8 @@ public class Item : MonoBehaviour
         if (diverStatus != null)
         {
             diverStatus.GainResource(_resourceType, _amount);
+            diverStatus.RestoreOxygen(_oxygenAmount);
+            
             // TODO : 아이템 획득 vfx, sfx
             
             Destroy(gameObject);
