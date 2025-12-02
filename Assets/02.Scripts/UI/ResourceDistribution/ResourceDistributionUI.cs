@@ -314,7 +314,7 @@ public class ResourceDistributionUI : MonoBehaviour
         // UI 닫기
         _distributeUI.Close();
 
-        // Fade Out → DayManager에 위임 → Fade In
+        // Fade Out → DayManager에 위임 → Fade In (게임오버가 아닐 경우만)
         if (FadeManager.Instance != null)
         {
             FadeManager.Instance.FadeOutToBlack(2.5f, () =>
@@ -323,10 +323,14 @@ public class ResourceDistributionUI : MonoBehaviour
                 if (DayManager.Instance != null)
                 {
                     DayManager.Instance.CompleteEvening();
-                }
 
-                // Fade In
-                FadeManager.Instance.FadeIn(3f);
+                    // 게임오버가 아닐 때만 Fade In (정상 진행)
+                    // 게임오버면 HandleGameEnd()에서 GameOver 씬으로 전환
+                    if (!DayManager.Instance.IsGameOver)
+                    {
+                        FadeManager.Instance.FadeIn(3f);
+                    }
+                }
             });
         }
     }

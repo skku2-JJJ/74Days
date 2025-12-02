@@ -1434,9 +1434,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 933152779343114519, guid: f2ad939002568429b878578bc3dcc763, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5115395197686543884, guid: f2ad939002568429b878578bc3dcc763, type: 3}
       propertyPath: m_Name
       value: FadeManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5173334422527346396, guid: f2ad939002568429b878578bc3dcc763, type: 3}
+      propertyPath: _blackColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6183540738603708714, guid: f2ad939002568429b878578bc3dcc763, type: 3}
+      propertyPath: m_SortingOrder
+      value: 9999
+      objectReference: {fileID: 0}
+    - target: {fileID: 6722142666285963056, guid: f2ad939002568429b878578bc3dcc763, type: 3}
+      propertyPath: m_Color.a
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8251175544500711016, guid: f2ad939002568429b878578bc3dcc763, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1477,6 +1493,14 @@ PrefabInstance:
     - target: {fileID: 8251175544500711016, guid: f2ad939002568429b878578bc3dcc763, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8866079378396161910, guid: f2ad939002568429b878578bc3dcc763, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 8866079378396161910, guid: f2ad939002568429b878578bc3dcc763, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1687,9 +1711,9 @@ SceneRoots:
   - {fileID: 1563211967}
   - {fileID: 90724922}
   - {fileID: 315391605}
+  - {fileID: 1655048168}
   - {fileID: 312948041}
   - {fileID: 1088117094}
-  - {fileID: 1655048168}
   - {fileID: 1393979609}
   - {fileID: 998058606}
   - {fileID: 192230743}
