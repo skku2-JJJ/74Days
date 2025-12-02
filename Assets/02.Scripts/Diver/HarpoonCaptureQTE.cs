@@ -116,17 +116,15 @@ public class HarpoonCaptureQTE : MonoBehaviour
     
     private void SetupDifficultyForFish(IFishCapturable fish)
     {
-        // 기본값: 중간 난이도
         float difficulty01 = 0.5f;
         
         // 물고기별 기본 난이도
         if (fish is FishBase baseFish)
         {
-            // 이 프로퍼티는 FishBase 쪽에서 구현 (아래 참고 코드)
             difficulty01 = baseFish.CurrentQteDifficulty01;
         }
 
-        // 난이도에 따른 실제 값 세팅
+        // QTE 난이도 적용
         _curCaptureDuration =
             _captureDuration * _durationScale.Evaluate(difficulty01);
 
@@ -162,6 +160,13 @@ public class HarpoonCaptureQTE : MonoBehaviour
         if (_input.IsPullKeyPressed)
         {
             _captureGauge += _curGaugeGainPerPress;
+            
+            FishHitFeedback fishHitFeedback = _targetFish.Transform.GetComponent<FishHitFeedback>();
+            if (fishHitFeedback != null)
+            {
+                fishHitFeedback.PlayPunchScale();
+            }
+            
         }
         
         _captureGauge = Mathf.Clamp01(_captureGauge);

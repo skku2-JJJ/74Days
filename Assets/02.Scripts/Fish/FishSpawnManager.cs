@@ -253,7 +253,6 @@ public class FishSpawnManager : MonoBehaviour
         if (prefab == null) return;
 
         Instantiate(prefab, pos, Quaternion.identity);
-        // FishBase에서 OnEnable 시 RegisterFish 호출 → 종별 제한, 리스트 관리 자동 처리
     }
 
     private void CleanupNullFish()
@@ -279,7 +278,7 @@ public class FishSpawnManager : MonoBehaviour
                 minY = middleMaxY;
                 maxY = shallowMaxY;
                 break;
-            default: // Deep
+            default: 
                 minY = spawnAreaMin.y;
                 maxY = middleMaxY;
                 break;
