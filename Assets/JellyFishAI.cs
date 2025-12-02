@@ -3,104 +3,91 @@ using UnityEngine;
 [RequireComponent(typeof(FishMoveController))]
 public class JellyFishAI : MonoBehaviour
 {
-     [Header("이동 설정")]
-    [SerializeField] private float _moveSpeed = 1.2f;
+      [Header("Movement Settings")]
+    [SerializeField] private float _wanderMaxSpeed = 0.5f;            
+    [SerializeField] private float _directionChangeInterval = 4.0f;  
+    [SerializeField] private float _wanderJitter = 40f;              
 
-    [Tooltip("방향을 바꾸는 최소 간격(초)")]
-    [SerializeField] private float _minDirChangeInterval = 1.5f;
+    private FishMoveController _moveController;
+    private Vector2 _wanderDir = Vector2.up;
+    private float _timer;
 
-    [Tooltip("방향을 바꾸는 최대 간격(초)")]
-    [SerializeField] private float _maxDirChangeInterval = 3.5f;
-
-    [Header("위아래 흔들림(bob)")]
-    [SerializeField] private float _bobAmplitude = 0.3f;
-    [SerializeField] private float _bobFrequency = 2f;
-
-    [Header("피해 설정")]
-    [SerializeField] private int _damage = 10;
-    [SerializeField] private float _hitCooldown = 0.6f;
-
-    private Vector2 _moveDir;
-    private float _dirTimer;
-    private float _currentDirInterval;
-
-    private float _time;
-    private float _currentBobOffset;
+    [Header("Damage Settings")]
+    [SerializeField] private int _damageAmount = 10;
+    [SerializeField] private float _hitCooldown = 0.5f;
 
     private float _lastHitTime = -999f;
+    private Animator _animator;
 
-    private void Awake()
+    void Awake()
     {
-        PickNewDirection();
+        Init();
     }
+   
 
     private void Update()
     {
-        _time += Time.deltaTime;
+        if (_moveController.IsMovementLocked) return;
 
-        // 방향 전환 타이머
-        _dirTimer += Time.deltaTime;
-        if (_dirTimer >= _currentDirInterval)
+        _timer += Time.deltaTime;
+        
+        if (_timer >= _directionChangeInterval)
         {
-            PickNewDirection();
+            SetNewRandomDirection();
+            _timer = 0f;
         }
 
-        UpdateMovement();
+       
+        _moveController.DesiredDir = _wanderDir;
     }
 
-    private void PickNewDirection()
+    private void Init()
     {
-        _dirTimer = 0f;
-        _currentDirInterval = Random.Range(_minDirChangeInterval, _maxDirChangeInterval);
+        _moveController = GetComponent<FishMoveController>();
+        _animator = GetComponent<Animator>();
+        _moveController.SetOverrideSpeed(_wanderMaxSpeed, float.MaxValue);
+        
+        _wanderDir = Random.insideUnitCircle.normalized;
+        if (_wanderDir == Vector2.zero)
+            _wanderDir = Vector2.right;
 
-        // 완전 랜덤 방향
-        _moveDir = Random.insideUnitCircle.normalized;
-        if (_moveDir == Vector2.zero)
-            _moveDir = Vector2.right;
+        _timer = 0f;
     }
 
-    private void UpdateMovement()
+    private void SetNewRandomDirection()
     {
-        Vector3 pos = transform.position;
+        float jitterAngle = Random.Range(-_wanderJitter, _wanderJitter);
+        _wanderDir = (Quaternion.Euler(0, 0, jitterAngle) * _wanderDir).normalized;
 
-        // 기본 이동
-        pos += (Vector3)(_moveDir * _moveSpeed * Time.deltaTime);
-
-        // bobbing: 위아래 살짝 흔들기 (기존 위치 기준으로 오차 누적 안 되게)
-        float newBob = Mathf.Sin(_time * _bobFrequency) * _bobAmplitude;
-        pos.y += newBob - _currentBobOffset;
-        _currentBobOffset = newBob;
-
-        transform.position = pos;
+        if (_wanderDir == Vector2.zero)
+            _wanderDir = Random.insideUnitCircle.normalized;
     }
+    
 
-    private void OnTriggerStay2D(Collider2D other)
+    private void OnCollisionStay2D(Collision2D collision)
     {
-        if (!other.CompareTag("Player")) return;
+        if (!collision.collider.CompareTag("Player")) return;
 
         if (Time.time - _lastHitTime < _hitCooldown) return;
         _lastHitTime = Time.time;
 
-        // 1) 체력 데미지
-        var diverStatus = other.GetComponent<DiverStatus>();
+        GameObject playerObj = collision.gameObject;
+        
+        DiverStatus diverStatus = playerObj.GetComponent<DiverStatus>();
         if (diverStatus != null)
-        {
-            diverStatus.TakeDamage(_damage);
-        }
-
-        // 2) 넉백
-        var diverMove = other.GetComponent<DiverMoveController>();
+            diverStatus.TakeDamage(_damageAmount);
+        
+        var diverMove = playerObj.GetComponent<DiverMoveController>();
         if (diverMove != null)
         {
-            Vector2 dir = ((Vector2)other.transform.position - (Vector2)transform.position).normalized;
-            diverMove.AddRecoil(dir);
+            Vector2 knockDir =  ((Vector2)playerObj.transform.position - (Vector2)transform.position).normalized;
+            diverMove.AddRecoil(knockDir);
         }
-
-        // 3) QTE 중이면 강제 실패
-        var qte = other.GetComponent<HarpoonCaptureQTE>();
+        
+        HarpoonCaptureQTE qte = playerObj.GetComponent<HarpoonCaptureQTE>();
         if (qte != null && qte.IsCapturing)
-        {
             qte.ForceFailCapture();
-        }
+        
+        _animator.SetTrigger("Attack");
     }
 }
