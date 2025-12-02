@@ -84,26 +84,41 @@ public class MainMenuUI : MonoBehaviour
 
         // GameOverData 초기화
         GameOverData.Reset();
+        Debug.Log("[MainMenu] GameOverData 리셋 완료");
 
-        // DayManager 초기화 (DontDestroyOnLoad로 유지될 수 있음)
+        // DayManager 초기화
         if (DayManager.Instance != null)
         {
-            // DayManager는 Ship 씬에서 자동으로 StartDay() 호출됨
-            Debug.Log("[MainMenu] DayManager 발견 - Ship 씬에서 초기화됨");
+            DayManager.Instance.ResetGameState();
+            Debug.Log("[MainMenu] DayManager 리셋 완료 - Day 1로 초기화");
+        }
+        else
+        {
+            Debug.LogWarning("[MainMenu] DayManager.Instance가 null입니다!");
         }
 
         // CrewManager 초기화
         if (CrewManager.Instance != null)
         {
-            Debug.Log("[MainMenu] CrewManager 발견 - Ship 씬에서 초기화됨");
+            CrewManager.Instance.ResetCrewData();
+            Debug.Log("[MainMenu] CrewManager 리셋 완료 - 선원 3명 재생성");
+        }
+        else
+        {
+            Debug.LogWarning("[MainMenu] CrewManager.Instance가 null입니다!");
         }
 
         // ShipManager 초기화
         if (ShipManager.Instance != null)
         {
-            Debug.Log("[MainMenu] ShipManager 발견 - Ship 씬에서 초기화됨");
+            ShipManager.Instance.ResetShipData();
+            Debug.Log("[MainMenu] ShipManager 리셋 완료 - 배 100% HP로 초기화");
+        }
+        else
+        {
+            Debug.LogWarning("[MainMenu] ShipManager.Instance가 null입니다!");
         }
 
-        Debug.Log("[MainMenu] 게임 데이터 초기화 완료");
+        Debug.Log("[MainMenu] 게임 데이터 초기화 완료 - 모든 데이터 리셋됨");
     }
 }

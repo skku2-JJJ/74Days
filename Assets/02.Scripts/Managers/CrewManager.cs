@@ -225,4 +225,44 @@ public class CrewManager : MonoBehaviour
 
         return summary;
     }
+
+    // ========== 게임 재시작을 위한 데이터 리셋 ==========
+
+    /// <summary>
+    /// 게임 재시작 시 선원 데이터를 완전히 초기화
+    /// MainMenuUI.ResetAllGameData()에서 호출
+    /// </summary>
+    public void ResetCrewData()
+    {
+        Debug.Log("[CrewManager] 선원 데이터 초기화 시작");
+
+        // 기존 선원 리스트 클리어
+        crewMembers.Clear();
+
+        // 초기 선원 5명 생성 (ID 1~5)
+        InitializeDefaultCrew();
+
+        Debug.Log($"[CrewManager] 선원 데이터 초기화 완료 - {crewMembers.Count}명 생성");
+    }
+
+    /// <summary>
+    /// 초기 선원 3명을 100% 상태로 생성
+    /// </summary>
+    private void InitializeDefaultCrew()
+    {
+        string[] defaultNames = { "지원", "민관", "재현" };
+
+        for (int i = 0; i < 3; i++)
+        {
+            // CrewMember 생성자: (string name, int id)
+            CrewMember newCrew = new CrewMember(defaultNames[i], i);
+
+            // 스탯은 생성자에서 이미 100%로 초기화됨 (CrewMember 기본값)
+            // 필요 시 추가 설정 가능
+            newCrew.ResetDailyResourceFlags();
+
+            crewMembers.Add(newCrew);
+            Debug.Log($"[CrewManager] 선원 생성: {newCrew.CrewName} (ID: {newCrew.CrewID})");
+        }
+    }
 }
