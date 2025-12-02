@@ -3,7 +3,7 @@
 public interface IFishCapturable
 {
     bool CanBeCaptured { get; }
-    ResourceType Type { get; }
+    ResourceType FishType { get; }
     // 유니티 Transform 노출
     Transform Transform { get; }
     

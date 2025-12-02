@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5705446085826125254}
   - component: {fileID: 2580569633295488204}
   - component: {fileID: 1708932264346277578}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 8305999716735382526}
   - component: {fileID: 4544636649979874070}
   - component: {fileID: 1247955212100740435}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SawShark
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -211,12 +211,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4362de6b5afeb3043adbb5fc879814df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fishType: 14
-  diver: {fileID: 0}
-  visualController: {fileID: 0}
-  _health: {fileID: 8305999716735382526}
-  _hitFeedback: {fileID: 5997129182146608718}
-  _captureStruggle: {fileID: 4544636649979874070}
+  _fishType: 4
+  despawnDistanceFromCamera: 30
   _escapeBurstSpeed: 18
   _escapeRandomFactor: 0.2
 --- !u!114 &3635307049780455345
@@ -258,9 +254,8 @@ MonoBehaviour:
   _idleChanceAfterWander: 0.4
   _obstacleMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   _rayDistance: 1.2
-  _diver: {fileID: 0}
   _fleeRadius: 4
   _fleeStrength: 1.5
   _escapeDuration: 3
