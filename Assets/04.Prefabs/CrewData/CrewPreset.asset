@@ -16,15 +16,15 @@ MonoBehaviour:
   crewID: 0
   aliveSprite: {fileID: -4541953881127276176, guid: 33554e98983775148b697ba2eacdf621, type: 3}
   deadSprite: {fileID: 5046992295978812273, guid: 7b12a5ab98020c748836bbad5a5c146f, type: 3}
-  initialHunger: 100
-  initialThirst: 100
-  initialTemperature: 100
-  minHungerDecrease: 10
-  maxHungerDecrease: 20
+  initialHunger: 70
+  initialThirst: 70
+  initialTemperature: 70
+  minHungerDecrease: 5
+  maxHungerDecrease: 40
   minThirstDecrease: 15
   maxThirstDecrease: 25
-  minTemperatureDecrease: 0
-  maxTemperatureDecrease: 10
+  minTemperatureDecrease: 5
+  maxTemperatureDecrease: 15
   foodHungerRecovery: 25
   waterThirstRecovery: 30
   herbsTemperatureRecovery: 20

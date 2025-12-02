@@ -214,7 +214,7 @@ public class CrewMember
             case ResourceCategory.Medicine:
                 HasReceivedMedicineToday = true;
                 break;
-            case ResourceCategory.Material:
+            case ResourceCategory.Wood:
                 // 수리 재료는 선원에게 줄 수 없음
                 Debug.LogWarning($"{CrewName}에게 {resourceData.displayName}을(를) 줄 수 없습니다!");
                 break;

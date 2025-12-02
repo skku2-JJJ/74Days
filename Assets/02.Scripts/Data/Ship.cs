@@ -116,7 +116,7 @@ public class Ship
         return _inventory.TotalRepairMaterials;
     }
 
-    // 배 수리 
+    // 배 수리 (데이터 기반)
     public bool RepairWithMaterials(int materialAmount)
     {
         // 0 이하 요청 방어
@@ -127,10 +127,22 @@ public class Ship
         if (_inventory.GetResourceAmount(ResourceType.Wood) < materialAmount)
             return false;
 
+        // ResourceDatabase에서 목재의 수리 회복량 가져오기
+        ResourceMetaData woodData = ResourceDatabaseManager.GetData(ResourceType.Wood);
+        if (woodData == null)
+        {
+            Debug.LogError("[Ship] Wood ResourceMetaData를 찾을 수 없습니다!");
+            return false;
+        }
+
         // 재료 소비
         _inventory.ConsumeResource(ResourceType.Wood, materialAmount);
 
-        RepairShip(materialAmount);
+        // 데이터 기반 수리량 계산: 목재 개수 × repairRecovery
+        float repairAmount = woodData.repairRecovery * materialAmount;
+        RepairShip(repairAmount);
+
+        Debug.Log($"[Ship] 수리 완료 - 목재 {materialAmount}개 사용, HP +{repairAmount:F1} (목재당 +{woodData.repairRecovery})");
 
         return true;
     }

@@ -6,9 +6,8 @@ public class HoverinformationDisplay : MonoBehaviour, IPointerEnterHandler, IPoi
     [Header("마우스 따라다닐 이미지")]
     [SerializeField] private Image hoverImage;
 
-    [Header("해당 자원의 효과")]
-    [SerializeField] private ResourceCategory _resourceCategory;
-    [SerializeField] private float _resourceStat = 1;
+    [Header("해당 자원 타입")]
+    [SerializeField] private ResourceType _resourceType;
 
     private bool isHovering = false;
 
@@ -38,17 +37,19 @@ public class HoverinformationDisplay : MonoBehaviour, IPointerEnterHandler, IPoi
     public void OnPointerEnter(PointerEventData eventData)
     {
         isHovering = true;
-        
+
         if (hoverImage != null)
         {
             hoverImage.gameObject.SetActive(true);
             ItemInformationText text = hoverImage.GetComponentInChildren<ItemInformationText>();
             if (text != null)
             {
-                text.TextUpdate(_resourceCategory, 1);
+                // ResourceDatabaseManager에서 메타데이터 가져오기
+                ResourceMetaData data = ResourceDatabaseManager.GetData(_resourceType);
+                text.TextUpdate(data);
             }
         }
-           
+
     }
 
     public void OnPointerExit(PointerEventData eventData)
