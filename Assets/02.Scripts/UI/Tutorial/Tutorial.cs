@@ -11,6 +11,8 @@ public class Tutorial : MonoBehaviour
 
     [SerializeField] private GameObject[] _guides;
 
+    [SerializeField] private UIBasicOpenClose _crewUI; //크루 ui 잠시 숨김
+
     private string[] fullText = 
     { 
         "파도에 한참을 떠밀려온 모양이다." , 
@@ -31,7 +33,11 @@ public class Tutorial : MonoBehaviour
 
     void Start()
     {
-        if (DayManager.Instance.CurrentDay == 1 && DayManager.Instance.currentPhase == DayPhase.Morning) Init();  
+        if (DayManager.Instance.CurrentDay == 1 && DayManager.Instance.currentPhase == DayPhase.Morning)
+        {
+            Init();
+            _crewUI.GetComponent<RectTransform>().anchoredPosition = _crewUI.ClosePos;
+        }
     }
 
     IEnumerator TypeRoutine()
@@ -87,6 +93,7 @@ public class Tutorial : MonoBehaviour
         _guides[1].SetActive(true);
         _guides[2].SetActive(false);
         _guides[3].SetActive(false);
+        _crewUI.Open();
     }
 
     void ShowGuide()
