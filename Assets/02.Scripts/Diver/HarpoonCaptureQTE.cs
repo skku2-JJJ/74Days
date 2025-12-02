@@ -81,6 +81,16 @@ public class HarpoonCaptureQTE : MonoBehaviour
         _impulseSource.GenerateImpulse(dir * _hitShakeStrength);
         
     }
+    
+    /// <summary>
+    /// QTE 강제 종료 시 (플레이어 피격 등) 호출
+    /// </summary>
+    public void ForceFailCapture()
+    {
+        if (!_isCapturing) return;
+        
+        FinishCapture(false);
+    }
 
     private void UpdateCaptureQTE()
     {

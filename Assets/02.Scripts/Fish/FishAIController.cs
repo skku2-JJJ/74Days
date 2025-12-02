@@ -358,6 +358,13 @@ public class FishAIController : MonoBehaviour
             diverMove.AddRecoil(knockDir);
         }
         
+        // QTE 강제 종료
+        HarpoonCaptureQTE qte = _diver.GetComponent<HarpoonCaptureQTE>();
+        if (qte != null && qte.IsCapturing)
+        {
+            qte.ForceFailCapture();
+        }
+        
     }
     
     private Vector2 GetWanderDirection()
