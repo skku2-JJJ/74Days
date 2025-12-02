@@ -391,10 +391,65 @@ public class FishAIController : MonoBehaviour
         if (!Application.isPlaying) return;
 
         Vector2 origin = transform.position;
+        
         Vector2 dir =  _move.DesiredDir.normalized;
-
         Gizmos.color = Color.yellow;
-        Gizmos.DrawLine(origin, origin + dir * _rayDistance);
+        //Gizmos.DrawLine(origin, origin + dir * _rayDistance);
+        
+        // 2) 어그로 거리 / 공격 거리 원으로 표시
+        if (_isAggressive)
+        {
+            // 어그로 범위
+            Gizmos.color = new Color(1f, 0.5f, 0f, 0.4f); // 살짝 투명한 주황색
+            Gizmos.DrawWireSphere(origin, _aggroRadius);
+
+            // 공격 범위
+            Gizmos.color = new Color(1f, 0f, 0f, 0.7f);   // 좀 더 진한 빨간색
+            Gizmos.DrawWireSphere(origin, _attackRange);
+        }
+
+        // 3) 플레이어 방향 레이캐스트 (라인 색으로 막힘/안막힘 표시)
+        if (_diver != null && _isAggressive)
+        {
+            Vector2 toDiver = (Vector2)_diver.position - origin;
+            float distToDiver = toDiver.magnitude;
+
+            if (distToDiver > 0.001f)
+            {
+                Vector2 dirToDiver = toDiver.normalized;
+
+                // 실제로 레이캐스트 날려보기 (어그로 거리까지만)
+                RaycastHit2D hit = Physics2D.Raycast(
+                    origin,
+                    dirToDiver,
+                    _aggroRadius,
+                    _obstacleMask
+                );
+
+                Color rayColor;
+
+                if (hit.collider == null)
+                {
+                    // 아무것도 안 막고 있음 → 라인 초록색
+                    rayColor = Color.green;
+                }
+                else if (hit.collider.transform == _diver)
+                {
+                    // 레이가 직접 플레이어에 닿음 → 초록색
+                    rayColor = Color.green;
+                }
+                else
+                {
+                    // 중간에 벽 / 장애물이 막고 있음 → 빨간색
+                    rayColor = Color.red;
+                }
+
+                Gizmos.color = rayColor;
+                // 실제 레이 길이는 플레이어까지 or 어그로 반경까지만
+                float lineLen = Mathf.Min(distToDiver, _aggroRadius);
+                Gizmos.DrawLine(origin, origin + dirToDiver * lineLen);
+            }
+        }
     }
 #endif
 }
