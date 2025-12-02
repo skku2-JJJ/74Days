@@ -30,6 +30,9 @@ public class HarpoonShooter : MonoBehaviour
     [Header("조준 / 슬로우 모션")]
     [SerializeField] private float _aimTimeScale = 0.4f;       
     [SerializeField] private float _timeScaleLerpSpeed = 10f;
+    
+    [Header("UI")]
+    [SerializeField] private GetItemUIUpdate _getUI;
 
 
 
