@@ -11,7 +11,10 @@ public class FishAIController : MonoBehaviour
         Chase,
         Attack
     }
-
+    
+    [Header("타겟(플레이어)")]
+    private Transform _diver;
+    
     [Header("State 결정 주기")]
     [SerializeField] private float _minDecideStateDuration = 2.0f;
     [SerializeField] private float _maxDecideStateDuration = 4.0f;
@@ -53,10 +56,7 @@ public class FishAIController : MonoBehaviour
     private Vector2 _lastPos;
     private float _stuckTimer;
     
-    [Header("플레이어 회피")]
-    private Transform _diver;
-    [SerializeField] private float _fleeRadius = 3f;
-    [SerializeField] private float _fleeStrength = 1.5f;
+    
     
     [Header("Escape 설정")]
     [SerializeField] private float _escapeDuration = 3f;
@@ -77,6 +77,7 @@ public class FishAIController : MonoBehaviour
         (Vector2.down + Vector2.left).normalized,
     };
 
+    
     private Animator _animator;
     
     private void Awake()
@@ -302,7 +303,7 @@ public class FishAIController : MonoBehaviour
         _attackDir = ((Vector2)_diver.position - (Vector2)transform.position).normalized;
         _move.SetOverrideSpeed(_move.MaxSpeed * _attackDashSpeedMultiplier, _attackDashDuration);
         
-        TryHitPlayer();
+        Invoke("TryHitPlayer", _attackDashDuration);
         _animator.SetTrigger("Attack");
     }
     
@@ -344,7 +345,7 @@ public class FishAIController : MonoBehaviour
         DiverStatus diverStatus = _diver.GetComponent<DiverStatus>();
         if (diverStatus != null)
         {
-            diverStatus.TakeDamage(1);  
+            diverStatus.TakeDamage();  
             Debug.Log("Attack!");
         }
         

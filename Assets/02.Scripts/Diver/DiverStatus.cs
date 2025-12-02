@@ -97,7 +97,7 @@ public class DiverStatus : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int  amount)
+    public void TakeDamage(int amount = 1)
     {
         if (IsDead) return;
         if (amount <= 0) return;
@@ -110,7 +110,8 @@ public class DiverStatus : MonoBehaviour
             Die();
         }
 
-        // TODO: HP UI 갱신
+        // TODO: HP UI 갱신, 피격 애니메이션
+        _animator?.SetTrigger("Hit");
     }
 
     public void Heal(int amount)
