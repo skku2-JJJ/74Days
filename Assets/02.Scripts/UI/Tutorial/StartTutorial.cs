@@ -34,17 +34,21 @@ public class StartTutorial : MonoBehaviour
         {
             StartIfFirstDay();
         }
-        if (!_story.IsStoryEnd)
+        else
         {
-            if (Input.GetKeyDown(KeyCode.Return))
+            if (!_story.IsStoryEnd && _story.IsEnterPossible)
             {
-                _story.NextTextStory();
+                if (Input.GetKeyDown(KeyCode.Return))
+                {
+                    _story.NextTextStory();
+                }
+            }
+            else if (!_isTutorialStarted)
+            {
+                _isTutorialStarted = true;
+                _tutorial.TutorialInit();
             }
         }
-        else if (!_isTutorialStarted)
-        {
-            _isTutorialStarted = true;
-            _tutorial.TutorialInit();
-        }
+        
     }
 }
