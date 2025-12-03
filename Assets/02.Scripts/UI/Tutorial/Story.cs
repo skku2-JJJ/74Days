@@ -15,6 +15,7 @@ public class Story : MonoBehaviour
 
     [Header("etc")]
     [SerializeField] private AudioClip[] _typingClips;
+    [SerializeField] private AudioClip _rainClips;
 
     private float _startDelay = 1f;
 
@@ -82,19 +83,29 @@ public class Story : MonoBehaviour
 
     public void FadeIn()
     {
+
+        SoundManager.Instance.AudioSource.volume = 0f;
+        SoundManager.Instance.AudioSource.loop = true;
+        SoundManager.Instance.PlaySoundOnly(_rainClips);
+
+
         Sequence seq = DOTween.Sequence();
         seq.AppendInterval(_startDelay)
-           .AppendCallback(() =>  NextTextStory())
-           .Append(_storyEnterTextUI.DOColor(Color.white, 1f));
+           .Join(SoundManager.Instance.AudioSource.DOFade(1f, 3f).SetEase(Ease.InCubic))
+           .AppendCallback(() => NextTextStory())
+           .Join(_storyEnterTextUI.DOColor(Color.white, 1f));
+           
+           
     }
     public void FadeOut()
     {
         Sequence seq = DOTween.Sequence();
 
+
         seq.Append(_storyTextUI.DOColor(Color.clear, 2f))
             .Join(_storyEnterTextUI.DOColor(Color.clear, 2f))
-            .AppendInterval(0.5f)
-            .AppendCallback(() => IsStoryEnd = true)
+            .Append(SoundManager.Instance.AudioSource.DOFade(0f, 2f))
+            .AppendCallback(() => { IsStoryEnd = true; SoundManager.Instance.Init(); })
             .Append(_box.DOColor(Color.clear, 3f).SetEase(Ease.InBounce))
             .OnComplete(() =>  _box.gameObject.SetActive(false)); 
     
