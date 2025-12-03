@@ -35,8 +35,8 @@ public enum ResourceType
     // ---------------------------------------------
 
     // 공격형
-    Attack1,
-    Attack2,
+    Shark,
+    KillerWhale,
     Water,
     Herb,
     Wood

@@ -9,6 +9,9 @@ public abstract class FishBase : MonoBehaviour, IFishCapturable
     [Header("Fish 타입")]
     [SerializeField] private ResourceType _fishType;
     
+    [Header("QTE 난이도"), Range(0f, 1f)]
+    [SerializeField] private float _qteDifficulty01 = 0.5f;
+    
     // 참조
     protected Transform diver;
     protected FishVisualController visualController;
@@ -21,7 +24,26 @@ public abstract class FishBase : MonoBehaviour, IFishCapturable
     public bool CanBeCaptured => _health.CanBeCaptured;
     public ResourceType FishType => _fishType;
     public Transform Transform => this.transform;
+    public float BaseQteDifficulty01 => _qteDifficulty01;
+    
+    /// <summary>
+    /// 현재 체력 비례 QTE 난이도
+    /// </summary>
+    public float CurrentQteDifficulty01
+    {
+        get
+        {
+            if (_health == null) return _qteDifficulty01;
 
+            float ratio = _health.HealthRatio;
+            float scaled = _qteDifficulty01 * ratio;
+            
+            const float minDifficulty = 0.1f;
+            return Mathf.Clamp(scaled, minDifficulty, _qteDifficulty01);
+        }
+    }
+    
+    
     protected void Awake()
     {
        Init();

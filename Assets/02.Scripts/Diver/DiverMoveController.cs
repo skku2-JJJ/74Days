@@ -22,12 +22,13 @@ public class DiverMoveController : MonoBehaviour
     [SerializeField] private float _boostCoolTime = 1.0f;   
     
     [Header("몸체 반동")]
-    [SerializeField] private float _recoilDamping = 6f;   
+    [SerializeField] private float _recoilDamping = 6f;
     private Vector2 _recoilVelocity;                      
     
     // 상수
     private const float MinInputMagnitude = 0.01f;
     private const float RecoilEpsilon = 0.0001f;
+    private const float BasicRecoilStrength = 1f;
     // 프로퍼티
     public Vector2 MoveInput => _moveInput;
     private bool IsMoving => _moveInput.sqrMagnitude > MinInputMagnitude; //입력 기준으로 이동 판단
@@ -179,7 +180,7 @@ public class DiverMoveController : MonoBehaviour
     /// </summary>
     /// <param name="direction"> 반동 방향 </param>
     /// <param name="strength"> 반동 강도 </param>
-    public void AddRecoil(Vector2 direction, float strength)
+    public void AddRecoil(Vector2 direction, float strength = BasicRecoilStrength)
     {
         if (strength <= 0f || direction.sqrMagnitude < RecoilEpsilon)
             return;

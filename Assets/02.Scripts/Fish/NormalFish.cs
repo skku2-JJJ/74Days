@@ -23,6 +23,7 @@ public class NormalFish : FishBase
     {
         _rigid = GetComponent<Rigidbody2D>();
         _aiController = GetComponent<FishAIController>();
+       
         
         diver = GameObject.FindGameObjectWithTag("Player").transform;
 
