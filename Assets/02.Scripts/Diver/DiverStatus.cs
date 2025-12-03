@@ -26,7 +26,7 @@ public class DiverStatus : MonoBehaviour
 
     // 참조
     private Animator _animator;
-    
+    private DiverVFXController _diverVFXController;
     // 타이머
     private float _oxygenConsumeAccumulator = 0f; 
     private float _oxygenDepletedTimer = 0f;
@@ -64,6 +64,7 @@ public class DiverStatus : MonoBehaviour
     private void Init()
     {
         _animator = GetComponentInChildren<Animator>();
+        _diverVFXController = GetComponent<DiverVFXController>();
     }
     
     private void HandleOxygen()
@@ -177,6 +178,8 @@ public class DiverStatus : MonoBehaviour
         {
             _bagUI.Refresh();
         }
+        
+        _diverVFXController?.PlayResourceGetVFX();
     }
 
     /// <summary>
