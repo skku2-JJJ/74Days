@@ -27,6 +27,8 @@ public class HarpoonProjectile : MonoBehaviour
     [SerializeField] private float _hitStopDuration = 0.05f;
     [SerializeField] private float _hitStopScaleTime = 0.05f;
     
+    private GameObject _vfxObject;
+    
     // 프로퍼티
     public bool IsReturning => _isReturning;
     public Vector3 Position => transform.position;
@@ -97,6 +99,8 @@ public class HarpoonProjectile : MonoBehaviour
     {
         _rigid = GetComponent<Rigidbody2D>();
         _rigid.gravityScale = 0f;
+        
+        _vfxObject = transform.GetChild(0).gameObject;
     }
 
     private void Update()
@@ -130,6 +134,8 @@ public class HarpoonProjectile : MonoBehaviour
             {
                 BeginReturn();
             }
+            
+            //_vfxObject.SetActive(false);
         }
     }
     

@@ -35,15 +35,16 @@ public class HarpoonVFXController : MonoBehaviour
     {
         if (_fireBubbleBurstPrefab == null) return;
         var obj = Instantiate(_fireBubbleBurstPrefab, pos, Quaternion.identity);
-        ScaleByCharge(obj, charge, 0.8f, 1.2f);
+        ScaleByCharge(obj, charge, 2f, 3f);
     }
 
     // ───────── 비행 ─────────
     public void PlayTrailBubble(Vector3 pos, float speed01)
     {
         if (_trailBubblePrefab == null) return;
+        
         var obj = Instantiate(_trailBubblePrefab, pos, Quaternion.identity);
-        ScaleByCharge(obj, speed01, 0.6f, 1.3f);
+        ScaleByCharge(obj, speed01, 2f, 3f);
     }
 
     // ───────── 히트 ─────────
