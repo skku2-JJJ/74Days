@@ -252,7 +252,7 @@ public class FishSpawnManager : MonoBehaviour
         GameObject prefab = table.GetRandomResourcePrefab();
         if (prefab == null) return;
 
-        Instantiate(prefab, pos, Quaternion.identity);
+        Instantiate(prefab, pos, Quaternion.identity, transform);
     }
 
     private void CleanupNullFish()

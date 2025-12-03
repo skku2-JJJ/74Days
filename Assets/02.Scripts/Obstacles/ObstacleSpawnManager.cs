@@ -52,7 +52,7 @@ public class ObstacleSpawnManager : MonoBehaviour
 
         // 실제 스폰
         GameObject obstaclePrefab = _obstaclePrefabs[Random.Range(0, _obstaclePrefabs.Length)];
-        GameObject obstacleObj = Instantiate(obstaclePrefab, pos, Quaternion.identity);
+        GameObject obstacleObj = Instantiate(obstaclePrefab, pos, Quaternion.identity, transform);
 
         Obstacle obstacle = obstacleObj.GetComponent<Obstacle>();
         if (obstacle != null)

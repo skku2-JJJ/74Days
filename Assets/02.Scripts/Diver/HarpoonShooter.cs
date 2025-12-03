@@ -43,6 +43,7 @@ public class HarpoonShooter : MonoBehaviour
     private DiverStatus _diverStatus;
     private Camera _mainCam;
     private HarpoonCaptureQTE _captureQTE; // 포획 QTE
+    private DiverVFXController _vfx;
     
     public bool IsCapturing => _captureQTE != null && _captureQTE.IsCapturing;
     public float CaptureGauge01 => _captureQTE != null ? _captureQTE.CaptureGauge01 : 0f;
@@ -77,6 +78,8 @@ public class HarpoonShooter : MonoBehaviour
             return Mathf.Clamp01(_chargeTimer / _maxChargeTime);
         }
     }
+
+    public DiverVFXController VFX => _vfx;
 
 
     // 상수
@@ -119,6 +122,7 @@ public class HarpoonShooter : MonoBehaviour
         _moveController = GetComponent<DiverMoveController>();
         _diverStatus = GetComponent<DiverStatus>();
         _captureQTE = GetComponent<HarpoonCaptureQTE>();
+        _vfx = GetComponent<DiverVFXController>();
         
         _mainCam = Camera.main;
         
@@ -245,6 +249,8 @@ public class HarpoonShooter : MonoBehaviour
         // 차지 커브 적용
         float curved = _chargeCurve.Evaluate(charge);
         float speed = Mathf.Lerp(_minHarpoonSpeed, _maxHarpoonSpeed, curved);
+        
+        VFX?.PlayFireBubbleBurst(origin, dir, curved);
         
         // 반동 적용 
         float recoilStrength = Mathf.Lerp(_minRecoilStrength, _maxRecoilStrength, curved);

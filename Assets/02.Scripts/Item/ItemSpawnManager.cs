@@ -40,7 +40,7 @@ public class ItemSpawnManager : MonoBehaviour
             var prefab = _dropTable.GetRandomResourcePrefab();
             if (prefab == null) continue;
 
-            Instantiate(prefab, p.position, Quaternion.identity);
+            Instantiate(prefab, p.position, Quaternion.identity, transform);
         }
     }
 
