@@ -33,11 +33,11 @@ public class DiverVFXController : MonoBehaviour
     // 히트 
     public void PlayHarpoonHit(Vector3 hitPos, float charge)
     {
-        if (_hitFlashPrefab != null)
-        {
-            var flash = Instantiate(_hitFlashPrefab, hitPos, Quaternion.identity);
-            ScaleByCharge(flash, charge, 0.8f, 1.5f);
-        }
+        if (_hitFlashPrefab == null) return;
+        
+        var flash = Instantiate(_hitFlashPrefab, hitPos, Quaternion.identity);
+        ScaleByCharge(flash, charge, 0.8f, 1.5f);
+        
         
     }
 
