@@ -41,6 +41,9 @@ public class GameOverUI : MonoBehaviour
         // 게임 오버 데이터 표시
         DisplayGameOverData();
 
+        // GameOver BGM 재생 (승리/패배에 따라)
+        PlayGameOverBGM();
+
         // 페이드 인 및 애니메이션
         StartCoroutine(ShowUIWithAnimation());
     }
@@ -134,6 +137,22 @@ public class GameOverUI : MonoBehaviour
         // 선원 애니메이션 재생
         yield return new WaitForSecondsRealtime(0.3f);
         PlayCrewAnimation();
+    }
+
+    /// <summary>
+    /// GameOver BGM 재생 (승리/패배)
+    /// </summary>
+    private void PlayGameOverBGM()
+    {
+        if (BgmManager.Instance != null)
+        {
+            BgmManager.Instance.PlayGameOverBGM(GameOverData.IsVictory);
+            Debug.Log($"[GameOverUI] GameOver BGM 재생 - 승리: {GameOverData.IsVictory}");
+        }
+        else
+        {
+            Debug.LogWarning("[GameOverUI] BgmManager가 없습니다!");
+        }
     }
 
     /// <summary>

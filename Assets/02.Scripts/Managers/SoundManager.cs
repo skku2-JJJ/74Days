@@ -17,7 +17,7 @@ public class SoundManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
-        }   
+        }
     }
 
 
@@ -29,6 +29,6 @@ public class SoundManager : MonoBehaviour
             return;
         }
         audioSource.PlayOneShot(audioClip);
-        
+
     }
 }
