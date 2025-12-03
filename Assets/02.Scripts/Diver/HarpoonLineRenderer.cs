@@ -122,10 +122,12 @@ public class HarpoonLineRenderer : MonoBehaviour
         // 거리에 비례해서 장력 증가
         float tension = Mathf.Clamp01(distance / BaseRange);
 
-        // QTE 캡쳐 중 -> 텐션 최대
+        // QTE 캡쳐 중 -> 게이지에 따라 장력 보정
         if (_shooter.IsCapturing)
         {
-            tension = Mathf.Max(tension, 1f);
+            float guageRatio = _shooter.CaptureGauge01;  
+            float gaugeTension = Mathf.Lerp(0.3f, 1f, guageRatio);
+            tension = Mathf.Max(tension, gaugeTension);
         }
         
         if (_projectile.IsReturning)

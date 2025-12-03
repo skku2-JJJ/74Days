@@ -15,8 +15,10 @@ public class FishHealth : MonoBehaviour
     // 프로퍼티
     public float Health => health;
     public float MaxHealth => maxHealth;
-    public bool CanBeCaptured => health <= maxHealth * captureHpRatioThreshold;
+    public bool CanBeCaptured => (health <= (maxHealth * captureHpRatioThreshold));
 
+    public float HealthRatio => (health / maxHealth);
+    
     private void Awake()
     {
         health = maxHealth;

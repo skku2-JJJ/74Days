@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 [RequireComponent(typeof(FishMoveController))]
 public class FishAIController : MonoBehaviour
@@ -7,51 +8,65 @@ public class FishAIController : MonoBehaviour
     {
         Idle,
         Wander,
-        Escape
+        Escape,
+        Chase,
+        Attack
     }
-
+    
+    [Header("타겟(플레이어)")]
+    private Transform _diver;
+    
     [Header("State 결정 주기")]
     [SerializeField] private float _minDecideStateDuration = 2.0f;
     [SerializeField] private float _maxDecideStateDuration = 4.0f;
+    private EFishState _eFishState = EFishState.Wander;
+    private float _stateTimer;
+    private float _stateDuration;
     
     [Header("Wander 설정")]
     [SerializeField] private float _minDecideDirDuration = 0.8f;
     [SerializeField] private float _maxDecideDirDuration = 1.4f;
     [SerializeField] private float _wanderChangeInterval = 1.0f;
     [SerializeField] private float _wanderJitter = 70f; 
+    private FishMoveController _move;
+    private Vector2 _wanderDir = Vector2.right;
+    private float _wanderTimer;
     
     [Header("Idle 설정")]
     [SerializeField] private float _idleMinDuration = 1.0f;
     [SerializeField] private float _idleMaxDuration = 3.0f;
     [SerializeField] private float _idleChanceAfterWander = 0.4f;
 
-    private EFishState _eFishState = EFishState.Wander;
-    private float _stateTimer;
-    private float _stateDuration;
+    [Header("공격형 설정")]
+    [SerializeField] private bool _isAggressive = false;   
+    [SerializeField] private float _aggroRadius = 7f;
+    [SerializeField] private float _chaseStateDuration = 5f;
+    [SerializeField] private float _attackRange = 4f;    
+    [SerializeField] private float _attackCooltime = 1.5f;
+    [SerializeField] private float _attackDashSpeedMultiplier = 2.5f; 
+    [SerializeField] private float _attackDashDuration = 0.25f;       
+    private Vector2 _attackDir;                                 
+    private float _attackCoolTimer = 0f;
+    private float _rangeOffsetFactor = 1.2f;
+    
+    
     
     [Header("장애물 회피")]
     [SerializeField] private LayerMask _obstacleMask;
     [SerializeField] private float _rayDistance = 1.2f;
-    
-    [Header("플레이어 회피")]
-    private Transform _diver;
-    [SerializeField] private float _fleeRadius = 3f;
-    [SerializeField] private float _fleeStrength = 1.5f;
-    
-    [Header("Escape 설정")]
-    [SerializeField] private float _escapeDuration = 3f;
-    
-    private FishMoveController _move;
-    private Vector2 _wanderDir = Vector2.right;
-    private float _wanderTimer;
-
-    private Vector2 _escapeDir;
-    
     private Vector2 _lastPos;
     private float _stuckTimer;
     
+    
+    
+    [Header("Escape 설정")]
+    [SerializeField] private float _escapeDuration = 3f;
+    private float _escapeSpeedFactor = 1.5f;
+    private Vector2 _escapeDir;
+    
     private const float FullAngle = 360f;
     private const float EpsilonNum = 0.001f;
+    private const float StuckCriterion = 0.01f;
     private const float MaxStuckTime = 1.5f;
     
     private static readonly Vector2[] _escapeSampleDirs = {
@@ -62,6 +77,13 @@ public class FishAIController : MonoBehaviour
         (Vector2.down + Vector2.right).normalized,
         (Vector2.down + Vector2.left).normalized,
     };
+
+    
+    private Animator _animator;
+
+    private DiverStatus _diverStatus;
+    private DiverMoveController _diverMove;
+    private HarpoonCaptureQTE _qte;
     
     private void Awake()
     {
@@ -74,21 +96,41 @@ public class FishAIController : MonoBehaviour
     {
         if (_move.IsMovementLocked)  return;
            
+        _attackCoolTimer += Time.deltaTime;
 
-        _stateTimer += Time.deltaTime;
-
-        if (_stateTimer >= _stateDuration)
+        // 1순위 -> Escape
+        if (_eFishState == EFishState.Escape)
         {
-            SwitchState();
+            _stateTimer += Time.deltaTime;
+
+            if (_stateTimer >= _stateDuration)
+            {
+                EnterWander();
+            }
+
+            DecideMoveDir();
+            CheckStuck();
+            return; 
+        }
+        
+        // 2순위 -> Attack
+        if (_isAggressive && _eFishState != EFishState.Escape)
+        {
+            UpdateAggroState();  
         }
 
-        /*// 플레이어 회피
-        if (_diver != null && TryGetFleeDir(out Vector2 fleeDir))
+        // 3순위 -> Idle/Wander
+        if (_eFishState == EFishState.Idle || _eFishState == EFishState.Wander)
         {
-            _move.DesiredDir = ApplyObstacleAvoidance(fleeDir);
-            return;
-        }*/
+            _stateTimer += Time.deltaTime;
 
+            if (_stateTimer >= _stateDuration)
+            {
+                SwitchState();
+            }
+        }
+
+        
         DecideMoveDir();
         CheckStuck();
     }
@@ -96,7 +138,12 @@ public class FishAIController : MonoBehaviour
     private void Init()
     {
         _move = GetComponent<FishMoveController>();
+        _animator = GetComponentInChildren<Animator>();
         _diver = GameObject.FindGameObjectWithTag("Player").transform;
+      
+        _diverStatus = _diver.GetComponent<DiverStatus>();
+        _diverMove = _diver.GetComponent<DiverMoveController>();
+        _qte = _diverStatus.GetComponent<HarpoonCaptureQTE>();
         
         // 초기 방향 설정
         float angle = Random.Range(0, FullAngle);
@@ -121,8 +168,40 @@ public class FishAIController : MonoBehaviour
             default:
                 EnterWander();
                 break;
+            
+            // 추격 / 공격 상태는 UpdateAggroState에서 관리
+            case EFishState.Chase:
+            case EFishState.Attack:
+                break;
         }
     }
+    
+    private void UpdateAggroState()
+    {
+        if (_diver == null) return;
+
+        float dist = Vector2.Distance(_diver.position, transform.position);
+        
+        if (dist > _aggroRadius)
+        {
+            if (_eFishState == EFishState.Chase || _eFishState == EFishState.Attack)
+            {
+                EnterWander();
+            }
+            return;
+        }
+
+        // 어그로 범위 안
+        if (dist <= _attackRange && _attackCoolTimer >= _attackCooltime)
+        {
+            EnterAttack();
+        }
+        else
+        {
+            EnterChase();
+        }
+    }
+    
 
     private void DecideMoveDir()
     {
@@ -139,10 +218,30 @@ public class FishAIController : MonoBehaviour
             case EFishState.Escape:
                 dir = _escapeDir;       
                 break;
+            
+            case EFishState.Chase:
+                if (_diver != null)
+                {
+                    dir = ((Vector2)_diver.position - (Vector2)transform.position).normalized;
+                }
+                break;
+            
+            case EFishState.Attack:
+                dir = _attackDir;
+                break;
         }
 
-        dir = ApplyObstacleAvoidance(dir);
-        _move.DesiredDir = dir;
+        
+        if (_eFishState == EFishState.Attack)
+        {
+            _move.DesiredDir = _attackDir;
+        }
+        else
+        {
+            dir = ApplyObstacleAvoidance(dir);
+            _move.DesiredDir = dir;
+        }
+       
     }
     
     
@@ -159,6 +258,30 @@ public class FishAIController : MonoBehaviour
         _eFishState = EFishState.Wander;
         _stateDuration = Random.Range(_minDecideStateDuration, _maxDecideStateDuration);
         _wanderTimer = 0f;
+    }
+    
+    private void EnterChase()
+    {
+        if (_eFishState == EFishState.Chase) return;
+
+        _eFishState = EFishState.Chase;
+        _stateTimer = 0f;
+        _stateDuration = _chaseStateDuration; 
+    }
+
+    private void EnterAttack()
+    {
+        _eFishState = EFishState.Attack;
+        _stateTimer = 0f;
+        _stateDuration = _attackDashDuration; 
+        _attackCoolTimer = 0f;
+
+        
+        _attackDir = ((Vector2)_diver.position - (Vector2)transform.position).normalized;
+        _move.SetOverrideSpeed(_move.MaxSpeed * _attackDashSpeedMultiplier, _attackDashDuration);
+        
+        StartCoroutine(AttackHitRoutine(_attackDashDuration));
+        _animator.SetTrigger("Attack");
     }
     
     
@@ -188,7 +311,41 @@ public class FishAIController : MonoBehaviour
             _move.SetOverrideSpeed(escapeSpeed, _escapeDuration);
         }
     }
-   
+    
+    private IEnumerator AttackHitRoutine(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        TryHitPlayer();
+    }
+    
+    private void TryHitPlayer()
+    {
+        if (_diver == null) return;
+
+        float dist = Vector2.Distance(_diver.position, transform.position);
+        if (dist > _attackRange * _rangeOffsetFactor) return; 
+        
+        // 데미지 적용
+        if (_diverStatus != null)
+        {
+            _diverStatus.TakeDamage();  
+        }
+        
+        // 넉백
+        if (_diverMove != null)
+        {
+            Vector2 knockDir = ((Vector2)_diver.position - (Vector2)transform.position).normalized;
+            _diverMove.AddRecoil(knockDir);
+        }
+        
+        // QTE 강제 종료
+        if (_qte != null && _qte.IsCapturing)
+        {
+            _qte.ForceFailCapture();
+        }
+        
+    }
+    
     private Vector2 GetWanderDirection()
     {
         _wanderTimer += Time.deltaTime;
@@ -204,37 +361,23 @@ public class FishAIController : MonoBehaviour
         return _wanderDir;
     }
 
-    private bool TryGetFleeDir(out Vector2 fleeDir)
-    {
-        fleeDir = Vector2.zero;
-
-        Vector2 toDiver = _diver.position - transform.position;
-        float dist = toDiver.magnitude;
-        if (dist >= _fleeRadius) return false;
-
-        fleeDir = -toDiver.normalized;
-        return true;
-    }
-
+    
     private Vector2 ApplyObstacleAvoidance(Vector2 desired)
     {
         if (desired.magnitude < EpsilonNum) return Vector2.zero;
         
         Vector2 origin = transform.position;
         Vector2 forward = desired.normalized;
-
-        // 1. 정면으로 먼저 체크
+        
         RaycastHit2D hit = Physics2D.Raycast(origin, forward, _rayDistance, _obstacleMask);
-
-        // 앞에 아무것도 없으면 그냥 원하는 방향으로 감
-        if (!hit)
-            return forward;
-
-        // 2. 벽을 따라 미끄러지는 방향 계산 (법선의 수직 방향 = 탄젠트)
+        
+        if (!hit)  return forward;
+        
+        // 벽을 따라 미끄러지는 방향 계산 
         Vector2 normal  = hit.normal;
         Vector2 tangent = new Vector2(-normal.y, normal.x); // Perpendicular
 
-        // 3. 원래 가려던 쪽과 더 비슷한 방향으로 선택
+        // 원래 가려던 쪽과 더 비슷한 방향으로 선택
         if (Vector2.Dot(tangent, forward) < 0f)
             tangent = -tangent;
 
@@ -247,7 +390,7 @@ public class FishAIController : MonoBehaviour
         float moved = (currPos - _lastPos).magnitude;
 
         // 거의 안 움직였으면 타이머 증가
-        if (moved < 0.01f)
+        if (moved < StuckCriterion)
             _stuckTimer += Time.deltaTime;
         else
             _stuckTimer = 0f;
@@ -256,10 +399,13 @@ public class FishAIController : MonoBehaviour
 
         if (_stuckTimer > MaxStuckTime)
         {
-            // 끼임 탈출
+            
             Vector2 escapeDir = GetEscapeDirectionFromWalls();
             
-            EnterEscape(escapeDir,   _move.MaxSpeed * 1.5f);
+            _move.DesiredDir = escapeDir;
+            _move.SetOverrideSpeed(_move.MaxSpeed * _escapeSpeedFactor, _escapeDuration);
+            
+          
             _stuckTimer = 0f;
         }
     }
@@ -269,7 +415,7 @@ public class FishAIController : MonoBehaviour
     {
         Vector2 origin = transform.position;
         
-        float checkDist = 1.5f; 
+        float checkDist = 2f; 
 
         Vector2 accumulated = Vector2.zero;
         bool foundWall = false;
@@ -281,7 +427,7 @@ public class FishAIController : MonoBehaviour
             {
                 foundWall = true;
                 
-                accumulated += hit.normal; //벽 표면의 법선 벡터
+                accumulated += hit.normal; 
             }
         }
 
@@ -299,10 +445,22 @@ public class FishAIController : MonoBehaviour
         if (!Application.isPlaying) return;
 
         Vector2 origin = transform.position;
+        
         Vector2 dir =  _move.DesiredDir.normalized;
-
         Gizmos.color = Color.yellow;
-        Gizmos.DrawLine(origin, origin + dir * _rayDistance);
+        //Gizmos.DrawLine(origin, origin + dir * _rayDistance);
+        
+       
+        if (_isAggressive)
+        {
+            // 어그로 범위
+            Gizmos.color = Color.magenta; 
+            Gizmos.DrawWireSphere(origin, _aggroRadius);
+
+            // 공격 범위
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(origin, _attackRange);
+        }
     }
 #endif
 }

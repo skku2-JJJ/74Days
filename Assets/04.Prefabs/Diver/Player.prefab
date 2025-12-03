@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 6956544275090731882}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -289,7 +289,7 @@ MonoBehaviour:
   _buoyancy: 0.4
   _maxVerticalSpeed: 4
   _boostMultiplier: 1.8
-  _boostDuration: 0.35
+  _boostDuration: 3
   _boostCoolTime: 1
   _recoilDamping: 6
 --- !u!114 &4098375111106149736
@@ -332,6 +332,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   _aimTimeScale: 0.4
   _timeScaleLerpSpeed: 10
+  _getUI: {fileID: 0}
 --- !u!114 &2584653042842670250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -479,6 +480,10 @@ MonoBehaviour:
   _currentOxygen: 100
   _maxOxygen: 100
   _oxygenConsumePerSecond: 1
+  _bagUI: {fileID: 0}
+  _oxygenDepletedDamageInterval: 1
+  _oxygenDepletedDamagePerTick: 3
+  _getUI: {fileID: 0}
 --- !u!1 &7886217668624261304
 GameObject:
   m_ObjectHideFlags: 0

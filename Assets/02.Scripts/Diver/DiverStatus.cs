@@ -98,7 +98,7 @@ public class DiverStatus : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int  amount)
+    public void TakeDamage(int amount = 10)
     {
         if (IsDead) return;
         if (amount <= 0) return;
@@ -109,9 +109,11 @@ public class DiverStatus : MonoBehaviour
         {
             _currentHp = 0;
             Die();
+            return;
         }
-
-        // TODO: HP UI 갱신
+        
+        _animator?.SetTrigger("Hit");
+        
     }
 
     public void Heal(int amount)
@@ -121,7 +123,6 @@ public class DiverStatus : MonoBehaviour
 
         _currentHp = Mathf.Clamp(_currentHp + amount, 0, _maxHp);
         
-        // TODO: HP UI 갱신
     }
 
     public void RestoreOxygen(int amount)
@@ -135,8 +136,7 @@ public class DiverStatus : MonoBehaviour
         {
             _oxygenDepletedTimer = 0f;
         }
-
-        // TODO: 산소 UI 갱신
+        
     }
 
     private void Die()

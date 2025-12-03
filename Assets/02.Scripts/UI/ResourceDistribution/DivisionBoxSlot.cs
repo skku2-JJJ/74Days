@@ -139,8 +139,8 @@ public class DivisionBoxSlot : MonoBehaviour, IDropHandler, IPointerClickHandler
                        type == ResourceType.StripedMarlin ||
                        type == ResourceType.Turtle ||
                        type == ResourceType.Grouper ||
-                       type == ResourceType.Attack1 ||
-                       type == ResourceType.Attack2;
+                       type == ResourceType.Shark ||
+                       type == ResourceType.KillerWhale;
 
             case BoxType.Thirst:
                 return type == ResourceType.Water;
