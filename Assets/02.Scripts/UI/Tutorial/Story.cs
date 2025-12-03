@@ -89,16 +89,20 @@ public class Story : MonoBehaviour
         SoundManager.Instance.AudioSource.volume = 0f;
         SoundManager.Instance.AudioSource.loop = true;
         SoundManager.Instance.PlaySoundOnly(_rainClips);
+
+        // BGM 완전히 정지 (페이드 아웃 포함)
         if (BgmManager.Instance != null)
-            BgmManager.Instance.SetBGMVolume(0f);
+        {
+            BgmManager.Instance.StopBGM(fadeOut: true);
+        }
 
         Sequence seq = DOTween.Sequence();
         seq.AppendInterval(_startDelay)
            .Join(SoundManager.Instance.AudioSource.DOFade(1f, 3f).SetEase(Ease.InCubic))
            .AppendCallback(() => NextTextStory())
            .Join(_storyEnterTextUI.DOColor(Color.white, 1f)).OnComplete(() => IsEnterPossible = true);
-           
-           
+
+
     }
     public void FadeOut()
     {
@@ -109,7 +113,16 @@ public class Story : MonoBehaviour
             .Append(SoundManager.Instance.AudioSource.DOFade(0f, 2f))
             .AppendCallback(() => { IsStoryEnd = true; SoundManager.Instance.Init(); })
             .Append(_box.DOColor(Color.clear, 3f).SetEase(Ease.InBounce))
-            .OnComplete(() => { _box.gameObject.SetActive(false); if (BgmManager.Instance != null) BgmManager.Instance.BgmSource.DOFade(0.5f, 2f); });
-    
+            .OnComplete(() =>
+            {
+                _box.gameObject.SetActive(false);
+
+                // Morning BGM 다시 시작
+                if (BgmManager.Instance != null)
+                {
+                    BgmManager.Instance.PlayMorningBGM();
+                }
+            });
+
     }
 }

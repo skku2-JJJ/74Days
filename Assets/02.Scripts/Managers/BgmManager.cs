@@ -59,9 +59,6 @@ public class BgmManager : MonoBehaviour
         {
             DayManager.Instance.OnPhaseChange += OnPhaseChanged;
         }
-
-        // 저장된 볼륨 설정 로드
-        LoadBGMVolume();
     }
 
     void OnDestroy()
@@ -300,6 +297,30 @@ public class BgmManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Morning BGM 재생 (외부 호출용)
+    /// </summary>
+    public void PlayMorningBGM()
+    {
+        if (_morningBGM != null)
+        {
+            ChangeBGM(_morningBGM);
+            Debug.Log("[BgmManager] Morning BGM 재생");
+        }
+    }
+
+    /// <summary>
+    /// Evening BGM 재생 (외부 호출용)
+    /// </summary>
+    public void PlayEveningBGM()
+    {
+        if (_eveningBGM != null)
+        {
+            ChangeBGM(_eveningBGM);
+            Debug.Log("[BgmManager] Evening BGM 재생");
+        }
+    }
+
+    /// <summary>
     /// GameOver BGM 재생 (승리/패배) - 한 번만 재생 (루프 없음)
     /// GameOver 씬에서 명시적으로 호출
     /// </summary>
@@ -357,25 +378,8 @@ public class BgmManager : MonoBehaviour
     {
         _bgmVolume = Mathf.Clamp01(volume);
         _bgmSource.volume = _bgmVolume;
-        SaveBGMVolume();
         Debug.Log($"[BgmManager] BGM 볼륨: {_bgmVolume}");
     }
 
     public float GetBGMVolume() => _bgmVolume;
-
-    // ========== 설정 저장/로드 ==========
-
-    private void SaveBGMVolume()
-    {
-        PlayerPrefs.SetFloat("BGMVolume", _bgmVolume);
-        PlayerPrefs.Save();
-    }
-
-    private void LoadBGMVolume()
-    {
-        _bgmVolume = PlayerPrefs.GetFloat("BGMVolume", 0.5f);
-        _bgmSource.volume = _bgmVolume;
-
-        Debug.Log($"[BgmManager] 볼륨 로드 - BGM: {_bgmVolume}");
-    }
 }
