@@ -82,6 +82,57 @@ public class CrewMember
         CrewID = id;
     }
 
+    // ========== CrewPreset 기반 생성 ==========
+
+    /// <summary>
+    /// CrewPreset에서 CrewMember 인스턴스 생성 (Factory Method)
+    /// </summary>
+    public static CrewMember FromPreset(CrewPreset preset)
+    {
+        if (preset == null)
+        {
+            Debug.LogError("[CrewMember] CrewPreset이 null입니다!");
+            return null;
+        }
+
+        // 생성자로 기본 생성
+        CrewMember crew = new CrewMember(preset.crewName, preset.crewID);
+
+        // 스프라이트 설정
+        crew.AliveSprite = preset.aliveSprite;
+        crew.DeadSprite = preset.deadSprite;
+
+        // 초기 생존 수치 설정
+        crew.Hunger = preset.initialHunger;
+        crew.Thirst = preset.initialThirst;
+        crew.Temperature = preset.initialTemperature;
+        crew.IsAlive = true;
+
+        // 일일 감소 설정
+        crew.MinHungerDecrease = preset.minHungerDecrease;
+        crew.MaxHungerDecrease = preset.maxHungerDecrease;
+        crew.MinThirstDecrease = preset.minThirstDecrease;
+        crew.MaxThirstDecrease = preset.maxThirstDecrease;
+        crew.MinTemperatureDecrease = preset.minTemperatureDecrease;
+        crew.MaxTemperatureDecrease = preset.maxTemperatureDecrease;
+
+        // 자원 회복 설정
+        crew.FoodHungerRecovery = preset.foodHungerRecovery;
+        crew.WaterThirstRecovery = preset.waterThirstRecovery;
+        crew.HerbsTemperatureRecovery = preset.herbsTemperatureRecovery;
+
+        // 상태 임계값 설정
+        crew.CriticalThreshold = preset.criticalThreshold;
+        crew.PoorThreshold = preset.poorThreshold;
+
+        // 일일 플래그 초기화
+        crew.ResetDailyResourceFlags();
+
+        Debug.Log($"[CrewMember] CrewPreset에서 생성: {crew.CrewName} (ID: {crew.CrewID})");
+
+        return crew;
+    }
+
     // ========== 하루 경과 ==========
 
     // 하루 경과 시 생존 수치 감소
@@ -163,7 +214,7 @@ public class CrewMember
             case ResourceCategory.Medicine:
                 HasReceivedMedicineToday = true;
                 break;
-            case ResourceCategory.Material:
+            case ResourceCategory.Wood:
                 // 수리 재료는 선원에게 줄 수 없음
                 Debug.LogWarning($"{CrewName}에게 {resourceData.displayName}을(를) 줄 수 없습니다!");
                 break;

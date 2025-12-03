@@ -40,7 +40,7 @@ public class GetItemUIUpdate : MonoBehaviour
             case ResourceCategory.Medicine:
                 recovery = data.temperatureRecovery;
                 break;
-            case ResourceCategory.Material:
+            case ResourceCategory.Wood:
                 recovery = 1;
                 break;
         }

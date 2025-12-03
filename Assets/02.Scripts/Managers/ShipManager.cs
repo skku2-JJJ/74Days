@@ -147,6 +147,11 @@ public class ShipManager : MonoBehaviour
         if (success)
         {
             OnShipStatusChanged?.Invoke(ship);
+
+            // 인벤토리 변경 이벤트 발생 (실시간 UI 업데이트)
+            OnResourceChanged?.Invoke(ResourceType.Wood, -materialAmount);
+            OnInventoryChanged?.Invoke();
+
             float repairAmount = materialAmount;
             Debug.Log($"[수리 완료] Hp +{repairAmount:F1}% (재료 소비: {materialAmount})");
         }
@@ -154,5 +159,34 @@ public class ShipManager : MonoBehaviour
         {
             Debug.LogWarning($"수리 재료 부족! 필요: {materialAmount}, 보유: {ship.GetTotalRepairMaterials()}");
         }
+    }
+
+    // ========== 게임 재시작을 위한 데이터 리셋 ==========
+
+    /// <summary>
+    /// 게임 재시작 시 배 데이터를 완전히 초기화
+    /// MainMenuUI.ResetAllGameData()에서 호출
+    /// </summary>
+    public void ResetShipData()
+    {
+        Debug.Log("[ShipManager] 배 데이터 초기화 시작");
+
+        // 새로운 Ship 객체 생성
+        ship = new Ship();
+
+        // ResourceDatabase에서 초기 인벤토리 로드
+        if (ResourceDatabaseManager.Instance != null && ResourceDatabaseManager.Instance.Database != null)
+        {
+            ship.InitializeInventory(ResourceDatabaseManager.Instance.Database);
+            Debug.Log("[ShipManager] Ship 인벤토리 초기화 완료");
+        }
+        else
+        {
+            Debug.LogError("[ShipManager] ResourceDatabaseManager를 찾을 수 없습니다!");
+        }
+
+        // 초기 상태 로그
+        Debug.Log(ship.GetShipStatusSummary());
+        Debug.Log("[ShipManager] 배 데이터 초기화 완료 - 100% HP로 리셋");
     }
 }
