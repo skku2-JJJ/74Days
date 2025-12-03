@@ -177,7 +177,7 @@ public class HarpoonCaptureQTE : MonoBehaviour
             return;
         }
         
-        float struggle = Mathf.Clamp01(_captureGauge);
+        float struggle =  1f - Mathf.Clamp01(_captureGauge);
         _targetFish.UpdateCaptureStruggle(struggle);
         
         // 카메라 진동
