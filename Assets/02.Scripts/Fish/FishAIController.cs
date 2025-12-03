@@ -399,10 +399,13 @@ public class FishAIController : MonoBehaviour
 
         if (_stuckTimer > MaxStuckTime)
         {
-            // 끼임 탈출
+            
             Vector2 escapeDir = GetEscapeDirectionFromWalls();
             
-            EnterEscape(escapeDir,   _move.MaxSpeed * _escapeSpeedFactor);
+            _move.DesiredDir = escapeDir;
+            _move.SetOverrideSpeed(_move.MaxSpeed * _escapeSpeedFactor, _escapeDuration);
+            
+          
             _stuckTimer = 0f;
         }
     }
@@ -412,7 +415,7 @@ public class FishAIController : MonoBehaviour
     {
         Vector2 origin = transform.position;
         
-        float checkDist = 1.5f; 
+        float checkDist = 2f; 
 
         Vector2 accumulated = Vector2.zero;
         bool foundWall = false;
