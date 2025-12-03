@@ -87,7 +87,8 @@ public class Story : MonoBehaviour
         SoundManager.Instance.AudioSource.volume = 0f;
         SoundManager.Instance.AudioSource.loop = true;
         SoundManager.Instance.PlaySoundOnly(_rainClips);
-
+        if (BgmManager.Instance != null)
+            BgmManager.Instance.SetBGMVolume(0f);
 
         Sequence seq = DOTween.Sequence();
         seq.AppendInterval(_startDelay)
@@ -101,13 +102,12 @@ public class Story : MonoBehaviour
     {
         Sequence seq = DOTween.Sequence();
 
-
         seq.Append(_storyTextUI.DOColor(Color.clear, 2f))
             .Join(_storyEnterTextUI.DOColor(Color.clear, 2f))
             .Append(SoundManager.Instance.AudioSource.DOFade(0f, 2f))
             .AppendCallback(() => { IsStoryEnd = true; SoundManager.Instance.Init(); })
             .Append(_box.DOColor(Color.clear, 3f).SetEase(Ease.InBounce))
-            .OnComplete(() =>  _box.gameObject.SetActive(false)); 
+            .OnComplete(() => { _box.gameObject.SetActive(false); if (BgmManager.Instance != null) BgmManager.Instance.BgmSource.DOFade(1f, 2f); });
     
     }
 }
