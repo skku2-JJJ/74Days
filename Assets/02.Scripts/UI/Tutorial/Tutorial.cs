@@ -1,20 +1,29 @@
 using TMPro;
 using UnityEngine;
 using System.Collections;
+using DG.Tweening;
+
 public class Tutorial : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI textUI;
+    
+
+    [Header("튜토리얼")]
+    [SerializeField] private TextMeshProUGUI _tutorialTextUI;
     [SerializeField] private float _delay = 0.07f; // 글자 간격
     [SerializeField] private GameObject _tutorialBox;
-    private bool _isNext = false;
-    [SerializeField] private AudioClip[] _typingClips;
-
     [SerializeField] private GameObject[] _guides;
 
+    [Header("etc")]
+    [SerializeField] private AudioClip[] _typingClips;
     [SerializeField] private UIBasicOpenClose _crewUI; //크루 ui 잠시 숨김
 
-    private string[] fullText = 
-    { 
+
+    private float _textStartDelay = 1f;
+
+    private string[] _fullText = 
+    {
+        
+        "여기가... 어디지..",
         "파도에 한참을 떠밀려온 모양이다." , 
         "식량과 물 등의 자원을 모두 잃고 남겨진 것은 배 한 척뿐이다.", 
         "육지까지 돌아가기 걸리는 시간은 74일",
@@ -35,31 +44,12 @@ public class Tutorial : MonoBehaviour
 
     void Start()
     {
-        if (DayManager.Instance.CurrentDay == 1 && DayManager.Instance.currentPhase == DayPhase.Morning)
-        {
-            Init();
-            _crewUI.GetComponent<RectTransform>().anchoredPosition = _crewUI.ClosePos;
-        }
+         _crewUI.GetComponent<RectTransform>().anchoredPosition = _crewUI.ClosePos;  
     }
 
-    IEnumerator TypeRoutine()
+    public void NextTextTutorial()
     {
-        isTyping = true;
-        textUI.text = "";
-        
-        foreach (char c in fullText[order])
-        {
-            SoundManager.Instance.PlaySound(_typingClips[Random.Range(0, 3)]);
-            yield return new WaitForSeconds(_delay);
-            textUI.text += c;
-        }
-
-        isTyping = false;
-    }
-
-    public void NextText()
-    {
-        // 이미 타이핑 중이라면 → 스킵하고 전체 출력
+        // 이미 타이핑 중이라면 
         if (isTyping)
         {
             StopCoroutine(typingCoroutine);
@@ -70,22 +60,39 @@ public class Tutorial : MonoBehaviour
         if ( typingCoroutine != null ) order++;
         ShowGuide();
 
-        if (order < fullText.Length) typingCoroutine = StartCoroutine(TypeRoutine());
+        if (order < _fullText.Length) typingCoroutine = StartCoroutine(TypeRoutine(_fullText[order], _delay, _tutorialTextUI));
         else
         {
             GameStart();
-        }
-        
-        
+        }            
     }
-    void Init()
+
+    IEnumerator TypeRoutine(string text, float delay, TextMeshProUGUI TextUI)
+    {
+        isTyping = true;
+        TextUI.text = "";
+
+        foreach (char c in text)
+        {
+            //SoundManager.Instance.PlaySound(_typingClips[Random.Range(0, 3)]);
+            yield return new WaitForSeconds(delay);
+            TextUI.text += c;
+        }
+
+        isTyping = false;
+    }
+    public void TutorialInit()
     {
         order = 0;
-        _tutorialBox.SetActive(true);
+        typingCoroutine = null;
+        gameObject.SetActive(true);
         foreach (var guide in _guides)
         {
             guide.SetActive(false);
         }
+        Sequence seq = DOTween.Sequence();
+        seq.AppendInterval(_textStartDelay)
+           .OnComplete(() => NextTextTutorial());
     }
 
     void GameStart()
@@ -102,25 +109,25 @@ public class Tutorial : MonoBehaviour
     {
         switch (order)
         {
-            case 5:
+            case 6:
                 _guides[0].SetActive(true);
                 _guides[1].SetActive(false);
                 _guides[2].SetActive(false);
                 _guides[3].SetActive(false);
                 break;
-            case 7:
+            case 8:
                 _guides[0].SetActive(false);
                 _guides[1].SetActive(true);
                 _guides[2].SetActive(false);
                 _guides[3].SetActive(false);
                 break;
-            case 8:
+            case 9:
                 _guides[0].SetActive(false);
                 _guides[1].SetActive(false);
                 _guides[2].SetActive(true);
                 _guides[3].SetActive(false);
                 break;
-            case 9:
+            case 10:
                 _guides[0].SetActive(false);
                 _guides[1].SetActive(false);
                 _guides[2].SetActive(false);
