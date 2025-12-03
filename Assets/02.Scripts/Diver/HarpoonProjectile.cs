@@ -27,7 +27,6 @@ public class HarpoonProjectile : MonoBehaviour
     [SerializeField] private float _hitStopDuration = 0.05f;
     [SerializeField] private float _hitStopScaleTime = 0.05f;
     
-    private GameObject _vfxObject;
     
     // 프로퍼티
     public bool IsReturning => _isReturning;
@@ -48,7 +47,7 @@ public class HarpoonProjectile : MonoBehaviour
     private float _damage;
     private float _baseSpeed; 
     private float _flightElapsed;   // 날아간 시간
-    
+    private float _lastCharge;
 
     private void Awake()
     {
@@ -65,7 +64,7 @@ public class HarpoonProjectile : MonoBehaviour
         _moveDir = dir.normalized;
         _baseSpeed = speed;
         _flightElapsed = 0f;
-        
+        _lastCharge = Mathf.Clamp01(charge);
         // 차지 정도에 따른 데미지 적용
         _damage = _baseDamage + _extraDamageAtFullCharge * Mathf.Clamp01(charge);
         
@@ -99,8 +98,6 @@ public class HarpoonProjectile : MonoBehaviour
     {
         _rigid = GetComponent<Rigidbody2D>();
         _rigid.gravityScale = 0f;
-        
-        _vfxObject = transform.GetChild(0).gameObject;
     }
 
     private void Update()
@@ -135,7 +132,6 @@ public class HarpoonProjectile : MonoBehaviour
                 BeginReturn();
             }
             
-            //_vfxObject.SetActive(false);
         }
     }
     
@@ -204,6 +200,7 @@ public class HarpoonProjectile : MonoBehaviour
         _rigid.linearVelocity = Vector2.zero;
         
         _owner.RequestHitStop(_hitStopDuration, _hitStopScaleTime);
+        _owner.VFX?.PlayHarpoonHit(other.transform.position, _lastCharge);
         
         fish.TakeHarpoonHit(_damage, _moveDir);
         
