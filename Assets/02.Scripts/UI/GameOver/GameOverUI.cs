@@ -26,6 +26,9 @@ public class GameOverUI : MonoBehaviour
     [SerializeField] private RectTransform statsPanel;           // 통계 패널 (애니메이션용)
     [SerializeField] private float animationDelay = 0.5f;        // 애니메이션 지연 시간
 
+    [Header("Crew Animation")]
+    [SerializeField] private CrewAnimationController crewAnimationController;  // 선원 애니메이션 컨트롤러
+
     void Start()
     {
         // 버튼 이벤트 연결
@@ -127,6 +130,33 @@ public class GameOverUI : MonoBehaviour
                 .SetEase(Ease.OutBack)
                 .SetUpdate(true);
         }
+
+        // 선원 애니메이션 재생
+        yield return new WaitForSecondsRealtime(0.3f);
+        PlayCrewAnimation();
+    }
+
+    /// <summary>
+    /// 선원 애니메이션 재생 (승리/패배에 따라)
+    /// </summary>
+    private void PlayCrewAnimation()
+    {
+        if (crewAnimationController == null)
+        {
+            Debug.LogWarning("[GameOverUI] CrewAnimationController가 없습니다!");
+            return;
+        }
+
+        if (GameOverData.IsVictory)
+        {
+            crewAnimationController.PlayVictoryAnimation();
+            Debug.Log("[GameOverUI] 승리 애니메이션 재생");
+        }
+        else
+        {
+            crewAnimationController.PlayDefeatAnimation();
+            Debug.Log("[GameOverUI] 패배 애니메이션 재생");
+        }
     }
 
     // ========== 버튼 핸들러 ==========
@@ -136,28 +166,24 @@ public class GameOverUI : MonoBehaviour
     /// </summary>
     private void OnRestartClicked()
     {
-        Debug.Log("[GameOverUI] 재시작 버튼 클릭");
+        Debug.Log("[GameOverUI] 재시작 버튼 클릭 - MainMenu로 이동");
 
         // 게임 데이터 초기화
         GameOverData.Reset();
 
-        // 페이드 아웃 후 Ship 씬 재로드
+        // 페이드 아웃 후 MainMenu 씬으로 이동
         if (FadeManager.Instance != null)
         {
             FadeManager.Instance.FadeOutToBlack(1f, () =>
             {
-                // Manager 초기화 필요 (새 게임 시작)
-                ResetAllManagers();
-
-                // Ship 씬으로 전환
-                SceneManager.LoadScene("Ship");
+                // MainMenu 씬으로 전환 (사용자가 게임 시작 버튼을 다시 누름)
+                SceneManager.LoadScene("GameStart");
             });
         }
         else
         {
             // FadeManager 없으면 바로 전환
-            ResetAllManagers();
-            SceneManager.LoadScene("Ship");
+            SceneManager.LoadScene("GameStart");
         }
     }
 
@@ -173,25 +199,5 @@ public class GameOverUI : MonoBehaviour
         #else
             Application.Quit();
         #endif
-    }
-
-    // ========== Manager 초기화 ==========
-
-    /// <summary>
-    /// 모든 Manager 초기화 (재시작 시)
-    /// 주의: 현재는 단순히 씬 재로드로 처리
-    /// 필요 시 각 Manager에 Reset() 메서드 추가 필요
-    /// </summary>
-    private void ResetAllManagers()
-    {
-        Debug.Log("[GameOverUI] Manager 초기화 (씬 재로드로 처리)");
-
-        // TODO: 필요 시 각 Manager의 Reset 메서드 호출
-        // DayManager.Instance?.Reset();
-        // CrewManager.Instance?.Reset();
-        // ShipManager.Instance?.Reset();
-
-        // 현재는 씬 재로드로 자동 초기화됨
-        // DontDestroyOnLoad 객체들은 Awake의 싱글톤 패턴으로 재생성됨
     }
 }

@@ -13,7 +13,7 @@ public enum ResourceCategory
     Food,       // 식량 (물고기)
     Water,      // 물
     Medicine,   // 약초
-    Material,   // 수리 재료 (목재)
+    Wood,   // 목재
     Special     // 특수 (공격형 등)
 }
 

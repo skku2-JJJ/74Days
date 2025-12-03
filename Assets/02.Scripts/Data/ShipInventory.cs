@@ -15,9 +15,11 @@ public class ShipInventory
     /// <summary>
     /// ResourceDatabase에서 초기값을 로드하여 인벤토리 초기화
     /// </summary>
-    public void Initialize(ResourceDatabase database)
+    /// <param name="database">ResourceDatabase</param>
+    /// <param name="forceReset">true일 경우 이미 초기화되어 있어도 강제로 재초기화</param>
+    public void Initialize(ResourceDatabase database, bool forceReset = false)
     {
-        if (_isInitialized)
+        if (_isInitialized && !forceReset)
         {
             Debug.LogWarning("[ShipInventory] 이미 초기화되었습니다!");
             return;
@@ -27,6 +29,14 @@ public class ShipInventory
         {
             Debug.LogError("[ShipInventory] ResourceDatabase가 null입니다!");
             return;
+        }
+
+        // forceReset이 true면 기존 데이터 클리어
+        if (forceReset)
+        {
+            _inventory.Clear();
+            _isInitialized = false;
+            Debug.Log("[ShipInventory] 강제 리셋 - 기존 인벤토리 클리어");
         }
 
         // ResourceDatabase에서 초기 인벤토리 로드
