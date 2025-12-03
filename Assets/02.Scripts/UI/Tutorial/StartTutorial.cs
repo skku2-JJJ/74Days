@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StartTutorial : MonoBehaviour
 {
@@ -12,6 +13,11 @@ public class StartTutorial : MonoBehaviour
     {
         _tutorial.gameObject.SetActive(false);
         _story.gameObject.SetActive(false);
+        StartIfFirstDay();
+    }
+
+    public void StartIfFirstDay()
+    {
         if (DayManager.Instance.CurrentDay == 1 && DayManager.Instance.currentPhase == DayPhase.Morning)
         {
             _isTutorialStarted = false;

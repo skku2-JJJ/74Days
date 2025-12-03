@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using System.Collections;
 using DG.Tweening;
+using UnityEngine.UI;
 
 public class Tutorial : MonoBehaviour
 {
@@ -39,6 +40,7 @@ public class Tutorial : MonoBehaviour
     };
     private int order = 0;
     private bool isTyping = false;
+    private bool isTutorialEnd = false;
 
     private Coroutine typingCoroutine;
 
@@ -47,7 +49,7 @@ public class Tutorial : MonoBehaviour
          _crewUI.GetComponent<RectTransform>().anchoredPosition = _crewUI.ClosePos;  
     }
 
-    public void NextTextTutorial()
+    public void NextTextTutorialTyping()
     {
         // 이미 타이핑 중이라면 
         if (isTyping)
@@ -67,6 +69,21 @@ public class Tutorial : MonoBehaviour
         }            
     }
 
+    public void NextTextTutorial()
+    {
+        ShowGuide();
+
+        if (order < _fullText.Length)
+        {
+            _tutorialTextUI.text = _fullText[order];
+            order++;
+        }
+        else
+        {
+            GameStart();
+        }
+    }
+
     IEnumerator TypeRoutine(string text, float delay, TextMeshProUGUI TextUI)
     {
         isTyping = true;
@@ -84,6 +101,8 @@ public class Tutorial : MonoBehaviour
     public void TutorialInit()
     {
         order = 0;
+        isTyping = false;
+        isTutorialEnd = false;
         typingCoroutine = null;
         gameObject.SetActive(true);
         foreach (var guide in _guides)
@@ -95,45 +114,28 @@ public class Tutorial : MonoBehaviour
            .OnComplete(() => NextTextTutorial());
     }
 
-    void GameStart()
+    public void GameStart()
     {
         _tutorialBox.SetActive(false);
         _guides[0].SetActive(true);
         _guides[1].SetActive(true);
         _guides[2].SetActive(false);
         _guides[3].SetActive(false);
+        _guides[4].SetActive(true);
         _crewUI.Open();
     }
 
     void ShowGuide()
     {
-        switch (order)
-        {
-            case 6:
-                _guides[0].SetActive(true);
-                _guides[1].SetActive(false);
-                _guides[2].SetActive(false);
-                _guides[3].SetActive(false);
-                break;
-            case 8:
-                _guides[0].SetActive(false);
-                _guides[1].SetActive(true);
-                _guides[2].SetActive(false);
-                _guides[3].SetActive(false);
-                break;
-            case 9:
-                _guides[0].SetActive(false);
-                _guides[1].SetActive(false);
-                _guides[2].SetActive(true);
-                _guides[3].SetActive(false);
-                break;
-            case 10:
-                _guides[0].SetActive(false);
-                _guides[1].SetActive(false);
-                _guides[2].SetActive(false);
-                _guides[3].SetActive(true);
-                break;
-        }
+        if (order == 6) SetGuide(0);
+        else if (order == 8) SetGuide(1);
+        else if (order == 9) SetGuide(2);
+        else if (order == 10) SetGuide(3);
     }
 
+    void SetGuide(int indexToShow)
+    {
+        for (int i = 0; i < _guides.Length; i++)
+            _guides[i].SetActive(i == indexToShow);
+    }
 }
