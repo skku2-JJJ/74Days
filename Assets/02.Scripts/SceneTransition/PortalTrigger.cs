@@ -89,7 +89,8 @@ public class PortalTrigger : MonoBehaviour
     void Update()
     {
         // 플레이어가 포탈 범위 내에 있고 스페이스바를 누르면
-        if (playerInRange && Input.GetKeyDown(KeyCode.Space))
+        //if (playerInRange && Input.GetKeyDown(KeyCode.Space))
+        if (playerInRange)
         {
             TransitionToScene();
         }
