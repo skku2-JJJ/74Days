@@ -1,0 +1,34 @@
+=================
+Bubble FX by Archanor VFX
+=================
+
+This asset features different scenes filled with bubbles, godray and dust particle effects.
+
+The prefabs can be dragged & dropped into your scene and are easiest to scale up with Transform.
+
+Created for the built-in render pipeline with an upgrade included for URP/Universal.
+
+
+=================
+Usage
+=================
+
+Demo scenes contain a 'BubbleCanvas' prefab as well as an EventSystem which are used for the scene selection menu in the bottom right.
+
+These can simply be deleted. If you want to use the scene selection menu, you first have to add the demo scenes to Build Settings.
+
+=================
+URP Upgrade
+=================
+
+To upgrade the asset to URP, simply find the 'Bubble FX URP 2019.3.1f1 Upgrade' unitypackage, double click it and and extract/import it to your project.
+
+If you've upgraded by accident, you can reimport the asset from the Asset Store or the Package Manager.
+
+=================
+Support
+=================
+
+archanor.com/support.html
+
+archanor.work@gmail.com
