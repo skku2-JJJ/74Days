@@ -85,6 +85,49 @@ public class SceneTransitionManager : MonoBehaviour
     }
 
     /// <summary>
+    /// 게임 시작 시 Ship 씬으로 전환 (Morning 페이즈)
+    /// MainMenu에서 "게임 시작" 버튼 클릭 시 호출
+    /// 로딩 씬을 거치지 않고 직접 전환
+    /// </summary>
+    public void StartNewGame()
+    {
+        if (isTransitioning) return;
+
+        Debug.Log("[SceneTransition] 새 게임 시작 - Ship 씬으로 직접 전환 (Morning)");
+        StartCoroutine(FadeOutAndStartNewGame());
+    }
+
+    /// <summary>
+    /// 페이드 아웃 후 Ship 씬 직접 로드 (로딩 씬 없이)
+    /// </summary>
+    private IEnumerator FadeOutAndStartNewGame()
+    {
+        isTransitioning = true;
+
+        // 목표 페이즈 저장 (DayManager가 sceneLoaded 이벤트에서 사용)
+        TargetPhase = DayPhase.Morning;
+
+        if (FadeManager.Instance == null)
+        {
+            Debug.LogError("[SceneTransition] FadeManager.Instance가 null입니다!");
+            yield break;
+        }
+
+        // 검은색 페이드 아웃
+        Debug.Log($"[SceneTransition] 게임 시작 페이드 아웃 시작 (0.7초)");
+        FadeManager.Instance.FadeOutToBlack(0.7f);
+
+        // 페이드 아웃 완료 대기
+        yield return new WaitForSeconds(0.7f);
+
+        // Ship 씬 직접 로드 (로딩 씬 거치지 않음)
+        Debug.Log($"[SceneTransition] Ship 씬 직접 로드");
+        SceneManager.LoadScene(shipSceneName);
+
+        isTransitioning = false;
+    }
+
+    /// <summary>
     /// 게임 오버 씬으로 전환 (로딩 씬 없이 직접 전환)
     /// 게임 종료 시 호출 (DayManager.HandleGameEnd에서 호출)
     /// </summary>
@@ -108,13 +151,6 @@ public class SceneTransitionManager : MonoBehaviour
             Debug.LogError("[SceneTransition] FadeManager.Instance가 null입니다!");
             yield break;
         }
-
-        // 검은색 페이드 아웃 (긴 시간으로 여운 주기)
-        Debug.Log($"[SceneTransition] 게임 오버 페이드 아웃 시작 (2초)");
-        FadeManager.Instance.FadeOutToBlack(2f);
-
-        // 페이드 아웃 완료 대기
-        yield return new WaitForSeconds(2f);
 
         // GameOver 씬 직접 로드 (로딩 씬 거치지 않음)
         Debug.Log($"[SceneTransition] GameOver 씬 직접 로드");

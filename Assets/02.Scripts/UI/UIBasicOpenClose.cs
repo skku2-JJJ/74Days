@@ -10,6 +10,9 @@ public class UIBasicOpenClose : MonoBehaviour
 
     [SerializeField]
     private Vector2 _closePos = new Vector2(0, -900);
+    public Vector2 ClosePos { get { return _closePos; } }
+
+    [SerializeField] private bool _isOpenDefault = false;
 
     // UI 열림/닫힘 상태
     private bool _isOpen = false;
@@ -22,6 +25,7 @@ public class UIBasicOpenClose : MonoBehaviour
     void Start()
     {
         _ui = GetComponent<RectTransform>();
+        if (_isOpenDefault) return;
         _ui.anchoredPosition = _closePos;
     }
 
@@ -38,10 +42,11 @@ public class UIBasicOpenClose : MonoBehaviour
 
         if (_uiType == EUIType.Only)
         {
-            if (UIManager.Instance.IsOpened) return;
+            if (UIManager.Instance.IsOpened) return; 
         }
-        
-        UIManager.Instance.IsOpened = true;
+
+
+        if (_uiType != EUIType.NotOnly) UIManager.Instance.IsOpened = true;
         _isOpen = true;
         _ui.DOAnchorPos(_openPos, 0.5f).SetEase(Ease.OutBack);
     }

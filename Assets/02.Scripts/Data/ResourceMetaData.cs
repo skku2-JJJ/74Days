@@ -39,6 +39,10 @@ public class ResourceMetaData : ScriptableObject
     [Range(0f, 100f)]
     public float temperatureRecovery = 0f;
 
+    [Tooltip("배 수리 시 HP 회복량 (0~100)")]
+    [Range(0f, 100f)]
+    public float repairRecovery = 0f;
+
     [Header("Additional Info (Optional)")]
     [TextArea(2, 4)]
     [Tooltip("자원 설명 (선택 사항)")]

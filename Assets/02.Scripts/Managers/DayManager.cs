@@ -173,9 +173,13 @@ using System.Collections.Generic;
       public void EndDay()
       {
           OnDayEnd?.Invoke(currentDay);
+
+          // GameOver 조건을 날짜 증가 전에 체크하여 불필요한 StartDay() 호출 방지
+          bool willBeGameOver = (currentDay + 1 >= maxDays) || IsAllCrewDead() || IsShipDestroyed();
+
           currentDay++;
 
-          if (IsGameOver)
+          if (willBeGameOver)
           {
               HandleGameEnd();
           }
@@ -444,5 +448,28 @@ using System.Collections.Generic;
       public int GetTodayHarvestAmount(ResourceType type)
       {
           return _todayHarvest.GetAmount(type);
+      }
+
+      // ========== 게임 재시작을 위한 데이터 리셋 ==========
+
+      /// <summary>
+      /// 게임 재시작 시 DayManager의 모든 상태를 초기화
+      /// MainMenuUI.ResetAllGameData()에서 호출
+      /// </summary>
+      public void ResetGameState()
+      {
+          Debug.Log("[DayManager] 게임 상태 초기화 시작");
+
+          // 날짜 초기화
+          currentDay = 1;
+
+          // 페이즈 초기화
+          currentPhase = DayPhase.None;
+
+          // 일일 수확량 초기화
+          _todayHarvest.Clear();
+
+          // 이벤트 구독자들은 유지 (이벤트는 초기화 안 함)
+          Debug.Log("[DayManager] 게임 상태 초기화 완료 - Day 1로 리셋");
       }
   }

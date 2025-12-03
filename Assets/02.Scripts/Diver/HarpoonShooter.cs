@@ -59,7 +59,7 @@ public class HarpoonShooter : MonoBehaviour
     private bool _isCharging;
     private bool _hasHarpoonOut;      
     private bool _canAim = true;       
-    
+    private bool _isHitStopping;
     
     // 프로퍼티
     public bool IsAiming => _isAiming;
@@ -127,8 +127,29 @@ public class HarpoonShooter : MonoBehaviour
             _chargeCurve = AnimationCurve.Linear(0f, 0f, 1f, 1f);
         }
     }
+    
+    public void RequestHitStop(float duration, float scaledTime)
+    {
+        if (_isHitStopping) return;
+        StartCoroutine(HitStopRoutine(duration, scaledTime));
+    }
+
+    private IEnumerator HitStopRoutine(float duration, float scaledTime)
+    {
+        _isHitStopping = true;
+
+        float prev = Time.timeScale;
+        Time.timeScale = scaledTime;
+        
+        yield return new WaitForSecondsRealtime(duration);
+
+        Time.timeScale = prev;
+        _isHitStopping = false;
+    }
+    
     private void UpdateAimState()
     {
+        
         bool aimInput  = _inputController.IsAimButtonHeld;
         bool prevAiming = _isAiming;
         
@@ -155,6 +176,8 @@ public class HarpoonShooter : MonoBehaviour
 
     private void UpdateTimeScale()
     {
+        if (_isHitStopping) return;
+        
         float target = 1f;
         
         if (!HasHarpoonOut && _isAiming)

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 /// <summary>
@@ -21,8 +22,11 @@ public class HarpoonProjectile : MonoBehaviour
     [Header("회수 설정")]
     [SerializeField] private float _returnSpeed = 18f;  
     [SerializeField] private float _returnStopDistance = 1f;
-    
 
+    [Header("히트스탑 설정")]
+    [SerializeField] private float _hitStopDuration = 0.05f;
+    [SerializeField] private float _hitStopScaleTime = 0.05f;
+    
     // 프로퍼티
     public bool IsReturning => _isReturning;
     public Vector3 Position => transform.position;
@@ -52,9 +56,6 @@ public class HarpoonProjectile : MonoBehaviour
     /// <summary>
     /// 투사체 생성 시 호출
     /// </summary>
-    /// <param name="dir"> 발사 방향 </param>
-    /// <param name="speed"> 발사 속도 </param>
-    /// <param name="charge"> 차지 비율 </param>
     public void Launch(Vector2 dir, float speed, float charge, HarpoonShooter owner)
     {
         _owner = owner;
@@ -184,8 +185,7 @@ public class HarpoonProjectile : MonoBehaviour
         _rigid.linearVelocity = _moveDir * finalSpeed;
     }
 
-    
-
+   
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (_isHit || _isReturning) return;
@@ -197,10 +197,10 @@ public class HarpoonProjectile : MonoBehaviour
         _isHit = true;
         _rigid.linearVelocity = Vector2.zero;
         
-        // 1) 데미지 적용
+        _owner.RequestHitStop(_hitStopDuration, _hitStopScaleTime);
+        
         fish.TakeHarpoonHit(_damage, _moveDir);
         
-        // 2) 캡처 가능 HP 이하라면 → QTE 없이 바로 포획
         if (fish.CanBeCaptured)
         {
             // 회수

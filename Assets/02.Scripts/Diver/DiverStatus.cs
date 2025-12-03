@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -97,7 +98,7 @@ public class DiverStatus : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int  amount)
+    public void TakeDamage(int amount = 10)
     {
         if (IsDead) return;
         if (amount <= 0) return;
@@ -108,9 +109,11 @@ public class DiverStatus : MonoBehaviour
         {
             _currentHp = 0;
             Die();
+            return;
         }
-
-        // TODO: HP UI 갱신
+        
+        _animator?.SetTrigger("Hit");
+        
     }
 
     public void Heal(int amount)
@@ -120,7 +123,6 @@ public class DiverStatus : MonoBehaviour
 
         _currentHp = Mathf.Clamp(_currentHp + amount, 0, _maxHp);
         
-        // TODO: HP UI 갱신
     }
 
     public void RestoreOxygen(int amount)
@@ -134,17 +136,18 @@ public class DiverStatus : MonoBehaviour
         {
             _oxygenDepletedTimer = 0f;
         }
-
-        // TODO: 산소 UI 갱신
+        
     }
 
     private void Die()
     {
         if (IsDead) return;
         _isDead = true;
-        
+
         _animator.SetTrigger("Die");
-        // DropAllItems();
+
+        // 사망 시퀀스 시작
+        StartCoroutine(HandleDeathSequence());
     }
 
     /*
@@ -175,5 +178,37 @@ public class DiverStatus : MonoBehaviour
             _bagUI.Refresh();
         }
     }
-    
+
+    /// <summary>
+    /// 플레이어 사망 시 실행되는 시퀀스
+    /// DiverBag 비우기 → 애니메이션 대기 → Fade Out → Ship Scene 전환
+    /// </summary>
+    private IEnumerator HandleDeathSequence()
+    {
+        Debug.Log("[DiverStatus] 플레이어 사망 - 사망 시퀀스 시작");
+
+        // 1. DiverBag 즉시 비우기 (모든 아이템 손실)
+        _diveBag.Clear();
+        Debug.Log("[DiverStatus] DiverBag 비워짐 - 모든 아이템 손실");
+
+        // 2. DayManager의 오늘 수확량도 초기화 (UI 혼란 방지)
+        if (DayManager.Instance != null)
+        {
+            DayManager.Instance.ClearTodayHarvest();
+        }
+
+        // 3. 사망 애니메이션 재생 대기 (1.5초)
+        yield return new WaitForSeconds(2f);
+
+        // 4. Ship Scene으로 전환 (DiverBag은 이미 비어있음)
+        if (SceneTransitionManager.Instance != null)
+        {
+            SceneTransitionManager.Instance.GoToShip();
+        }
+        else
+        {
+            Debug.LogError("[DiverStatus] SceneTransitionManager를 찾을 수 없습니다!");
+        }
+    }
+
 }
