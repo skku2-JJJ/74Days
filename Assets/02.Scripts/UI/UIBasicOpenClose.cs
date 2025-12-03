@@ -42,10 +42,11 @@ public class UIBasicOpenClose : MonoBehaviour
 
         if (_uiType == EUIType.Only)
         {
-            if (UIManager.Instance.IsOpened) return;
+            if (UIManager.Instance.IsOpened) return; 
         }
-        
-        UIManager.Instance.IsOpened = true;
+
+
+        if (_uiType != EUIType.NotOnly) UIManager.Instance.IsOpened = true;
         _isOpen = true;
         _ui.DOAnchorPos(_openPos, 0.5f).SetEase(Ease.OutBack);
     }
