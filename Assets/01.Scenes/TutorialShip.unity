@@ -5600,8 +5600,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _openPos: {x: 0, y: 0}
   _closePos: {x: 0, y: -300}
-  _isOpenDefault: 1
-  _uiType: 0
+  _isOpenDefault: 0
+  _uiType: 1
 --- !u!1001 &422759291
 PrefabInstance:
   m_ObjectHideFlags: 0
