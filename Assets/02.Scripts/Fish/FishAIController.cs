@@ -109,11 +109,6 @@ public class FishAIController : MonoBehaviour
         }
         
         // 2순위 -> Attack
-        if (_isAggressive)
-        {
-            HandleAggro();  
-        }
-        
         if (_isAggressive && _eFishState != EFishState.Escape)
         {
             UpdateAggroState();  
@@ -197,34 +192,7 @@ public class FishAIController : MonoBehaviour
             EnterChase();
         }
     }
-
-    private void HandleAggro()
-    {
-        if (_diver == null)  return;
-        
-        Vector2 toDiver = (Vector2)_diver.position - (Vector2)transform.position;
-        float dist = toDiver.magnitude;
-        
-        if (dist <= _attackRange && _attackCoolTimer <= 0f)
-        {
-            EnterAttack();
-            return;
-        }
-        
-        if (dist <= _aggroRadius)
-        {
-            if (_eFishState != EFishState.Chase && _eFishState != EFishState.Attack)
-            {
-                EnterChase();  
-            }
-            return;
-        }
-        
-        if (_eFishState == EFishState.Chase || _eFishState == EFishState.Attack)
-        {
-            EnterWander();
-        }
-    }
+    
 
     private void DecideMoveDir()
     {
