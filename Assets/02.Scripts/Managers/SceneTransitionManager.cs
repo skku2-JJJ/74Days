@@ -152,13 +152,6 @@ public class SceneTransitionManager : MonoBehaviour
             yield break;
         }
 
-        // 검은색 페이드 아웃 (긴 시간으로 여운 주기)
-        Debug.Log($"[SceneTransition] 게임 오버 페이드 아웃 시작 (2초)");
-        FadeManager.Instance.FadeOutToBlack(2f);
-
-        // 페이드 아웃 완료 대기
-        yield return new WaitForSeconds(2f);
-
         // GameOver 씬 직접 로드 (로딩 씬 거치지 않음)
         Debug.Log($"[SceneTransition] GameOver 씬 직접 로드");
         SceneManager.LoadScene(gameOverSceneName);

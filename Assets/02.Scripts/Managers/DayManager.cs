@@ -173,9 +173,13 @@ using System.Collections.Generic;
       public void EndDay()
       {
           OnDayEnd?.Invoke(currentDay);
+
+          // GameOver 조건을 날짜 증가 전에 체크하여 불필요한 StartDay() 호출 방지
+          bool willBeGameOver = (currentDay + 1 >= maxDays) || IsAllCrewDead() || IsShipDestroyed();
+
           currentDay++;
 
-          if (IsGameOver)
+          if (willBeGameOver)
           {
               HandleGameEnd();
           }

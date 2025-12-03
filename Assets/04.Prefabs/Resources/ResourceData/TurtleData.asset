@@ -16,8 +16,9 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: febdb55f6b2c3d04dbfe2a5d5d99fd28, type: 3}
   displayName: "\uC790\uC6D0"
   category: 0
-  initialAmount: 0
+  initialAmount: 4
   hungerRecovery: 40
   thirstRecovery: 0
   temperatureRecovery: 0
+  repairRecovery: 0
   description: 
