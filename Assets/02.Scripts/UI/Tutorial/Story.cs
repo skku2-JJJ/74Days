@@ -22,6 +22,7 @@ public class Story : MonoBehaviour
     private int _order = 0;
     private bool _isTyping = false;
     public bool IsStoryEnd = false;
+    public bool IsEnterPossible = false;
 
 
     private Coroutine typingCoroutine;
@@ -72,6 +73,7 @@ public class Story : MonoBehaviour
     public void StoryInit()
     {
         IsStoryEnd = false;
+        IsEnterPossible = false;
         typingCoroutine = null;
         _order = 0;
         _box.gameObject.SetActive(true);
@@ -94,7 +96,7 @@ public class Story : MonoBehaviour
         seq.AppendInterval(_startDelay)
            .Join(SoundManager.Instance.AudioSource.DOFade(1f, 3f).SetEase(Ease.InCubic))
            .AppendCallback(() => NextTextStory())
-           .Join(_storyEnterTextUI.DOColor(Color.white, 1f));
+           .Join(_storyEnterTextUI.DOColor(Color.white, 1f)).OnComplete(() => IsEnterPossible = true);
            
            
     }
@@ -107,7 +109,7 @@ public class Story : MonoBehaviour
             .Append(SoundManager.Instance.AudioSource.DOFade(0f, 2f))
             .AppendCallback(() => { IsStoryEnd = true; SoundManager.Instance.Init(); })
             .Append(_box.DOColor(Color.clear, 3f).SetEase(Ease.InBounce))
-            .OnComplete(() => { _box.gameObject.SetActive(false); if (BgmManager.Instance != null) BgmManager.Instance.BgmSource.DOFade(1f, 2f); });
+            .OnComplete(() => { _box.gameObject.SetActive(false); if (BgmManager.Instance != null) BgmManager.Instance.BgmSource.DOFade(0.5f, 2f); });
     
     }
 }

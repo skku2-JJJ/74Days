@@ -46,7 +46,7 @@ public class DailyReportUpDown : MonoBehaviour
     /// </summary>
     private void OnPhaseChanged(DayPhase phase)
     {
-        if (phase == DayPhase.Morning)
+        if (DayManager.Instance.CurrentDay != 1 && phase == DayPhase.Morning)
         {
             // Morning 페이즈 시작 시 자동으로 열기
             Open();
