@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(FishMoveController))]
 public class JellyFishAI : Obstacle
 {
-      [Header("Movement Settings")]
+    [Header("Movement Settings")]
     [SerializeField] private float _wanderMaxSpeed = 0.5f;            
     [SerializeField] private float _directionChangeInterval = 4.0f;  
     [SerializeField] private float _wanderJitter = 40f;              
@@ -15,9 +15,15 @@ public class JellyFishAI : Obstacle
     [Header("Damage Settings")]
     [SerializeField] private int _damageAmount = 10;
     [SerializeField] private float _hitCooldown = 0.5f;
-
+    
     private float _lastHitTime = -999f;
     private Animator _animator;
+    
+    private GameObject _diver;
+    private DiverStatus _diverStatus;
+    private DiverMoveController _diverMove;
+    private HarpoonCaptureQTE _qte;
+    
 
     void Awake()
     {
@@ -50,6 +56,11 @@ public class JellyFishAI : Obstacle
         _wanderDir = Random.insideUnitCircle.normalized;
         if (_wanderDir == Vector2.zero)
             _wanderDir = Vector2.right;
+        
+        _diver = GameObject.FindGameObjectWithTag("Player");
+        _diverStatus = _diver.GetComponent<DiverStatus>();
+        _diverMove = _diver.GetComponent<DiverMoveController>();
+        _qte = _diverStatus.GetComponent<HarpoonCaptureQTE>();
 
         _timer = 0f;
     }
@@ -70,23 +81,19 @@ public class JellyFishAI : Obstacle
 
         if (Time.time - _lastHitTime < _hitCooldown) return;
         _lastHitTime = Time.time;
-
-        GameObject playerObj = collision.gameObject;
         
-        DiverStatus diverStatus = playerObj.GetComponent<DiverStatus>();
-        if (diverStatus != null)
-            diverStatus.TakeDamage(_damageAmount);
         
-        var diverMove = playerObj.GetComponent<DiverMoveController>();
-        if (diverMove != null)
+        if (_diverStatus != null)
+            _diverStatus.TakeDamage(_damageAmount);
+        
+        if (_diverMove != null)
         {
-            Vector2 knockDir =  ((Vector2)playerObj.transform.position - (Vector2)transform.position).normalized;
-            diverMove.AddRecoil(knockDir);
+            Vector2 knockDir =  ((Vector2)_diver.transform.position - (Vector2)transform.position).normalized;
+            _diverMove.AddRecoil(knockDir);
         }
         
-        HarpoonCaptureQTE qte = playerObj.GetComponent<HarpoonCaptureQTE>();
-        if (qte != null && qte.IsCapturing)
-            qte.ForceFailCapture();
+        if (_qte != null && _qte.IsCapturing)
+            _qte.ForceFailCapture();
         
         _animator.SetTrigger("Attack");
     }

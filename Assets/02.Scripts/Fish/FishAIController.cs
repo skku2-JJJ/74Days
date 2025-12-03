@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 [RequireComponent(typeof(FishMoveController))]
 public class FishAIController : MonoBehaviour
@@ -79,6 +80,10 @@ public class FishAIController : MonoBehaviour
 
     
     private Animator _animator;
+
+    private DiverStatus _diverStatus;
+    private DiverMoveController _diverMove;
+    private HarpoonCaptureQTE _qte;
     
     private void Awake()
     {
@@ -136,6 +141,10 @@ public class FishAIController : MonoBehaviour
         _animator = GetComponentInChildren<Animator>();
         _diver = GameObject.FindGameObjectWithTag("Player").transform;
       
+        _diverStatus = _diver.GetComponent<DiverStatus>();
+        _diverMove = _diver.GetComponent<DiverMoveController>();
+        _qte = _diverStatus.GetComponent<HarpoonCaptureQTE>();
+        
         // 초기 방향 설정
         float angle = Random.Range(0, FullAngle);
         _wanderDir = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad));
@@ -271,7 +280,7 @@ public class FishAIController : MonoBehaviour
         _attackDir = ((Vector2)_diver.position - (Vector2)transform.position).normalized;
         _move.SetOverrideSpeed(_move.MaxSpeed * _attackDashSpeedMultiplier, _attackDashDuration);
         
-        Invoke("TryHitPlayer", _attackDashDuration);
+        StartCoroutine(AttackHitRoutine(_attackDashDuration));
         _animator.SetTrigger("Attack");
     }
     
@@ -303,6 +312,12 @@ public class FishAIController : MonoBehaviour
         }
     }
     
+    private IEnumerator AttackHitRoutine(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        TryHitPlayer();
+    }
+    
     private void TryHitPlayer()
     {
         if (_diver == null) return;
@@ -311,26 +326,22 @@ public class FishAIController : MonoBehaviour
         if (dist > _attackRange * _rangeOffsetFactor) return; 
         
         // 데미지 적용
-        DiverStatus diverStatus = _diver.GetComponent<DiverStatus>();
-        if (diverStatus != null)
+        if (_diverStatus != null)
         {
-            diverStatus.TakeDamage();  
-            Debug.Log("Attack!");
+            _diverStatus.TakeDamage();  
         }
         
         // 넉백
-        DiverMoveController diverMove = _diver.GetComponent<DiverMoveController>();
-        if (diverMove != null)
+        if (_diverMove != null)
         {
             Vector2 knockDir = ((Vector2)_diver.position - (Vector2)transform.position).normalized;
-            diverMove.AddRecoil(knockDir);
+            _diverMove.AddRecoil(knockDir);
         }
         
         // QTE 강제 종료
-        HarpoonCaptureQTE qte = _diver.GetComponent<HarpoonCaptureQTE>();
-        if (qte != null && qte.IsCapturing)
+        if (_qte != null && _qte.IsCapturing)
         {
-            qte.ForceFailCapture();
+            _qte.ForceFailCapture();
         }
         
     }

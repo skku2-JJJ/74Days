@@ -161,14 +161,6 @@ public class HarpoonCaptureQTE : MonoBehaviour
         {
             _captureGauge += _curGaugeGainPerPress;
             
-            /*
-             보류
-             FishHitFeedback fishHitFeedback = _targetFish.Transform.GetComponent<FishHitFeedback>();
-            if (fishHitFeedback != null)
-            {
-                fishHitFeedback.PlayPunchScale();
-            }*/
-            
         }
         
         _captureGauge = Mathf.Clamp01(_captureGauge);
