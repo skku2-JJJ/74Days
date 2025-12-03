@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SoundManager : MonoBehaviour
@@ -5,6 +6,8 @@ public class SoundManager : MonoBehaviour
     public static SoundManager Instance { get; private set; }
 
     private static AudioSource audioSource;
+    public AudioSource AudioSource => audioSource;
+
     void Awake()
     {
         // 싱글톤
@@ -30,5 +33,29 @@ public class SoundManager : MonoBehaviour
         }
         audioSource.PlayOneShot(audioClip);
 
+    }
+    public void PlaySoundOnly(AudioClip audioClip)
+    {
+        if (audioSource == null)
+        {
+            Debug.Log("오디오소스없음");
+            return;
+        }
+        audioSource.clip = audioClip;
+        audioSource.Play();
+
+    }
+
+    public void PlayStop()
+    {
+        audioSource.Stop();
+        audioSource.clip = null;    
+    }
+
+    public void Init()
+    {
+        audioSource.clip = null;
+        audioSource.volume = 1f;
+        audioSource.loop = false;
     }
 }

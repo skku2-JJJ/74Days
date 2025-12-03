@@ -8,6 +8,7 @@ public class BgmManager : MonoBehaviour
 
     [Header("BGM Audio Source")]
     private AudioSource _bgmSource;
+    public AudioSource BgmSource => _bgmSource;
 
     [Header("BGM Settings")]
     [SerializeField] private float _bgmVolume = 0.5f;
