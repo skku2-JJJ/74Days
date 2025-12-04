@@ -187,6 +187,7 @@ public class DiverMoveController : MonoBehaviour
            
         
         float applySpeed = _isBoosting ? (_maxSpeed * _boostMultiplier) : _maxSpeed;
+        float verticalMaxSpeed = _isBoosting ? _maxVerticalSpeed * _boostMultiplier : _maxVerticalSpeed;
         
         Vector2 targetVel = moveInputDir * applySpeed;
 
@@ -196,7 +197,7 @@ public class DiverMoveController : MonoBehaviour
 
         // 부력 적용
         currentVel.y += _buoyancy * Time.fixedDeltaTime;
-        currentVel.y = Mathf.Clamp(currentVel.y, -_maxVerticalSpeed, _maxVerticalSpeed);
+        currentVel.y = Mathf.Clamp(currentVel.y, -verticalMaxSpeed, verticalMaxSpeed);
         
         // 반동 적용
         if (_recoilVelocity.sqrMagnitude > RecoilEpsilon)
