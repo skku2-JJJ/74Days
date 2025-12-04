@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 61d1634caed63ab4dba52dee62c95d0b, type: 3}
-  m_Name: HerbData
+  m_Name: MedicineData
   m_EditorClassIdentifier: 
   resourceType: 11
   icon: {fileID: 21300000, guid: db005d11213e5da47b9769c2e6c56eee, type: 3}
   displayName: "\uC790\uC6D0"
   category: 2
-  initialAmount: 4
+  initialAmount: 0
   hungerRecovery: 0
   thirstRecovery: 0
-  temperatureRecovery: 30
+  temperatureRecovery: 20
   repairRecovery: 0
   description: 

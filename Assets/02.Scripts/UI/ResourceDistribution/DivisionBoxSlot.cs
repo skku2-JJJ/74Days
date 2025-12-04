@@ -146,7 +146,7 @@ public class DivisionBoxSlot : MonoBehaviour, IDropHandler, IPointerClickHandler
                 return type == ResourceType.Water;
 
             case BoxType.Temperature:
-                return type == ResourceType.Herb;
+                return type == ResourceType.Medicine;
 
             default:
                 return false;

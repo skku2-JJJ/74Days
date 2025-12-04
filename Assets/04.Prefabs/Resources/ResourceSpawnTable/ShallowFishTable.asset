@@ -15,14 +15,14 @@ MonoBehaviour:
   depthZone: 0
   entries:
   - resourcePrefab: {fileID: 7850211851399627728, guid: 79204519ef13af6478b4bf428b6889b9, type: 3}
-    weight: 50
+    weight: 9
   - resourcePrefab: {fileID: 2975072900619726923, guid: 3453a8f5519d5fb4b87921a0cdacd24a, type: 3}
-    weight: 80
+    weight: 25
   - resourcePrefab: {fileID: 1474861114485254737, guid: 4b8ec16e6981fb94fbf3c67c8fac62dc, type: 3}
-    weight: 80
+    weight: 25
   - resourcePrefab: {fileID: 5695496743905169115, guid: 4406aeae031ba05449e9f5891de05128, type: 3}
-    weight: 80
+    weight: 25
   - resourcePrefab: {fileID: 4011666218116776473, guid: 7de937c24c0ab684c9d15f0fdf2aee0b, type: 3}
-    weight: 30
+    weight: 15
   - resourcePrefab: {fileID: 4772474985568926653, guid: 2247f44da9bcbf24cbe9bbb2bdd05ce6, type: 3}
-    weight: 10
+    weight: 1
