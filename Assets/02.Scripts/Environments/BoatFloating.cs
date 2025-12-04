@@ -10,6 +10,9 @@ public class BoatFloating : MonoBehaviour
     private float seedX;
     private float seedY;
 
+    private float _minDepth = 4.5f;
+    private float _maxDepth = 8.5f;
+
     private Vector3 startPos;
 
     void Start()
@@ -34,7 +37,7 @@ public class BoatFloating : MonoBehaviour
         // 약간의 회전 (조금 기울어지는 느낌)
         float rotZ = (Mathf.PerlinNoise(seedX, t * 0.5f) - 0.5f) * rotationAmount;
 
-        transform.localPosition = new Vector3(startPos.x + offsetX, startPos.y + offsetY, startPos.z);
+        transform.localPosition = new Vector3(startPos.x + offsetX, Mathf.Lerp(_minDepth, startPos.y + offsetY, _maxDepth), startPos.z);
         transform.localRotation = Quaternion.Euler(0, 0, rotZ);
     }
 }
