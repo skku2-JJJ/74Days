@@ -48,6 +48,13 @@ public class StartTutorial : MonoBehaviour
                 _isTutorialStarted = true;
                 _tutorial.TutorialInit();
             }
+            if (_story.IsTutorialPossible && _isTutorialStarted)
+            {
+                if (Input.GetKeyDown(KeyCode.Return))
+                {
+                    _tutorial.NextTextTutorial();
+                }
+            }
         }
         
     }
