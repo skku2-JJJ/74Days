@@ -17,18 +17,26 @@ public enum ESfx
     ResourcePickup
 }
 
+
+[System.Serializable]
+public class SfxEntry
+{
+    public ESfx type;
+    public AudioSource source;
+}
+
 public class UnderwaterSFXManager : MonoBehaviour
 {
-    [SerializeField] private List<SfxEntry> _entries = new();
+    [SerializeField] private List<SfxEntry> _entries = new List<SfxEntry>();
 
-    private Dictionary<ESfx, AudioSource> _dict;
+    private Dictionary<ESfx, AudioSource> _dict = new Dictionary<ESfx, AudioSource>();
 
     private void Awake()
     {
        
         foreach (var e in _entries)
         {
-            if (!_dict.ContainsKey(e.type))
+            if (!_dict.ContainsKey(e.type) && e.source != null)
                 _dict.Add(e.type, e.source);
         }
     }
@@ -38,9 +46,10 @@ public class UnderwaterSFXManager : MonoBehaviour
     /// </summary>
     public void Play(ESfx type)
     {
-        if (_dict.TryGetValue(type, out var src))
+        if (_dict.TryGetValue(type, out AudioSource src))
         {
             src.Play();
+            Debug.Log(type);
         }
     }
 
@@ -64,9 +73,3 @@ public class UnderwaterSFXManager : MonoBehaviour
     
 }
 
-[System.Serializable]
-public class SfxEntry
-{
-    public ESfx type;
-    public AudioSource source;
-}
