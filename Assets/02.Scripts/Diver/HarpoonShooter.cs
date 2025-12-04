@@ -265,7 +265,7 @@ public class HarpoonShooter : MonoBehaviour
 
         GameObject projObj = Instantiate(_harpoonPrefab, origin, rot);
         HarpoonProjectile proj = projObj.GetComponent<HarpoonProjectile>();
-        proj.Launch(dir, speed, charge, this);
+        proj.Launch(dir, speed, charge, this, _sfxManager);
 
         
         

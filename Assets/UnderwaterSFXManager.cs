@@ -4,9 +4,8 @@ using UnityEngine;
 public enum ESfx
 {
     Dash,
-    ZoomIn,
-    ZoomOut,
-    ChargeLoop,
+    Zoom,
+    Charge,
     Fire,
     Hit,
     Breathe,
