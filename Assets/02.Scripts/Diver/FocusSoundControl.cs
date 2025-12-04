@@ -11,7 +11,11 @@ public class FocusSoundControl : MonoBehaviour
 
     public void SetFocus(bool on)
     {
-        if (_co != null) StopCoroutine(_co);
+        if (_co != null)
+        {
+            StopCoroutine(_co);
+            _lpf.cutoffFrequency = _normalCutoff;
+        }
         _co = StartCoroutine(FadeLPF(on ? _focusCutoff : _normalCutoff));
     }
 

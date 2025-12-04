@@ -36,6 +36,7 @@ public class HarpoonShooter : MonoBehaviour
 
     [Header("SFX 참조")]
     [SerializeField] private UnderwaterSFXManager _sfxManager;
+    [SerializeField] private FocusSoundControl _foutSoundControl;
 
 
     // 컴포넌트 / 참조
@@ -63,6 +64,7 @@ public class HarpoonShooter : MonoBehaviour
     private bool _hasHarpoonOut;      
     private bool _canAim = true;       
     private bool _isHitStopping;
+    private bool _isFocus;
     
     // 프로퍼티
     public bool IsAiming => _isAiming;
@@ -167,11 +169,24 @@ public class HarpoonShooter : MonoBehaviour
         {
             _animator.SetTrigger("Aim");
             // TODO : 에임 시 주변 사운드 약하게, 줌인 sfx
+
+            if (!_isFocus)
+            {
+                _foutSoundControl?.SetFocus(true);
+                _isFocus = true;
+            }
+           
         }
         else 
         {
             _animator.SetTrigger("AimEnd");
             // TODO : 볼륨 복구, 줌아웃 sfx
+            
+            if (_isFocus)
+            {
+                _foutSoundControl?.SetFocus(false);
+                _isFocus = false;
+            }
         }
         
         // 조준 종료 시 차지 초기화
@@ -179,6 +194,8 @@ public class HarpoonShooter : MonoBehaviour
         {
             _isCharging = false;
             _chargeTimer = 0f;
+           
+            _isFocus = false;
         }
     }
 
