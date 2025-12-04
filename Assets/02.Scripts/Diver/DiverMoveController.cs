@@ -29,6 +29,7 @@ public class DiverMoveController : MonoBehaviour
     private const float MinInputMagnitude = 0.01f;
     private const float RecoilEpsilon = 0.0001f;
     private const float BasicRecoilStrength = 1f;
+    
     // 프로퍼티
     public Vector2 MoveInput => _moveInput;
     private bool IsMoving => _moveInput.sqrMagnitude > MinInputMagnitude; //입력 기준으로 이동 판단
@@ -39,7 +40,7 @@ public class DiverMoveController : MonoBehaviour
         get
         {
             if (!_isBoosting || _boostDuration <= 0f) return 0f;
-            return 1f - Mathf.Clamp01(_boostTimer / _boostDuration);
+            return Mathf.Clamp01(_boostCharge);
         }
     }
     public float BoostCooldownRatio
@@ -47,7 +48,8 @@ public class DiverMoveController : MonoBehaviour
         get
         {
             if (_boostCoolTime <= 0f) return 1f;
-            return Mathf.Clamp01(_boostCoolTimer / _boostCoolTime);
+            if (_isBoosting) return 0f;           
+            return Mathf.Clamp01(_boostCharge);
         }
     }
     
@@ -65,6 +67,8 @@ public class DiverMoveController : MonoBehaviour
     private bool _isBoosting;
     private float _boostCoolTimer;
     private float _boostTimer;
+
+    private float _boostCharge;
     
     private void Awake()
     {
@@ -94,7 +98,7 @@ public class DiverMoveController : MonoBehaviour
         _harpoonShooter = GetComponent<HarpoonShooter>();
         _diverStatus = GetComponent<DiverStatus>();
 
-        _boostCoolTimer = _boostCoolTime;
+        _boostCharge = 1f;
     }
 
     private void GetMoveInput()
@@ -116,42 +120,58 @@ public class DiverMoveController : MonoBehaviour
     {
         if (_harpoonShooter.IsAiming)
         {
-            _isBoosting = false;   
-            _boostTimer = 0f;
+            _isBoosting = false;
             return;
         }
-        
-        bool isBoostHeld      = _inputController.IsBoostKeyHeld;
-        bool isBoostPressed   =  _inputController.IsBoostKeyPressed; 
 
+        bool isBoostHeld    = _inputController.IsBoostKeyHeld;
+        bool isBoostPressed = _inputController.IsBoostKeyPressed;
+        float dt = Time.deltaTime;
         
         if (_isBoosting)
         {
-            _boostTimer += Time.deltaTime;
-
-            // 부스트 종료
-            if (_boostTimer >= _boostDuration)
+            if (!isBoostHeld || !IsMoving)
             {
                 _isBoosting = false;
-                _boostTimer = 0f;
-                _boostCoolTimer = 0f;  
+            }
+            else
+            {
+                if (_boostDuration > 0f)
+                {
+                    _boostCharge -= dt / _boostDuration;
+                }
+
+                if (_boostCharge <= 0f)
+                {
+                    _boostCharge = 0f;
+                    _isBoosting = false; 
+                }
             }
 
             return;
         }
-
-        // 부스트 중이 아니면 키를 떼고 있을 때만 쿨타임 증가
-        if (!isBoostHeld)
-        {
-            _boostCoolTimer += Time.deltaTime;
-        }
         
-        if (_boostCoolTimer >= _boostCoolTime &&
-            isBoostPressed &&
-            IsMoving)
+        // 부스트 쿨타임 
+        if (!isBoostHeld && _boostCharge < 1f)
+        {
+            if (_boostCoolTime > 0f)
+            {
+                
+                _boostCharge += dt / _boostCoolTime;
+            }
+            else
+            {
+                _boostCharge = 1f;
+            }
+
+            if (_boostCharge > 1f)
+                _boostCharge = 1f;
+        }
+
+      
+        if (_boostCharge > 0f && isBoostPressed && IsMoving)                 
         {
             _isBoosting = true;
-            _boostTimer = 0f;
         }
     }
 
