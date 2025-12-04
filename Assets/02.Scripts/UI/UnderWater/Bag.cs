@@ -13,13 +13,13 @@ public class Bag : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
             if (_openClose == null) return;
             
             _openClose.Open();
         }
-        if (Input.GetKeyUp(KeyCode.R))
+        if (Input.GetKeyUp(KeyCode.Tab))
         {
             if (_openClose == null) return;
             

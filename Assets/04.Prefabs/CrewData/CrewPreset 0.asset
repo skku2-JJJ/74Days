@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 35d77187d10de4dbe93cc2f77f6b36b5, type: 3}
-  m_Name: CrewPreset
+  m_Name: CrewPreset 0
   m_EditorClassIdentifier: 
   crewName: "\uC9C0\uC6D0"
   crewID: 0
   aliveSprite: {fileID: -4541953881127276176, guid: 33554e98983775148b697ba2eacdf621, type: 3}
   deadSprite: {fileID: 5046992295978812273, guid: 7b12a5ab98020c748836bbad5a5c146f, type: 3}
-  initialHunger: 70
-  initialThirst: 70
+  initialHunger: 60
+  initialThirst: 50
   initialTemperature: 70
-  minHungerDecrease: 5
-  maxHungerDecrease: 40
-  minThirstDecrease: 15
-  maxThirstDecrease: 25
-  minTemperatureDecrease: 5
-  maxTemperatureDecrease: 15
+  minHungerDecrease: 25
+  maxHungerDecrease: 35
+  minThirstDecrease: 10
+  maxThirstDecrease: 15
+  minTemperatureDecrease: 3
+  maxTemperatureDecrease: 8
   foodHungerRecovery: 25
   waterThirstRecovery: 30
   herbsTemperatureRecovery: 20

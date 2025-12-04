@@ -12,14 +12,14 @@ public class DiverStatus : MonoBehaviour
     [Header("산소")]
     [SerializeField] private int _currentOxygen = 100;
     [SerializeField] private int _maxOxygen = 100;
-    [SerializeField] private int _oxygenConsumePerSecond = 1;
+    [SerializeField] private float _oxygenConsumePerSecond = 1.6f;
     
     [Header("가방 UI")]
     [SerializeField] private DiverbagUI _bagUI;
     
     [Header("산소 고갈 시 체력 손실 설정")]
     [SerializeField] private float  _oxygenDepletedDamageInterval = 1f;   
-    [SerializeField] private int _oxygenDepletedDamagePerTick = 5;
+    [SerializeField] private int _oxygenDepletedDamagePerTick = 10;
 
     [Header("UI")]
     [SerializeField] private GetItemUIUpdate _getUI;

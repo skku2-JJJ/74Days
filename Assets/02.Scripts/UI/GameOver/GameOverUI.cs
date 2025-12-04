@@ -80,7 +80,7 @@ public class GameOverUI : MonoBehaviour
 
         // 통계 표시
         if (daysText != null)
-            daysText.text = $"생존 일수: {GameOverData.SurvivedDays}일 / 74일";
+            daysText.text = $"생존 일수: {GameOverData.SurvivedDays}일 / 7일";
 
         if (crewText != null)
             crewText.text = $"생존 선원: {GameOverData.SurvivedCrew}명 / {GameOverData.TotalCrew}명";

@@ -41,7 +41,7 @@ public class GetItemUIUpdate : MonoBehaviour
                 recovery = data.temperatureRecovery;
                 break;
             case ResourceCategory.Wood:
-                recovery = 1;
+                recovery = data.repairRecovery;
                 break;
         }
 
@@ -49,7 +49,7 @@ public class GetItemUIUpdate : MonoBehaviour
         if (_slideInOut != null) _slideInOut.PlayInOut();
 
         _getUIText.NameTextUpdate(type.ToString());
-        _getUIText.StatTextUpdate(category, recovery);
+        _getUIText.StatTextUpdate(data);
         _image.sprite = spirte;
     }
 }

@@ -23,6 +23,7 @@ public class Story : MonoBehaviour
     private bool _isTyping = false;
     public bool IsStoryEnd = false;
     public bool IsEnterPossible = false;
+    public bool IsTutorialPossible = false;
 
 
     private Coroutine typingCoroutine;
@@ -47,7 +48,7 @@ public class Story : MonoBehaviour
         // 다음 문장으로
         if (typingCoroutine != null) _order++;
 
-        Debug.Log($"Order: {_order}");
+  
         if (_order < _storyText.Length) typingCoroutine = StartCoroutine(TypeRoutine(_storyText[_order], _delayStory, _storyTextUI));
         else
         {
@@ -74,6 +75,7 @@ public class Story : MonoBehaviour
     {
         IsStoryEnd = false;
         IsEnterPossible = false;
+        IsTutorialPossible = false;
         typingCoroutine = null;
         _order = 0;
         _box.gameObject.SetActive(true);
@@ -116,7 +118,7 @@ public class Story : MonoBehaviour
             .OnComplete(() =>
             {
                 _box.gameObject.SetActive(false);
-
+                IsTutorialPossible = true;
                 // Morning BGM 다시 시작
                 if (BgmManager.Instance != null)
                 {

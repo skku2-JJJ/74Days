@@ -28,6 +28,7 @@ public class FixShip : MonoBehaviour
     void Start()
     {
         init();
+        SceneTransitionManager.Instance.OnShipDataLoaded += init;
     }
 
 
@@ -53,6 +54,7 @@ public class FixShip : MonoBehaviour
         {
             _minusButton.interactable = false;
             _plusButton.interactable = false;
+            _fixButton.interactable = false;
         }
         else
         {
@@ -96,5 +98,10 @@ public class FixShip : MonoBehaviour
         ButtonUpdate();
         _amountText.AmountTextUpdate(_fixAmount);
         SliderUpdate(ShipManager.Instance.Ship.Hp);
+    }
+
+    private void OnDestroy()
+    {
+        SceneTransitionManager.Instance.OnShipDataLoaded -= init;
     }
 }
