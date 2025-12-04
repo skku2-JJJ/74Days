@@ -6,8 +6,11 @@ public class Warning : MonoBehaviour
 {
     [SerializeField] private Image _warningHPImage; // 깜빡이는 이미지
     [SerializeField] private Image _warningO2Image; // 깜빡이는 이미지
-    [SerializeField] private float _maxAlpha = 0.7f; // 체력이 0일 때의 최대 불투명도
-    [SerializeField] private float _minAlpha = 0f;   // 체력이 충분할 때(여유) 최소 불투명도
+    [SerializeField] private float _maxHPAlpha = 0.7f; // 체력이 0일 때의 최대 불투명도
+    [SerializeField] private float _minHPAlpha = 0f;   // 체력이 충분할 때(여유) 최소 불투명도
+
+    [SerializeField] private float _maxO2Alpha = 0.7f; // 체력이 0일 때의 최대 불투명도
+    [SerializeField] private float _minO2Alpha = 0f;   // 체력이 충분할 때(여유) 최소 불투명도
     [SerializeField] private float _blinkTime = 0.5f; // 깜빡이는 속도
     [SerializeField] private DiverStatus _status;
 
@@ -24,6 +27,13 @@ public class Warning : MonoBehaviour
     {
         // blinkValue를 0 ↔ 1 사이에서 계속 반복시키는 Tween (딱 한 번 만들기)
         DOTween.To(() => _blinkValue, x => _blinkValue = x, 1f, _blinkTime)
+            .SetLoops(-1, LoopType.Yoyo)
+            .SetEase(Ease.OutCubic);
+
+        _warningHPImage.gameObject.GetComponent<RectTransform>().DOScale(new Vector3(1.5f, 1.5f, 0f), _blinkTime)
+            .SetLoops(-1, LoopType.Yoyo)
+            .SetEase(Ease.OutCubic);
+        _warningO2Image.gameObject.GetComponent<RectTransform>().DOScale(new Vector3(1.5f, 1.5f, 0f), _blinkTime)
             .SetLoops(-1, LoopType.Yoyo)
             .SetEase(Ease.OutCubic);
     }
@@ -47,11 +57,11 @@ public class Warning : MonoBehaviour
     // HP 변화 주입
     public void UpdateHPWarning(float hpRatio)
     {
-        _hpTargetAlpha = Mathf.Lerp(_maxAlpha, _minAlpha, hpRatio);
+        _hpTargetAlpha = Mathf.Lerp(_maxHPAlpha, _minHPAlpha, hpRatio);
     }
 
     public void UpdateO2Warning(float o2Ratio)
     {
-        _o2TargetAlpha = Mathf.Lerp(_maxAlpha, _minAlpha, o2Ratio);
+        _o2TargetAlpha = Mathf.Lerp(_maxO2Alpha, _minO2Alpha, o2Ratio);
     }
 }
