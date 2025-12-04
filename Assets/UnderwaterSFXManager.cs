@@ -44,26 +44,16 @@ public class UnderwaterSFXManager : MonoBehaviour
     /// <summary>
     /// SFX 재생 시 호출
     /// </summary>
-    public void Play(ESfx type)
+    public void Play(ESfx type, bool checkPlaying = true)
     {
         if (_dict.TryGetValue(type, out AudioSource src))
         {
-            if (src.isPlaying) return;
+            if (checkPlaying && src.isPlaying) return;
             
             src.Play();
         }
     }
-
-    /// <summary>
-    /// 반복 재생되는 SFX 재생 컨트롤
-    /// </summary>
-
-    public bool IsPlaying(ESfx type)
-    {
-        if (!_dict.TryGetValue(type, out var src)) return false;
-        
-        return src.isPlaying;
-    }
+    
 
   /// <summary>
   /// 볼륨 조절

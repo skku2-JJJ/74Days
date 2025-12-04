@@ -207,7 +207,7 @@ public class HarpoonProjectile : MonoBehaviour
         _owner.VFX?.PlayHarpoonHit(other.transform.position, _lastCharge);
         
         fish.TakeHarpoonHit(_damage, _moveDir);
-        _sfxManager?.Play(ESfx.Hit);
+        _sfxManager?.Play(ESfx.Hit, false);
         
         if (fish.CanBeCaptured)
         {

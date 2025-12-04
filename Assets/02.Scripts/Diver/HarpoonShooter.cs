@@ -236,8 +236,8 @@ public class HarpoonShooter : MonoBehaviour
             _sfxManager?.SetVolume(ESfx.Fire, Mathf.Max(charge * 0.02f, 0.05f));
             _sfxManager?.SetVolume(ESfx.Bubble, Mathf.Max(charge * 0.5f, 0.1f));
             
-            _sfxManager?.Play(ESfx.Fire);
-            _sfxManager?.Play(ESfx.Bubble);
+            _sfxManager?.Play(ESfx.Fire, false);
+            _sfxManager?.Play(ESfx.Bubble, false);
         }
     }
 
