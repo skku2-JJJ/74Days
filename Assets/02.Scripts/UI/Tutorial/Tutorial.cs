@@ -7,8 +7,6 @@ using UnityEngine.UI;
 
 public class Tutorial : MonoBehaviour
 {
-    
-
     [Header("튜토리얼")]
     [SerializeField] private TextMeshProUGUI _tutorialTextUI;
     [SerializeField] private float _delay = 0.07f; // 글자 간격
@@ -26,12 +24,12 @@ public class Tutorial : MonoBehaviour
 
     private string[] _fullText = 
     {
-        
         "여기가... 어디지..",
         "파도에 한참을 떠밀려온 모양이다." , 
         "식량과 물 등의 자원을 모두 잃고 남겨진 것은 배 한 척뿐이다.", 
         "육지까지 돌아가기 걸리는 시간은 7일",
         "7일 동안 선원들과 함께 살아남아야 한다.",
+        "선원이 모두 죽거나 배가 침몰하게 되면 생존에 실패한다..",
         "매일 낮 바다에 들어가 자원을 구해와야겠다.",
         "배 위 표시된 곳을 주위 깊게 보자",
         "선상 가운데 테이블 위 책에는 매일 선원들의 상태가 기록되고,",
@@ -135,10 +133,10 @@ public class Tutorial : MonoBehaviour
 
     void ShowGuide()
     {
-        if (order == 6) SetGuide(0);
-        else if (order == 8) SetGuide(1);
-        else if (order == 9) SetGuide(2);
-        else if (order == 10) SetGuide(3);
+        if (order == 7) SetGuide(0);
+        else if (order == 9) SetGuide(1);
+        else if (order == 10) SetGuide(2);
+        else if (order == 11) SetGuide(3);
     }
 
     void SetGuide(int indexToShow)
