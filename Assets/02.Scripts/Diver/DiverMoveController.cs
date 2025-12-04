@@ -23,6 +23,10 @@ public class DiverMoveController : MonoBehaviour
     
     [Header("몸체 반동")]
     [SerializeField] private float _recoilDamping = 6f;
+    
+    [Header("SFX 참조")]
+    [SerializeField] private UnderwaterSFXManager _sfxManager;
+    
     private Vector2 _recoilVelocity;                      
     
     // 상수
@@ -60,6 +64,7 @@ public class DiverMoveController : MonoBehaviour
     private InputController _inputController;
     private HarpoonShooter _harpoonShooter; 
     private DiverStatus _diverStatus;
+    
     
     private Vector2 _moveInput;
     
@@ -169,9 +174,10 @@ public class DiverMoveController : MonoBehaviour
         }
 
       
-        if (_boostCharge > 0f && isBoostPressed && IsMoving)                 
+        if (_boostCharge > 0f && isBoostPressed && IsMoving && !_isBoosting)                 
         {
             _isBoosting = true;
+            _sfxManager?.Play(ESfx.Dash);
         }
     }
 
