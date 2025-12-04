@@ -30,6 +30,8 @@ public class HarpoonCaptureQTE : MonoBehaviour
     [SerializeField] private float _successShakeStrength = 0.7f;
     [SerializeField] private float _failShakeStrength = 0.5f;
     
+    [Header("SFX 참조")]
+    [SerializeField] private UnderwaterSFXManager _sfxManager;
     private float _shakeTimer;
 
     // QTE 현재 적용 난이도
@@ -160,7 +162,7 @@ public class HarpoonCaptureQTE : MonoBehaviour
         if (_input.IsPullKeyPressed)
         {
             _captureGauge += _curGaugeGainPerPress;
-            
+            _sfxManager?.Play(ESfx.QtePull);
         }
         
         _captureGauge = Mathf.Clamp01(_captureGauge);
@@ -212,11 +214,13 @@ public class HarpoonCaptureQTE : MonoBehaviour
         {
             Vector3 dir = (playerPos - fishPos).normalized;
             _impulseSource.GenerateImpulse(dir * _successShakeStrength);
+            _sfxManager?.Play(ESfx.QteSuccess, false);
         }
         else
         {
             Vector3 dir = (fishPos - playerPos).normalized;
             _impulseSource.GenerateImpulse(dir * _failShakeStrength);
+            _sfxManager?.Play(ESfx.QteFail,false);
         }
         
 

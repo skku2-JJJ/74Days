@@ -28,6 +28,9 @@ public class HarpoonProjectile : MonoBehaviour
     [SerializeField] private float _hitStopScaleTime = 0.05f;
     
     
+    private UnderwaterSFXManager _sfxManager;
+    
+    
     // 프로퍼티
     public bool IsReturning => _isReturning;
     public Vector3 Position => transform.position;
@@ -57,10 +60,11 @@ public class HarpoonProjectile : MonoBehaviour
     /// <summary>
     /// 투사체 생성 시 호출
     /// </summary>
-    public void Launch(Vector2 dir, float speed, float charge, HarpoonShooter owner)
+    public void Launch(Vector2 dir, float speed, float charge, HarpoonShooter owner, UnderwaterSFXManager sfxManager)
     {
         _owner = owner;
-        
+        _sfxManager = sfxManager;
+            
         _moveDir = dir.normalized;
         _baseSpeed = speed;
         _flightElapsed = 0f;
@@ -203,6 +207,7 @@ public class HarpoonProjectile : MonoBehaviour
         _owner.VFX?.PlayHarpoonHit(other.transform.position, _lastCharge);
         
         fish.TakeHarpoonHit(_damage, _moveDir);
+        _sfxManager?.Play(ESfx.Hit, false);
         
         if (fish.CanBeCaptured)
         {
@@ -214,6 +219,7 @@ public class HarpoonProjectile : MonoBehaviour
             // QTE 진입
             _owner.StartCapture(fish, this);
         }
+        
         
     }
 }

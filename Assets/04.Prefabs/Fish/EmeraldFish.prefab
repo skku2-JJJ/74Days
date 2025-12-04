@@ -65,7 +65,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &4844570634664230068
 MonoBehaviour:
@@ -80,7 +80,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fishType: 2
-  despawnDistanceFromCamera: 30
+  _qteDifficulty01: 0.5
   _escapeBurstSpeed: 8
   _escapeRandomFactor: 0.2
 --- !u!114 &1396580377617515186
@@ -120,12 +120,17 @@ MonoBehaviour:
   _idleMinDuration: 1
   _idleMaxDuration: 3
   _idleChanceAfterWander: 0.4
+  _isAggressive: 0
+  _aggroRadius: 7
+  _chaseStateDuration: 5
+  _attackRange: 4
+  _attackCooltime: 1.5
+  _attackDashSpeedMultiplier: 2.5
+  _attackDashDuration: 0.25
   _obstacleMask:
     serializedVersion: 2
     m_Bits: 8
   _rayDistance: 1.2
-  _fleeRadius: 4
-  _fleeStrength: 1.5
   _escapeDuration: 3
 --- !u!114 &4192585014036718078
 MonoBehaviour:

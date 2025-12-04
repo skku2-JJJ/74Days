@@ -89,7 +89,7 @@ public class JellyFishAI : Obstacle
         if (_diverMove != null)
         {
             Vector2 knockDir =  ((Vector2)_diver.transform.position - (Vector2)transform.position).normalized;
-            _diverMove.AddRecoil(knockDir);
+            _diverMove.AddRecoil(knockDir, 2f);
         }
         
         if (_qte != null && _qte.IsCapturing)

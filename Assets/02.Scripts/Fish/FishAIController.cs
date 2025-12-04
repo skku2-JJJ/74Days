@@ -335,7 +335,7 @@ public class FishAIController : MonoBehaviour
         if (_diverMove != null)
         {
             Vector2 knockDir = ((Vector2)_diver.position - (Vector2)transform.position).normalized;
-            _diverMove.AddRecoil(knockDir);
+            _diverMove.AddRecoil(knockDir, 2f);
         }
         
         // QTE 강제 종료
