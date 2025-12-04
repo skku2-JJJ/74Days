@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using System;
 
 /// <summary>
 /// 씬 전환 및 페이즈 관리
@@ -9,6 +10,8 @@ using System.Collections;
 public class SceneTransitionManager : MonoBehaviour
 {
     public static SceneTransitionManager Instance { get; private set; }
+
+    public event Action OnShipDataLoaded;
 
     // DayManager가 참조할 목표 페이즈 (static)
     public static DayPhase TargetPhase { get; set; } = DayPhase.None;
@@ -232,6 +235,7 @@ public class SceneTransitionManager : MonoBehaviour
         }
 
         Debug.Log($"[SceneTransition] 총 {totalTransferred}개 자원을 Ship에 추가 완료");
+        OnShipDataLoaded?.Invoke();
 
         // TodayHarvest에도 기록 (UI 표시용 - 읽기 전용)
         if (DayManager.Instance != null)

@@ -47,7 +47,7 @@ public class Story : MonoBehaviour
         // 다음 문장으로
         if (typingCoroutine != null) _order++;
 
-        Debug.Log($"Order: {_order}");
+  
         if (_order < _storyText.Length) typingCoroutine = StartCoroutine(TypeRoutine(_storyText[_order], _delayStory, _storyTextUI));
         else
         {
