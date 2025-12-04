@@ -49,7 +49,6 @@ public class UnderwaterSFXManager : MonoBehaviour
         if (_dict.TryGetValue(type, out AudioSource src))
         {
             src.Play();
-            Debug.Log(type);
         }
     }
 
