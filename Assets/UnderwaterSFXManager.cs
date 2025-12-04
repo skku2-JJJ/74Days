@@ -13,7 +13,8 @@ public enum ESfx
     QtePull,
     QteSuccess,
     QteFail,
-    ResourcePickup
+    ResourcePickup,
+    Bubble,
 }
 
 
