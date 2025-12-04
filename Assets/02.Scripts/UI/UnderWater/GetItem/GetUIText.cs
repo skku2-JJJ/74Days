@@ -16,12 +16,6 @@ public class GetUIText : MonoBehaviour
         _nameTextMeshProUGUI.text = $"{name}";
     }
 
-    // 기존 메서드 - 하위 호환성 유지
-    public void StatTextUpdate(ResourceCategory ItemstatType, float value)
-    {
-        _statTextMeshProUGUI.text = $"{ItemstatType.ToString()}\n+ {value}";
-    }
-
     /// <summary>
     /// ItemInformationText와 일관된 형식으로 자원 정보 표시
     /// 모든 회복 효과를 한글 라벨로 표시

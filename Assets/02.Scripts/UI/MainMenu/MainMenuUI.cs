@@ -25,10 +25,6 @@ public class MainMenuUI : MonoBehaviour
         if (quitButton != null)
             quitButton.onClick.AddListener(OnQuitClicked);
 
-        // 타이틀 텍스트 설정
-        if (titleText != null)
-            titleText.text = "Bell Diver : 7 Days";
-
         // FadeManager가 있으면 FadeIn (GameOver에서 넘어온 경우 검은 화면 해제)
         if (FadeManager.Instance != null)
         {
