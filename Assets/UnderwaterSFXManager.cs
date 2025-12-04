@@ -69,6 +69,16 @@ public class UnderwaterSFXManager : MonoBehaviour
         }
     }
 
+  /// <summary>
+  /// 볼륨 조절
+  /// </summary>
+    public void SetVolume(ESfx type, float volume)
+    {
+        if (_dict.TryGetValue(type, out var src))
+        {
+            src.volume = volume;
+        }
+    }
     
 }
 
