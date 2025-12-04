@@ -36,7 +36,7 @@ public class Tutorial : MonoBehaviour
         "매일 밤 이곳에서 선원들과 자원을 분배한다.",
         "배 또한 성하지 않으니 이곳에서 배도 수리하도록 하자",
         "선원과 배의 상태를 확인해 바다로 내려가자",
-        "배와 연결된 다리에서 Space Bar를 누르면 바다로 떠날 수 있다."
+        "배와 연결된 다리 아래로 내려가면 바다로 떠날 수 있다."
     };
     private int order = 0;
     private bool isTyping = false;
