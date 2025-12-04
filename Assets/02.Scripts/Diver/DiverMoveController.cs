@@ -93,6 +93,8 @@ public class DiverMoveController : MonoBehaviour
         _inputController = GetComponent<InputController>();
         _harpoonShooter = GetComponent<HarpoonShooter>();
         _diverStatus = GetComponent<DiverStatus>();
+
+        _boostCoolTimer = _boostCoolTime;
     }
 
     private void GetMoveInput()
