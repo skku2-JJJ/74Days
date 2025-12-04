@@ -34,6 +34,8 @@ public class HarpoonShooter : MonoBehaviour
     [Header("UI")]
     [SerializeField] private GetItemUIUpdate _getUI;
 
+    [Header("SFX 참조")]
+    [SerializeField] private UnderwaterSFXManager _sfxManager;
 
 
     // 컴포넌트 / 참조
@@ -164,10 +166,12 @@ public class HarpoonShooter : MonoBehaviour
         if (_isAiming)
         {
             _animator.SetTrigger("Aim");
+            // TODO : 에임 시 주변 사운드 약하게, 줌인 sfx
         }
         else 
         {
             _animator.SetTrigger("AimEnd");
+            // TODO : 볼륨 복구, 줌아웃 sfx
         }
         
         // 조준 종료 시 차지 초기화
@@ -229,7 +233,7 @@ public class HarpoonShooter : MonoBehaviour
             _chargeTimer = 0f;
             _coolTimer = 0f;
             
-           
+            _sfxManager?.Play(ESfx.Fire);
         }
     }
 
