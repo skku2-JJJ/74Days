@@ -48,6 +48,8 @@ public class UnderwaterSFXManager : MonoBehaviour
     {
         if (_dict.TryGetValue(type, out AudioSource src))
         {
+            if (src.isPlaying) return;
+            
             src.Play();
         }
     }
@@ -55,18 +57,12 @@ public class UnderwaterSFXManager : MonoBehaviour
     /// <summary>
     /// 반복 재생되는 SFX 재생 컨트롤
     /// </summary>
-    public void Loop(ESfx type, bool isOn)
-    {
-        if (!_dict.TryGetValue(type, out var src)) return;
 
-        if (isOn)
-        {
-            if (!src.isPlaying) src.Play();
-        }
-        else
-        {
-            if (src.isPlaying) src.Stop();
-        }
+    public bool IsPlaying(ESfx type)
+    {
+        if (!_dict.TryGetValue(type, out var src)) return false;
+        
+        return src.isPlaying;
     }
 
   /// <summary>
