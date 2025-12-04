@@ -214,13 +214,13 @@ public class HarpoonCaptureQTE : MonoBehaviour
         {
             Vector3 dir = (playerPos - fishPos).normalized;
             _impulseSource.GenerateImpulse(dir * _successShakeStrength);
-            _sfxManager?.Play(ESfx.QteSuccess);
+            _sfxManager?.Play(ESfx.QteSuccess, false);
         }
         else
         {
             Vector3 dir = (fishPos - playerPos).normalized;
             _impulseSource.GenerateImpulse(dir * _failShakeStrength);
-            _sfxManager?.Play(ESfx.QteFail);
+            _sfxManager?.Play(ESfx.QteFail,false);
         }
         
 
