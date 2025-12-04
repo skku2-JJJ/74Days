@@ -53,6 +53,20 @@ public class UnderwaterSFXManager : MonoBehaviour
             src.Play();
         }
     }
+
+    
+    /// <summary>
+    /// 재생 종료 시 호출
+    /// </summary>
+    public void Stop(ESfx type)
+    {
+        if (_dict.TryGetValue(type, out AudioSource src))
+        {
+            if (!src.isPlaying) return;
+            
+            src.Stop();
+        }
+    }
     
 
   /// <summary>

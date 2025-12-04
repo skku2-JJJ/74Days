@@ -212,7 +212,7 @@ public class HarpoonShooter : MonoBehaviour
         {
             _isCharging = true;
             _chargeTimer = 0f;
-            
+            _sfxManager?.Play(ESfx.Charge, false);
         }
         
         // 차지 중
@@ -238,6 +238,8 @@ public class HarpoonShooter : MonoBehaviour
             
             _sfxManager?.Play(ESfx.Fire, false);
             _sfxManager?.Play(ESfx.Bubble, false);
+            
+            _sfxManager?.Stop(ESfx.Charge);
         }
     }
 
