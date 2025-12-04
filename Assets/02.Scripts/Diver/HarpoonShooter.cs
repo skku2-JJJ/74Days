@@ -275,10 +275,7 @@ public class HarpoonShooter : MonoBehaviour
         
         _currentProjectile = proj;
         _hasHarpoonOut = true;      
-            
-                
         
-        // TODO:  발사 사운드 / 이펙트 호출
         _animator.SetTrigger("Shoot");
        
     }
