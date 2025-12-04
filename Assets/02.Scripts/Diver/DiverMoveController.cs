@@ -29,10 +29,29 @@ public class DiverMoveController : MonoBehaviour
     private const float MinInputMagnitude = 0.01f;
     private const float RecoilEpsilon = 0.0001f;
     private const float BasicRecoilStrength = 1f;
+    
     // 프로퍼티
     public Vector2 MoveInput => _moveInput;
     private bool IsMoving => _moveInput.sqrMagnitude > MinInputMagnitude; //입력 기준으로 이동 판단
-   
+    public bool IsBoosting => _isBoosting;
+    
+    public float BoostRemainRatio
+    {
+        get
+        {
+            if (!_isBoosting || _boostDuration <= 0f) return 0f;
+            return Mathf.Clamp01(_boostCharge);
+        }
+    }
+    public float BoostCooldownRatio
+    {
+        get
+        {
+            if (_boostCoolTime <= 0f) return 1f;
+            if (_isBoosting) return 0f;           
+            return Mathf.Clamp01(_boostCharge);
+        }
+    }
     
     // 컴포넌트
     private Rigidbody2D _rigid;
@@ -48,6 +67,8 @@ public class DiverMoveController : MonoBehaviour
     private bool _isBoosting;
     private float _boostCoolTimer;
     private float _boostTimer;
+
+    private float _boostCharge;
     
     private void Awake()
     {
@@ -76,6 +97,8 @@ public class DiverMoveController : MonoBehaviour
         _inputController = GetComponent<InputController>();
         _harpoonShooter = GetComponent<HarpoonShooter>();
         _diverStatus = GetComponent<DiverStatus>();
+
+        _boostCharge = 1f;
     }
 
     private void GetMoveInput()
@@ -97,42 +120,58 @@ public class DiverMoveController : MonoBehaviour
     {
         if (_harpoonShooter.IsAiming)
         {
-            _isBoosting = false;   
-            _boostTimer = 0f;
+            _isBoosting = false;
             return;
         }
-        
-        bool isBoostHeld      = _inputController.IsBoostKeyHeld;
-        bool isBoostPressed   =  _inputController.IsBoostKeyPressed; 
 
+        bool isBoostHeld    = _inputController.IsBoostKeyHeld;
+        bool isBoostPressed = _inputController.IsBoostKeyPressed;
+        float dt = Time.deltaTime;
         
         if (_isBoosting)
         {
-            _boostTimer += Time.deltaTime;
-
-            // 부스트 종료
-            if (_boostTimer >= _boostDuration)
+            if (!isBoostHeld || !IsMoving)
             {
                 _isBoosting = false;
-                _boostTimer = 0f;
-                _boostCoolTimer = 0f;  
+            }
+            else
+            {
+                if (_boostDuration > 0f)
+                {
+                    _boostCharge -= dt / _boostDuration;
+                }
+
+                if (_boostCharge <= 0f)
+                {
+                    _boostCharge = 0f;
+                    _isBoosting = false; 
+                }
             }
 
             return;
         }
-
-        // 부스트 중이 아니면 키를 떼고 있을 때만 쿨타임 증가
-        if (!isBoostHeld)
-        {
-            _boostCoolTimer += Time.deltaTime;
-        }
         
-        if (_boostCoolTimer >= _boostCoolTime &&
-            isBoostPressed &&
-            IsMoving)
+        // 부스트 쿨타임 
+        if (!isBoostHeld && _boostCharge < 1f)
+        {
+            if (_boostCoolTime > 0f)
+            {
+                
+                _boostCharge += dt / _boostCoolTime;
+            }
+            else
+            {
+                _boostCharge = 1f;
+            }
+
+            if (_boostCharge > 1f)
+                _boostCharge = 1f;
+        }
+
+      
+        if (_boostCharge > 0f && isBoostPressed && IsMoving)                 
         {
             _isBoosting = true;
-            _boostTimer = 0f;
         }
     }
 
@@ -148,6 +187,7 @@ public class DiverMoveController : MonoBehaviour
            
         
         float applySpeed = _isBoosting ? (_maxSpeed * _boostMultiplier) : _maxSpeed;
+        float verticalMaxSpeed = _isBoosting ? _maxVerticalSpeed * _boostMultiplier : _maxVerticalSpeed;
         
         Vector2 targetVel = moveInputDir * applySpeed;
 
@@ -157,7 +197,7 @@ public class DiverMoveController : MonoBehaviour
 
         // 부력 적용
         currentVel.y += _buoyancy * Time.fixedDeltaTime;
-        currentVel.y = Mathf.Clamp(currentVel.y, -_maxVerticalSpeed, _maxVerticalSpeed);
+        currentVel.y = Mathf.Clamp(currentVel.y, -verticalMaxSpeed, verticalMaxSpeed);
         
         // 반동 적용
         if (_recoilVelocity.sqrMagnitude > RecoilEpsilon)
