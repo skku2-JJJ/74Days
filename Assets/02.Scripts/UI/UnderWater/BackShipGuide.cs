@@ -8,7 +8,7 @@ public class BackShipGuide : MonoBehaviour
     private CanvasGroup _canvasGroup;
     [SerializeField] private float _speed = 0.4f;
     [SerializeField] private float _alpha = 0.2f;
-    void Start()
+    void Awake()
     {
         _textMeshProUGUI = GetComponent<TextMeshProUGUI>();
         _canvasGroup = _textMeshProUGUI.gameObject.GetComponent<CanvasGroup>();

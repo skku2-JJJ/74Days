@@ -58,8 +58,8 @@ public class ReturnPortalTrigger : MonoBehaviour
             // UI 숨기기
             if (interactionPrompt != null)
             {
-                interactionPrompt.gameObject.SetActive(false);
                 interactionPrompt.BlinkStop();
+                interactionPrompt.gameObject.SetActive(false);
             }
 
             Debug.Log("[ReturnPortal] 플레이어가 귀환 포탈 범위에서 벗어남");
