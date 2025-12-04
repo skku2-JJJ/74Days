@@ -37,8 +37,10 @@ public enum ResourceType
     // 공격형
     Shark,
     KillerWhale,
+    
+    // 지원 재료
     Water,
-    Herb,
+    Medicine,
     Wood
 }
 

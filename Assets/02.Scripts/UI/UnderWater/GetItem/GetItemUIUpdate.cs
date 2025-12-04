@@ -18,38 +18,19 @@ public class GetItemUIUpdate : MonoBehaviour
 
     public void UIUpdate(ResourceType type)
     {
-
         ResourceMetaData data = ResourceDatabaseManager.GetData(type);
 
         if (data == null) return;
-        
-        Sprite spirte = data.icon;
-        ResourceCategory category = data.category;
 
-        float recovery = 0;
-
-        switch (category)
+        // 슬라이드 애니메이션 재생
+        if (_slideInOut != null)
         {
-            case ResourceCategory.Food:
-                recovery = data.hungerRecovery;
-                break;
-
-            case ResourceCategory.Water:
-                 recovery = data.thirstRecovery;
-                break;
-            case ResourceCategory.Medicine:
-                recovery = data.temperatureRecovery;
-                break;
-            case ResourceCategory.Wood:
-                recovery = 1;
-                break;
+            _slideInOut.PlayInOut();
         }
 
-
-        if (_slideInOut != null) _slideInOut.PlayInOut();
-
+        // UI 업데이트 (일관된 형식으로 모든 회복 효과 표시)
         _getUIText.NameTextUpdate(type.ToString());
-        _getUIText.StatTextUpdate(category, recovery);
-        _image.sprite = spirte;
+        _getUIText.StatTextUpdate(data);
+        _image.sprite = data.icon;
     }
 }

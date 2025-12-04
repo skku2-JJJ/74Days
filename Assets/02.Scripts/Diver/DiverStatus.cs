@@ -19,7 +19,7 @@ public class DiverStatus : MonoBehaviour
     
     [Header("산소 고갈 시 체력 손실 설정")]
     [SerializeField] private float  _oxygenDepletedDamageInterval = 1f;   
-    [SerializeField] private int _oxygenDepletedDamagePerTick = 5;
+    [SerializeField] private int _oxygenDepletedDamagePerTick = 10;
 
     [Header("UI")]
     [SerializeField] private GetItemUIUpdate _getUI;
