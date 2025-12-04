@@ -352,6 +352,7 @@ GameObject:
   - component: {fileID: 25895071}
   - component: {fileID: 25895070}
   - component: {fileID: 25895073}
+  - component: {fileID: 25895074}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -477,6 +478,21 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!114 &25895074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 25895069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c6eea81653f09c429184770c27a3725, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shakeIntensity: 0.2
+  _shakeSpeed: 0.5
+  _enableShake: 1
 --- !u!1 &25933613
 GameObject:
   m_ObjectHideFlags: 0
@@ -785,12 +801,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -1549,6 +1565,7 @@ GameObject:
   m_Component:
   - component: {fileID: 101403501}
   - component: {fileID: 101403502}
+  - component: {fileID: 101403503}
   m_Layer: 0
   m_Name: rigging_0
   m_TagString: Untagged
@@ -1626,6 +1643,30 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &101403503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 101403500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa89058f495a647408f2dff8935b54cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rotationAmountZ: 4
+  _rotationSpeedZ: 1.5
+  _rotationAmountX: 5
+  _rotationSpeedX: 3
+  _rotationAmountY: 5
+  _rotationSpeedY: 3
+  _enableRotation: 1
+  _vibrationAmountX: 0.2
+  _vibrationAmountY: 0.2
+  _vibrationSpeedX: 0.8
+  _vibrationSpeedY: 0.8
+  _enableVibration: 1
 --- !u!1 &107060597
 GameObject:
   m_ObjectHideFlags: 0
@@ -2404,12 +2445,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -2800,12 +2841,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -4299,12 +4340,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -11890,12 +11931,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -13407,7 +13448,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9029415651211787602, guid: 7bb67286b72da2341adb21967672585c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.0034742355
       objectReference: {fileID: 0}
     - target: {fileID: 9029415651211787602, guid: 7bb67286b72da2341adb21967672585c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -13771,12 +13812,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -15967,7 +16008,7 @@ Transform:
   m_GameObject: {fileID: 1144333886}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.57, y: -6.39, z: 0}
+  m_LocalPosition: {x: 1.57, y: -5.03, z: 0}
   m_LocalScale: {x: 1.5, y: 0.7375, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16382,6 +16423,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1210321875}
   - component: {fileID: 1210321876}
+  - component: {fileID: 1210321877}
   m_Layer: 0
   m_Name: rigging_3
   m_TagString: Untagged
@@ -16459,6 +16501,30 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1210321877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1210321874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa89058f495a647408f2dff8935b54cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rotationAmountZ: 7
+  _rotationSpeedZ: 1.5
+  _rotationAmountX: 7
+  _rotationSpeedX: 3
+  _rotationAmountY: 7
+  _rotationSpeedY: 3
+  _enableRotation: 1
+  _vibrationAmountX: 0.2
+  _vibrationAmountY: 0.2
+  _vibrationSpeedX: 0.8
+  _vibrationSpeedY: 0.8
+  _enableVibration: 1
 --- !u!1 &1211844114
 GameObject:
   m_ObjectHideFlags: 0
@@ -26463,7 +26529,7 @@ Transform:
   m_GameObject: {fileID: 1876068046}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.57, y: -5.37, z: 0}
+  m_LocalPosition: {x: 1.57, y: -4.95, z: 0}
   m_LocalScale: {x: 1.4459605, y: 1.0938013, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -26514,7 +26580,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 873255275650175208, guid: ca7ce92a4eec95b41afb47209721a5ba, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
