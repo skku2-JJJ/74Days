@@ -16,6 +16,9 @@ public class DailyReportUpDown : MonoBehaviour
     private bool _isOpen = false;
     public bool IsOpen => _isOpen;
 
+    [Header("Sound Effects")]
+    [SerializeField] private AudioClip _closeSound;
+
 
 
     void Start()
@@ -80,6 +83,12 @@ public class DailyReportUpDown : MonoBehaviour
 
         _crewsUI.DOKill();
         _reoportUI.DOKill();
+
+        // Close 사운드 재생
+        if (_closeSound != null && SoundManager.Instance != null)
+        {
+            SoundManager.Instance.PlaySound(_closeSound);
+        }
 
         UIManager.Instance.IsOpened = false;
         _isOpen = false;

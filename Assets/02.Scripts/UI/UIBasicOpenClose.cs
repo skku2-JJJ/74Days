@@ -19,8 +19,11 @@ public class UIBasicOpenClose : MonoBehaviour
     public bool IsOpen => _isOpen;
 
     //이 UI가 열려있는 동안 다른 UI가 열리면 안되는지
-    [SerializeField] 
+    [SerializeField]
     private EUIType _uiType = EUIType.Only;
+
+    [Header("Sound Effects")]
+    [SerializeField] private AudioClip _closeSound;
 
     void Start()
     {
@@ -61,6 +64,12 @@ public class UIBasicOpenClose : MonoBehaviour
         }
 
         _isOpen = false;
+
+        // Close 사운드 재생
+        if (_closeSound != null && SoundManager.Instance != null)
+        {
+            SoundManager.Instance.PlaySound(_closeSound);
+        }
 
         _ui.DOAnchorPos(_closePos, 0.5f).SetEase(Ease.InBack);
         UIManager.Instance.IsOpened = false;
