@@ -16,9 +16,9 @@ MonoBehaviour:
   crewID: 1
   aliveSprite: {fileID: 7416814803530838349, guid: eff0b547dc1116849bc8191d643c60e0, type: 3}
   deadSprite: {fileID: 6207276918003571233, guid: 17952ba59844f01478a8254fd9e93510, type: 3}
-  initialHunger: 90
-  initialThirst: 90
-  initialTemperature: 60
+  initialHunger: 70
+  initialThirst: 70
+  initialTemperature: 50
   minHungerDecrease: 18
   maxHungerDecrease: 25
   minThirstDecrease: 15
