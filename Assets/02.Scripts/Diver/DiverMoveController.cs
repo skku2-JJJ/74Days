@@ -32,7 +32,24 @@ public class DiverMoveController : MonoBehaviour
     // 프로퍼티
     public Vector2 MoveInput => _moveInput;
     private bool IsMoving => _moveInput.sqrMagnitude > MinInputMagnitude; //입력 기준으로 이동 판단
-   
+    public bool IsBoosting => _isBoosting;
+    
+    public float BoostRemainRatio
+    {
+        get
+        {
+            if (!_isBoosting || _boostDuration <= 0f) return 0f;
+            return 1f - Mathf.Clamp01(_boostTimer / _boostDuration);
+        }
+    }
+    public float BoostCooldownRatio
+    {
+        get
+        {
+            if (_boostCoolTime <= 0f) return 1f;
+            return Mathf.Clamp01(_boostCoolTimer / _boostCoolTime);
+        }
+    }
     
     // 컴포넌트
     private Rigidbody2D _rigid;
