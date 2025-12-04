@@ -5,10 +5,7 @@ public class BoostGuageUI : MonoBehaviour
 {
     [Header("플레이어")]
     [SerializeField] private Transform _player;
-
-    [Header("화면 위치 오프셋 (Screen Space)")]
-    [SerializeField] private Vector2 _screenOffset = new Vector2(0f, -80f); 
-
+    
     [Header("페이드 설정")]
     [SerializeField] private float _fadeSpeed = 10f; 
 
@@ -35,8 +32,7 @@ public class BoostGuageUI : MonoBehaviour
             _canvasGroup.alpha = 0f;
             return;
         }
-
-        UpdatePosition();
+        
         UpdateGaugeAndVisibility();
     }
 
@@ -57,15 +53,7 @@ public class BoostGuageUI : MonoBehaviour
         _diverStatus    = _player.GetComponent<DiverStatus>();
         
     }
-
-    private void UpdatePosition()
-    {
-        Vector3 screenPos = _camera.WorldToScreenPoint(_player.position);
-        screenPos.x += _screenOffset.x;
-        screenPos.y += _screenOffset.y;
-
-        _rectTransform.position = screenPos;
-    }
+    
 
     private void UpdateGaugeAndVisibility()
     {
