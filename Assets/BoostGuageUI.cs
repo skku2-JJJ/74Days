@@ -60,7 +60,7 @@ public class BoostGuageUI : MonoBehaviour
         bool isBoosting = _moveController.IsBoosting;
         float coolRatio = _moveController.BoostCooldownRatio;
         
-        bool shouldShow = isBoosting || (coolRatio > 0f && coolRatio < 1f);
+        bool shouldShow = isBoosting || (coolRatio < 1f);
 
         float targetAlpha = shouldShow ? 1f : 0f;
         _canvasGroup.alpha = Mathf.Lerp(
