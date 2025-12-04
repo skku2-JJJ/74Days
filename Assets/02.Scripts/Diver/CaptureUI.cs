@@ -90,13 +90,11 @@ public class CaptureUI : MonoBehaviour
         
         // UI 좌우 반전
         Vector3 scale = _rectTransform.localScale;
-        scale.x = -dir;             
+        scale.x = -dir;
         _rectTransform.localScale = scale;
 
-        if (scale.x < 0f)
-        {
-            _guideRectTransform.localScale  = scale;
-        }
+        // 가이드도 항상 같은 방향으로 반전
+        _guideRectTransform.localScale = scale;
         
     }
 
