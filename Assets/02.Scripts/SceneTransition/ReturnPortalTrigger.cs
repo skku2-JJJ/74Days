@@ -8,7 +8,7 @@ using UnityEngine;
 public class ReturnPortalTrigger : MonoBehaviour
 {
     [Header("UI Feedback (선택)")]
-    [SerializeField] private GameObject interactionPrompt; // "Press Space to Return" UI
+    [SerializeField] private BackShipGuide interactionPrompt; // "Press Space to Return" UI
 
     private bool playerInRange = false;
 
@@ -17,7 +17,7 @@ public class ReturnPortalTrigger : MonoBehaviour
         // 상호작용 UI 숨기기
         if (interactionPrompt != null)
         {
-            interactionPrompt.SetActive(false);
+            interactionPrompt.gameObject.SetActive(false);
         }
     }
 
@@ -40,7 +40,8 @@ public class ReturnPortalTrigger : MonoBehaviour
             // UI 표시
             if (interactionPrompt != null)
             {
-                interactionPrompt.SetActive(true);
+                interactionPrompt.gameObject.SetActive(true);
+                interactionPrompt.BlinkStart();
             }
 
             Debug.Log("[ReturnPortal] 플레이어가 귀환 포탈 범위에 진입 - 스페이스바를 눌러 배로 돌아가세요");
@@ -57,7 +58,8 @@ public class ReturnPortalTrigger : MonoBehaviour
             // UI 숨기기
             if (interactionPrompt != null)
             {
-                interactionPrompt.SetActive(false);
+                interactionPrompt.BlinkStop();
+                interactionPrompt.gameObject.SetActive(false);
             }
 
             Debug.Log("[ReturnPortal] 플레이어가 귀환 포탈 범위에서 벗어남");

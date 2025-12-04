@@ -17,7 +17,9 @@ public class CaptureUI : MonoBehaviour
     private CanvasGroup _canvasGroup; 
     private RectTransform _rectTransform;
     private Camera _camera;
-    
+
+    [Header("가이드")]
+    [SerializeField] private RectTransform _guideRectTransform;
     private void Awake()
     {
         Init();
@@ -90,6 +92,11 @@ public class CaptureUI : MonoBehaviour
         Vector3 scale = _rectTransform.localScale;
         scale.x = -dir;             
         _rectTransform.localScale = scale;
+
+        if (scale.x < 0f)
+        {
+            _guideRectTransform.localScale  = scale;
+        }
         
     }
 
