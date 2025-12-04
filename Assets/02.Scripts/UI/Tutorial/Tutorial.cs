@@ -6,8 +6,6 @@ using UnityEngine.UI;
 
 public class Tutorial : MonoBehaviour
 {
-    
-
     [Header("튜토리얼")]
     [SerializeField] private TextMeshProUGUI _tutorialTextUI;
     [SerializeField] private float _delay = 0.07f; // 글자 간격
@@ -23,7 +21,6 @@ public class Tutorial : MonoBehaviour
 
     private string[] _fullText = 
     {
-        
         "여기가... 어디지..",
         "파도에 한참을 떠밀려온 모양이다." , 
         "식량과 물 등의 자원을 모두 잃고 남겨진 것은 배 한 척뿐이다.", 
@@ -128,10 +125,10 @@ public class Tutorial : MonoBehaviour
 
     void ShowGuide()
     {
-        if (order == 6) SetGuide(0);
-        else if (order == 8) SetGuide(1);
-        else if (order == 9) SetGuide(2);
-        else if (order == 10) SetGuide(3);
+        if (order == 7) SetGuide(0);
+        else if (order == 9) SetGuide(1);
+        else if (order == 10) SetGuide(2);
+        else if (order == 11) SetGuide(3);
     }
 
     void SetGuide(int indexToShow)
