@@ -18,10 +18,10 @@ public class Warning : MonoBehaviour
     private float _blinkValue = 0f;    // 0~1로 깜빡이는 Tween 값
 
     private float _hpTargetAlpha = 0f; // 체력 기반 목표 알파
-    private float _blinkHPStart = 40f; //경고 시작 치수
+    private float _blinkHPStart = 30f; //경고 시작 치수
 
     private float _o2TargetAlpha = 0f; // O2 기반 목표 알파
-    private float _blinkO2Start = 40f; //경고 시작 치수
+    private float _blinkO2Start = 30f; //경고 시작 치수
 
     private void Start()
     {

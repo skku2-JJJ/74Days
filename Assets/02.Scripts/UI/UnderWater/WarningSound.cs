@@ -24,7 +24,7 @@ public class WarningSound : MonoBehaviour
     [SerializeField] private DiverStatus _status;
 
     [SerializeField] private float _startBeepHp = 100;
-    [SerializeField] private float _startBeepO2 = 40;
+    [SerializeField] private float _startBeepO2 = 30;
 
 
     private float _hpBeepTimer = 0f;
