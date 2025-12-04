@@ -129,6 +129,7 @@ MonoBehaviour:
   _diagonalTiltAngle: 15
   _tiltLerpSpeed: 10
   _animSpeedLerp: 10
+  _textureFacesRight: 0
   _flipDirThreshold: 0.25
   _minSpeedForFlip: 0.2
 --- !u!1 &4343987433710372881
@@ -195,7 +196,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &3586296991537446956
 MonoBehaviour:
@@ -209,10 +210,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4362de6b5afeb3043adbb5fc879814df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  diver: {fileID: 0}
-  _health: {fileID: 8381116170206823906}
-  _hitFeedback: {fileID: 854768929014232637}
-  _captureStruggle: {fileID: 2069736785922276816}
+  _fishType: 0
+  _qteDifficulty01: 0.5
   _escapeBurstSpeed: 8
   _escapeRandomFactor: 0.2
 --- !u!114 &3082685043156763347
@@ -243,17 +242,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8015212bde934230804656c73218552b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _minDecideStateDuration: 2
+  _maxDecideStateDuration: 4
+  _minDecideDirDuration: 0.8
+  _maxDecideDirDuration: 1.4
+  _wanderChangeInterval: 1
+  _wanderJitter: 70
   _idleMinDuration: 1
   _idleMaxDuration: 3
   _idleChanceAfterWander: 0.4
+  _isAggressive: 0
+  _aggroRadius: 7
+  _chaseStateDuration: 5
+  _attackRange: 4
+  _attackCooltime: 1.5
+  _attackDashSpeedMultiplier: 2.5
+  _attackDashDuration: 0.25
   _obstacleMask:
     serializedVersion: 2
     m_Bits: 0
   _rayDistance: 1.2
-  _sideRayAngle: 35
-  _diver: {fileID: 0}
-  _fleeRadius: 4
-  _fleeStrength: 1.5
+  _escapeDuration: 3
 --- !u!114 &854768929014232637
 MonoBehaviour:
   m_ObjectHideFlags: 0
