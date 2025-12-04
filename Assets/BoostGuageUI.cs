@@ -25,7 +25,7 @@ public class BoostGuageUI : MonoBehaviour
         Init();
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         if (_player == null ||  _slider == null)  return;
            
