@@ -11,15 +11,15 @@ public class DiverAimArrow : MonoBehaviour
     [SerializeField] private float _spriteForwardOffsetDegrees = 0f;
     
     [Header("차지 색")]
-    [SerializeField] private Color _colorStart = Color.white;        // 0%           
-    [SerializeField] private Color _colorMid = new Color(1f, 0.9f, 0.2f, 1f);   // 50%
-    [SerializeField] private Color _colorEnd = new Color(0.2f, 1f, 1f, 1f);     // 100%
+    [SerializeField] private Color _colorStart = Color.white;                
+    [SerializeField] private Color _colorMid = new Color(1f, 0.9f, 0.2f, 1f);   
+    [SerializeField] private Color _colorEnd = new Color(0.2f, 1f, 1f, 1f);   
     
     
     [Header("스케일 / 펄스")]
-    [SerializeField] private float _baseScale = 1f;               // 차지 0 기준 스케일
-    [SerializeField] private float _maxScaleAtFullCharge = 1.3f;  // 풀차지 시 기본 스케일 배율
-    [SerializeField] private float _pulseAmplitude = 0.08f;       // 펄스 폭
+    [SerializeField] private float _baseScale = 1f;               
+    [SerializeField] private float _maxScaleAtFullCharge = 1.3f;  
+    [SerializeField] private float _pulseAmplitude = 0.08f;       
     [SerializeField] private float _pulseSpeed = 6f;   
     
     [Header("등장 / 퇴장 연출")]
@@ -65,13 +65,6 @@ public class DiverAimArrow : MonoBehaviour
         _renderer = GetComponent<SpriteRenderer>();
         
         _harpoonShooter = GetComponentInParent<HarpoonShooter>();
-        if (_harpoonShooter == null)
-        {
-            Debug.LogError("HarpoonShooter 컴포넌트를 부모에서 찾을 수 없습니다.", this);
-            enabled = false;
-            return;
-        }
-        
         _diverStatus = GetComponentInParent<DiverStatus>(); 
         
         _diverTransform = _harpoonShooter.transform;
@@ -81,8 +74,7 @@ public class DiverAimArrow : MonoBehaviour
     {
         bool isAiming = _harpoonShooter.IsAiming;
         float targetAlpha = isAiming ? 1f : 0f;
-
-        // 알파값 보간
+        
         _currentAlpha = Mathf.Lerp(_currentAlpha, targetAlpha, _alphaLerpSpeed * Time.unscaledDeltaTime);
 
         if (_hideWhenNotAiming && _currentAlpha < 0.01f)
