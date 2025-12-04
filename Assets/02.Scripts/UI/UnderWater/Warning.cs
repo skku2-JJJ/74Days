@@ -23,7 +23,6 @@ public class Warning : MonoBehaviour
     private float _o2TargetAlpha = 0f; // O2 기반 목표 알파
     private float _blinkO2Start = 40f; //경고 시작 치수
 
-
     private void Start()
     {
         TweenMake();
