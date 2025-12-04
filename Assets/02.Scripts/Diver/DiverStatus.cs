@@ -24,6 +24,8 @@ public class DiverStatus : MonoBehaviour
     [Header("UI")]
     [SerializeField] private GetItemUIUpdate _getUI;
 
+    [Header("SFX 참조")]
+    [SerializeField] private UnderwaterSFXManager _sfxManager;
     // 참조
     private Animator _animator;
     private DiverVFXController _diverVFXController;
@@ -180,6 +182,7 @@ public class DiverStatus : MonoBehaviour
         }
         
         _diverVFXController?.PlayResourceGetVFX();
+        _sfxManager?.Play(ESfx.ResourcePickup, false);
     }
 
     /// <summary>
