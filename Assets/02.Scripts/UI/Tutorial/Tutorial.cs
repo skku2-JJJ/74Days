@@ -1,7 +1,8 @@
-using TMPro;
-using UnityEngine;
 using System.Collections;
 using DG.Tweening;
+using TMPro;
+using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class Tutorial : MonoBehaviour
@@ -16,6 +17,8 @@ public class Tutorial : MonoBehaviour
     [SerializeField] private AudioClip[] _typingClips;
     [SerializeField] private UIBasicOpenClose _crewUI; //크루 ui 잠시 숨김
 
+    [SerializeField] private Button _nextButton;
+    private ButtonPressEffect _buttonPressEffect;
 
     private float _textStartDelay = 1f;
 
@@ -44,11 +47,15 @@ public class Tutorial : MonoBehaviour
 
     void Start()
     {
-         _crewUI.GetComponent<RectTransform>().anchoredPosition = _crewUI.ClosePos;  
+         _crewUI.GetComponent<RectTransform>().anchoredPosition = _crewUI.ClosePos;
+        _nextButton.onClick.AddListener(NextTextTutorial);
+        _buttonPressEffect = _nextButton.GetComponent<ButtonPressEffect>();
+
     }
 
     public void NextTextTutorialTyping()
     {
+        _buttonPressEffect.PressDown();
         // 이미 타이핑 중이라면 
         if (isTyping)
         {
@@ -69,6 +76,7 @@ public class Tutorial : MonoBehaviour
 
     public void NextTextTutorial()
     {
+        _buttonPressEffect.PressDown();
         ShowGuide();
 
         if (order < _fullText.Length)

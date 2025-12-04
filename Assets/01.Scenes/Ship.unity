@@ -7500,31 +7500,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 635232943}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1211844116}
-        m_TargetAssemblyTypeName: Tutorial, Assembly-CSharp
-        m_MethodName: NextTextTutorial
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 635232941}
-        m_TargetAssemblyTypeName: ButtonPressEffect, Assembly-CSharp
-        m_MethodName: PressDown
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &635232943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16648,6 +16624,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d6bd20bf8bd377842b0624145cecadad, type: 3}
   - {fileID: 8300000, guid: af885c4682404e4489591c6c2bb019c7, type: 3}
   _crewUI: {fileID: 421759183}
+  _nextButton: {fileID: 635232942}
 --- !u!222 &1211844117
 CanvasRenderer:
   m_ObjectHideFlags: 0
