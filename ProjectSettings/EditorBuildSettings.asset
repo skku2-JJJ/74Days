@@ -11,9 +11,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/01.Scenes/GameStart.unity
     guid: 3e8a28b840a9649059e145f1e71a3480
-  - enabled: 1
+  - enabled: 0
     path: Assets/01.Scenes/TutorialShip.unity
     guid: 67f3f9ea37f2455478d2603c4e8bad5e
+  - enabled: 1
+    path: Assets/01.Scenes/Ship.unity
+    guid: 11b8122f9070ea24381df22157e86efb
   - enabled: 1
     path: Assets/01.Scenes/UnderWater.unity
     guid: d29f94784ce3d3346a6a06b0f5cc1f44
@@ -23,9 +26,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/01.Scenes/GameOver.unity
     guid: 88e0d97208db74319ac6d1ad1eda1801
-  - enabled: 1
-    path: Assets/01.Scenes/Ship.unity
-    guid: 11b8122f9070ea24381df22157e86efb
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
