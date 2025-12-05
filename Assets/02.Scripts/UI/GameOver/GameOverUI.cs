@@ -60,7 +60,7 @@ public class GameOverUI : MonoBehaviour
                 titleText.text = "생존 성공!";
 
             if (reasonText != null)
-                reasonText.text = "74일간의 항해를 무사히 마쳤습니다!";
+                reasonText.text = "7일간의 항해를 무사히 마쳤습니다!";
         }
         else
         {
